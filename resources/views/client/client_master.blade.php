@@ -649,7 +649,7 @@
                             </h5>
                             <div class="footer-content">
                                 <a href="https://themes.pixelstrap.com/sheltos/index.html">
-                                    <img src="https://themes.pixelstrap.com/sheltos/assets/images/logo/6.png"
+                                    <img src="{{ asset('client/assets/images/logo.png') }}"
                                         alt="" class="img-fluid">
                                 </a>
                                 <p>This home provides entertaining spaces with a kitchen opening...</p>
@@ -676,25 +676,24 @@
                             </h5>
                             <ul class="footer-content">
                                 <li>
-                                    <a href="about-us-2.html">About us</a>
+                                    <a href="">About us</a>
                                 </li>
                                 <li>
-                                    <a href="list-no-sidebar.html">Listing</a>
+                                    <a href="">Listing</a>
                                 </li>
                                 <li>
-                                    <a href="single-property-1.html">Property</a>
+                                    <a href="">Property</a>
                                 </li>
                                 <li>
-                                    <a href="portfolio-creative-1.html">Page</a>
+                                    <a href="">Page</a>
                                 </li>
                                 <li>
-                                    <a href="property-element.html">Module</a>
+                                    <a href="">Module</a>
                                 </li>
                                 <li>
-                                    <a href="blog-left-sidebar.html">Blog</a>
+                                    <a href="">Blog</a>
                                 </li>
-                                <li>
-                                    <a href="contact-2.html">Contact</a>
+                                <li><a href="">Contact</a>
                                 </li>
                             </ul>
                         </div>
@@ -720,25 +719,25 @@
                             </h5>
                             <ul class="footer-content">
                                 <li>
-                                    <a href="blog-no-sidebar.html">Blog</a>
+                                    <a href="">Blog</a>
                                 </li>
                                 <li>
-                                    <a href="blog-list-left-sidebar.html">Blog list</a>
+                                    <a href="">Blog list</a>
                                 </li>
                                 <li>
-                                    <a href="blog-creative-right-sidebar.html">Creative blog</a>
+                                    <a href="">Creative blog</a>
                                 </li>
                                 <li>
-                                    <a href="blog-masonry-left-sidebar.html">Masonry</a>
+                                    <a href="">Masonry</a>
                                 </li>
                                 <li>
-                                    <a href="blog-list-mix-right-sidebar.html">Mix blog</a>
+                                    <a href="">Mix blog</a>
                                 </li>
                                 <li>
-                                    <a href="blog-detail-gallery.html">Details</a>
+                                    <a href="">Details</a>
                                 </li>
                                 <li>
-                                    <a href="blog-detail-video.html">Video</a>
+                                    <a href="">Video</a>
                                 </li>
                             </ul>
                         </div>
@@ -753,7 +752,7 @@
                                     <div class="media">
                                         <a href="blog-detail-left-sidebar.html">
                                             <div class="img-overlay">
-                                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/footer/1.jpg"
+                                                <img src="{{ asset('client/assets/images/footer/1.jpg') }}"
                                                     alt="">
                                             </div>
                                         </a>
@@ -767,7 +766,7 @@
                                     <div class="media">
                                         <a href="blog-detail-left-sidebar.html">
                                             <div class="img-overlay">
-                                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/footer/2.jpg"
+                                                <img src="{{ asset('client/assets/images/footer/2.jpg') }}"
                                                     alt="">
                                             </div>
                                         </a>
@@ -791,10 +790,10 @@
                     <div class="col-xl-6 col-md-6">
                         <div class="footer-social sub-footer-link">
                             <ul>
-                                <li><a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a></li>
-                                <li><a href="https://twitter.com/"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="https://accounts.google.com/"><i class="fab fa-google"></i></a></li>
+                                <li><a href=""><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href=""><i class="fab fa-instagram"></i></a></li>
+                                <li><a href=""><i class="fab fa-twitter"></i></a></li>
+                                <li><a href=""><i class="fab fa-google"></i></a></li>
                             </ul>
                         </div>
                     </div>

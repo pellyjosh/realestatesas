@@ -9436,7 +9436,7 @@ input[type='radio'].radio_animated {
 
 .testimonial-bg.testimonial-layout6 {
     background-image: url(../images/testimonial/4.jpg);
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.5);
     background-blend-mode: overlay;
 }
 
@@ -22518,7 +22518,7 @@ input[type="date"] {
     background-image: url(../images/banner-3.jpg);
     position: relative;
     z-index: 1;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.3);
     background-blend-mode: overlay;
 }
 

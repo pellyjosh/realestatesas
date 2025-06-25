@@ -40,7 +40,7 @@
                                         <h5>What are you looking for?</h5>
                                         <ul>
                                             <li>
-                                                <a href="grid-2.html" class="looking-icon">
+                                                <a href="" class="looking-icon">
                                                     <svg class="property-svg">
                                                         <use
                                                             xlink:href="https://themes.pixelstrap.com/sheltos/assets/svg/icons.svg#home-lock">
@@ -50,7 +50,7 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="user-create.html" class="looking-icon">
+                                                <a href="" class="looking-icon">
                                                     <svg class="property-svg">
                                                         <use
                                                             xlink:href="https://themes.pixelstrap.com/sheltos/assets/svg/icons.svg#home-heart">
@@ -60,7 +60,7 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="user-listing.html" class="looking-icon">
+                                                <a href="" class="looking-icon">
                                                     <svg class="property-svg">
                                                         <use
                                                             xlink:href="https://themes.pixelstrap.com/sheltos/assets/svg/icons.svg#key">
@@ -250,7 +250,7 @@
                                                 <h6>$13,000 <small>/ start from</small></h6>
                                             </div>
                                             <button type="button" class="btn btn-gradient color-6 mt-3"
-                                                onclick="document.location='single-property-8.html'">Details</button>
+                                                >Details</button>
                                         </div>
                                         <div class="overlay-option">
                                             <ul>
@@ -296,7 +296,7 @@
                                                 <h6>$14,520 <small>/ start from</small></h6>
                                             </div>
                                             <button type="button" class="btn btn-gradient color-6 mt-3"
-                                                onclick="document.location='single-property-8.html'">Details</button>
+                                                ">Details</button>
                                         </div>
                                         <div class="overlay-option">
                                             <ul>
@@ -339,7 +339,7 @@
                                                 <h6>$12,200 <small>/ start from</small></h6>
                                             </div>
                                             <button type="button" class="btn btn-gradient color-6 mt-3"
-                                                onclick="document.location='single-property-8.html'">Details</button>
+                                                >Details</button>
                                         </div>
                                         <div class="overlay-option">
                                             <ul>
@@ -401,11 +401,11 @@
                                                     or owned separately with an agreement covering the relationship
                                                     between units and common areas and concerns.</p>
                                                 <ul>
-                                                    <li><img src="https://themes.pixelstrap.com/sheltos/assets/images/svg/icon/double-bed.svg"
+                                                    <li><img src="{{ asset('client/assets/images/svg/icon/double-bed.svg') }}"
                                                             class="img-fluid" alt="">Bed : 5</li>
-                                                    <li><img src="https://themes.pixelstrap.com/sheltos/assets/images/svg/icon/bathroom.svg"
+                                                    <li><img src="{{ asset('client/assets/images/svg/icon/bathroom.svg') }}"
                                                             class="img-fluid" alt="">Baths : 3</li>
-                                                    <li><img src="https://themes.pixelstrap.com/sheltos/assets/images/svg/icon/square-ruler-tool.svg"
+                                                    <li><img src="{{ asset('client/assets/images/svg/icon/square-ruler-tool.svg') }}"
                                                             class="img-fluid ruler-tool" alt="">Sq Ft : 5000
                                                     </li>
                                                 </ul>
@@ -519,17 +519,17 @@
 
                                         </a>
                                         <a href="javascript:void(0)">
-                                            <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/16.jpg"
+                                            <img src="{{ asset("client/assets/images/property/16.jpg") }}"
                                                 class="bg-img" alt="">
 
                                         </a>
                                         <a href="javascript:void(0)">
-                                            <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/21.jpg"
+                                            <img src="{{ asset("client/assets/images/property/21.jpg") }}"
                                                 class="bg-img" alt="">
 
                                         </a>
                                         <a href="javascript:void(0)">
-                                            <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/23.jpg"
+                                            <img src="{{ asset("client/assets/images/property/23.jpg") }}"
                                                 class="bg-img" alt="">
 
                                         </a>
@@ -564,16 +564,16 @@
                                     <p class="font-roboto">Real estate is divided into several categories, including
                                         residential property, commercial property and industrial property.</p>
                                     <ul>
-                                        <li><img src="https://themes.pixelstrap.com/sheltos/assets/images/svg/icon/double-bed.svg"
-                                                class="img-fluid" alt="">Bed : 4</li>
-                                        <li><img src="https://themes.pixelstrap.com/sheltos/assets/images/svg/icon/bathroom.svg"
-                                                class="img-fluid" alt="">Baths : 4</li>
-                                        <li><img src="https://themes.pixelstrap.com/sheltos/assets/images/svg/icon/square-ruler-tool.svg"
-                                                class="img-fluid ruler-tool" alt="">Sq Ft : 5000</li>
+                                        <li><img src="{{ asset('client/assets/images/svg/icon/double-bed.svg') }}"
+                                            class="img-fluid" alt="">Bed : 4</li>
+                                        <li><img src="{{ asset('client/assets/images/svg/icon/bathroom.svg') }}"
+                                            class="img-fluid" alt="">Baths : 4</li>
+                                        <li><img src="{{ asset('client/assets/images/svg/icon/square-ruler-tool.svg') }}"
+                                            class="img-fluid ruler-tool" alt="">Sq Ft : 5000</li>
                                     </ul>
                                     <div class="property-btn d-flex">
                                         <span>August 4, 2022</span>
-                                        <button type="button" onclick="document.location='single-property-8.html'"
+                                        <button type="button"
                                             class="btn btn-dashed btn-pill color-6">Details</button>
                                     </div>
                                 </div>
@@ -584,22 +584,22 @@
                                 <div class="property-image">
                                     <div class="property-slider color-6">
                                         <a href="javascript:void(0)">
-                                            <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/23.jpg"
+                                            <img src="{{ asset('client/assets/images/property/23.jpg') }}"
                                                 class="bg-img" alt="">
 
                                         </a>
                                         <a href="javascript:void(0)">
-                                            <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/21.jpg"
+                                            <img src="{{ asset('client/assets/images/property/21.jpg') }}"
                                                 class="bg-img" alt="">
 
                                         </a>
                                         <a href="javascript:void(0)">
-                                            <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/16.jpg"
+                                            <img src="{{ asset('client/assets/images/property/16.jpg') }}"
                                                 class="bg-img" alt="">
 
                                         </a>
                                         <a href="javascript:void(0)">
-                                            <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/22.jpg"
+                                            <img src="{{ asset('client/assets/images/property/22.jpg') }}"
                                                 class="bg-img" alt="">
 
                                         </a>
@@ -633,16 +633,16 @@
                                     <p class="font-roboto">This home provides wonderful entertaining spaces with a chef
                                         kitchen opening. Elegant retreat in a quiet Coral Gables setting..</p>
                                     <ul>
-                                        <li><img src="https://themes.pixelstrap.com/sheltos/assets/images/svg/icon/double-bed.svg"
-                                                class="img-fluid" alt="">Bed : 4</li>
-                                        <li><img src="https://themes.pixelstrap.com/sheltos/assets/images/svg/icon/bathroom.svg"
-                                                class="img-fluid" alt="">Baths : 4</li>
-                                        <li><img src="https://themes.pixelstrap.com/sheltos/assets/images/svg/icon/square-ruler-tool.svg"
-                                                class="img-fluid ruler-tool" alt="">Sq Ft : 5000</li>
+                                        <li><img src="{{ asset('client/assets/images/svg/icon/double-bed.svg') }}"
+                                            class="img-fluid" alt="">Bed : 4</li>
+                                        <li><img src="{{ asset('client/assets/images/svg/icon/bathroom.svg') }}"
+                                            class="img-fluid" alt="">Baths : 4</li>
+                                        <li><img src="{{ asset('client/assets/images/svg/icon/square-ruler-tool.svg') }}"
+                                            class="img-fluid ruler-tool" alt="">Sq Ft : 5000</li>
                                     </ul>
                                     <div class="property-btn d-flex">
                                         <span>December 1, 2022</span>
-                                        <button type="button" onclick="document.location='single-property-8.html'"
+                                        <button type="button" 
                                             class="btn btn-dashed btn-pill color-6">Details</button>
                                     </div>
                                 </div>
@@ -653,24 +653,20 @@
                                 <div class="property-image">
                                     <div class="property-slider color-6">
                                         <a href="javascript:void(0)">
-                                            <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/21.jpg"
+                                            <img src="{{ asset('client/assets/images/property/21.jpg') }}"
                                                 class="bg-img" alt="">
-
                                         </a>
                                         <a href="javascript:void(0)">
-                                            <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/22.jpg"
+                                            <img src="{{ asset('client/assets/images/property/22.jpg') }}"
                                                 class="bg-img" alt="">
-
                                         </a>
                                         <a href="javascript:void(0)">
-                                            <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/23.jpg"
+                                            <img src="{{ asset('client/assets/images/property/23.jpg') }}"
                                                 class="bg-img" alt="">
-
                                         </a>
                                         <a href="javascript:void(0)">
-                                            <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/16.jpg"
+                                            <img src="{{ asset('client/assets/images/property/16.jpg') }}"
                                                 class="bg-img" alt="">
-
                                         </a>
                                     </div>
                                     <div class="labels-left">
@@ -707,12 +703,12 @@
                                                 class="img-fluid" alt="">Bed : 4</li>
                                         <li><img src="https://themes.pixelstrap.com/sheltos/assets/images/svg/icon/bathroom.svg"
                                                 class="img-fluid" alt="">Baths : 4</li>
-                                        <li><img src="https://themes.pixelstrap.com/sheltos/assets/images/svg/icon/square-ruler-tool.svg"
-                                                class="img-fluid ruler-tool" alt="">Sq Ft : 5000</li>
+                                        <li><img src="{{ asset('client/assets/images/svg/icon/square-ruler-tool.svg') }}"
+                                                                                        class="img-fluid ruler-tool" alt="">Sq Ft : 5000</li>
                                     </ul>
                                     <div class="property-btn d-flex">
                                         <span>June 20, 2022</span>
-                                        <button type="button" onclick="document.location='single-property-8.html'"
+                                        <button type="button"
                                             class="btn btn-dashed btn-pill color-6">Details</button>
                                     </div>
                                 </div>
@@ -723,24 +719,20 @@
                                 <div class="property-image">
                                     <div class="property-slider color-6">
                                         <a href="javascript:void(0)">
-                                            <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/16.jpg"
+                                            <img src="{{ asset('client/assets/images/property/16.jpg') }}"
                                                 class="bg-img" alt="">
-
                                         </a>
                                         <a href="javascript:void(0)">
-                                            <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/21.jpg"
+                                            <img src="{{ asset('client/assets/images/property/21.jpg') }}"
                                                 class="bg-img" alt="">
-
                                         </a>
                                         <a href="javascript:void(0)">
-                                            <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/22.jpg"
+                                            <img src="{{ asset('client/assets/images/property/22.jpg') }}"
                                                 class="bg-img" alt="">
-
                                         </a>
                                         <a href="javascript:void(0)">
-                                            <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/23.jpg"
+                                            <img src="{{ asset('client/assets/images/property/23.jpg') }}"
                                                 class="bg-img" alt="">
-
                                         </a>
                                     </div>
                                     <div class="labels-left">
@@ -772,16 +764,16 @@
                                     <p class="font-roboto">The most common and most absolute type of estate, the tenant
                                         enjoys the greatest discretion over the disposal of the property.</p>
                                     <ul>
-                                        <li><img src="https://themes.pixelstrap.com/sheltos/assets/images/svg/icon/double-bed.svg"
-                                                class="img-fluid" alt="">Bed : 4</li>
-                                        <li><img src="https://themes.pixelstrap.com/sheltos/assets/images/svg/icon/bathroom.svg"
-                                                class="img-fluid" alt="">Baths : 4</li>
-                                        <li><img src="https://themes.pixelstrap.com/sheltos/assets/images/svg/icon/square-ruler-tool.svg"
-                                                class="img-fluid ruler-tool" alt="">Sq Ft : 5000</li>
+                                        <li><img src="{{ asset('client/assets/images/svg/icon/double-bed.svg') }}"
+                                            class="img-fluid" alt="">Bed : 4</li>
+                                        <li><img src="{{ asset('client/assets/images/svg/icon/bathroom.svg') }}"
+                                            class="img-fluid" alt="">Baths : 4</li>
+                                        <li><img src="{{ asset('client/assets/images/svg/icon/square-ruler-tool.svg') }}"
+                                            class="img-fluid ruler-tool" alt="">Sq Ft : 5000</li>
                                     </ul>
                                     <div class="property-btn d-flex">
                                         <span>January 6, 2022</span>
-                                        <button type="button" onclick="document.location='single-property-8.html'"
+                                        <button type="button"
                                             class="btn btn-dashed btn-pill color-6">Details</button>
                                     </div>
                                 </div>
@@ -792,24 +784,20 @@
                                 <div class="property-image">
                                     <div class="property-slider color-6">
                                         <a href="javascript:void(0)">
-                                            <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/24.jpg"
+                                            <img src="{{ asset('client/assets/images/property/24.jpg') }}"
                                                 class="bg-img" alt="">
-
                                         </a>
                                         <a href="javascript:void(0)">
-                                            <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/22.jpg"
+                                            <img src="{{ asset('client/assets/images/property/22.jpg') }}"
                                                 class="bg-img" alt="">
-
                                         </a>
                                         <a href="javascript:void(0)">
-                                            <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/16.jpg"
+                                            <img src="{{ asset('client/assets/images/property/16.jpg') }}"
                                                 class="bg-img" alt="">
-
                                         </a>
                                         <a href="javascript:void(0)">
-                                            <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/23.jpg"
+                                            <img src="{{ asset('client/assets/images/property/23.jpg') }}"
                                                 class="bg-img" alt="">
-
                                         </a>
                                     </div>
                                     <div class="labels-left">
@@ -841,16 +829,16 @@
                                     <p class="font-roboto">Real estate market in most countries are not as organize or
                                         efficient as markets for other, more liquid investment instruments.</p>
                                     <ul>
-                                        <li><img src="https://themes.pixelstrap.com/sheltos/assets/images/svg/icon/double-bed.svg"
+                                        <li><img src="{{ asset('client/assets/images/svg/icon/double-bed.svg') }}"
                                                 class="img-fluid" alt="">Bed : 4</li>
-                                        <li><img src="https://themes.pixelstrap.com/sheltos/assets/images/svg/icon/bathroom.svg"
+                                        <li><img src="{{ asset('client/assets/images/svg/icon/bathroom.svg') }}"
                                                 class="img-fluid" alt="">Baths : 4</li>
-                                        <li><img src="https://themes.pixelstrap.com/sheltos/assets/images/svg/icon/square-ruler-tool.svg"
+                                        <li><img src="{{ asset('client/assets/images/svg/icon/square-ruler-tool.svg') }}"
                                                 class="img-fluid ruler-tool" alt="">Sq Ft : 5000</li>
                                     </ul>
                                     <div class="property-btn d-flex">
                                         <span>December 1, 2022</span>
-                                        <button type="button" onclick="document.location='single-property-8.html'"
+                                        <button type="button"
                                             class="btn btn-dashed btn-pill color-6">Details</button>
                                     </div>
                                 </div>
@@ -861,24 +849,20 @@
                                 <div class="property-image">
                                     <div class="property-slider color-6">
                                         <a href="javascript:void(0)">
-                                            <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/25.jpg"
+                                            <img src="{{ asset('client/assets/images/property/25.jpg') }}"
                                                 class="bg-img" alt="">
-
                                         </a>
                                         <a href="javascript:void(0)">
-                                            <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/24.jpg"
+                                            <img src="{{ asset('client/assets/images/property/24.jpg') }}"
                                                 class="bg-img" alt="">
-
                                         </a>
                                         <a href="javascript:void(0)">
-                                            <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/22.jpg"
+                                            <img src="{{ asset('client/assets/images/property/22.jpg') }}"
                                                 class="bg-img" alt="">
-
                                         </a>
                                         <a href="javascript:void(0)">
-                                            <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/16.jpg"
+                                            <img src="{{ asset('client/assets/images/property/16.jpg') }}"
                                                 class="bg-img" alt="">
-
                                         </a>
                                     </div>
                                     <div class="labels-left">
@@ -912,16 +896,16 @@
                                         plans,researches,coordinates,management and manages such enhancement projects.
                                     </p>
                                     <ul>
-                                        <li><img src="https://themes.pixelstrap.com/sheltos/assets/images/svg/icon/double-bed.svg"
-                                                class="img-fluid" alt="">Bed : 4</li>
-                                        <li><img src="https://themes.pixelstrap.com/sheltos/assets/images/svg/icon/bathroom.svg"
-                                                class="img-fluid" alt="">Baths : 4</li>
-                                        <li><img src="https://themes.pixelstrap.com/sheltos/assets/images/svg/icon/square-ruler-tool.svg"
-                                                class="img-fluid ruler-tool" alt="">Sq Ft : 5000</li>
+                                        <li><img src="{{ asset('client/assets/images/svg/icon/double-bed.svg') }}"
+                                            class="img-fluid" alt="">Bed : 4</li>
+                                        <li><img src="{{ asset('client/assets/images/svg/icon/bathroom.svg') }}"
+                                            class="img-fluid" alt="">Baths : 4</li>
+                                        <li><img src="{{ asset('client/assets/images/svg/icon/square-ruler-tool.svg') }}"
+                                            class="img-fluid ruler-tool" alt="">Sq Ft : 5000</li>
                                     </ul>
                                     <div class="property-btn d-flex">
                                         <span>July 18, 2022</span>
-                                        <button type="button" onclick="document.location='single-property-8.html'"
+                                        <button type="button"
                                             class="btn btn-dashed btn-pill color-6">Details</button>
                                     </div>
                                 </div>
@@ -949,7 +933,7 @@
                             <div class="offer-wrapper">
                                 <div class="media">
                                     <div class="offer-icon">
-                                        <img src="https://themes.pixelstrap.com/sheltos/assets/images/others/icon-1.png"
+                                        <img src="{{ asset('client/assets/images/others/icon-1.png') }}"
                                             alt="">
                                     </div>
                                     <div class="media-body">
@@ -965,7 +949,7 @@
                             <div class="offer-wrapper">
                                 <div class="media">
                                     <div class="offer-icon">
-                                        <img src="https://themes.pixelstrap.com/sheltos/assets/images/others/icon-2.png"
+                                        <img src="{{ asset("client/assets/images/others/icon-2.png") }}"
                                             alt="">
                                     </div>
                                     <div class="media-body">
@@ -981,7 +965,7 @@
                             <div class="offer-wrapper">
                                 <div class="media">
                                     <div class="offer-icon">
-                                        <img src="https://themes.pixelstrap.com/sheltos/assets/images/others/icon-1.png"
+                                        <img src="{{ asset("client/assets/images/others/icon-1.png") }}"
                                             alt="">
                                     </div>
                                     <div class="media-body">
@@ -1013,7 +997,7 @@
                     <div class="row">
                         <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 wow fadeInUp">
                             <div class="find-cities bg-size">
-                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/8.jpg"
+                                <img src="{{ asset("client/assets/images/property/8.jpg") }}"
                                     class="bg-img" alt="">
                                 <div class="citi-overlay">
                                     <div>
@@ -1026,7 +1010,7 @@
                         </div>
                         <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 wow fadeInUp">
                             <div class="find-cities bg-size">
-                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/others/1.jpg" class="bg-img"
+                                <img src="{{ asset("client/assets/images/others/1.jpg") }}" class="bg-img"
                                     alt="">
                                 <div class="citi-overlay">
                                     <div>
@@ -1039,7 +1023,7 @@
                         </div>
                         <div class="col-xl-6 col-lg-8 col-md-7 wow fadeInUp">
                             <div class="find-cities bg-size">
-                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/3.jpg" class="bg-img"
+                                <img src="{{ asset("client/assets/images/3.jpg") }}" class="bg-img"
                                     alt="">
                                 <div class="citi-overlay">
                                     <div>
@@ -1052,7 +1036,7 @@
                         </div>
                         <div class="col-xl-6 col-lg-8 col-md-7 wow fadeInUp">
                             <div class="find-cities bg-size">
-                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/6.jpg"
+                                <img src="{{ asset("client/assets/images/property/6.jpg") }}"
                                     class="bg-img" alt="">
                                 <div class="citi-overlay">
                                     <div>
@@ -1065,7 +1049,7 @@
                         </div>
                         <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 wow fadeInUp">
                             <div class="find-cities bg-size">
-                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/1.jpg" class="bg-img"
+                                <img src="{{ asset("client/assets/images/1.jpg") }}" class="bg-img"
                                     alt="">
                                 <div class="citi-overlay">
                                     <div>
@@ -1078,7 +1062,7 @@
                         </div>
                         <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 wow fadeInUp">
                             <div class="find-cities bg-size">
-                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/7.jpg"
+                                <img src="{{ asset("client/assets/images/property/7.jpg") }}"
                                     class="bg-img" alt="">
                                 <div class="citi-overlay">
                                     <div>
@@ -1137,21 +1121,21 @@
                             <div class="about-content row">
                                 <div class="col-xl-6">
                                     <div class="about-image">
-                                        <img src="https://themes.pixelstrap.com/sheltos/assets/images/about/1.jpg"
+                                        <img src="{{ asset("client/assets/images/about/1.jpg") }}"
                                             class="img-fluid" alt="">
                                         <div class="about-overlay"></div>
                                         <div class="overlay-content">
                                             <ul>
-                                                <li><a href="https://accounts.google.com/"><img
-                                                            src="https://themes.pixelstrap.com/sheltos/assets/images/about/icon-1.png"
+                                                <li><a href=""><img
+                                                            src="{{ asset("client/assets/images/about/icon-1.png") }}"
                                                             alt=""></a>
                                                 </li>
-                                                <li><a href="https://twitter.com/"><img
-                                                            src="https://themes.pixelstrap.com/sheltos/assets/images/about/icon-2.png"
+                                                <li><a href=""><img
+                                                            src="{{ asset("client/assets/images/about/icon-2.png") }}"
                                                             alt=""></a>
                                                 </li>
-                                                <li><a href="https://www.facebook.com/"><img
-                                                            src="https://themes.pixelstrap.com/sheltos/assets/images/about/icon-3.png"
+                                                <li><a href=""><img
+                                                            src="{{ asset("client/assets/images/about/icon-3.png") }}"
                                                             alt=""></a>
                                                 </li>
                                             </ul>
@@ -1180,21 +1164,21 @@
                             <div class="about-content row">
                                 <div class="col-xl-6">
                                     <div class="about-image">
-                                        <img src="https://themes.pixelstrap.com/sheltos/assets/images/about/2.jpg"
+                                        <img src="{{ asset("client/assets/images/about/2.jpg") }}"
                                             class="img-fluid" alt="">
                                         <div class="about-overlay"></div>
                                         <div class="overlay-content">
                                             <ul>
-                                                <li><a href="https://accounts.google.com/"><img
-                                                            src="https://themes.pixelstrap.com/sheltos/assets/images/about/icon-1.png"
+                                                <li><a href=""><img
+                                                            src="{{ asset("client/assets/images/about/icon-1.png") }}"
                                                             alt=""></a>
                                                 </li>
-                                                <li><a href="https://twitter.com/"><img
-                                                            src="https://themes.pixelstrap.com/sheltos/assets/images/about/icon-2.png"
+                                                <li><a href=""><img
+                                                            src="{{ asset("client/assets/images/about/icon-2.png") }}"
                                                             alt=""></a>
                                                 </li>
-                                                <li><a href="https://www.facebook.com/"><img
-                                                            src="https://themes.pixelstrap.com/sheltos/assets/images/about/icon-3.png"
+                                                <li><a href=""><img
+                                                            src="{{ asset("client/assets/images/about/icon-3.png") }}"
                                                             alt=""></a>
                                                 </li>
                                             </ul>
@@ -1223,21 +1207,21 @@
                             <div class="about-content row">
                                 <div class="col-xl-6">
                                     <div class="about-image">
-                                        <img src="https://themes.pixelstrap.com/sheltos/assets/images/about/1.jpg"
+                                        <img src="{{ asset("client/assets/images/about/1.jpg") }}"
                                             class="img-fluid" alt="">
                                         <div class="about-overlay"></div>
                                         <div class="overlay-content">
                                             <ul>
-                                                <li><a href="https://accounts.google.com/"><img
-                                                            src="https://themes.pixelstrap.com/sheltos/assets/images/about/icon-1.png"
+                                                <li><a href=""><img
+                                                            src="{{ asset("client/assets/images/about/icon-1.png") }}"
                                                             alt=""></a>
                                                 </li>
-                                                <li><a href="https://twitter.com/"><img
-                                                            src="https://themes.pixelstrap.com/sheltos/assets/images/about/icon-2.png"
+                                                <li><a href=""><img
+                                                            src="{{ asset("client/assets/images/about/icon-2.png") }}"
                                                             alt=""></a>
                                                 </li>
-                                                <li><a href="https://www.facebook.com/"><img
-                                                            src="https://themes.pixelstrap.com/sheltos/assets/images/about/icon-3.png"
+                                                <li><a href=""><img
+                                                            src="{{ asset("client/assets/images/about/icon-3.png") }}"
                                                             alt=""></a>
                                                 </li>
                                             </ul>
@@ -1283,17 +1267,17 @@
                         <div>
                             <div class="client-slider light-bg">
                                 <ul class="user-list">
-                                    <li><img src="https://themes.pixelstrap.com/sheltos/assets/images/testimonial/2.png"
+                                    <li><img src="{{ asset('client/assets/images/testimonial/2.png') }}"
                                             alt=""></li>
                                     <li>
-                                        <img src="https://themes.pixelstrap.com/sheltos/assets/images/testimonial/1.png"
+                                        <img src="{{ asset('client/assets/images/testimonial/1.png') }}"
                                             alt="">
                                         <div class="heart-bg">
                                         </div>
-                                        <img src="https://themes.pixelstrap.com/sheltos/assets/images/testimonial/heart.png"
+                                        <img src="{{ asset('client/assets/images/testimonial/heart.png') }}"
                                             alt="" class="heart-icon">
                                     </li>
-                                    <li><img src="https://themes.pixelstrap.com/sheltos/assets/images/testimonial/3.png"
+                                    <li><img src="{{ asset('client/assets/images/testimonial/3.png') }}"
                                             alt=""></li>
                                 </ul>
                                 <p>Surveyors make precise measurements of property boundaries. Many industries,
@@ -1355,39 +1339,40 @@
                     <div class="slide-1 brand-slider">
                         <div>
                             <a href="javascript:void(0)" class="logo-box">
-                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/brand/17.png" alt=""
+                                <img src="{{ asset('client/assets/images/brand/17.png') }}" alt=""
                                     class="img-fluid">
                             </a>
                         </div>
                         <div>
                             <a href="javascript:void(0)" class="logo-box">
-                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/brand/18.png" alt=""
+                                <img src="{{ asset('client/assets/images/brand/18.png') }}" alt=""
                                     class="img-fluid">
                             </a>
                         </div>
                         <div>
                             <a href="javascript:void(0)" class="logo-box">
-                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/brand/19.png" alt=""
+                                <img src="{{ asset('client/assets/images/brand/19.png') }}" alt=""
                                     class="img-fluid">
                             </a>
                         </div>
                         <div>
                             <a href="javascript:void(0)" class="logo-box">
-                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/brand/20.png" alt=""
+                                <img src="{{ asset('client/assets/images/brand/20.png') }}" alt=""
                                     class="img-fluid">
                             </a>
                         </div>
                         <div>
                             <a href="javascript:void(0)" class="logo-box">
-                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/brand/21.png" alt=""
+                                <img src="{{ asset('client/assets/images/brand/21.png') }}" alt=""
                                     class="img-fluid">
                             </a>
                         </div>
                         <div>
                             <a href="javascript:void(0)" class="logo-box">
-                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/brand/18.png" alt=""
+                                <img src="{{ asset('client/assets/images/brand/18.png') }}" alt=""
                                     class="img-fluid">
                             </a>
+                        </div>
                         </div>
                     </div>
                 </div>
