@@ -237,8 +237,8 @@
                             <div class="property-box">
                                 <div class="property-image">
                                     <a href="javascript:void(0)">
-                                        <img src="{{ asset('client/assets/images/uploads/upload-2.png') }}" class="bg-img"
-                                            alt="">
+                                        <img src="{{ asset('client/assets/images/uploads/upload-2.png') }}"
+                                            class="bg-img" alt="" loading="lazy">
                                         <div class="labels-left">
                                             <span class="label label-shadow">Sale</span>
                                         </div>
@@ -279,10 +279,8 @@
                             <div class="property-box">
                                 <div class="property-image">
                                     <a href="javascript:void(0)">
-                                        {{-- <img src="{{ asset('client/assets/images/1.jpg') }}" class="bg-img"
-                                            alt=""> --}}
-                                        <img src="{{ asset('client/assets/images/uploads/upload-9.png') }}" class="bg-img"
-                                            alt="">
+                                        <img src="{{ asset('client/assets/images/uploads/upload-9.png') }}"
+                                            class="bg-img" alt="" loading="lazy">
                                         <div class="labels-left">
                                             <div>
                                                 <span class="label label-dark">no fees</span>
@@ -326,8 +324,8 @@
                             <div class="property-box">
                                 <div class="property-image">
                                     <a href="javascript:void(0)">
-                                        <img src="{{ asset('client/assets/images/uploads/upload-7.jpg') }}" class="bg-img"
-                                            alt="">
+                                        <img src="{{ asset('client/assets/images/uploads/upload-7.jpg') }}"
+                                            class="bg-img" alt="" loading="lazy">
                                         <div class="labels-left">
                                             <span class="label label-shadow">Sold</span>
                                         </div>
@@ -422,8 +420,8 @@
                                     </div>
                                     <div class="col-xl-8 col-lg-9 order-md">
                                         <div class="feature-image">
-                                            <img src="{{ asset('client/assets/images/uploads/upload-7.jpg') }}"
-                                                alt="" class="bg-img">
+                                            <img src="{{ asset('client/assets/images/uploads/upload-7.jpg') }}" alt=""
+                                                class="bg-img" loading="lazy">
                                             <h4>Land Properties</h4>
                                             {{-- <span class="box-color"></span>
                                                             <span class="signature">
@@ -474,8 +472,8 @@
                                     </div>
                                     <div class="col-xl-8 col-lg-9 order-md">
                                         <div class="feature-image">
-                                            <img src="{{ asset('client/assets/images/property/2.jpg') }}" alt=""
-                                                class="bg-img">
+                                            <img src="{{ asset('client/assets/images/property/2.jpg') }}"
+                                                alt="" class="bg-img" loading="lazy">
                                             <h4>FAMILY HOME</h4>
                                             <span class="box-color"></span>
                                             <span class="signature">
@@ -512,19 +510,19 @@
                                     <div class="property-slider color-6">
                                         <a href="javascript:void(0)">
                                             <img src="{{ asset('client/assets/images/uploads/upload-2.png') }}"
-                                                class="bg-img" alt="">
+                                                class="bg-img" alt="" loading="lazy">
                                         </a>
                                         <a href="javascript:void(0)">
                                             <img src="{{ asset('client/assets/images/uploads/upload-7.jpg') }}"
-                                                class="bg-img" alt="">
+                                                class="bg-img" alt="" loading="lazy">
                                         </a>
                                         <a href="javascript:void(0)">
                                             <img src="{{ asset('client/assets/images/uploads/upload-9.png') }}"
-                                                class="bg-img" alt="">
+                                                class="bg-img" alt="" loading="lazy">
                                         </a>
                                         <a href="javascript:void(0)">
                                             <img src="{{ asset('client/assets/images/uploads/upload-2.png') }}"
-                                                class="bg-img" alt="">
+                                                class="bg-img" alt="" loading="lazy">
                                         </a>
                                     </div>
                                     <div class="labels-left">
@@ -575,19 +573,19 @@
                                     <div class="property-slider color-6">
                                         <a href="javascript:void(0)">
                                             <img src="{{ asset('client/assets/images/uploads/upload-9.png') }}"
-                                                class="bg-img" alt="">
+                                                class="bg-img" alt="" loading="lazy">
                                         </a>
                                         <a href="javascript:void(0)">
                                             <img src="{{ asset('client/assets/images/uploads/upload-7.jpg') }}"
-                                                class="bg-img" alt="">
+                                                class="bg-img" alt="" loading="lazy">
                                         </a>
                                         <a href="javascript:void(0)">
                                             <img src="{{ asset('client/assets/images/uploads/upload-2.png') }}"
-                                                class="bg-img" alt="">
+                                                class="bg-img" alt="" loading="lazy">
                                         </a>
                                         <a href="javascript:void(0)">
-                                            <img src="{{ asset('client/assets/images/property/22.jpg') }}" class="bg-img"
-                                                alt="">
+                                            <img src="{{ asset('client/assets/images/property/22.jpg') }}"
+                                                class="bg-img" alt="" loading="lazy">
                                         </a>
                                     </div>
                                     <div class="labels-left">
@@ -637,19 +635,19 @@
                                     <div class="property-slider color-6">
                                         <a href="javascript:void(0)">
                                             <img src="{{ asset('client/assets/images/uploads/upload-2.png') }}"
-                                                class="bg-img" alt="">
+                                                class="bg-img" alt="" loading="lazy">
                                         </a>
                                         <a href="javascript:void(0)">
                                             <img src="{{ asset('client/assets/images/uploads/upload-7.jpg') }}"
-                                                class="bg-img" alt="">
+                                                class="bg-img" alt="" loading="lazy">
                                         </a>
                                         <a href="javascript:void(0)">
                                             <img src="{{ asset('client/assets/images/uploads/upload-9.png') }}"
-                                                class="bg-img" alt="">
+                                                class="bg-img" alt="" loading="lazy">
                                         </a>
                                         <a href="javascript:void(0)">
                                             <img src="{{ asset('client/assets/images/uploads/upload-2.png') }}"
-                                                class="bg-img" alt="">
+                                                class="bg-img" alt="" loading="lazy">
                                         </a>
                                     </div>
                                     <div class="labels-left">
@@ -699,19 +697,19 @@
                                     <div class="property-slider color-6">
                                         <a href="javascript:void(0)">
                                             <img src="{{ asset('client/assets/images/uploads/upload-2.png') }}"
-                                                class="bg-img" alt="">
+                                                class="bg-img" alt="" loading="lazy">
                                         </a>
                                         <a href="javascript:void(0)">
                                             <img src="{{ asset('client/assets/images/uploads/upload-7.jpg') }}"
-                                                class="bg-img" alt="">
+                                                class="bg-img" alt="" loading="lazy">
                                         </a>
                                         <a href="javascript:void(0)">
                                             <img src="{{ asset('client/assets/images/uploads/upload-9.png') }}"
-                                                class="bg-img" alt="">
+                                                class="bg-img" alt="" loading="lazy">
                                         </a>
                                         <a href="javascript:void(0)">
                                             <img src="{{ asset('client/assets/images/uploads/upload-2.png') }}"
-                                                class="bg-img" alt="">
+                                                class="bg-img" alt="" loading="lazy">
                                         </a>
                                     </div>
                                     <div class="labels-left">
@@ -761,19 +759,19 @@
                                     <div class="property-slider color-6">
                                         <a href="javascript:void(0)">
                                             <img src="{{ asset('client/assets/images/uploads/upload-2.png') }}"
-                                                class="bg-img" alt="">
+                                                class="bg-img" alt="" loading="lazy">
                                         </a>
                                         <a href="javascript:void(0)">
                                             <img src="{{ asset('client/assets/images/uploads/upload-7.jpg') }}"
-                                                class="bg-img" alt="">
+                                                class="bg-img" alt="" loading="lazy">
                                         </a>
                                         <a href="javascript:void(0)">
                                             <img src="{{ asset('client/assets/images/uploads/upload-9.png') }}"
-                                                class="bg-img" alt="">
+                                                class="bg-img" alt="" loading="lazy">
                                         </a>
                                         <a href="javascript:void(0)">
                                             <img src="{{ asset('client/assets/images/uploads/upload-2.png') }}"
-                                                class="bg-img" alt="">
+                                                class="bg-img" alt="" loading="lazy">
                                         </a>
                                     </div>
                                     <div class="labels-left">
@@ -823,19 +821,19 @@
                                     <div class="property-slider color-6">
                                         <a href="javascript:void(0)">
                                             <img src="{{ asset('client/assets/images/uploads/upload-2.png') }}"
-                                                class="bg-img" alt="">
+                                                class="bg-img" alt="" loading="lazy">
                                         </a>
                                         <a href="javascript:void(0)">
                                             <img src="{{ asset('client/assets/images/uploads/upload-7.jpg') }}"
-                                                class="bg-img" alt="">
+                                                class="bg-img" alt="" loading="lazy">
                                         </a>
                                         <a href="javascript:void(0)">
                                             <img src="{{ asset('client/assets/images/uploads/upload-9.png') }}"
-                                                class="bg-img" alt="">
+                                                class="bg-img" alt="" loading="lazy">
                                         </a>
                                         <a href="javascript:void(0)">
                                             <img src="{{ asset('client/assets/images/uploads/upload-2.png') }}"
-                                                class="bg-img" alt="">
+                                                class="bg-img" alt="" loading="lazy">
                                         </a>
                                     </div>
                                     <div class="labels-left">
@@ -903,7 +901,7 @@
                             <div class="offer-wrapper">
                                 <div class="media">
                                     <div class="offer-icon">
-                                        <img src="{{ asset('client/assets/images/others/icon-1.png') }}" alt="">
+                                        <img src="{{ asset('client/assets/images/others/icon-1.png') }}" alt="" loading="lazy">
                                     </div>
                                     <div class="media-body">
                                         <h6>Premium Refined Luxury Homes</h6>
@@ -918,7 +916,7 @@
                             <div class="offer-wrapper">
                                 <div class="media">
                                     <div class="offer-icon">
-                                        <img src="{{ asset('client/assets/images/others/icon-2.png') }}" alt="">
+                                        <img src="{{ asset('client/assets/images/others/icon-2.png') }}" alt="" loading="lazy">
                                     </div>
                                     <div class="media-body">
                                         <h6>Premium Refined Luxury Homes</h6>
@@ -933,7 +931,7 @@
                             <div class="offer-wrapper">
                                 <div class="media">
                                     <div class="offer-icon">
-                                        <img src="{{ asset('client/assets/images/others/icon-1.png') }}" alt="">
+                                        <img src="{{ asset('client/assets/images/others/icon-1.png') }}" alt="" loading="lazy">
                                     </div>
                                     <div class="media-body">
                                         <h6>Premium Refined Luxury Homes</h6>
@@ -964,8 +962,8 @@
                     <div class="row">
                         <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 wow fadeInUp">
                             <div class="find-cities bg-size">
-                                <img src="{{ asset('client/assets/images/uploads/upload-2.png') }}" class="bg-img"
-                                    alt="">
+                                <img src="{{ asset('client/assets/images/uploads/upload-2.png') }}"
+                                    class="bg-img" alt="" loading="lazy">
                                 <div class="citi-overlay">
                                     <div>
                                         <h4>12+ Property</h4>
@@ -977,8 +975,8 @@
                         </div>
                         <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 wow fadeInUp">
                             <div class="find-cities bg-size">
-                                <img src="{{ asset('client/assets/images/uploads/upload-9.png') }}" class="bg-img"
-                                    alt="">
+                                <img src="{{ asset('client/assets/images/uploads/upload-9.png') }}"
+                                    class="bg-img" alt="" loading="lazy">
                                 <div class="citi-overlay">
                                     <div>
                                         <h4>5+ Property</h4>
@@ -990,8 +988,8 @@
                         </div>
                         <div class="col-xl-6 col-lg-8 col-md-7 wow fadeInUp">
                             <div class="find-cities bg-size">
-                                <img src="{{ asset('client/assets/images/uploads/upload-7.jpg') }}" class="bg-img"
-                                    alt="">
+                                <img src="{{ asset('client/assets/images/uploads/upload-7.jpg') }}"
+                                    class="bg-img" alt="" loading="lazy">
                                 <div class="citi-overlay">
                                     <div>
                                         <h4>6+ Property</h4>
@@ -1003,8 +1001,8 @@
                         </div>
                         <div class="col-xl-6 col-lg-8 col-md-7 wow fadeInUp">
                             <div class="find-cities bg-size">
-                                <img src="{{ asset('client/assets/images/uploads/upload-2.png') }}" class="bg-img"
-                                    alt="">
+                                <img src="{{ asset('client/assets/images/uploads/upload-2.png') }}"
+                                    class="bg-img" alt="" loading="lazy">
                                 <div class="citi-overlay">
                                     <div>
                                         <h4>8+ Property</h4>
@@ -1016,8 +1014,8 @@
                         </div>
                         <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 wow fadeInUp">
                             <div class="find-cities bg-size">
-                                <img src="{{ asset('client/assets/images/uploads/upload-9.png') }}" class="bg-img"
-                                    alt="">
+                                <img src="{{ asset('client/assets/images/uploads/upload-9.png') }}"
+                                    class="bg-img" alt="" loading="lazy">
                                 <div class="citi-overlay">
                                     <div>
                                         <h4>10+ Property</h4>
@@ -1029,8 +1027,8 @@
                         </div>
                         <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 wow fadeInUp">
                             <div class="find-cities bg-size">
-                                <img src="{{ asset('client/assets/images/uploads/upload-7.jpg') }}" class="bg-img"
-                                    alt="">
+                                <img src="{{ asset('client/assets/images/uploads/upload-7.jpg') }}"
+                                    class="bg-img" alt="" loading="lazy">
                                 <div class="citi-overlay">
                                     <div>
                                         <h4>12+ Property</h4>
@@ -1089,7 +1087,7 @@
                                 <div class="col-xl-6">
                                     <div class="about-image">
                                         <img src="https://themes.pixelstrap.com/sheltos/assets/images/about/1.jpg"
-                                            class="img-fluid" alt="">
+                                            class="img-fluid" alt="" loading="lazy">
                                         <div class="about-overlay"></div>
                                         <div class="overlay-content">
                                             <ul>
@@ -1132,7 +1130,7 @@
                                 <div class="col-xl-6">
                                     <div class="about-image">
                                         <img src="https://themes.pixelstrap.com/sheltos/assets/images/about/2.jpg"
-                                            class="img-fluid" alt="">
+                                            class="img-fluid" alt="" loading="lazy">
                                         <div class="about-overlay"></div>
                                         <div class="overlay-content">
                                             <ul>
@@ -1175,7 +1173,7 @@
                                 <div class="col-xl-6">
                                     <div class="about-image">
                                         <img src="https://themes.pixelstrap.com/sheltos/assets/images/about/1.jpg"
-                                            class="img-fluid" alt="">
+                                            class="img-fluid" alt="" loading="lazy">
                                         <div class="about-overlay"></div>
                                         <div class="overlay-content">
                                             <ul>
@@ -1234,14 +1232,16 @@
                         <div>
                             <div class="client-slider light-bg">
                                 <ul class="user-list">
-                                    <li><img src="{{ asset('client/assets/images/testimonial/2.png') }}" alt="">
+                                    <li><img src="{{ asset('client/assets/images/testimonial/2.png') }}" alt=""
+                                            loading="lazy">
                                     </li>
                                     <li>
-                                        <img src="{{ asset('client/assets/images/testimonial/1.png') }}" alt="">
+                                        <img src="{{ asset('client/assets/images/testimonial/1.png') }}" alt=""
+                                            loading="lazy">
                                         <div class="heart-bg">
                                         </div>
                                         <img src="{{ asset('client/assets/images/testimonial/heart.png') }}"
-                                            alt="" class="heart-icon">
+                                            alt="" class="heart-icon" loading="lazy">
                                     </li>
                                     <li><img src="{{ asset('client/assets/images/testimonial/3.png') }}" alt="">
                                     </li>
@@ -1264,17 +1264,17 @@
                             <div class="client-slider light-bg">
                                 <ul class="user-list">
                                     <li><img src="https://themes.pixelstrap.com/Premium Refined Luxury Homes/assets/images/testimonial/1.png"
-                                            alt=""></li>
+                                            alt="" loading="lazy"></li>
                                     <li>
                                         <img src="https://themes.pixelstrap.com/Premium Refined Luxury Homes/assets/images/testimonial/2.png"
-                                            alt="">
+                                            alt="" loading="lazy">
                                         <div class="heart-bg">
                                         </div>
                                         <img src="https://themes.pixelstrap.com/Premium Refined Luxury Homes/assets/images/testimonial/heart.png"
-                                            alt="" class="heart-icon">
+                                            alt="" class="heart-icon" loading="lazy">
                                     </li>
                                     <li><img src="https://themes.pixelstrap.com/Premium Refined Luxury Homes/assets/images/testimonial/3.png"
-                                            alt=""></li>
+                                            alt="" loading="lazy"></li>
                                 </ul>
                                 <p>Residences can be classified by and connected to residences. Different types of
                                     housing can be use same physical type.</p>

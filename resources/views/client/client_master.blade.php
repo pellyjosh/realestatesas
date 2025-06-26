@@ -39,12 +39,12 @@
     <link rel="icon" href="{{ asset('client/assets/images/logo.png') }}" type="image/x-icon" />
     <title>@yield('title', 'Master Page')</title>
 
-    <!--Google font-->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,500,500i,600,600i,700,700i,800,800i"
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Rubik:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
         rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i&amp;display=swap"
-        rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Rubik:400,400i,500,500i,700,700i" rel="stylesheet">
 
     {{-- Font Awesome Icons --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -383,42 +383,42 @@
     <!-- customizer end -->
 
     <!-- latest jquery-->
-    <script src="{{ asset('client/assets/js/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ asset('client/assets/js/jquery-3.6.0.min.js') }}" defer></script>
 
     <!-- popper js-->
-    <script src="{{ asset('client/assets/js/popper.min.js') }}"></script>
+    <script src="{{ asset('client/assets/js/popper.min.js') }}" defer></script>
 
     <!-- Bootstrap js-->
-    <script src="{{ asset('client/assets/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('client/assets/js/bootstrap.bundle.min.js') }}" defer></script>
 
     <!-- range slider js -->
-    <script src="{{ asset('client/assets/js/jquery-ui.js') }}"></script>
-    <script src="{{ asset('client/assets/js/jquery.ui.touch-punch.min.js') }}"></script>
-    <script src="{{ asset('client/assets/js/range-slider.js') }}"></script>
+    <script src="{{ asset('client/assets/js/jquery-ui.js') }}" defer></script>
+    <script src="{{ asset('client/assets/js/jquery.ui.touch-punch.min.js') }}" defer></script>
+    <script src="{{ asset('client/assets/js/range-slider.js') }}" defer></script>
 
     <!-- feather icon js-->
-    <script src="{{ asset('client/assets/js/feather-icon/feather.min.js') }}"></script>
-    <script src="{{ asset('client/assets/js/feather-icon/feather-icon.js') }}"></script>
+    <script src="{{ asset('client/assets/js/feather-icon/feather.min.js') }}" defer></script>
+    <script src="{{ asset('client/assets/js/feather-icon/feather-icon.js') }}" defer></script>
 
     <!-- slick js -->
-    <script src="{{ asset('client/assets/js/slick.js') }}"></script>
-    <script src="{{ asset('client/assets/js/slick-animation.min.js') }}"></script>
-    <script src="{{ asset('client/assets/js/custom-slick.js') }}"></script>
+    <script src="{{ asset('client/assets/js/slick.js') }}" defer></script>
+    <script src="{{ asset('client/assets/js/slick-animation.min.js') }}" defer></script>
+    <script src="{{ asset('client/assets/js/custom-slick.js') }}" defer></script>
 
     <!-- notify js -->
-    <script src="{{ asset('client/assets/js/bootstrap-notify.min.js') }}"></script>
+    <script src="{{ asset('client/assets/js/bootstrap-notify.min.js') }}" defer></script>
 
     <!-- wow js-->
-    <script src="{{ asset('client/assets/js/wow.min.js') }}"></script>
+    <script src="{{ asset('client/assets/js/wow.min.js') }}" defer></script>
 
     <!-- Template js-->
-    <script src="{{ asset('client/assets/js/script.js') }}"></script>
+    <script src="{{ asset('client/assets/js/script.js') }}" defer></script>
 
     <!-- Customizer js-->
-    <script src="{{ asset('client/assets/js/customizer.js') }}"></script>
+    <script src="{{ asset('client/assets/js/customizer.js') }}" defer></script>
 
     <!-- Color-picker js-->
-    <script src="{{ asset('client/assets/js/color/layout3.js') }}"></script>
+    <script src="{{ asset('client/assets/js/color/layout3.js') }}" defer></script>
 
 </body>
 
