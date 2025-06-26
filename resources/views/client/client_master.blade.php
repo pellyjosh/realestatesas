@@ -528,18 +528,18 @@
                                             <a href="javascript:void(0)" class="nav-link menu-title">agent</a>
                                             <ul class="nav-submenu menu-content">
                                                 <li><a href="agent-profile.html">Agent Profile</a></li>
-                                                <li><a href="agent-grid.html">Agent Grid</a></li>
-                                                <li><a href="agent-list.html">Agent List</a></li>
-                                                <li><a href="submit-property.html">Submit property <span
+                                                <li><a href="">Agent Grid</a></li>
+                                                <li><a href="">Agent List</a></li>
+                                                <li><a href="">Submit property <span
                                                             class="label">New</span></a></li>
                                             </ul>
                                         </li>
                                         <li class="dropdown">
                                             <a href="javascript:void(0)" class="nav-link menu-title">Contact</a>
                                             <ul class="nav-submenu menu-content">
-                                                <li><a href="contact-1.html">Contact us 1</a></li>
-                                                <li><a href="contact-2.html">Contact us 2</a></li>
-                                                <li><a href="contact-3.html">Contact us 3</a></li>
+                                                <li><a href="">Contact us 1</a></li>
+                                                <li><a href="">Contact us 2</a></li>
+                                                <li><a href="">Contact us 3</a></li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -572,10 +572,10 @@
                                         <ul class="nav-submenu">
                                             <li>
                                                 <div class="media">
-                                                    <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/2.jpg"
+                                                    <img src="{{ asset('client/assets/images/property/2.jpg') }}"
                                                         class="img-fluid" alt="">
                                                     <div class="media-body">
-                                                        <a href="single-property-8.html">
+                                                        <a href="single-propertyx-8.html">
                                                             <h5>Magnolia Ranch</h5>
                                                         </a>
                                                         <span>$120.00*</span>
@@ -588,7 +588,7 @@
                                             </li>
                                             <li>
                                                 <div class="media">
-                                                    <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/3.jpg"
+                                                    <img src="{{ asset('client/assets/images/property/3.jpg') }}"x
                                                         class="img-fluid" alt="">
                                                     <div class="media-body">
                                                         <a href="single-property-8.html">
@@ -712,7 +712,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-2 col-md-3 order-lg">
+
+                    {{-- <div class="col-xl-2 col-md-3 order-lg">
                         <div class="footer-links footer-left-space">
                             <h5 class="footer-title">Tag
                                 <span class="according-menu"><i class="fas fa-chevron-down"></i></span>
@@ -741,46 +742,7 @@
                                 </li>
                             </ul>
                         </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6">
-                        <div class="footer-links">
-                            <h5 class="footer-title">Our Latest Blog
-                                <span class="according-menu"><i class="fas fa-chevron-down"></i></span>
-                            </h5>
-                            <div class="footer-content">
-                                <div class="footer-blog">
-                                    <div class="media">
-                                        <a href="blog-detail-left-sidebar.html">
-                                            <div class="img-overlay">
-                                                <img src="{{ asset('client/assets/images/footer/1.jpg') }}"
-                                                    alt="">
-                                            </div>
-                                        </a>
-                                        <div class="media-body">
-                                            <h6><a href="blog-detail-left-sidebar.html">Top News</a></h6>
-                                            <p class="font-roboto mb-0"><a
-                                                    href="blog-detail-right-sidebar.html">Apartment or Flat An
-                                                    individual unit in a multi-unit building.</a></p>
-                                        </div>
-                                    </div>
-                                    <div class="media">
-                                        <a href="blog-detail-left-sidebar.html">
-                                            <div class="img-overlay">
-                                                <img src="{{ asset('client/assets/images/footer/2.jpg') }}"
-                                                    alt="">
-                                            </div>
-                                        </a>
-                                        <div class="media-body">
-                                            <h6><a href="blog-detail-left-sidebar.html">Latest News</a></h6>
-                                            <p class="font-roboto mb-0"><a
-                                                    href="blog-detail-right-sidebar.html">Residences can be classified
-                                                    and connected to residences..</a></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
@@ -865,45 +827,42 @@
     <!-- customizer end -->
 
     <!-- latest jquery-->
-    <script src="https://themes.pixelstrap.com/sheltos/assets/js/jquery-3.6.0.min.js"></script>
+    <script src="{{ asset('client/assets/js/jquery-3.6.0.min.js') }}"></script>
 
     <!-- popper js-->
-    <script src="https://themes.pixelstrap.com/sheltos/assets/js/popper.min.js"></script>
+    <script src="{{ asset('client/assets/js/popper.min.js') }}"></script>
 
     <!-- Bootstrap js-->
-    <script src="https://themes.pixelstrap.com/sheltos/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('client/assets/js/bootstrap.bundle.min.js') }}"></script>
 
     <!-- range slider js -->
-    <script src="https://themes.pixelstrap.com/sheltos/assets/js/jquery-ui.js"></script>
-    <script src="https://themes.pixelstrap.com/sheltos/assets/js/jquery.ui.touch-punch.min.js"></script>
-    <script src="https://themes.pixelstrap.com/sheltos/assets/js/range-slider.js"></script>
+    <script src="{{ asset('client/assets/js/jquery-ui.js') }}"></script>
+    <script src="{{ asset('client/assets/js/jquery.ui.touch-punch.min.js') }}"></script>
+    <script src="{{ asset('client/assets/js/range-slider.js') }}"></script>
 
     <!-- feather icon js-->
-    <script src="https://themes.pixelstrap.com/sheltos/assets/js/feather-icon/feather.min.js"></script>
-    <script src="https://themes.pixelstrap.com/sheltos/assets/js/feather-icon/feather-icon.js"></script>
+    <script src="{{ asset('client/assets/js/feather-icon/feather.min.js') }}"></script>
+    <script src="{{ asset('client/assets/js/feather-icon/feather-icon.js') }}"></script>
 
     <!-- slick js -->
-    <script src="https://themes.pixelstrap.com/sheltos/assets/js/slick.js"></script>
-    <script src="https://themes.pixelstrap.com/sheltos/assets/js/slick-animation.min.js"></script>
-    <script src="https://themes.pixelstrap.com/sheltos/assets/js/custom-slick.js"></script>
+    <script src="{{ asset('client/assets/js/slick.js') }}"></script>
+    <script src="{{ asset('client/assets/js/slick-animation.min.js') }}"></script>
+    <script src="{{ asset('client/assets/js/custom-slick.js') }}"></script>
 
     <!-- notify js -->
-    <script src="https://themes.pixelstrap.com/sheltos/assets/js/bootstrap-notify.min.js"></script>
+    <script src="{{ asset('client/assets/js/bootstrap-notify.min.js') }}"></script>
 
     <!-- wow js-->
-    <script src="https://themes.pixelstrap.com/sheltos/assets/js/wow.min.js"></script>
+    <script src="{{ asset('client/assets/js/wow.min.js') }}"></script>
 
     <!-- Template js-->
-    <script src="https://themes.pixelstrap.com/sheltos/assets/js/script.js"></script>
+    <script src="{{ asset('client/assets/js/script.js') }}"></script>
 
     <!-- Customizer js-->
-    <script src="https://themes.pixelstrap.com/sheltos/assets/js/customizer.js"></script>
+    <script src="{{ asset('client/assets/js/customizer.js') }}"></script>
 
     <!-- Color-picker js-->
-    <script src="https://themes.pixelstrap.com/sheltos/assets/js/color/layout3.js"></script>
+    <script src="{{ asset('client/assets/js/color/layout3.js') }}"></script>
 
 </body>
-
-
-
 </html>
