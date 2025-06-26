@@ -18,6 +18,9 @@
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Rubik:400,400i,500,500i,700,700i" rel="stylesheet">
 
+    {{-- Font Awesome Icons --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
     <!-- range slider css -->
     <link rel="stylesheet" type="text/css" href="{{ asset("client/assets/css/jquery-ui.css") }}">
 
