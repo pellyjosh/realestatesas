@@ -1,5 +1,5 @@
 @extends('client.client_master')
-@yield('title')
+@section('title', 'Contact | Premium Refined Luxury Homes')
 @section('main')
     <!-- breadcrumb start -->
     <section class="breadcrumb-section-main breadcrumb-section-sm-padding"
