@@ -209,7 +209,7 @@
                                 <span class="according-menu"><i class="fas fa-chevron-down"></i></span>
                             </h5>
                             <div class="footer-content">
-                                <a href="https://themes.pixelstrap.com/sheltos/index.html">
+                                <a href="{{ route('client.home') }}">
                                     <img src="{{ asset('client/assets/images/logo.png') }}" alt=""
                                         class="img-fluid">
                                 </a>
@@ -322,7 +322,8 @@
                     </div>
                     <div class="col-xl-6 col-md-6 text-end">
                         <div class="copy-right">
-                            <p class="mb-0">Copyright 2022 Sheltos By <i data-feather="heart"></i> Pixelstrap</p>
+                            <p class="mb-0">Copyright 2025 Premium Refined By <i data-feather="heart"></i> Hubolux
+                                Technologies</p>
                         </div>
                     </div>
                 </div>
@@ -386,8 +387,8 @@
                     <h6 class="color-6">Unlimited Color</h6>
                 </div>
                 <div class="option-setting unlimited-color-layout">
-                    <input id="ColorPicker8" type="color" value="#2c2e97" name="Default">
-                    <input id="ColorPicker9" type="color" value="#4b55c4" name="Default">
+                    <input id="ColorPicker8" type="color" value="#78c805" name="Default">
+                    <input id="ColorPicker9" type="color" value="#6aa504" name="Default">
                 </div>
             </div>
         </div>
@@ -433,4 +434,5 @@
     <script src="{{ asset('client/assets/js/color/layout3.js') }}"></script>
 
 </body>
+
 </html>

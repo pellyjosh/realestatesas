@@ -67,14 +67,15 @@
         }
 
         .event-card-content .event-title a {
-            color: #2c2e97;
+            color: #78c805;
             /* Using a color from your theme */
             text-decoration: none;
             transition: color 0.3s;
         }
 
         .event-card-content .event-title a:hover {
-            color: #4b55c4;
+            color: #6aa504;
+            /* Darker shade for hover */
         }
 
         .event-card-content .event-description {
@@ -90,7 +91,7 @@
             font-size: 14px;
             color: #555;
             padding-left: 5px;
-            border-left: 3px solid #4b55c4;
+            border-left: 3px solid #78c805;
         }
 
         .event-card-content .event-meta span {
@@ -101,7 +102,7 @@
 
         .event-card-content .event-meta i {
             margin-right: 12px;
-            color: #4b55c4;
+            color: #78c805;
             width: 18px;
             text-align: center;
         }
@@ -165,7 +166,7 @@ background-size: cover;">
                     {{-- Event 1: This would typically be in a @foreach loop --}}
                     <div class="event-card">
                         <div class="event-card-image"
-                            style="background-image: url('{{ asset('client/assets/images/property/1.jpg') }}');">
+                            style="background-image: url('{{ asset('client/assets/images/property/2.jpg') }}');">
                             <div class="event-card-date">
                                 <span class="day">15</span>
                                 <span class="month">Dec</span>

@@ -56,8 +56,10 @@ Author URI: https://themeforest.net/user/pixelstrap
     --theme-default7: #f34451;
     --theme-gradient8: linear-gradient(to right, var(--theme-default6) 0%, var(--theme-default7) 51%, var(--theme-default6) 100%);
     --theme-gradient9: linear-gradient(90deg, var(--theme-default6) 0%, var(--theme-default7) 100%);
-    --theme-default8: #2c2e97;
-    --theme-default9: #4b55c4;
+    --theme-default8: #78c805;
+    /* Primary Brand Color */
+    --theme-default9: #6aa504;
+    /* Darker shade for hover/secondary */
     --theme-gradient10: linear-gradient(to right, var(--theme-default8) 0%, var(--theme-default9) 51%, var(--theme-default8) 100%);
     --theme-gradient11: linear-gradient(to right, var(--theme-default8) 0%, var(--theme-default9) 100%);
     --theme-gradient12: linear-gradient(48deg, var(--theme-default8) 0%, var(--theme-default9) 100%);
