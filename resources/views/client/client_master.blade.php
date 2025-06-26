@@ -36,8 +36,7 @@
 
     {{-- Canonical Link --}}
     <link rel="canonical" href="{{ url()->current() }}"> {{-- Helps search engines understand the preferred version of a page --}}
-    <link rel="icon" href="https://themes.pixelstrap.com/Premium Refined Luxury Homes/assets/images/favicon.png"
-        type="image/x-icon" />
+    <link rel="icon" href="{{ asset('client/assets/images/logo.png') }}" type="image/x-icon" />
     <title>@yield('title', 'Master Page')</title>
 
     <!--Google font-->
