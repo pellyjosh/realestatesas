@@ -1,6 +1,6 @@
 @extends('client.client_master')
 
-@section('title', 'Upcoming Events')
+@section('title', 'Events | Premium Refined Luxury Homes')
 
 @section('main')
 
