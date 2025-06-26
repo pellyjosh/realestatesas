@@ -117,7 +117,8 @@
                                             <a href="{{ route('client.events') }}" class="nav-link">Events</a>
                                         </li>
                                         <li class="dropdown">
-                                            <a href="{{ route('client.contact') }}" class="nav-link menu-title">Contact</a>
+                                            <a href="{{ route('client.contact') }}"
+                                                class="nav-link menu-title">Contact</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -213,10 +214,11 @@
                                 <div class="footer-contact">
                                     <ul>
                                         <li>
-                                            <i class="fas fa-map-marker-alt"></i>Suite 201, Capital Center Complex, Summit Road,Asaba Delta State, Nigeria
+                                            <i class="fas fa-map-marker-alt"></i>Suite 201, Capital Center Complex,
+                                            Summit Road,Asaba Delta State, Nigeria
                                         </li>
                                         <li>
-                                            <i class="fas fa-phone-alt"> 00851030093 |  07037495700 | 08149491659</i>
+                                            <i class="fas fa-phone-alt"> 00851030093 | 07037495700 | 08149491659</i>
                                         </li>
                                         {{-- <li>
                                             <i class="fas fa-envelope"></i>Contact@gmail.com
@@ -261,7 +263,7 @@
                         </div>
                     </div>
 
-                   
+
                 </div>
             </div>
         </div>
@@ -292,7 +294,7 @@
 
     <!-- Sticky WhatsApp Button -->
     {{-- Replace 1234567890 with your WhatsApp number --}}
-    <a href="https://wa.me/1234567890?text=Hello!%20I'm%20interested%20in%20your%20services."
+    <a href="https://wa.me/+2347033866480?text=Hello!%20I'm%20interested%20in%20your%20services."
         class="whatsapp-sticky-button" target="_blank" title="Chat with us on WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
