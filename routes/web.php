@@ -10,3 +10,7 @@ Route::get('/', function () {
 Route::get('/events', function () {
     return view('client.pages.events');
 })->name('client.events');
+
+Route::get("/contact", function () {
+    return view('client.pages.contact');
+})->name('client.contact');

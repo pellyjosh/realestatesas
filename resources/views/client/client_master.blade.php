@@ -5,10 +5,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Sheltos - Filter search with slider home page">
-    <meta name="keywords" content="sheltos">
-    <meta name="author" content="sheltos">
-    <link rel="icon" href="https://themes.pixelstrap.com/sheltos/assets/images/favicon.png" type="image/x-icon" />
+    <meta name="description" content="Premium Refined Luxury Homes - Filter search with slider home page">
+    <meta name="keywords" content="Premium Refined Luxury Homes">
+    <meta name="author" content="Premium Refined Luxury Homes">
+    <link rel="icon" href="https://themes.pixelstrap.com/Premium Refined Luxury Homes/assets/images/favicon.png"
+        type="image/x-icon" />
     <title>@yield('title', 'Master Page')</title>
 
     <!--Google font-->
@@ -35,10 +36,10 @@
         /* Sticky WhatsApp Button */
         .whatsapp-sticky-button {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
+            bottom: 40px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
             background-color: #25D366;
             color: #FFF;
             border-radius: 50%;
@@ -116,12 +117,7 @@
                                             <a href="{{ route('client.events') }}" class="nav-link">Events</a>
                                         </li>
                                         <li class="dropdown">
-                                            <a href="javascript:void(0)" class="nav-link menu-title">Contact</a>
-                                            <ul class="nav-submenu menu-content">
-                                                <li><a href="">Contact us 1</a></li>
-                                                <li><a href="">Contact us 2</a></li>
-                                                <li><a href="">Contact us 3</a></li>
-                                            </ul>
+                                            <a href="{{ route('client.contact') }}" class="nav-link menu-title">Contact</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -217,48 +213,39 @@
                                 <div class="footer-contact">
                                     <ul>
                                         <li>
-                                            <i class="fas fa-map-marker-alt"></i>A-32, Albany, Newyork.
+                                            <i class="fas fa-map-marker-alt"></i>Suite 201, Capital Center Complex, Summit Road,Asaba Delta State, Nigeria
                                         </li>
                                         <li>
-                                            <i class="fas fa-phone-alt"></i>(+066) 518 - 457 - 5181
+                                            <i class="fas fa-phone-alt"> 00851030093 |  07037495700 | 08149491659</i>
                                         </li>
-                                        <li>
+                                        {{-- <li>
                                             <i class="fas fa-envelope"></i>Contact@gmail.com
-                                        </li>
+                                        </li> --}}
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                     <div class="col-xl-2 col-md-3">
                         <div class="footer-links footer-left-space">
-                            <h5 class="footer-title">About
+                            <h5 class="footer-title">Quick Link
                                 <span class="according-menu"><i class="fas fa-chevron-down"></i></span>
                             </h5>
                             <ul class="footer-content">
                                 <li>
-                                    <a href="">About us</a>
+                                    <a href="{{ route('client.home') }}">Home</a>
                                 </li>
                                 <li>
-                                    <a href="">Listing</a>
+                                    <a href="{{ route('client.events') }}">Events</a>
                                 </li>
                                 <li>
-                                    <a href="">Property</a>
-                                </li>
-                                <li>
-                                    <a href="">Page</a>
-                                </li>
-                                <li>
-                                    <a href="">Module</a>
-                                </li>
-                                <li>
-                                    <a href="">Blog</a>
-                                </li>
-                                <li><a href="">Contact</a>
+                                    <a href="{{ route('client.contact') }}">Contact</a>
                                 </li>
                             </ul>
                         </div>
                     </div>
+
                     <div class="col-xl-3 col-md-6 order-xl">
                         <div class="footer-links">
                             <h5 class="footer-title">Our Location
@@ -274,36 +261,7 @@
                         </div>
                     </div>
 
-                    {{-- <div class="col-xl-2 col-md-3 order-lg">
-                        <div class="footer-links footer-left-space">
-                            <h5 class="footer-title">Tag
-                                <span class="according-menu"><i class="fas fa-chevron-down"></i></span>
-                            </h5>
-                            <ul class="footer-content">
-                                <li>
-                                    <a href="">Blog</a>
-                                </li>
-                                <li>
-                                    <a href="">Blog list</a>
-                                </li>
-                                <li>
-                                    <a href="">Creative blog</a>
-                                </li>
-                                <li>
-                                    <a href="">Masonry</a>
-                                </li>
-                                <li>
-                                    <a href="">Mix blog</a>
-                                </li>
-                                <li>
-                                    <a href="">Details</a>
-                                </li>
-                                <li>
-                                    <a href="">Video</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div> --}}
+                   
                 </div>
             </div>
         </div>
