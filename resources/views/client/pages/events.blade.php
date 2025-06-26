@@ -146,14 +146,14 @@
     <!-- Breadcrumb Section -->
     <section class="breadcrumb-section-main breadcrumb-section-sm-padding"
         style="background-image: url('{{ asset('client/assets/images/inner-pages/coming-soon.jpg') }}'); background-color: rgba(0, 0, 0, 0.5);
-background-blend-mode: overlay;
-width: 100%;
-background-repeat: no-repeat;
-background-size: cover;">
+        background-blend-mode: overlay;
+        width: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;">
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <div class="breadcrumb-content">
+                    <div class="breadcrumb-content mt-4">
                         <h2 style="color: rgba(255, 255, 255, 0.9);">Upcoming Events</h2>
                         <p style="color: rgba(255, 255, 255, 0.9);">Join our exclusive events. Book your seat for free!</p>
                     </div>
