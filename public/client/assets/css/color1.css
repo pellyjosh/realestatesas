@@ -1,7 +1,7 @@
 /*!
 -----------------------------------------------------------------------------------
-Template Name: Sheltos - Real Estate HTML Template
-Template URI: https://themes.pixelstrap.com/sheltos/
+Template Name: Premium Refined Luxury Homes - Real Estate HTML Template
+Template URI: https://themes.pixelstrap.com/Premium Refined Luxury Homes/
 Description: This is Real Estate website
 Author: Pixelstrap
 Author URI: https://themeforest.net/user/pixelstrap
@@ -47,7 +47,7 @@ Author URI: https://themeforest.net/user/pixelstrap
     --theme-gradient3: linear-gradient(48deg, var(--theme-default) 0%, var(--theme-default2) 100%);
     --theme-gradient4: linear-gradient(to right, var(--theme-default) 25%, var(--theme-default2) 100%);
     --theme-default3: #ff5c41;
-    --theme-default4: #ff8c41;
+    --theme-default4: #78c705;
     --theme-gradient5: linear-gradient(to right, var(--theme-default3) 0%, var(--theme-default4) 51%, var(--theme-default3) 100%);
     --theme-gradient6: linear-gradient(to right, var(--theme-default3) 0%, var(--theme-default4) 100%);
     --theme-gradient7: linear-gradient(90deg, var(--theme-default3) 25%, var(--theme-default4) 100%);
@@ -1899,7 +1899,7 @@ label {
        breadcrumb css start
   ==========================**/
 .breadcrumb-section {
-    height: 500px;
+    height: 250px;
     position: relative;
     overflow: hidden;
     z-index: 1;
@@ -9437,8 +9437,8 @@ input[type='radio'].radio_animated {
 }
 
 .testimonial-bg.testimonial-layout6 {
-    background-image: url(../images/testimonial/4.jpg);
-    background-color: rgba(0, 0, 0, 0.5);
+    background-image: url(../images/uploads/upload-9.png);
+    background-color: rgba(0, 0, 0, 0.6);
     background-blend-mode: overlay;
 }
 
@@ -12241,7 +12241,7 @@ header .dropdown.input-group-text .dropdown-menu,
     }
 
     header .menu .brand-logo img {
-        width: 120px;
+        width: 300px;
     }
 }
 
@@ -12251,7 +12251,7 @@ header .dropdown.input-group-text .dropdown-menu,
     }
 
     header .menu .brand-logo img {
-        width: 110px;
+        width: 250px;
         height: auto;
     }
 
@@ -21440,7 +21440,7 @@ input[type="date"] {
 }
 
 .light-bg {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.3);
 }
 
 .parallax-image {
@@ -21791,8 +21791,9 @@ input[type="date"] {
 }
 
 .home-section.layout-6 .home-main {
-    background-image: url(../images/inner-pages/coming-soon.jpg);
-    background-color: rgba(0, 0, 0, 0.3);
+    /* background-image: url(../images/inner-pages/coming-soon.jpg); */
+    background-image: url(../images/uploads/upload-8.jpg);
+    background-color: rgba(0, 0, 0, 0.6);
     background-blend-mode: overlay;
     width: 100%;
     background-repeat: no-repeat;
@@ -22517,7 +22518,7 @@ input[type="date"] {
 }
 
 .banner-4 {
-    background-image: url(../images/banner-3.jpg);
+    background-image: url(../images/uploads/upload-5.png);
     position: relative;
     z-index: 1;
     background-color: rgba(0, 0, 0, 0.3);

@@ -11,3 +11,6 @@ Route::get('/', function () {
 Route::post('/book-event', [EventBookingController::class, 'bookEvent']);
 Route::post('/retrieve-referral', [EventBookingController::class, 'retrieveReferral']);
 Route::get('/events', [EventController::class, 'index'])->name('client.events');
+Route::get("/contact", function () {
+    return view('client.pages.contact');
+})->name('client.contact');
