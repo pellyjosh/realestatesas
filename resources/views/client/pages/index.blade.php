@@ -23,7 +23,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div>
+                                        <div>   x   
                                             <div class="home-content">
                                                 <div>
                                                     <img src="{{ asset("client/assets/images/signature/2.png") }}"
@@ -247,7 +247,7 @@
                                         <div class="d-flex">
                                             <div>
                                                 <h5><a href="single-property-6.html">Neverland</a></h5>
-                                                <h6>$13,000 <small>/ start from</small></h6>
+                                                <h6>#13,000 <small>/ start from</small></h6>
                                             </div>
                                             <button type="button" class="btn btn-gradient color-6 mt-3"
                                                 >Details</button>
@@ -293,7 +293,7 @@
                                         <div class="d-flex">
                                             <div>
                                                 <h5><a href="single-property-6.html">Orchard House</a></h5>
-                                                <h6>$14,520 <small>/ start from</small></h6>
+                                                <h6>#14,520 <small>/ start from</small></h6>
                                             </div>
                                             <button type="button" class="btn btn-gradient color-6 mt-3"
                                                 ">Details</button>
@@ -336,7 +336,7 @@
                                         <div class="d-flex">
                                             <div>
                                                 <h5><a href="single-property-6.html">Sea Breezes</a></h5>
-                                                <h6>$12,200 <small>/ start from</small></h6>
+                                                <h6>#12,200 <small>/ start from</small></h6>
                                             </div>
                                             <button type="button" class="btn btn-gradient color-6 mt-3"
                                                 >Details</button>
@@ -395,7 +395,7 @@
                                                                 class="label label-dark label-pill">Open
                                                                 house</span></span></h3>
                                                 </a>
-                                                <h6 class="color-6">$9554.00*</h6>
+                                                <h6 class="color-6">#9554.00*</h6>
                                                 <p class="font-roboto">Different types of housing can be use same
                                                     physical type.connected residences might be owned by a single entity
                                                     or owned separately with an agreement covering the relationship
@@ -449,7 +449,7 @@
                                                                 class="label label-dark label-pill">Open
                                                                 house</span></span></h3>
                                                 </a>
-                                                <h6 class="color-6">$6844.00*</h6>
+                                                <h6 class="color-6">#6844.00*</h6>
                                                 <p class="font-roboto">Connected residences might be owned by a single
                                                     entity or owned separately with an agreement covering the
                                                     relationship between units and common areas and concerns. Different
@@ -560,7 +560,7 @@
                                     <a href="single-property-8.html">
                                         <h3>Little Acorn Farm</h3>
                                     </a>
-                                    <h6 class="color-6">$6558.00*</h6>
+                                    <h6 class="color-6">#6558.00*</h6>
                                     <p class="font-roboto">Real estate is divided into several categories, including
                                         residential property, commercial property and industrial property.</p>
                                     <ul>
@@ -629,7 +629,7 @@
                                     <a href="single-property-8.html">
                                         <h3>Home in Merrick Way</h3>
                                     </a>
-                                    <h6 class="color-6">$4513.00*</h6>
+                                    <h6 class="color-6">#4513.00*</h6>
                                     <p class="font-roboto">This home provides wonderful entertaining spaces with a chef
                                         kitchen opening. Elegant retreat in a quiet Coral Gables setting..</p>
                                     <ul>
@@ -694,7 +694,7 @@
                                     <a href="single-property-8.html">
                                         <h3>Allen's Across Way</h3>
                                     </a>
-                                    <h6 class="color-6">$6558.00*</h6>
+                                    <h6 class="color-6">#6558.00*</h6>
                                     <p class="font-roboto">Elegant retreat in a quiet Coral Gables setting. This home
                                         provides wonderful entertaining spaces with a chef
                                         kitchen opening…</p>
@@ -760,7 +760,7 @@
                                     <a href="single-property-8.html">
                                         <h3>Hidden Spring Hideway</h3>
                                     </a>
-                                    <h6 class="color-6">$4513.00*</h6>
+                                    <h6 class="color-6">#4513.00*</h6>
                                     <p class="font-roboto">The most common and most absolute type of estate, the tenant
                                         enjoys the greatest discretion over the disposal of the property.</p>
                                     <ul>
@@ -825,7 +825,7 @@
                                     <a href="single-property-8.html">
                                         <h3>Merrick in Spring Way</h3>
                                     </a>
-                                    <h6 class="color-6">$4513.00*</h6>
+                                    <h6 class="color-6">#4513.00*</h6>
                                     <p class="font-roboto">Real estate market in most countries are not as organize or
                                         efficient as markets for other, more liquid investment instruments.</p>
                                     <ul>
@@ -891,7 +891,7 @@
                                     <a href="single-property-8.html">
                                         <h3>Hidden Spring Hideway</h3>
                                     </a>
-                                    <h6 class="color-6">$9554.00*</h6>
+                                    <h6 class="color-6">#9554.00*</h6>
                                     <p class="font-roboto">An interior designer is someone who
                                         plans,researches,coordinates,management and manages such enhancement projects.
                                     </p>
@@ -1145,7 +1145,7 @@
                                 </div>
                                 <div class="col-xl-6">
                                     <div class="our-details">
-                                        <a href="agent-profile.html">
+                                        <a href="">
                                             <h6 class="d-flex">Ty R. Leeva <span class="label-heart color-6 ms-2"><i
                                                         data-feather="heart"></i></span></h6>
                                         </a>
@@ -1154,7 +1154,7 @@
                                                 class="me-1"></i>Leeva@inspirythemes.com</span>
                                         <p class="font-roboto">A real estate agent or broker is a person who
                                             represents sellers or buyers advised to consult a licensed.</p>
-                                        <a href="agent-profile.html" class="btn btn-gradient btn-pill color-6 mt-2"><i
+                                        <a href="" class="btn btn-gradient btn-pill color-6 mt-2"><i
                                                 data-feather="eye"></i>View Portfolio</a>
                                     </div>
                                 </div>
@@ -1188,7 +1188,7 @@
                                 </div>
                                 <div class="col-xl-6">
                                     <div class="our-details">
-                                        <a href="agent-profile.html">
+                                        <a href="">
                                             <h6 class="d-flex">Mark Andry <span class="label-heart color-6 ms-2"><i
                                                         data-feather="heart"></i></span></h6>
                                         </a>
@@ -1197,7 +1197,7 @@
                                                 class="me-1"></i>John@inspirythemes.com</span>
                                         <p class="font-roboto">They are responsible for managing employees and
                                             overseeing daily productivity.</p>
-                                        <a href="agent-profile.html" class="btn btn-gradient btn-pill color-6 mt-2"><i
+                                        <a href="" class="btn btn-gradient btn-pill color-6 mt-2"><i
                                                 data-feather="eye"></i>View Portfolio</a>
                                     </div>
                                 </div>
@@ -1231,7 +1231,7 @@
                                 </div>
                                 <div class="col-xl-6">
                                     <div class="our-details">
-                                        <a href="agent-profile.html">
+                                        <a href="">
                                             <h6 class="d-flex">John David <span class="label-heart color-6 ms-2"><i
                                                         data-feather="heart"></i></span></h6>
                                         </a>
