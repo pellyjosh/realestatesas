@@ -16,22 +16,20 @@
                                                 <div>
                                                     <img src="{{ asset('client/assets/images/signature/2.png') }}"
                                                         class="img-fluid m-0" alt="">
-                                                    <h6>We sell Premium Properties</h6>
-                                                    <h1>Reality Properties solve your problems</h1>
-                                                    <a href="#" class="btn btn-gradient color-6">submit
-                                                        property</a>
+                                                    <h6>Verified Lands & Properties</h6>
+                                                    <h1>Your Gateway to Secure Real Estate</h1>
+                                                    <a href="#latest-properties" class="btn btn-gradient color-6">Explore Listings</a>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div> x
+                                        <div>
                                             <div class="home-content">
                                                 <div>
                                                     <img src="{{ asset('client/assets/images/signature/2.png') }}"
                                                         class="img-fluid m-0" alt="">
-                                                    <h6>Want to buy or sell Land ?</h6>
-                                                    <h1>Elegant retreat in quiet Coral Gables</h1>
-                                                    <a href="#" class="btn btn-gradient color-6">submit
-                                                        property</a>
+                                                    <h6>Buy or Sell with Confidence</h6>
+                                                    <h1>Find Your Perfect Plot or Elegant Home</h1>
+                                                    <a href="{{ route('client.contact') }}" class="btn btn-gradient color-6">Contact Us</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -225,7 +223,7 @@
     <!-- home section end -->
 
     <!-- property section start -->
-    <section class="property-section slick-between slick-shadow property-color-6">
+    <section id="latest-properties" class="property-section slick-between slick-shadow property-color-6">
         <div class="container">
             <div class="row ratio_landscape">
                 <div class="col">
