@@ -292,7 +292,7 @@
                                 <div class="input-group">
                                     <span class="input-group-text"><i class="fas fa-user-friends"></i></span>
                                     <input type="text" class="form-control" name="inviter_referral_code"
-                                        id="inviter_referral_code" placeholder="Enter Referral Code">
+                                        id="inviter_referral_code" placeholder="Enter Referral Code" disabled>
                                 </div>
                             </div>
 
