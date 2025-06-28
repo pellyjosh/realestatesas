@@ -681,8 +681,10 @@
                                     <ul>
                                         <li><i class="fas fa-mountain"></i> Land : 3</li>
                                         <li><i class="fas fa-building"></i> Properties : 2</li>
-                                        <li><img src="{{ asset('client/assets/images/svg/icon/square-ruler-tool.svg') }}"
-                                                class="img-fluid ruler-tool" alt="">Sq Ft : 5000</li>
+                                        <li>
+                                            <img src="{{ asset('client/assets/images/svg/icon/square-ruler-tool.svg') }}"
+                                                class="img-fluid ruler-tool" alt="">Sq Ft : 5000
+                                        </li>
                                     </ul>
                                     <div class="property-btn d-flex">
                                         <span>June 20, 2022</span>

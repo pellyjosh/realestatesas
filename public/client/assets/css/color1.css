@@ -17513,7 +17513,7 @@ body.rtl.dark-layout .blog-single-detail .blog-title .post-detail li+li {
 }
 
 .compare-page .table-wrapper .table tbody tr .property_price span.color-2 {
-    color: var(--theme-default3);
+    color: var(--theme-default4);
     font-weight: 500;
     font-size: 16px;
 }

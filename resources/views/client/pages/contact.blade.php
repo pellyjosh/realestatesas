@@ -4,10 +4,10 @@
     <!-- breadcrumb start -->
     <section class="breadcrumb-section-main breadcrumb-section-sm-padding"
         style="background-image: url('{{ asset('client/assets/images/inner-pages/coming-soon.jpg') }}'); background-color: rgba(0, 0, 0, 0.5);
-background-blend-mode: overlay;
-width: 100%;
-background-repeat: no-repeat;
-background-size: cover;">
+        background-blend-mode: overlay;
+        width: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;">
         <div class="container">
             <div class="row">
                 <div class="col-12">
