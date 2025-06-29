@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Premium Refined Luxury Homes- Admin dashboard page">
+    <meta name="description" content="Premium Refined Luxury Homes- Realtor dashboard page">
     <meta name="keywords" content="sheltos">
     <meta name="author" content="sheltos">
     <link rel="icon" href="{{ asset('client/assets/images/logo.png') }}" type="image/x-icon" />
@@ -18,14 +18,16 @@
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Rubik:400,400i,500,500i,700,700i" rel="stylesheet">
 
+    <!-- Font Awesome 6 Free CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-vlKFH7rZ+YdO/qWItH6Pl1pgPSzKfGjD2OGoDf5Rj6L6FZHbXDuDRIx3B6WzksFgN+4rhzhXXVnJ5PGP1dFj8g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <!-- animate css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('client/assets/css/animate.css') }}">
 
     <!-- Template css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('admin/assets/css/admin.css') }}">
 
-    <!-- Font Awesome 6 Free CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-vlKFH7rZ+YdO/qWItH6Pl1pgPSzKfGjD2OGoDf5Rj6L6FZHbXDuDRIx3B6WzksFgN+4rhzhXXVnJ5PGP1dFj8g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 
 </head>
 
@@ -71,7 +73,7 @@
                         <div class="notification-dropdown onhover-show-div">
                             <div class="dropdown-title">
                                 <h6>Recent Attachments</h6>
-                                <a href="{{ route('admin.reports') }}">Show all</a>
+                                <a href="{{ route('realtor.reports') }}">Show all</a>
                             </div>
                             <ul>
                                 <li>
@@ -80,7 +82,7 @@
                                             <i class="fas fa-file-word"></i>
                                         </div>
                                         <div class="media-body">
-                                            <a href="{{ route('admin.reports') }}">
+                                            <a href="{{ route('realtor.reports') }}">
                                                 <h6>Doc_file.doc</h6>
                                             </a>
                                             <span>800MB</span>
@@ -93,7 +95,7 @@
                                             <i class="fas fa-file-image"></i>
                                         </div>
                                         <div class="media-body">
-                                            <a href="{{ route('admin.reports') }}">
+                                            <a href="{{ route('realtor.reports') }}">
                                                 <h6>Apartment.jpg</h6>
                                             </a>
                                             <span>500kb</span>
@@ -106,7 +108,7 @@
                                             <i class="fas fa-file-pdf"></i>
                                         </div>
                                         <div class="media-body">
-                                            <a href="{{ route('admin.reports') }}">
+                                            <a href="{{ route('realtor.reports') }}">
                                                 <h6>villa_report.pdf</h6>
                                             </a>
                                             <span>26MB</span>
@@ -124,7 +126,7 @@
                         <div class="notification-dropdown onhover-show-div">
                             <div class="dropdown-title">
                                 <h6>Notifications</h6>
-                                <a href="{{ route('admin.favourites') }}">Show all</a>
+                                <a href="{{ route('realtor.favourites') }}">Show all</a>
                             </div>
                             <ul>
                                 <li>
@@ -298,9 +300,9 @@
                         <ul class="profile-dropdown onhover-show-div">
                             <li><a href="{{ route('user-profile') }}"><span>Account </span><i
                                         data-feather="user"></i></a></li>
-                            <li><a href="{{ route('admin.listing') }}"><span>Listing</span><i
+                            <li><a href="{{ route('realtor.listing') }}"><span>Listing</span><i
                                         data-feather="file-text"></i></a></li>
-                            <li><a href="{{ route('admin.login') }}"><span>Log in</span><i
+                            <li><a href="{{ route('realtor.login') }}"><span>Log in</span><i
                                         data-feather="log-in"></i></a></li>
                         </ul>
                     </li>
@@ -314,7 +316,7 @@
             <!-- page sidebar start -->
             <div class="page-sidebar">
                 <div class="logo-wrap">
-                    <a href="{{ route('admin.dashboard') }}">
+                    <a href="{{ route('realtor.dashboard') }}">
                         <img src="{{ asset('client/assets/images/logo2.png') }}" class="img-fluid for-light"
                             alt="">
                         <img src="{{ asset('client/assets/images/logo2.png') }}" class="img-fluid for-dark"
@@ -341,7 +343,7 @@
                     <div id="mainsidebar">
                         <ul class="sidebar-menu custom-scrollbar">
                             <li class="sidebar-item">
-                                <a href="{{ route('admin.dashboard') }}" class="sidebar-link only-link">
+                                <a href="{{ route('realtor.dashboard') }}" class="sidebar-link only-link">
                                     <i data-feather="airplay"></i>
                                     <span>Dashboard</span>
                                 </a>
@@ -353,25 +355,25 @@
                                 </a>
                                 <ul class="nav-submenu menu-content">
                                     <li>
-                                        <a href="{{ route('admin.add-property') }}">
+                                        <a href="{{ route('realtor.add-property') }}">
                                             <i data-feather="chevrons-right"></i>
                                             add property
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('admin.edit-property') }}">
+                                        <a href="{{ route('realtor.edit-property') }}">
                                             <i data-feather="chevrons-right"></i>
                                             edit property
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('admin.listing') }}">
+                                        <a href="{{ route('realtor.listing') }}">
                                             <i data-feather="chevrons-right"></i>
                                             property list
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('admin.favourites') }}">
+                                        <a href="{{ route('realtor.favourites') }}">
                                             <i data-feather="chevrons-right"></i>
                                             Favourites
                                         </a>
@@ -386,31 +388,31 @@
                                 </a>
                                 <ul class="nav-submenu menu-content">
                                     <li>
-                                        <a href="{{ route('user-profile') }}">
+                                        <a href="{{ route('realtor-user-profile') }}">
                                             <i data-feather="chevrons-right"></i>
                                             Profile
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('admin.add-user') }}">
+                                        <a href="{{ route('realtor-add-user') }}">
                                             <i data-feather="chevrons-right"></i>
                                             Add user
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('admin.add-user-wizard') }}">
+                                        <a href="{{ route('realtor-add-user-wizard') }}">
                                             <i data-feather="chevrons-right"></i>
                                             Add user wizard <span class="label label-shadow ms-1">new</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('edit-user') }}">
+                                        <a href="{{ route('realtor-edit-user') }}">
                                             <i data-feather="chevrons-right"></i>
                                             Edit user
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('all-users') }}">
+                                        <a href="{{ route('realtor-all-users') }}">
                                             <i data-feather="chevrons-right"></i>
                                             All users
                                         </a>
@@ -424,37 +426,37 @@
                                 </a>
                                 <ul class="nav-submenu menu-content">
                                     <li>
-                                        <a href="{{ route('agent-profile') }}">
+                                        <a href="{{ route('realtor-agent-profile') }}">
                                             <i data-feather="chevrons-right"></i>
                                             Profile
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('add-agent') }}">
+                                        <a href="{{ route('realtor-add-agent') }}">
                                             <i data-feather="chevrons-right"></i>
                                             Add agent
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('add-agent-wizard') }}">
+                                        <a href="{{ route('realtor-add-agent-wizard') }}">
                                             <i data-feather="chevrons-right"></i>
                                             Add agent wizard <span class="label label-shadow ms-1">new</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('edit-agent') }}">
+                                        <a href="{{ route('realtor-edit-agent') }}">
                                             <i data-feather="chevrons-right"></i>
                                             Edit agent
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('all-agents') }}">
+                                        <a href="{{ route('realtor-all-agents') }}">
                                             <i data-feather="chevrons-right"></i>
                                             All agents
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('agent-invoice') }}">
+                                        <a href="{{ route('realtor-agent-invoice') }}">
                                             <i data-feather="chevrons-right"></i>
                                             Invoice
                                         </a>
@@ -462,7 +464,7 @@
                                 </ul>
                             </li>
                             <li class="sidebar-item">
-                                <a href="{{ route('admin.map') }}" class="sidebar-link only-link">
+                                <a href="{{ route('realtor.map') }}" class="sidebar-link only-link">
                                     <i data-feather="map-pin"></i>
                                     <span>Map</span>
                                 </a>
@@ -474,7 +476,7 @@
                                 </a>
                                 <ul class="nav-submenu menu-content">
                                     <li>
-                                        <a href="{{ route('admin.family-house') }}">
+                                        <a href="{{ route('realtor.family-house') }}">
                                             <i data-feather="chevrons-right"></i>
                                             Family House
                                         </a>
@@ -500,13 +502,13 @@
                                 </ul>
                             </li>
                             <li class="sidebar-item">
-                                <a href="{{ route('admin.reports') }}" class="sidebar-link only-link">
+                                <a href="{{ route('realtor.reports') }}" class="sidebar-link only-link">
                                     <i data-feather="bar-chart-2"></i>
                                     <span>Reports</span>
                                 </a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="{{ route("admin.payments") }}" class="sidebar-link only-link">
+                                <a href="{{ route("realtor.payments") }}" class="sidebar-link only-link">
                                     <i data-feather="credit-card"></i>
                                     <span>Payments</span>
                                 </a>
@@ -518,19 +520,19 @@
                                 </a>
                                 <ul class="nav-submenu menu-content">
                                     <li>
-                                        <a href="{{ route('admin.login') }}">
+                                        <a href="{{ route('realtor.login') }}">
                                             <i data-feather="chevrons-right"></i>
                                             Log in
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('admin.signup') }}">
+                                        <a href="{{ route('realtor.signup') }}">
                                             <i data-feather="chevrons-right"></i>
                                             sign up
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ route("admin.not-found") }}">
+                                        <a href="{{ route("realtor.not-found") }}">
                                             <i data-feather="chevrons-right"></i>
                                             404
                                         </a>
@@ -657,6 +659,8 @@
     <!-- Color-picker js-->
     <script src="{{ asset('admin/assets/js/color/custom-colorpicker.js') }}"></script>
 
+    <script src="https://unpkg.com/feather-icons"></script>
+   
 
 </body>
 

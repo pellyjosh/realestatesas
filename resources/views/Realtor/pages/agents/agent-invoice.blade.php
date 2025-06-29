@@ -1,4 +1,4 @@
-@extends('admin.admin_master')
+@extends('realtor.realtor_master')
 @section('title', ' Agent  Invoice | Premium Refined Luxury Homes')
 @section('content')
      <!-- Container-fluid start -->
@@ -8,7 +8,7 @@
                 <div class="col-sm-6">
                     <div class="page-header-left">
                         <h3>Invoice
-                            <small>Welcome to admin panel</small>
+                            <small>Welcome to realtor panel</small>
                         </h3>
                     </div>
                 </div>
@@ -41,9 +41,9 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="invoice-logo">
-                                        <img src="https://themes.pixelstrap.com/sheltos/assets/images/logo/4.png" class="img-fluid for-light" alt="">
-                                        <img src="https://themes.pixelstrap.com/sheltos/assets/images/logo/9.png" class="img-fluid for-dark" alt="">
-                                       <span class="d-block mt-1">hello@sheltos.in</span>
+                                        <img src="{{ asset("client/assets/images/logo2.png") }}" class="img-fluid for-light" alt="">
+                                        <img src="{{ asset("client/assets/images/logo2.png") }}" class="img-fluid for-dark" alt="">
+                                       <span class="d-block mt-1">support@premiumrefinedluxuryhomes.com</span>
                                        <span class="d-block">289-335-6503</span>
                                     </div>
                                 </div>

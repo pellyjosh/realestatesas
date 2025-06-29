@@ -11,7 +11,7 @@
     <meta name="keywords" content="sheltos">
     <meta name="author" content="sheltos">
     <link rel="icon" href="{{ asset('client/assets/images/logo.png') }}" type="image/x-icon" />
-    <title>Sheltos - 404 page</title>
+    <title>404| Premium Refined Luxury Homes</title>
 
    <!--Google font-->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,500,500i,600,600i,700,700i,800,800i"

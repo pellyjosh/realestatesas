@@ -24655,7 +24655,7 @@ label {
 }
 
 .label.label-light.color-2 {
-    color: var(--theme-default3);
+    color: var(--theme-default7);
 }
 
 .label.label-light.color-2::after {
@@ -28674,7 +28674,7 @@ input[type='radio'].radio_animated {
 
 .font-danger,
 .busy {
-    color: #f35d43;
+    color: #89c826;
 }
 
 .font-warning,
@@ -33393,7 +33393,7 @@ body.rtl.dark-layout .property-details ul li+li {
 }
 
 .property-wizard .wizard-box .wizard-step-container .wizard-steps li.step-container.active .media .step-icon {
-    background-color: var(--theme-default3);
+    background-color: var(--theme-default7);
 }
 
 .property-wizard .wizard-box .wizard-step-container .wizard-steps li.step-container.active .media .step-icon span {

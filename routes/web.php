@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\Admin\AdminController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Client\EventController;
 use App\Http\Controllers\Admin\PropertyController;
 use App\Http\Controllers\Admin\UserController;
@@ -11,6 +11,17 @@ use App\Http\Controllers\Admin\TypesController;
 use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\Admin\AuthenticationController;
+
+// Realtor routes
+use App\Http\Controllers\Realtor\RealtorAuthenticationController;
+use App\Http\Controllers\Realtor\RealtorPropertyController;
+use App\Http\Controllers\Realtor\RealtorUserController;
+use App\Http\Controllers\Realtor\RealtorMapController;
+use App\Http\Controllers\Realtor\RealtorTypesController;
+use App\Http\Controllers\Realtor\RealtorReportController;
+use App\Http\Controllers\Realtor\RealtorController;
+use App\Http\Controllers\Realtor\RealtorAgentController;
+use App\Http\Controllers\Realtor\RealtorPaymentController;
 
 Route::get('/', function () {
     return view('client.pages.index');
@@ -86,10 +97,65 @@ Route::prefix('management')->group(function () {
         // Route::post('/login', 'login')->name('admin.login.submit');
         // Route::post('/signup', 'signup')->name('admin.signup.submit');
     });
-
-    // In routes/web.php
 });
 
+
+// Realtor routes
 Route::prefix('realtor')->group(function () {
-   
+    Route::controller(RealtorController::class)->group(function () {
+        Route::get('/dashboard', 'index')->name('realtor.dashboard');
+        Route::get('/', function () {
+            return  redirect()->route('realtor.dashboard');
+        });
+    });
+
+    Route::controller(RealtorPropertyController::class)->group(function () {
+        Route::get('/my-properties/add-property', 'addPropertyIndex')->name('realtor.add-property');
+        Route::get('/my-properties/edit-property', 'editPropertyIndex')->name('realtor.edit-property');
+        Route::get('/my-properties/listing', 'listingIndex')->name('realtor.listing');
+        Route::get('/my-properties/favourites', 'favouritesIndex')->name('realtor.favourites');
+    });
+
+    Route::controller(RealtorUserController::class)->group(function () {
+        Route::get('/manage-users/user-profile', 'index')->name('realtor-user-profile');
+        Route::get('/manage-users/add-user', 'addUserIndex')->name('realtor-add-user');
+        Route::get('/manage-users/add-user-wizard', 'addUserWizardIndex')->name('realtor-add-user-wizard');
+        Route::get('/manage-users/edit-user', 'editUserIndex')->name('realtor-edit-user');
+        Route::get('/manage-users/all-users', 'allUsersIndex')->name('realtor-all-users');
+    });
+
+    Route::controller(RealtorAgentController::class)->group(function () {
+        Route::get('/agent-profile', 'agentProfileIndex')->name('realtor-agent-profile');
+        Route::get('/add-agent', 'addAgentIndex')->name('realtor-add-agent');
+        Route::get('/add-agent-wizard', 'addAgentWizardIndex')->name('realtor-add-agent-wizard');
+        Route::get('/edit-agent', 'editAgentIndex')->name('realtor-edit-agent');
+        Route::get('/all-agents', 'allAgentsIndex')->name('realtor-all-agents');
+        Route::get('/agent-invoice', 'agentInvoiceIndex')->name('realtor-agent-invoice');
+    });
+
+    Route::controller(RealtorMapController::class)->group(function () {
+        Route::get('/map', 'index')->name('realtor.map');
+    });
+
+    Route::controller(RealtorTypesController::class)->group(function () {
+        Route::get('/family-house', 'houseIndex')->name('realtor.family-house');
+    });
+
+    Route::controller(RealtorReportController::class)->group(function () {
+        Route::get('/reports', 'index')->name('realtor.reports');
+    });
+
+    Route::controller(RealtorPaymentController::class)->group(function () {
+        Route::get('/payments', 'index')->name('realtor.payments');
+    });
+
+    Route::controller(RealtorAuthenticationController::class)->group(function () {
+        Route::get('/login', 'showLoginForm')->name('realtor.login');
+        Route::get('/signup', 'showSignupForm')->name('realtor.signup');
+        Route::get('/404', 'notfound')->name('realtor.not-found');
+
+        // Route::post('/login', 'login')->name('realtor.login.submit');
+        // Route::post('/signup', 'signup')->name('realtor.signup.submit');
+    });
+
 });

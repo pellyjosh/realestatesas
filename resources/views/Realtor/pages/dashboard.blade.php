@@ -1,4 +1,4 @@
-@extends('admin.admin_master')
+@extends('realtor.realtor_master')
 @section('title', 'Dashboard | Premium Refined Luxury Homes')
 @section('content')
 
@@ -9,7 +9,7 @@
             <div class="col-sm-6">
                 <div class="page-header-left">
                     <h3>Dashboard
-                        <small>Welcome to admin panel</small>
+                        <small>Welcome to realtor panel</small>
                     </h3>
                 </div>
             </div>

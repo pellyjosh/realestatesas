@@ -41,9 +41,9 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="invoice-logo">
-                                        <img src="https://themes.pixelstrap.com/sheltos/assets/images/logo/4.png" class="img-fluid for-light" alt="">
-                                        <img src="https://themes.pixelstrap.com/sheltos/assets/images/logo/9.png" class="img-fluid for-dark" alt="">
-                                       <span class="d-block mt-1">hello@sheltos.in</span>
+                                        <img src="{{ asset("client/assets/images/logo2.png") }}" class="img-fluid for-light" alt="">
+                                        <img src="{{ asset("client/assets/images/logo2.png") }}" class="img-fluid for-dark" alt="">
+                                       <span class="d-block mt-1">support@premiumrefinedluxuryhomes.com</span>
                                        <span class="d-block">289-335-6503</span>
                                     </div>
                                 </div>

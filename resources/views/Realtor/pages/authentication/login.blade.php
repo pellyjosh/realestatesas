@@ -1,4 +1,4 @@
-@extends('admin.pages.authentication.authentication_master')
+@extends('realtor.pages.authentication.authentication_master')
 @section('title', 'Login | Premium Refined Luxury Homes')
 @section('content')
 <div class="card-body">
