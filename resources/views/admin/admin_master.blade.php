@@ -25,7 +25,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('admin/assets/css/admin.css') }}">
 
     <!-- Font Awesome 6 Free CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-vlKFH7rZ+YdO/qWItH6Pl1pgPSzKfGjD2OGoDf5Rj6L6FZHbXDuDRIx3B6WzksFgN+4rhzhXXVnJ5PGP1dFj8g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
 </head>
 
@@ -556,10 +556,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-6 footer-copyright">
-                            <p class="mb-0">Copyright 2025 © Premium Refined Luxury HomesAll rights reserved.</p>
-                        </div>
-                        <div class="col-md-6">
-                            <p class="float-end mb-0">Developed with <i class="fa fa-heart font-danger"></i></p>
+                            <p class="mb-0">Copyright 2025 Premium Refined By 💚 Hubolux Technologies.</p>
                         </div>
                     </div>
                 </div>
@@ -647,6 +644,11 @@
     <script src="{{ asset('admin/assets/js/chart/apex-chart/apex-chart.js') }}"></script>
     <script src="{{ asset('admin/assets/js/chart/apex-chart/stock-prices.js') }}"></script>
     <script src="{{ asset('admin/assets/js/admin-dashboard.js') }}"></script>
+
+      <!-- vector map js-->
+      <script src="{{ asset('admin/assets/js/vector-map/jquery-jvectormap-2.0.2.min.js') }}"></script>
+      <script src="{{ asset('admin/assets/js/vector-map/jquery-jvectormap-asia-mill.js') }}"></script>
+      
 
     <!--admin js -->
     <script src="{{ asset('admin/assets/js/admin-script.js') }}"></script>

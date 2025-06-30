@@ -18,8 +18,8 @@
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Rubik:400,400i,500,500i,700,700i" rel="stylesheet">
 
-    <!-- Font Awesome 6 Free CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-vlKFH7rZ+YdO/qWItH6Pl1pgPSzKfGjD2OGoDf5Rj6L6FZHbXDuDRIx3B6WzksFgN+4rhzhXXVnJ5PGP1dFj8g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+   <!-- Font Awesome 6 Free CDN -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
     <!-- animate css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('client/assets/css/animate.css') }}">
@@ -558,11 +558,9 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-6 footer-copyright">
-                            <p class="mb-0">Copyright 2025 © Premium Refined Luxury HomesAll rights reserved.</p>
+                            <p class="mb-0">Copyright 2025 Premium Refined By 💚 Hubolux Technologies.</p>
                         </div>
-                        <div class="col-md-6">
-                            <p class="float-end mb-0">Developed with <i class="fa fa-heart font-danger"></i></p>
-                        </div>
+                       
                     </div>
                 </div>
             </footer>

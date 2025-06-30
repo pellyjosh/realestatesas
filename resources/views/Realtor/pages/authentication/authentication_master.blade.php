@@ -23,8 +23,14 @@
     <!-- animate css -->
     <link rel="stylesheet" type="text/css" href="https://themes.pixelstrap.com/sheltos/assets/css/animate.css">
 
+     <!-- Font Awesome 6 Free CDN -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
     <!-- Template css -->
     <link rel="stylesheet" type="text/css" href="https://themes.pixelstrap.com/sheltos/assets/css/admin.css">
+
+     <!-- Font Awesome 6 Free CDN -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
 </head>
 
