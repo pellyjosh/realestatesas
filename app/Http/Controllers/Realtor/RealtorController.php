@@ -11,4 +11,9 @@ class RealtorController extends Controller
     {
         return view('realtor.pages.dashboard');
     }
+
+    public function profile()
+    {
+        return view('realtor.pages.profile');
+    }
 }

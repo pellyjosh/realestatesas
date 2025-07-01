@@ -349,6 +349,19 @@
                                 </a>
                             </li>
                             <li class="sidebar-item">
+                                <a href="{{ route('realtor.profile') }}" class="sidebar-link only-link">
+                                    <i data-feather="user"></i>
+                                    <span>Profile</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="{{ route('realtor.landing-page') }}" class="sidebar-link only-link">
+                                    <i data-feather="user"></i>
+                                    <span>Landing Page</span>
+                                </a>
+                            </li>
+                           
+                            <li class="sidebar-item">
                                 <a href="javascript:void(0)" class="sidebar-link">
                                     <i data-feather="grid"></i>
                                     <span>My properties</span>

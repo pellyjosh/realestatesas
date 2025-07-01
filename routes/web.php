@@ -22,6 +22,7 @@ use App\Http\Controllers\Realtor\RealtorReportController;
 use App\Http\Controllers\Realtor\RealtorController;
 use App\Http\Controllers\Realtor\RealtorAgentController;
 use App\Http\Controllers\Realtor\RealtorPaymentController;
+use App\Http\Controllers\Realtor\LandingPageController;
 
 Route::get('/', function () {
     return view('client.pages.index');
@@ -44,6 +45,7 @@ Route::get("/contact", function () {
 Route::prefix('management')->group(function () {
     Route::controller(AdminController::class)->group(function(){
         Route::get('/dashboard', 'index')->name('admin.dashboard');
+
         Route::get('/', function () {
             return  redirect()->route('admin.dashboard');
         });   
@@ -104,10 +106,12 @@ Route::prefix('management')->group(function () {
 Route::prefix('realtor')->group(function () {
     Route::controller(RealtorController::class)->group(function () {
         Route::get('/dashboard', 'index')->name('realtor.dashboard');
+
         Route::get('/', function () {
             return  redirect()->route('realtor.dashboard');
         });
     });
+
 
     Route::controller(RealtorPropertyController::class)->group(function () {
         Route::get('/my-properties/add-property', 'addPropertyIndex')->name('realtor.add-property');
@@ -157,5 +161,19 @@ Route::prefix('realtor')->group(function () {
         // Route::post('/login', 'login')->name('realtor.login.submit');
         // Route::post('/signup', 'signup')->name('realtor.signup.submit');
     });
+
+    Route::get('/profile', function () {
+        return view('realtor.pages.profile');
+    })->name('realtor.profile');
+
+    Route::controller(LandingPageController::class)->group(function () {
+        Route::get('/landing-page', 'index')->name('realtor.landing-page');
+        // Route::get('/landing-page/create', 'create')->name('realtor.create-landing-page');
+        // Route::get('/landing-page/edit', 'edit')->name('realtor.edit-landing-page');
+        
+        Route::get('/landing-page', 'show')->name('realtor.landing-page');
+    });
+
+
 
 });

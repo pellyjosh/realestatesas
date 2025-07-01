@@ -382,7 +382,7 @@ section {
 }
 
 .small-section {
-    padding: 60px 0;
+    padding: 30px 0;
 }
 
 .section-sm {
@@ -2113,13 +2113,13 @@ label {
 }
 
 .btn.btn-gradient.color-2 {
-    background-image: var(--theme-gradient5);
+    background-image: var(--theme-gradient10);
 }
 
 .btn.btn-gradient.color-2::after {
     opacity: 0.35;
-    -webkit-box-shadow: 3.346px 3.716px 12.5px var(--theme-default3);
-    box-shadow: 3.346px 3.716px 12.5px var(--theme-default3);
+    -webkit-box-shadow: 3.346px 3.716px 12.5px var(--theme-default4);
+    box-shadow: 3.346px 3.716px 12.5px var(--theme-default4);
 }
 
 .btn.btn-gradient.color-2:hover {
@@ -2519,9 +2519,9 @@ label {
 }
 
 .label.label-shadow {
-    background-color: #f13439;
-    -webkit-box-shadow: 0 0 9px 3px rgba(241, 52, 57, 0.2);
-    box-shadow: 0 0 9px 3px rgba(241, 52, 57, 0.2);
+    background-color: var(--theme-default4);
+    -webkit-box-shadow: 2px -4px 11px 3px rgba(120, 199, 5, 0.2);
+    box-shadow: 2px -4px 11px 3px rgba(120, 199, 5, 0.12);
 }
 
 .label.label-gradient.color-4 {
@@ -7980,7 +7980,7 @@ input[type='radio'].radio_animated {
 }
 
 .single-property.mt-0.pt-0 {
-    padding-bottom: 60px;
+    padding-bottom: 30px;
 }
 
 .single-property .description-section .desc-box {
@@ -18139,7 +18139,7 @@ body.rtl.dark-layout .blog-single-detail .blog-title .post-detail li+li {
 }
 
 .icon-video a {
-    background-image: var(--theme-gradient9);
+    background-image: var(--theme-gradient10);
     width: 50px;
     height: 50px;
     border-radius: 100%;
@@ -21674,7 +21674,7 @@ input[type="date"] {
     z-index: 2;
     color: #ffffff;
     text-align: center;
-    background-image: var(--theme-gradient7);
+    background-image: var(--theme-gradient10);
     border: none;
     font-size: 22px;
     padding: 6px 5px 5px 5px;
@@ -21686,8 +21686,8 @@ input[type="date"] {
 .tap-top::after {
     border-radius: 8px;
     opacity: 0.26;
-    -webkit-box-shadow: 5.353px 5.945px 12px var(--theme-default3);
-    box-shadow: 5.353px 5.945px 12px var(--theme-default3);
+    -webkit-box-shadow: 5.353px 5.945px 12px var(--theme-default4);
+    box-shadow: 5.353px 5.945px 12px var(--theme-default4);
 }
 
 .tap-top.color-1 {
