@@ -3,7 +3,7 @@
 @section('content')
 <div class="card-body">
     <div class="title-3 text-start">
-        <h2>Sign up</h2>
+        <h3 class="fs-4 fw-semibold pb-1 mb-3" style="border-bottom: 2px solid #91d20a; display: inline-block;">Sign up</h3>
     </div>
     <form>
         <div class="form-group">
@@ -45,8 +45,8 @@
             </div>
         </div>
         <div>
-            <button type="button" class="btn btn-gradient btn-pill color-2 me-sm-3 me-2">Create Account</button>
-            <a href="login.html" class="btn btn-dashed btn-pill color-2">Log in</a>
+            <button type="button" class="btn btn-pill me-sm-3 me-2" style="background-color: #78c705; color: #fff;">Create Account</button>
+            <a href="{{ route('realtor.login') }}" class="btn btn-dashed btn-pill color-2">Log in</a>
         </div>
         <div class="divider">
             <h6>or</h6>

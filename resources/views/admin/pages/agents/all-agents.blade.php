@@ -56,16 +56,16 @@
                                         <div class="property-box">
                                             <div class="agent-image">
                                                 <div>
-                                                    <img src="https://themes.pixelstrap.com/sheltos/assets/images/avatar/5.jpg" class="bg-img" alt="">
+                                                    <img src="{{ asset('admin/assets/images/avatar/5.jpg') }}" class="bg-img" alt="">
                                                     <span class="label label-shadow">2 properties</span>
                                                     <div class="agent-overlay"></div>
                                                     <div class="overlay-content">
                                                         <ul>
-                                                            <li><a href="https://accounts.google.com/"><img src="https://themes.pixelstrap.com/sheltos/assets/images/about/icon-1.png" alt=""></a>
+                                                            <li><a href="https://accounts.google.com/"><img src="{{ asset('admin/assets/images/about/icon-1.png') }}" alt=""></a>
                                                             </li>
-                                                            <li><a href="https://twitter.com/"><img src="https://themes.pixelstrap.com/sheltos/assets/images/about/icon-2.png" alt=""></a>
+                                                            <li><a href="https://twitter.com/"><img src="{{ asset('admin/assets/images/about/icon-2.png') }}" alt=""></a>
                                                             </li>
-                                                            <li><a href="https://www.facebook.com/"><img src="https://themes.pixelstrap.com/sheltos/assets/images/about/icon-3.png" alt=""></a>
+                                                            <li><a href="https://www.facebook.com/"><img src="{{ asset('admin/assets/images/about/icon-3.png') }}" alt=""></a>
                                                             </li>
                                                         </ul>
                                                         <span>Connect</span>
@@ -80,10 +80,7 @@
                                                         <i class="fas fa-phone-alt"></i> 
                                                         <span class="phone-number">+91 426015400</span>
                                                         <span class="character">+91 42601****</span>
-                                                        <span class="label label-light label-flat color-2">
-                                                            show    
-                                                            <span>hide</span>
-                                                        </span>
+                                                         
                                                     </li>
                                                     <li><i class="fas fa-envelope"></i> zack@gmail.com</li>
                                                     <li><i class="fas fa-fax"></i> 247 054 787</li>
@@ -100,12 +97,12 @@
                                                     <span class="label label-shadow">3 properties</span>
                                                     <div class="agent-overlay"></div>
                                                     <div class="overlay-content">
-                                                        <ul>
-                                                            <li><a href="https://accounts.google.com/"><img src="https://themes.pixelstrap.com/sheltos/assets/images/about/icon-1.png" alt=""></a>
+                                                         <ul>
+                                                            <li><a href="https://accounts.google.com/"><img src="{{ asset('admin/assets/images/about/icon-1.png') }}" alt=""></a>
                                                             </li>
-                                                            <li><a href="https://twitter.com/"><img src="https://themes.pixelstrap.com/sheltos/assets/images/about/icon-2.png" alt=""></a>
+                                                            <li><a href="https://twitter.com/"><img src="{{ asset('admin/assets/images/about/icon-2.png') }}" alt=""></a>
                                                             </li>
-                                                            <li><a href="https://www.facebook.com/"><img src="https://themes.pixelstrap.com/sheltos/assets/images/about/icon-3.png" alt=""></a>
+                                                            <li><a href="https://www.facebook.com/"><img src="{{ asset('admin/assets/images/about/icon-3.png') }}" alt=""></a>
                                                             </li>
                                                         </ul>
                                                         <span>Connect</span>
@@ -120,10 +117,7 @@
                                                         <i class="fas fa-phone-alt"></i> 
                                                         <span class="phone-number">+91 5470087201</span>
                                                         <span class="character">+91 547008****</span>
-                                                        <span class="label label-light label-flat color-2">
-                                                            show    
-                                                            <span>hide</span>
-                                                        </span>
+                                                         
                                                     </li>
                                                     <li><i class="fas fa-envelope"></i> life@gmail.in</li>
                                                     <li><i class="fas fa-fax"></i> 248 200 325</li>
@@ -140,12 +134,12 @@
                                                     <span class="label label-shadow">6 properties</span>
                                                     <div class="agent-overlay"></div>
                                                     <div class="overlay-content">
-                                                        <ul>
-                                                            <li><a href="https://accounts.google.com/"><img src="https://themes.pixelstrap.com/sheltos/assets/images/about/icon-1.png" alt=""></a>
+                                                         <ul>
+                                                            <li><a href="https://accounts.google.com/"><img src="{{ asset('admin/assets/images/about/icon-1.png') }}" alt=""></a>
                                                             </li>
-                                                            <li><a href="https://twitter.com/"><img src="https://themes.pixelstrap.com/sheltos/assets/images/about/icon-2.png" alt=""></a>
+                                                            <li><a href="https://twitter.com/"><img src="{{ asset('admin/assets/images/about/icon-2.png') }}" alt=""></a>
                                                             </li>
-                                                            <li><a href="https://www.facebook.com/"><img src="https://themes.pixelstrap.com/sheltos/assets/images/about/icon-3.png" alt=""></a>
+                                                            <li><a href="https://www.facebook.com/"><img src="{{ asset('admin/assets/images/about/icon-3.png') }}" alt=""></a>
                                                             </li>
                                                         </ul>
                                                         <span>Connect</span>
@@ -160,10 +154,7 @@
                                                         <i class="fas fa-phone-alt"></i> 
                                                         <span class="phone-number">+91 2714203587</span>
                                                         <span class="character">+91 271420****</span>
-                                                        <span class="label label-light label-flat color-2">
-                                                            show    
-                                                            <span>hide</span>
-                                                        </span>
+                                                         
                                                     </li>
                                                     <li><i class="fas fa-envelope"></i> bob@gmail.in</li>
                                                     <li><i class="fas fa-fax"></i> 571 241 925</li>
@@ -180,12 +171,12 @@
                                                     <span class="label label-shadow">1 properties</span>
                                                     <div class="agent-overlay"></div>
                                                     <div class="overlay-content">
-                                                        <ul>
-                                                            <li><a href="https://accounts.google.com/"><img src="https://themes.pixelstrap.com/sheltos/assets/images/about/icon-1.png" alt=""></a>
+                                                         <ul>
+                                                            <li><a href="https://accounts.google.com/"><img src="{{ asset('admin/assets/images/about/icon-1.png') }}" alt=""></a>
                                                             </li>
-                                                            <li><a href="https://twitter.com/"><img src="https://themes.pixelstrap.com/sheltos/assets/images/about/icon-2.png" alt=""></a>
+                                                            <li><a href="https://twitter.com/"><img src="{{ asset('admin/assets/images/about/icon-2.png') }}" alt=""></a>
                                                             </li>
-                                                            <li><a href="https://www.facebook.com/"><img src="https://themes.pixelstrap.com/sheltos/assets/images/about/icon-3.png" alt=""></a>
+                                                            <li><a href="https://www.facebook.com/"><img src="{{ asset('admin/assets/images/about/icon-3.png') }}" alt=""></a>
                                                             </li>
                                                         </ul>
                                                         <span>Connect</span>
@@ -200,10 +191,7 @@
                                                         <i class="fas fa-phone-alt"></i> 
                                                         <span class="phone-number">+91 3178405278</span>
                                                         <span class="character">+91 317840****</span>
-                                                        <span class="label label-light label-flat color-2">
-                                                            show    
-                                                            <span>hide</span>
-                                                        </span>
+                                                         
                                                     </li>
                                                     <li><i class="fas fa-envelope"></i> turner@gmail.in</li>
                                                     <li><i class="fas fa-fax"></i> 287 845 317</li>
@@ -220,12 +208,12 @@
                                                     <span class="label label-shadow">4 properties</span>
                                                     <div class="agent-overlay"></div>
                                                     <div class="overlay-content">
-                                                        <ul>
-                                                            <li><a href="https://accounts.google.com/"><img src="https://themes.pixelstrap.com/sheltos/assets/images/about/icon-1.png" alt=""></a>
+                                                         <ul>
+                                                            <li><a href="https://accounts.google.com/"><img src="{{ asset('admin/assets/images/about/icon-1.png') }}" alt=""></a>
                                                             </li>
-                                                            <li><a href="https://twitter.com/"><img src="https://themes.pixelstrap.com/sheltos/assets/images/about/icon-2.png" alt=""></a>
+                                                            <li><a href="https://twitter.com/"><img src="{{ asset('admin/assets/images/about/icon-2.png') }}" alt=""></a>
                                                             </li>
-                                                            <li><a href="https://www.facebook.com/"><img src="https://themes.pixelstrap.com/sheltos/assets/images/about/icon-3.png" alt=""></a>
+                                                            <li><a href="https://www.facebook.com/"><img src="{{ asset('admin/assets/images/about/icon-3.png') }}" alt=""></a>
                                                             </li>
                                                         </ul>
                                                         <span>Connect</span>
@@ -240,10 +228,7 @@
                                                         <i class="fas fa-phone-alt"></i> 
                                                         <span class="phone-number">+91 2197207878</span>
                                                         <span class="character">+91 219720****</span>
-                                                        <span class="label label-light label-flat color-2">
-                                                            show    
-                                                            <span>hide</span>
-                                                        </span>
+                                                         
                                                     </li>
                                                     <li><i class="fas fa-envelope"></i> brock@gmail.com</li>
                                                     <li><i class="fas fa-fax"></i> 967 218 674</li>
@@ -260,12 +245,12 @@
                                                     <span class="label label-shadow">2 properties</span>
                                                     <div class="agent-overlay"></div>
                                                     <div class="overlay-content">
-                                                        <ul>
-                                                            <li><a href="https://accounts.google.com/"><img src="https://themes.pixelstrap.com/sheltos/assets/images/about/icon-1.png" alt=""></a>
+                                                         <ul>
+                                                            <li><a href="https://accounts.google.com/"><img src="{{ asset('admin/assets/images/about/icon-1.png') }}" alt=""></a>
                                                             </li>
-                                                            <li><a href="https://twitter.com/"><img src="https://themes.pixelstrap.com/sheltos/assets/images/about/icon-2.png" alt=""></a>
+                                                            <li><a href="https://twitter.com/"><img src="{{ asset('admin/assets/images/about/icon-2.png') }}" alt=""></a>
                                                             </li>
-                                                            <li><a href="https://www.facebook.com/"><img src="https://themes.pixelstrap.com/sheltos/assets/images/about/icon-3.png" alt=""></a>
+                                                            <li><a href="https://www.facebook.com/"><img src="{{ asset('admin/assets/images/about/icon-3.png') }}" alt=""></a>
                                                             </li>
                                                         </ul>
                                                         <span>Connect</span>
@@ -280,10 +265,7 @@
                                                         <i class="fas fa-phone-alt"></i> 
                                                         <span class="phone-number">+91 2197207878</span>
                                                         <span class="character">+91 219720****</span>
-                                                        <span class="label label-light label-flat color-2">
-                                                            show    
-                                                            <span>hide</span>
-                                                        </span>
+                                                         
                                                     </li>
                                                     <li><i class="fas fa-envelope"></i> marygor@gmail.com</li>
                                                     <li><i class="fas fa-fax"></i> 967 218 674</li>
@@ -300,12 +282,12 @@
                                                     <span class="label label-shadow">2 properties</span>
                                                     <div class="agent-overlay"></div>
                                                     <div class="overlay-content">
-                                                        <ul>
-                                                            <li><a href="https://accounts.google.com/"><img src="https://themes.pixelstrap.com/sheltos/assets/images/about/icon-1.png" alt=""></a>
+                                                         <ul>
+                                                            <li><a href="https://accounts.google.com/"><img src="{{ asset('admin/assets/images/about/icon-1.png') }}" alt=""></a>
                                                             </li>
-                                                            <li><a href="https://twitter.com/"><img src="https://themes.pixelstrap.com/sheltos/assets/images/about/icon-2.png" alt=""></a>
+                                                            <li><a href="https://twitter.com/"><img src="{{ asset('admin/assets/images/about/icon-2.png') }}" alt=""></a>
                                                             </li>
-                                                            <li><a href="https://www.facebook.com/"><img src="https://themes.pixelstrap.com/sheltos/assets/images/about/icon-3.png" alt=""></a>
+                                                            <li><a href="https://www.facebook.com/"><img src="{{ asset('admin/assets/images/about/icon-3.png') }}" alt=""></a>
                                                             </li>
                                                         </ul>
                                                         <span>Connect</span>
@@ -320,10 +302,7 @@
                                                         <i class="fas fa-phone-alt"></i> 
                                                         <span class="phone-number">+91 426015400</span>
                                                         <span class="character">+91 42601****</span>
-                                                        <span class="label label-light label-flat color-2">
-                                                            show    
-                                                            <span>hide</span>
-                                                        </span>
+                                                         
                                                     </li>
                                                     <li><i class="fas fa-envelope"></i> zack@gmail.com</li>
                                                     <li><i class="fas fa-fax"></i> 247 054 787</li>
@@ -340,12 +319,12 @@
                                                     <span class="label label-shadow">3 properties</span>
                                                     <div class="agent-overlay"></div>
                                                     <div class="overlay-content">
-                                                        <ul>
-                                                            <li><a href="https://accounts.google.com/"><img src="https://themes.pixelstrap.com/sheltos/assets/images/about/icon-1.png" alt=""></a>
+                                                         <ul>
+                                                            <li><a href="https://accounts.google.com/"><img src="{{ asset('admin/assets/images/about/icon-1.png') }}" alt=""></a>
                                                             </li>
-                                                            <li><a href="https://twitter.com/"><img src="https://themes.pixelstrap.com/sheltos/assets/images/about/icon-2.png" alt=""></a>
+                                                            <li><a href="https://twitter.com/"><img src="{{ asset('admin/assets/images/about/icon-2.png') }}" alt=""></a>
                                                             </li>
-                                                            <li><a href="https://www.facebook.com/"><img src="https://themes.pixelstrap.com/sheltos/assets/images/about/icon-3.png" alt=""></a>
+                                                            <li><a href="https://www.facebook.com/"><img src="{{ asset('admin/assets/images/about/icon-3.png') }}" alt=""></a>
                                                             </li>
                                                         </ul>
                                                         <span>Connect</span>
@@ -360,10 +339,7 @@
                                                         <i class="fas fa-phone-alt"></i> 
                                                         <span class="phone-number">+91 5470087201</span>
                                                         <span class="character">+91 547008****</span>
-                                                        <span class="label label-light label-flat color-2">
-                                                            show    
-                                                            <span>hide</span>
-                                                        </span>
+                                                         
                                                     </li>
                                                     <li><i class="fas fa-envelope"></i> life@gmail.in</li>
                                                     <li><i class="fas fa-fax"></i> 248 200 325</li>
@@ -380,12 +356,12 @@
                                                     <span class="label label-shadow">6 properties</span>
                                                     <div class="agent-overlay"></div>
                                                     <div class="overlay-content">
-                                                        <ul>
-                                                            <li><a href="https://accounts.google.com/"><img src="https://themes.pixelstrap.com/sheltos/assets/images/about/icon-1.png" alt=""></a>
+                                                         <ul>
+                                                            <li><a href="https://accounts.google.com/"><img src="{{ asset('admin/assets/images/about/icon-1.png') }}" alt=""></a>
                                                             </li>
-                                                            <li><a href="https://twitter.com/"><img src="https://themes.pixelstrap.com/sheltos/assets/images/about/icon-2.png" alt=""></a>
+                                                            <li><a href="https://twitter.com/"><img src="{{ asset('admin/assets/images/about/icon-2.png') }}" alt=""></a>
                                                             </li>
-                                                            <li><a href="https://www.facebook.com/"><img src="https://themes.pixelstrap.com/sheltos/assets/images/about/icon-3.png" alt=""></a>
+                                                            <li><a href="https://www.facebook.com/"><img src="{{ asset('admin/assets/images/about/icon-3.png') }}" alt=""></a>
                                                             </li>
                                                         </ul>
                                                         <span>Connect</span>
@@ -400,10 +376,7 @@
                                                         <i class="fas fa-phone-alt"></i> 
                                                         <span class="phone-number">+91 2714203587</span>
                                                         <span class="character">+91 271420****</span>
-                                                        <span class="label label-light label-flat color-2">
-                                                            show    
-                                                            <span>hide</span>
-                                                        </span>
+                                                         
                                                     </li>
                                                     <li><i class="fas fa-envelope"></i> bob@gmail.in</li>
                                                     <li><i class="fas fa-fax"></i> 571 241 925</li>

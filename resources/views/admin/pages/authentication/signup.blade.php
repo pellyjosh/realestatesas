@@ -45,8 +45,8 @@
             </div>
         </div>
         <div>
-            <button type="button" class="btn btn-gradient btn-pill color-2 me-sm-3 me-2">Create Account</button>
-            <a href="login.html" class="btn btn-dashed btn-pill color-2">Log in</a>
+            <button type="button" class="btn btn-pill me-sm-3 me-2" style="background-color: #78c705; color: #fff;">Create Account</button>
+            <a href="{{ route('admin.signup') }}" class="btn btn-dashed btn-pill color-2">Log in</a>
         </div>
         <div class="divider">
             <h6>or</h6>

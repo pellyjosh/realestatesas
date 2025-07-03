@@ -24456,16 +24456,16 @@ label {
 }
 
 .btn.btn-dashed.color-1:hover::after {
-    background: var(--theme-default2);
+    background: var(--theme-default6);
 }
 
 .btn.btn-dashed.color-2:hover {
-    border-color: var(--theme-default4);
-    color: var(--theme-default4);
+    border-color: var(--theme-default6);
+    color: var(--bs-dark);
 }
 
 .btn.btn-dashed.color-2:hover::after {
-    background: var(--theme-default4);
+    background: var(--theme-default5);
 }
 
 .btn.btn-dashed.color-4::after {
@@ -25290,7 +25290,7 @@ input[type='radio'].radio_animated {
     content: "";
     width: 30px;
     height: 2px;
-    background-color: var(--theme-default3);
+    background-color: var(--theme-default6);
     left: 0;
     bottom: -8px;
 }
@@ -25671,8 +25671,8 @@ input[type='radio'].radio_animated {
 
 .theme-pagination .pagination .page-item .page-link:hover,
 .theme-pagination .pagination .page-item .page-link:focus {
-    background-color: var(--theme-default3);
-    border-color: var(--theme-default3);
+    background-color: var(--theme-default7);
+    border-color: var(--theme-default7);
     color: #ffffff;
 }
 
@@ -25873,7 +25873,7 @@ input[type='radio'].radio_animated {
 }
 
 .property-details .property-btn .btn:hover {
-    background-color: rgba(255, 92, 65, 0.1);
+    background-color: rgba(145, 210, 10, 0.1)
 }
 
 .property-details .property-btn .btn.color-1:hover {
@@ -28674,7 +28674,7 @@ input[type='radio'].radio_animated {
 
 .font-danger,
 .busy {
-    color: #89c826;
+    color: var(--theme-default4);
 }
 
 .font-warning,
@@ -33284,7 +33284,7 @@ body.rtl.dark-layout .property-details ul li+li {
 .agent-section .agent-content a {
     text-align: right;
     display: block;
-    color: var(--theme-default4);
+    color: var(--theme-default5);
 }
 
 .agent-section .agent-content a i {

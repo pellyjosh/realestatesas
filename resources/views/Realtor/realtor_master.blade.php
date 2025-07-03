@@ -18,8 +18,8 @@
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Rubik:400,400i,500,500i,700,700i" rel="stylesheet">
 
-   <!-- Font Awesome 6 Free CDN -->
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Font Awesome 6 Free CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
     <!-- animate css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('client/assets/css/animate.css') }}">
@@ -27,18 +27,23 @@
     <!-- Template css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('admin/assets/css/admin.css') }}">
 
-
-
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
 </head>
 
 <body>
 
     <!-- Loader start -->
     <div class="loader-wrapper">
-        <div class="row loader-img">
+        <div class="row loader-text">
             <div class="col-12">
-                <img src="https://themes.pixelstrap.com/sheltos/assets/images/loader/loader-2.gif" class="img-fluid"
+                <img src="{{ asset("client/assets/images/loader/gear.gif") }}" class="img-fluid"
                     alt="">
+            </div>
+            <div class="col-12">
+                <div>
+                    <h3 class="mb-0">Please wait portal loading...</h3>
+                </div>
             </div>
         </div>
     </div>
@@ -300,8 +305,6 @@
                         <ul class="profile-dropdown onhover-show-div">
                             <li><a href="{{ route('user-profile') }}"><span>Account </span><i
                                         data-feather="user"></i></a></li>
-                            <li><a href="{{ route('realtor.listing') }}"><span>Listing</span><i
-                                        data-feather="file-text"></i></a></li>
                             <li><a href="{{ route('realtor.login') }}"><span>Log in</span><i
                                         data-feather="log-in"></i></a></li>
                         </ul>
@@ -330,7 +333,8 @@
                     <div class="user-profile">
                         <div class="media">
                             <div class="change-pic">
-                                <img src="{{ asset('admin/assets/images/avatar/3.jpg') }}" class="img-fluid" alt="">
+                                <img src="{{ asset('admin/assets/images/avatar/3.jpg') }}" class="img-fluid"
+                                    alt="">
                             </div>
                             <div class="media-body">
                                 <a href="{{ route('user-profile') }}">
@@ -355,165 +359,12 @@
                                 </a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="{{ route('realtor.landing-page') }}" class="sidebar-link only-link">
+                                <a href="{{ route('realtor.landing-page-list') }}" class="sidebar-link only-link">
                                     <i data-feather="user"></i>
                                     <span>Landing Page</span>
                                 </a>
                             </li>
-                           
-                            <li class="sidebar-item">
-                                <a href="javascript:void(0)" class="sidebar-link">
-                                    <i data-feather="grid"></i>
-                                    <span>My properties</span>
-                                </a>
-                                <ul class="nav-submenu menu-content">
-                                    <li>
-                                        <a href="{{ route('realtor.add-property') }}">
-                                            <i data-feather="chevrons-right"></i>
-                                            add property
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('realtor.edit-property') }}">
-                                            <i data-feather="chevrons-right"></i>
-                                            edit property
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('realtor.listing') }}">
-                                            <i data-feather="chevrons-right"></i>
-                                            property list
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('realtor.favourites') }}">
-                                            <i data-feather="chevrons-right"></i>
-                                            Favourites
-                                        </a>
-                                    </li>
 
-                                </ul>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="javascript:void(0)" class="sidebar-link">
-                                    <i data-feather="users"></i>
-                                    <span>Manage users</span>
-                                </a>
-                                <ul class="nav-submenu menu-content">
-                                    <li>
-                                        <a href="{{ route('realtor-user-profile') }}">
-                                            <i data-feather="chevrons-right"></i>
-                                            Profile
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('realtor-add-user') }}">
-                                            <i data-feather="chevrons-right"></i>
-                                            Add user
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('realtor-add-user-wizard') }}">
-                                            <i data-feather="chevrons-right"></i>
-                                            Add user wizard <span class="label label-shadow ms-1">new</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('realtor-edit-user') }}">
-                                            <i data-feather="chevrons-right"></i>
-                                            Edit user
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('realtor-all-users') }}">
-                                            <i data-feather="chevrons-right"></i>
-                                            All users
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="javascript:void(0)" class="sidebar-link">
-                                    <i data-feather="user-plus"></i>
-                                    <span>Agents</span>
-                                </a>
-                                <ul class="nav-submenu menu-content">
-                                    <li>
-                                        <a href="{{ route('realtor-agent-profile') }}">
-                                            <i data-feather="chevrons-right"></i>
-                                            Profile
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('realtor-add-agent') }}">
-                                            <i data-feather="chevrons-right"></i>
-                                            Add agent
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('realtor-add-agent-wizard') }}">
-                                            <i data-feather="chevrons-right"></i>
-                                            Add agent wizard <span class="label label-shadow ms-1">new</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('realtor-edit-agent') }}">
-                                            <i data-feather="chevrons-right"></i>
-                                            Edit agent
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('realtor-all-agents') }}">
-                                            <i data-feather="chevrons-right"></i>
-                                            All agents
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('realtor-agent-invoice') }}">
-                                            <i data-feather="chevrons-right"></i>
-                                            Invoice
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="{{ route('realtor.map') }}" class="sidebar-link only-link">
-                                    <i data-feather="map-pin"></i>
-                                    <span>Map</span>
-                                </a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="javascript:void(0)" class="sidebar-link">
-                                    <i data-feather="layout"></i>
-                                    <span>Types</span>
-                                </a>
-                                <ul class="nav-submenu menu-content">
-                                    <li>
-                                        <a href="{{ route('realtor.family-house') }}">
-                                            <i data-feather="chevrons-right"></i>
-                                            Family House
-                                        </a>
-                                    </li>
-                                    {{-- <li>
-                                        <a href="cottage.html">
-                                            <i data-feather="chevrons-right"></i>
-                                            Cottage
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="apartment.html">
-                                            <i data-feather="chevrons-right"></i>
-                                            Apartment
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="condominium.html">
-                                            <i data-feather="chevrons-right"></i>
-                                            Condominium
-                                        </a>
-                                    </li> --}}
-                                </ul>
-                            </li>
                             <li class="sidebar-item">
                                 <a href="{{ route('realtor.reports') }}" class="sidebar-link only-link">
                                     <i data-feather="bar-chart-2"></i>
@@ -521,12 +372,24 @@
                                 </a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="{{ route("realtor.payments") }}" class="sidebar-link only-link">
+                                <a href="{{ route('realtor.reports') }}" class="sidebar-link only-link">
+                                    <i data-feather="users"></i>
+                                    <span>Refferals</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="{{ route('realtor.reports') }}" class="sidebar-link only-link">
+                                    <i data-feather="dollar-sign"></i>
+                                    <span>Earnings</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="{{ route('realtor.payments') }}" class="sidebar-link only-link">
                                     <i data-feather="credit-card"></i>
                                     <span>Payments</span>
                                 </a>
                             </li>
-                            <li class="sidebar-item">
+                            {{-- <li class="sidebar-item">
                                 <a href="javascript:void(0)" class="sidebar-link">
                                     <i data-feather="unlock"></i>
                                     <span>Authentication</span>
@@ -545,13 +408,13 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ route("realtor.not-found") }}">
+                                        <a href="{{ route('realtor.not-found') }}">
                                             <i data-feather="chevrons-right"></i>
                                             404
                                         </a>
                                     </li>
                                 </ul>
-                            </li>
+                            </li> --}}
                         </ul>
                     </div>
                 </div>
@@ -573,7 +436,7 @@
                         <div class="col-md-6 footer-copyright">
                             <p class="mb-0">Copyright 2025 Premium Refined By 💚 Hubolux Technologies.</p>
                         </div>
-                       
+
                     </div>
                 </div>
             </footer>
@@ -646,6 +509,16 @@
     <!-- latest jquery-->
     <script src="{{ asset('admin/assets/js/jquery-3.6.0.min.js') }}"></script>
 
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+    <!-- Initialize the DataTable -->
+    <script>
+        $(document).ready(function() {
+            $('#myTable').DataTable();
+        });
+    </script>
+
     <!-- Bootstrap js-->
     <script src="{{ asset('admin/assets/js/bootstrap.bundle.min.js') }}"></script>
 
@@ -656,10 +529,14 @@
     <!-- sidebar js -->
     <script src="{{ asset('admin/assets/js/sidebar.js') }}"></script>
 
-    <!-- apex chart js-->
-    <script src="{{ asset('admin/assets/js/chart/apex-chart/apex-chart.js') }}"></script>
-    <script src="{{ asset('admin/assets/js/chart/apex-chart/stock-prices.js') }}"></script>
-    <script src="{{ asset('admin/assets/js/admin-dashboard.js') }}"></script>
+    <script src="{{ asset("realtor/assets/js/chart/chartist.js") }}"></script>
+    <script src="{{ asset("realtor/assets/js/chart/chartist-plugin-tooltip.js") }}"></script>
+
+     <!-- apex chart js-->
+     <script src="{{ asset("realtor/assets/js/chart/apex-chart.js") }}"></script>
+     <script src="r{{ asset("realtor/assets/js/chart/stock-prices.js") }}"></script>
+     <script src="{{ asset("realtor/assets/js/user-profile.js") }}"></script>
+     <script src="{{ asset("realtor/assets/js/admin-dashboard.js") }}"></script>
 
     <!--admin js -->
     <script src="{{ asset('admin/assets/js/admin-script.js') }}"></script>
@@ -671,7 +548,7 @@
     <script src="{{ asset('admin/assets/js/color/custom-colorpicker.js') }}"></script>
 
     <script src="https://unpkg.com/feather-icons"></script>
-   
+
 
 </body>
 

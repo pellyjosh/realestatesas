@@ -46,7 +46,7 @@
                                         <h4 class="mb-0">45</h4>
                                         <h6 class="light-font">Properties</h6>
                                     </div>
-                                    <a href="listing.html" class="arrow-animated">
+                                    <a href="{{ route("realtor.landing-page-list") }}" class="arrow-animated">
                                         See all properties
                                         <i data-feather="chevron-right"></i>
                                     </a>
@@ -418,7 +418,7 @@
                     <div class="card-header pb-0">
                         <div class="d-flex">
                             <h5>My properties</h5>
-                            <a href="add-property.html">+ New</a>
+                            <a href="{{ route('admin.add-property') }}">+ New</a>
                         </div>
                     </div>
                     <div class="card-body properties-list">

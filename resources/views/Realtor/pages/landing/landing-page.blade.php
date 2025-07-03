@@ -9,7 +9,7 @@
     <meta name="keywords" content="Premium Refined Luxury Homes, Real Estate, Property Details, Modal Details">
     <meta name="author" content="Premium Refined Luxury Homes">
     <link rel="icon" href="{{ asset('client/assets/images/logo.png') }}" type="image/x-icon" />
-    <title>Sheltos - Modal details property details page</title>
+    <title>Premium Refined Luxury Homes - Modal details property details page</title>
 
     <!--Google font-->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,500,500i,600,600i,700,700i,800,800i"
@@ -34,16 +34,38 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('client/assets/css/bootstrap.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('client/assets/css/color1.css') }}">
 
+    <style>
+        /* This will remove the line under "Book Inspection" in the sidebar form on larger screens. */
+        .advance-card h6 {
+            border-bottom: none !important;
+        }
+
+        .advance-card h6::after {
+            display: none !important;
+        }
+
+        /* This will remove the line under the "Book Inspection" title in the pop-up on smaller screens. */
+        #scheduleModal .modal-header {
+            border-bottom: none;
+        }
+    </style>
+
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 </head>
 
 <body>
 
     <!-- Loader start -->
     <div class="loader-wrapper">
-        <div class="row loader-img">
+        <div class="row loader-text">
             <div class="col-12">
-                <img src="https://themes.pixelstrap.com/sheltos/assets/images/loader/loader-2.gif" class="img-fluid"
+                <img src="{{ asset("client/assets/images/loader/gear.gif") }}" class="img-fluid"
                     alt="">
+            </div>
+            <div class="col-12">
+                <div>
+                    <h3 class="mb-0">Please wait portal loading...</h3>
+                </div>
             </div>
         </div>
     </div>
@@ -171,121 +193,147 @@
                                         <div class="blog-sidebar modal-form d-none d-lg-block">
                                             <div class="filter-cards">
                                                 <div class="advance-card">
-                                                    <h6>Book Inspection</h6>
+                                                    <h5 class="fs-6 fw-semibold pb-1 mb-3"
+                                                        style="border-bottom: 2px solid #91d20a; display: inline-block;">
+                                                        Book Inspection
+                                                    </h5>
                                                     <div class="category-property">
                                                         <form>
                                                             <div class="form-group mb-3">
-                                                              <label>Full Name</label>
-                                                              <input type="text" class="form-control" required>
+                                                                <label>Full Name</label>
+                                                                <input type="text" class="form-control" required>
                                                             </div>
                                                             <div class="form-group mb-3">
-                                                              <label>Email Address</label>
-                                                              <input type="email" class="form-control" required>
+                                                                <label>Email Address</label>
+                                                                <input type="email" class="form-control" required>
                                                             </div>
                                                             <div class="form-group mb-3">
-                                                              <label>Phone Number</label>
-                                                              <input type="tel" class="form-control" required>
+                                                                <label>Phone Number</label>
+                                                                <input type="tel" class="form-control" required>
                                                             </div>
                                                             <div class="form-group mb-3">
-                                                              <label>Preferred Date</label>
-                                                              <input type="date" class="form-control" required>
+                                                                <label>Preferred Date</label>
+                                                                <input type="date" class="form-control" required>
                                                             </div>
                                                             <div class="form-group mb-3">
-                                                              <label>Preferred Time</label>
-                                                              <input type="time" class="form-control" required>
+                                                                <label>Preferred Time</label>
+                                                                <input type="time" class="form-control" required>
                                                             </div>
                                                             <div class="form-group mb-3">
-                                                              <label>Message</label>
-                                                              <textarea class="form-control" rows="3"></textarea>
+                                                                <label>Message</label>
+                                                                <textarea class="form-control" rows="3"></textarea>
                                                             </div>
-                                                            <button type="submit" class="btn btn-gradient color-2 btn-block btn-pill">Submit</button>
-                                                          </form>
+                                                            <button type="submit"
+                                                                class="btn btn-gradient color-2 btn-block btn-pill">Submit</button>
+                                                        </form>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="gallery-for">
+                                        <model-viewer src="{{ asset("realtor/assets/images/3d-images/house.glb") }}" alt="3D model" auto-rotate
+                                            camera-controls ar style="width: 100%; height: 500px;">
+                                        </model-viewer>
+                                        {{-- <div class="gallery-for">
                                             <div>
                                                 <div class="bg-size">
-                                                    <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/4.jpg" class="bg-img" alt="">
+                                                    <img src="{{ asset('client/assets/images/property/2.jpg') }}"
+                                                        class="bg-img" alt="">
                                                 </div>
                                             </div>
                                             <div>
                                                 <div class="bg-size">
-                                                    <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/3.jpg" class="bg-img" alt="">
+                                                    <img src="{{ asset('client/assets/images/property/3.jpg') }}"
+                                                        class="bg-img" alt="">
                                                 </div>
                                             </div>
                                             <div>
                                                 <div class="bg-size">
-                                                    <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/14.jpg" class="bg-img" alt="">
+                                                    <img src="{{ asset('client/assets/images/property/16.jpg') }}"
+                                                        class="bg-img" alt="">
                                                 </div>
                                             </div>
                                             <div>
                                                 <div class="bg-size">
-                                                    <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/11.jpg" class="bg-img" alt="">
+                                                    <img src="{{ asset('client/assets/images/property/7.jpg') }}"
+                                                        class="bg-img" alt="">
                                                 </div>
                                             </div>
                                             <div>
                                                 <div class="bg-size">
-                                                    <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/12.jpg" class="bg-img" alt="">
+                                                    <img src="{{ asset('client/assets/images/property/8.jpg') }}"
+                                                        class="bg-img" alt="">
                                                 </div>
                                             </div>
                                             <div>
                                                 <div class="bg-size">
-                                                    <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/4.jpg" class="bg-img" alt="">
+                                                    <img src="{{ asset('client/assets/images/property/24.jpg') }}"
+                                                        class="bg-img" alt="">
                                                 </div>
                                             </div>
                                             <div>
                                                 <div class="bg-size">
-                                                    <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/3.jpg" class="bg-img" alt="">
+                                                    <img src="{{ asset('client/assets/images/property/3.jpg') }}"
+                                                        class="bg-img" alt="">
                                                 </div>
                                             </div>
                                             <div>
                                                 <div class="bg-size">
-                                                    <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/11.jpg" class="bg-img" alt="">
+                                                    <img src="{{ asset('client/assets/images/property/25.jpg') }}"
+                                                        class="bg-img" alt="">
                                                 </div>
                                             </div>
                                             <div>
                                                 <div class="bg-size">
-                                                    <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/12.jpg" class="bg-img" alt="">
+                                                    <img src="{{ asset('client/assets/images/property/1.jpg') }}"
+                                                        class="bg-img" alt="">
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="gallery-nav">
+                                        </div> --}}
+                                        {{-- <div class="gallery-nav">
                                             <div>
-                                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/4.jpg" class="img-fluid" alt="">
+                                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/4.jpg"
+                                                    class="img-fluid" alt="">
                                             </div>
                                             <div>
-                                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/3.jpg" class="img-fluid" alt="">
+                                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/3.jpg"
+                                                    class="img-fluid" alt="">
                                             </div>
                                             <div>
-                                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/14.jpg" class="img-fluid" alt="">
+                                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/14.jpg"
+                                                    class="img-fluid" alt="">
                                             </div>
                                             <div>
-                                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/11.jpg" class="img-fluid" alt="">
+                                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/11.jpg"
+                                                    class="img-fluid" alt="">
                                             </div>
                                             <div>
-                                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/12.jpg" class="img-fluid" alt="">
+                                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/12.jpg"
+                                                    class="img-fluid" alt="">
                                             </div>
                                             <div>
-                                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/4.jpg" class="img-fluid" alt="">
+                                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/4.jpg"
+                                                    class="img-fluid" alt="">
                                             </div>
                                             <div>
-                                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/3.jpg" class="img-fluid" alt="">
+                                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/3.jpg"
+                                                    class="img-fluid" alt="">
                                             </div>
                                             <div>
-                                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/11.jpg" class="img-fluid" alt="">
+                                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/11.jpg"
+                                                    class="img-fluid" alt="">
                                             </div>
                                             <div>
-                                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/12.jpg" class="img-fluid" alt="">
+                                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/12.jpg"
+                                                    class="img-fluid" alt="">
                                             </div>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                             </div>
 
                             <div class="d-block d-lg-none mb-3">
-                                <button class="btn btn-gradient color-2 btn-pill btn-block" data-bs-toggle="modal" data-bs-target="#scheduleModal">
+                                <button class="btn btn-gradient color-2 btn-pill btn-block" data-bs-toggle="modal"
+                                    data-bs-target="#scheduleModal">
                                     Book Inspection
                                 </button>
                             </div>
@@ -296,9 +344,11 @@
                                             href="#about">about</a></li>
                                     <li class="nav-item"><a data-bs-toggle="tab" class="nav-link"
                                             href="#feature">feature</a></li>
-                                    <li class="nav-item"><a data-bs-toggle="tab" class="nav-link" href="#video">video</a>
+                                    <li class="nav-item"><a data-bs-toggle="tab" class="nav-link"
+                                            href="#video">video</a>
                                     </li>
-                                    <li class="nav-item"><a data-bs-toggle="tab" class="nav-link" href="#floor_plan">Floor
+                                    <li class="nav-item"><a data-bs-toggle="tab" class="nav-link"
+                                            href="#floor_plan">Floor
                                             plan</a></li>
                                     <li class="nav-item"><a data-bs-toggle="tab" class="nav-link"
                                             href="#location-map">location</a></li>
@@ -335,19 +385,25 @@
                                             </div>
                                         </div>
                                         <h4 class="content-title mt-4">Attachments</h4>
-                                        <a href="javascript:void(0)" class="attach-file"><i class="far fa-file-pdf"></i>Demo Property
+                                        <a href="javascript:void(0)" class="attach-file"><i
+                                                class="far fa-file-pdf"></i>Demo Property
                                             Document </a>
                                         <h4 class="mt-4">Property Brief</h4>
                                         <div class="row">
                                             <div class="col-sm-4">
-                                                <p class="font-roboto">Residences can be classified by and how they are connected residences and land. Different types 
+                                                <p class="font-roboto">Residences can be classified by and how they are
+                                                    connected residences and land. Different types
                                                     of housing tenure can be used for the same physical type.</p>
                                             </div>
                                             <div class="col-sm-4">
-                                                <p class="font-roboto">Connected residences owned by a single entity leased out, or owned separately with an agreement covering the relationship between units and common areas.</p>
+                                                <p class="font-roboto">Connected residences owned by a single entity
+                                                    leased out, or owned separately with an agreement covering the
+                                                    relationship between units and common areas.</p>
                                             </div>
                                             <div class="col-sm-4">
-                                                <p class="font-roboto">Residential real estate may contain either a single family or multifamily structure that is available for occupation or 
+                                                <p class="font-roboto">Residential real estate may contain either a
+                                                    single family or multifamily structure that is available for
+                                                    occupation or
                                                     for non-business purposes.</p>
                                             </div>
                                         </div>
@@ -409,7 +465,8 @@
                                         <h4 class="content-title">video</h4>
                                         <div class="play-bg-image">
                                             <div class="bg-size">
-                                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/11.jpg" class="bg-img" alt="">
+                                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/11.jpg"
+                                                    class="bg-img" alt="">
                                             </div>
                                             <div class="icon-video">
                                                 <a href="javascript:void(0)" data-bs-toggle="modal"
@@ -421,17 +478,18 @@
                                     </div>
                                     <div class="tab-pane fade page-section" id="floor_plan">
                                         <h4 class="content-title">Floor plan</h4>
-                                        <img src="https://themes.pixelstrap.com/sheltos/assets/images/single-property/floor-plan.png" alt=""
-                                            class="img-fluid">
+                                        <img src="{{ asset('client/assets/images/property/floor-plan.png') }}"
+                                            alt="" class="img-fluid">
                                     </div>
                                     <div class="tab-pane fade page-section" id="location-map">
                                         <h4 class="content-title">location</h4>
-                                        <iframe title="realestate location" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.1583091352!2d-74.11976373946229!3d40.69766374859258!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew+York%2C+NY%2C+USA!5e0!3m2!1sen!2sin!4v1563449626439!5m2!1sen!2sin"
+                                        <iframe title="realestate location"
+                                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.1583091352!2d-74.11976373946229!3d40.69766374859258!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew+York%2C+NY%2C+USA!5e0!3m2!1sen!2sin!4v1563449626439!5m2!1sen!2sin"
                                             allowfullscreen></iframe>
                                     </div>
                                 </div>
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -440,21 +498,25 @@
                         <div class="filter-cards">
                             <div class="advance-card text-center p-4 bg-white shadow rounded">
                                 <h4 class="fw-bold mb-3">Meet Your Realtor</h4>
-                            
+
                                 <div class="agent-info mb-3">
                                     <div class="media flex-column align-items-center">
-                                        <img src="{{ asset('client/assets/images/testimonial/3.png') }}" class="img-50 rounded-circle mb-2" alt="Realtor Photo">
+                                        <img src="{{ asset('client/assets/images/testimonial/3.png') }}"
+                                            class="img-50 rounded-circle mb-2" alt="Realtor Photo">
                                         <div class="media-body text-center">
                                             <h5 class="fw-semibold">Grace Astet</h5>
                                             <p class="text-secondary small mb-0">Senior Property Advisor, Hubolux</p>
                                         </div>
                                     </div>
                                 </div>
-                            
+
                                 <p class="text-muted small">
-                                    Grace is a highly experienced property advisor with a deep understanding of the Lagos luxury real estate market. She is dedicated to providing personalized service and ensuring her clients find properties that perfectly match their lifestyle and investment goals.
+                                    Grace is a highly experienced property advisor with a deep understanding of the
+                                    Lagos luxury real estate market. She is dedicated to providing personalized service
+                                    and ensuring her clients find properties that perfectly match their lifestyle and
+                                    investment goals.
                                 </p>
-                            
+
                                 <ul class="list-unstyled my-3 small">
                                     <li class="mb-2">
                                         <i data-feather="phone-call" class="me-2"></i> +2348123456789
@@ -463,16 +525,17 @@
                                         <i data-feather="mail" class="me-2"></i>graceastet@gmail.com
                                     </li>
                                 </ul>
-                            
-                                <a href="https://wa.me/2348123456789" class="btn w-100 text-white" style="background-color: #78c705;">
+
+                                <a href="https://wa.me/2348123456789" class="btn w-100 text-white"
+                                    style="background-color: #78c705;">
                                     <i class="fab fa-whatsapp me-2"></i> Chat On WhatsApp
                                 </a>
                             </div>
-                    </div>
+                        </div>
 
+                    </div>
                 </div>
             </div>
-        </div>
     </section>
     <!-- single property end -->
 
@@ -650,48 +713,49 @@
     <!-- customizer end -->
 
     <!-- Modal for mobile booking -->
-<div class="modal fade" id="scheduleModal" tabindex="-1" aria-labelledby="scheduleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content p-3">
-        <div class="modal-header">
-          <h5 class="modal-title" id="scheduleModalLabel">Book Inspection</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
+    <div class="modal fade" id="scheduleModal" tabindex="-1" aria-labelledby="scheduleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content p-3">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="scheduleModalLabel">Book Inspection</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Your schedule tour form -->
+                    <form>
+                        <div class="form-group mb-3">
+                            <label>Full Name</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label>Email Address</label>
+                            <input type="email" class="form-control" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label>Phone Number</label>
+                            <input type="tel" class="form-control" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label>Preferred Date</label>
+                            <input type="date" class="form-control" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label>Preferred Time</label>
+                            <input type="time" class="form-control" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label>Message</label>
+                            <textarea class="form-control" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-gradient color-2 btn-block btn-pill">Submit</button>
+                    </form>
+                </div>
+            </div>
         </div>
-        <div class="modal-body">
-          <!-- Your schedule tour form -->
-          <form>
-            <div class="form-group mb-3">
-              <label>Full Name</label>
-              <input type="text" class="form-control" required>
-            </div>
-            <div class="form-group mb-3">
-              <label>Email Address</label>
-              <input type="email" class="form-control" required>
-            </div>
-            <div class="form-group mb-3">
-              <label>Phone Number</label>
-              <input type="tel" class="form-control" required>
-            </div>
-            <div class="form-group mb-3">
-              <label>Preferred Date</label>
-              <input type="date" class="form-control" required>
-            </div>
-            <div class="form-group mb-3">
-              <label>Preferred Time</label>
-              <input type="time" class="form-control" required>
-            </div>
-            <div class="form-group mb-3">
-              <label>Message</label>
-              <textarea class="form-control" rows="3"></textarea>
-            </div>
-            <button type="submit" class="btn btn-gradient color-2 btn-block btn-pill">Submit</button>
-          </form>
-        </div>
-      </div>
     </div>
-  </div>
 
     <!-- latest jquery-->
     <script src="{{ asset('client/assets/js/jquery-3.6.0.min.js') }}"></script>
@@ -733,4 +797,5 @@
     <script src="{{ asset('realtor/assets/js/color/single-property.js') }}"></script>
 
 </body>
+
 </html>

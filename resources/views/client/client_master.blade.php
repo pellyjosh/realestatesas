@@ -103,7 +103,8 @@
     <div class="loader-wrapper">
         <div class="row loader-text">
             <div class="col-12">
-                <img src="{{ asset('client/assets/images/loader/loader.gif') }}" class="img-fluid" alt="">
+                <img src="{{ asset("client/assets/images/loader/gear.gif") }}" class="img-fluid"
+                    alt="">
             </div>
             <div class="col-12">
                 <div>

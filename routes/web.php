@@ -167,7 +167,7 @@ Route::prefix('realtor')->group(function () {
     })->name('realtor.profile');
 
     Route::controller(LandingPageController::class)->group(function () {
-        Route::get('/landing-page', 'index')->name('realtor.landing-page');
+        Route::get('/landing-page-list', 'index')->name('realtor.landing-page-list');
         // Route::get('/landing-page/create', 'create')->name('realtor.create-landing-page');
         // Route::get('/landing-page/edit', 'edit')->name('realtor.edit-landing-page');
         

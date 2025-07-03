@@ -10,6 +10,7 @@
     <meta name="author" content="Premium Refined Luxury Homes">
     <link rel="icon" href="{{ asset('client/assets/images/logo.png') }}" type="image/x-icon" />
     <title>@yield('title', 'Premim Refined Admin page')</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.3.2/css/dataTables.dataTables.css" />
 
     <!--Google font-->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,500,500i,600,600i,700,700i,800,800i"
@@ -33,10 +34,15 @@
 
     <!-- Loader start -->
     <div class="loader-wrapper">
-        <div class="row loader-img">
+        <div class="row loader-text">
             <div class="col-12">
-                <img src="https://themes.pixelstrap.com/sheltos/assets/images/loader/loader-2.gif" class="img-fluid"
+                <img src="{{ asset("client/assets/images/loader/gear.gif") }}" class="img-fluid"
                     alt="">
+            </div>
+            <div class="col-12">
+                <div>
+                    <h3 class="mb-0">Please wait portal loading...</h3>
+                </div>
             </div>
         </div>
     </div>
@@ -298,8 +304,7 @@
                         <ul class="profile-dropdown onhover-show-div">
                             <li><a href="{{ route('user-profile') }}"><span>Account </span><i
                                         data-feather="user"></i></a></li>
-                            <li><a href="{{ route('admin.listing') }}"><span>Listing</span><i
-                                        data-feather="file-text"></i></a></li>
+                           
                             <li><a href="{{ route('admin.login') }}"><span>Log in</span><i
                                         data-feather="log-in"></i></a></li>
                         </ul>
@@ -420,7 +425,7 @@
                             <li class="sidebar-item">
                                 <a href="javascript:void(0)" class="sidebar-link">
                                     <i data-feather="user-plus"></i>
-                                    <span>Agents</span>
+                                    <span>Realtors</span>
                                 </a>
                                 <ul class="nav-submenu menu-content">
                                     <li>
@@ -432,25 +437,25 @@
                                     <li>
                                         <a href="{{ route('add-agent') }}">
                                             <i data-feather="chevrons-right"></i>
-                                            Add agent
+                                            Add Realtor
                                         </a>
                                     </li>
                                     <li>
                                         <a href="{{ route('add-agent-wizard') }}">
                                             <i data-feather="chevrons-right"></i>
-                                            Add agent wizard <span class="label label-shadow ms-1">new</span>
+                                            Add Realtor wizard <span class="label label-shadow ms-1">new</span>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="{{ route('edit-agent') }}">
                                             <i data-feather="chevrons-right"></i>
-                                            Edit agent
+                                            Edit Realtor
                                         </a>
                                     </li>
                                     <li>
                                         <a href="{{ route('all-agents') }}">
                                             <i data-feather="chevrons-right"></i>
-                                            All agents
+                                            All Realtors
                                         </a>
                                     </li>
                                     <li>
@@ -511,7 +516,7 @@
                                     <span>Payments</span>
                                 </a>
                             </li>
-                            <li class="sidebar-item">
+                            {{-- <li class="sidebar-item">
                                 <a href="javascript:void(0)" class="sidebar-link">
                                     <i data-feather="unlock"></i>
                                     <span>Authentication</span>
@@ -536,7 +541,7 @@
                                         </a>
                                     </li>
                                 </ul>
-                            </li>
+                            </li> --}}
                         </ul>
                     </div>
                 </div>
@@ -637,6 +642,13 @@
     <script src="{{ asset('client/assets/js/feather-icon/feather.min.js') }}"></script>
     <script src="{{ asset('client/assets/js/feather-icon/feather-icon.js') }}"></script>
 
+     <!-- slick js -->
+     <script src="{{ asset("admin/assets/js/slick.js") }}"></script>
+
+      <!-- chartist chart js-->
+    <script src="{{ asset("admin/assets/js/chart/chartist/chartist.js") }}"></script>
+    <script src="{{ asset("admin/assets/js/chart/chartist/chartist-plugin-tooltip.js") }}"></script>
+
     <!-- sidebar js -->
     <script src="{{ asset('admin/assets/js/sidebar.js') }}"></script>
 
@@ -644,6 +656,7 @@
     <script src="{{ asset('admin/assets/js/chart/apex-chart/apex-chart.js') }}"></script>
     <script src="{{ asset('admin/assets/js/chart/apex-chart/stock-prices.js') }}"></script>
     <script src="{{ asset('admin/assets/js/admin-dashboard.js') }}"></script>
+    <script src="{{ asset("admin/assets/js/user-profile.js") }}"></script>
 
       <!-- vector map js-->
       <script src="{{ asset('admin/assets/js/vector-map/jquery-jvectormap-2.0.2.min.js') }}"></script>

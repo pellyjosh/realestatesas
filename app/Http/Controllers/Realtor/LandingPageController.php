@@ -16,14 +16,4 @@ class LandingPageController extends Controller
     {
         return view('realtor.pages.landing.landing-page');
     }
-
-    // public function create()
-    // {
-    //     return view('realtor.pages.landing.create-landing-page');
-    // }
-
-    // public function edit()
-    // {
-    //     return view('realtor.pages.landing.edit-landing-page');
-    // }
 }
