@@ -23,7 +23,7 @@
     Chartist.plugins.tooltip = function (options) {
         options = Chartist.extend({}, defaultOptions, options);
 
-        return function tooltip(chart) {
+        return function     (chart) {
             var tooltipSelector = options.pointClass;
             if (chart.constructor.name == Chartist.Bar.prototype.constructor.name) {
                 tooltipSelector = 'ct-bar';

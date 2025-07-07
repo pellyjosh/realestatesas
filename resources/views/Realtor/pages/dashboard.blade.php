@@ -1,6 +1,12 @@
 @extends('realtor.realtor_master')
 @section('title', 'Dashboard | Premium Refined Luxury Homes')
 @section('content')
+<style>
+    /* This will remove the shadow from the "Withdraw" button */
+    .all-properties .btn-solid::after {
+        box-shadow: none !important;
+    }
+</style>
 
     <!-- Container-fluid start -->
     <div class="container-fluid">
@@ -16,14 +22,7 @@
                 <div class="col-sm-6">
 
                     <!-- Breadcrumb start -->
-                    <ol class="breadcrumb pull-right">
-                        <li class="breadcrumb-item">
-                            <a href="index.html">
-                                <i class="fa fa-home"></i>
-                            </a>
-                        </li>
-                        <li class="breadcrumb-item active">Dashboard</li>
-                    </ol>
+                    
                     <!-- Breadcrumb end -->
 
                 </div>
@@ -40,41 +39,40 @@
                     <div class="large-6 col-lg-12 col-md-6">
                         <div class="card all-properties">
                             <div class="card-body">
-                                <div class="media">
+                                <div class="media align-items-center">
                                     <img src="{{ asset('admin/assets/images/svg/icon/1.svg') }}" alt="">
                                     <div class="media-body">
                                         <h4 class="mb-0">45</h4>
-                                        <h6 class="light-font">Properties</h6>
+                                        <h6 class="light-font mb-0">Referrals</h6>
                                     </div>
-                                    <a href="{{ route("realtor.landing-page-list") }}" class="arrow-animated">
-                                        See all properties
-                                        <i data-feather="chevron-right"></i>
-                                    </a>
+                                    <div class="d-flex flex-column align-items-end">
+                                        <a href="{{ route("realtor.landing-page-list") }}" class="arrow-animated">
+                                            See all referrals
+                                            <i data-feather="chevron-right"></i>
+                                        </a>
+                                        <button class="btn btn-solid btn-sm mt-2">Withdraw</button>
+                                    </div>
                                 </div>
-                                <ul class="light-box">
-                                    <li>
-                                        <img src="{{ asset('admin/assets/images/svg/icon/sold.png') }}" class="img-fluid"
-                                            alt="">
+                                <ul class="light-box d-flex flex-column gap-3 p-0 m-0" style="list-style: none;">
+                                    <li class="d-flex align-items-center gap-3 p-2 rounded shadow-sm" style="background: #f8f9fa;">
+                                        <img src="{{ asset('admin/assets/images/svg/icon/sold.png') }}" class="img-fluid" alt="" style="width: 40px; height: 40px;">
                                         <div>
-                                            <h5>1500</h5>
-                                            <span class="light-font">Sale</span>
+                                            <h5 class="mb-1">1500</h5>
+                                            <span class="light-font">Total balance</span>
                                         </div>
                                     </li>
-                                    <li>
-                                        <img src="{{ asset('admin/assets/images/svg/icon/rent.png') }}" class="img-fluid"
-                                            alt="">
+                                    <li class="d-flex align-items-center gap-3 p-2 rounded shadow-sm" style="background: #f8f9fa;">
+                                        <img src="{{ asset('admin/assets/images/svg/icon/rent.png') }}" class="img-fluid" alt="" style="width: 40px; height: 40px;">
                                         <div>
-                                            <h5>380</h5>
-                                            <span class="light-font">Rented</span>
+                                            <h5 class="mb-1">380</h5>
+                                            <span class="light-font">Referral Commission</span>
                                         </div>
                                     </li>
-                                    <li>
-                                        <img src="{{ asset('admin/assets/images/svg/icon/unlisted.png') }}"
-                                            class="img-fluid" alt="">
+                                    <li class="d-flex align-items-center gap-3 p-2 rounded shadow-sm" style="background: #f8f9fa;">
+                                        <img src="{{ asset('admin/assets/images/svg/icon/unlisted.png') }}" class="img-fluid" alt="" style="width: 40px; height: 40px;">
                                         <div>
-                                            <h5>240</h5>
-                                            <span class="light-font">Unlisted</span>
-
+                                            <h5 class="mb-1">240</h5>
+                                            <span class="light-font">Sales Commission</span>
                                         </div>
                                     </li>
                                 </ul>
@@ -169,88 +167,13 @@
                 </div>
             </div>
             <div class="col-xl-3 xl-6 col-md-6 project-widgets">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="media">
-                            <div class="widget-icon bg-primary-light">
-                                <i class="fab fa-foursquare"></i>
-                            </div>
-                            <div class="media-body">
-                                <span>
-                                    Completed
-                                    <span class="font-success">
-                                        + 20%
-                                        <i data-feather="trending-up"></i>
-                                    </span>
-                                </span>
-                                <h4>Total projects</h4>
-                                <span class="status-history">New users</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
             <div class="col-xl-3 xl-6 col-md-6 project-widgets">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="media">
-                            <div class="widget-icon bg-warning-light">
-                                <i class="fab fa-behance"></i>
-                            </div>
-                            <div class="media-body">
-                                <span>
-                                    Completed
-                                    <span class="font-success">
-                                        + 15%
-                                        <i data-feather="trending-up"></i>
-                                    </span>
-                                </span>
-                                <h4>Behance project</h4>
-                                <span class="status-history">Users</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
             <div class="col-xl-3 xl-6 col-md-6 project-widgets">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="media">
-                            <div class="widget-icon bg-success-light">
-                                <i class="fab fa-angellist"></i>
-                            </div>
-                            <div class="media-body">
-                                <span>
-                                    <span class="font-success">
-                                        Coming soon
-                                    </span>
-                                </span>
-                                <h4>10,000</h4>
-                                <span class="status-history">Agents</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
             <div class="col-xl-3 xl-6 col-md-6 project-widgets">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="media">
-                            <i class="fab fa-cloudscale"></i>
-                            <div class="media-body">
-                                <span>
-                                    Monthly
-                                    <span class="font-success">
-                                        + 10%
-                                        <i data-feather="trending-up"></i>
-                                    </span>
-                                </span>
-                                <h4>36,000</h4>
-                                <span class="status-history"> New project</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
             <div class="col-lg-6">
                 <div class="card">

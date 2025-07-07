@@ -29,6 +29,15 @@
 
     <!-- DataTables CSS -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+
+    <style>
+        .active{
+            background-color: rgba(145, 210, 10, 0.1) !important;
+            color: #91d20a !important;
+            border-left: 3px solid #91d20a !important; 
+            font-weight: 600 !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -37,8 +46,7 @@
     <div class="loader-wrapper">
         <div class="row loader-text">
             <div class="col-12">
-                <img src="{{ asset("client/assets/images/loader/gear.gif") }}" class="img-fluid"
-                    alt="">
+                <img src="{{ asset('client/assets/images/loader/gear.gif') }}" class="img-fluid" alt="">
             </div>
             <div class="col-12">
                 <div>
@@ -312,10 +320,9 @@
                 </ul>
             </div>
         </div>
-
         <!-- page header end -->
-        <div class="page-body-wrapper">
 
+        <div class="page-body-wrapper">
             <!-- page sidebar start -->
             <div class="page-sidebar">
                 <div class="logo-wrap">
@@ -344,77 +351,59 @@
                             </div>
                         </div>
                     </div>
+
+                    {{-- Main sidebar start --}}
                     <div id="mainsidebar">
                         <ul class="sidebar-menu custom-scrollbar">
-                            <li class="sidebar-item">
+                            <li class="sidebar-item {{ request()->is('realtor/dashboard*') ? 'active' : '' }}">
                                 <a href="{{ route('realtor.dashboard') }}" class="sidebar-link only-link">
                                     <i data-feather="airplay"></i>
-                                    <span>Dashboard</span>
+                                    <span class="">Dashboard</span>
                                 </a>
                             </li>
-                            <li class="sidebar-item">
+                            <li class="sidebar-item {{ request()->is('realtor/profile*') ? 'active' : '' }}">
                                 <a href="{{ route('realtor.profile') }}" class="sidebar-link only-link">
                                     <i data-feather="user"></i>
                                     <span>Profile</span>
                                 </a>
                             </li>
-                            <li class="sidebar-item">
+                            <li class="sidebar-item {{ request()->is('realtor/landing-page*') ? 'active' : '' }}">
                                 <a href="{{ route('realtor.landing-page-list') }}" class="sidebar-link only-link">
                                     <i data-feather="user"></i>
                                     <span>Landing Page</span>
                                 </a>
                             </li>
 
-                            <li class="sidebar-item">
+                            <li class="sidebar-item {{ request()->is('realtor/reports*') ? 'active' : '' }}">
                                 <a href="{{ route('realtor.reports') }}" class="sidebar-link only-link">
                                     <i data-feather="bar-chart-2"></i>
                                     <span>Reports</span>
                                 </a>
                             </li>
-                            <li class="sidebar-item">
-                                <a href="{{ route('realtor.reports') }}" class="sidebar-link only-link">
+                            <li class="sidebar-item {{ request()->is('realtor/referrals*') ? 'active' : '' }}">
+                                <a href="{{ route('realtor.referrals') }}" class="sidebar-link only-link">
                                     <i data-feather="users"></i>
-                                    <span>Refferals</span>
+                                    <span>Referals</span>
                                 </a>
                             </li>
-                            <li class="sidebar-item">
-                                <a href="{{ route('realtor.reports') }}" class="sidebar-link only-link">
+                            <li class="sidebar-item {{ request()->is('realtor/referrals*') ? 'active' : '' }}">
+                                <a href="{{ route('realtor.events') }}" class="sidebar-link only-link">
+                                    <i data-feather="calendar"></i>
+                                    <span>Events</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item {{ request()->is('realtor/earnings*') ? 'active' : '' }}">
+                                <a href="{{ route('realtor.earnings') }}" class="sidebar-link only-link">
                                     <i data-feather="dollar-sign"></i>
                                     <span>Earnings</span>
                                 </a>
                             </li>
-                            <li class="sidebar-item">
+                            <li class="sidebar-item {{ request()->is('realtor/payments*') ? 'active' : '' }}">
                                 <a href="{{ route('realtor.payments') }}" class="sidebar-link only-link">
                                     <i data-feather="credit-card"></i>
                                     <span>Payments</span>
                                 </a>
                             </li>
-                            {{-- <li class="sidebar-item">
-                                <a href="javascript:void(0)" class="sidebar-link">
-                                    <i data-feather="unlock"></i>
-                                    <span>Authentication</span>
-                                </a>
-                                <ul class="nav-submenu menu-content">
-                                    <li>
-                                        <a href="{{ route('realtor.login') }}">
-                                            <i data-feather="chevrons-right"></i>
-                                            Log in
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('realtor.signup') }}">
-                                            <i data-feather="chevrons-right"></i>
-                                            sign up
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('realtor.not-found') }}">
-                                            <i data-feather="chevrons-right"></i>
-                                            404
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li> --}}
                         </ul>
                     </div>
                 </div>
@@ -513,11 +502,11 @@
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 
     <!-- Initialize the DataTable -->
-    <script>
-        $(document).ready(function() {
-            $('#myTable').DataTable();
-        });
-    </script>
+        <script>
+            $(document).ready(function() {
+                $('#myTable').DataTable();
+            });
+        </script>
 
     <!-- Bootstrap js-->
     <script src="{{ asset('admin/assets/js/bootstrap.bundle.min.js') }}"></script>
@@ -529,16 +518,21 @@
     <!-- sidebar js -->
     <script src="{{ asset('admin/assets/js/sidebar.js') }}"></script>
 
-    <script src="{{ asset("realtor/assets/js/chart/chartist.js") }}"></script>
-    <script src="{{ asset("realtor/assets/js/chart/chartist-plugin-tooltip.js") }}"></script>
+    <script src="{{ asset('realtor/assets/js/chart/chartist.js') }}"></script>
+    <script src="{{ asset('realtor/assets/js/chart/chartist-plugin-tooltip.js') }}"></script>
 
-     <!-- apex chart js-->
-     <script src="{{ asset("realtor/assets/js/chart/apex-chart.js") }}"></script>
-     <script src="r{{ asset("realtor/assets/js/chart/stock-prices.js") }}"></script>
-     <script src="{{ asset("realtor/assets/js/user-profile.js") }}"></script>
-     <script src="{{ asset("realtor/assets/js/admin-dashboard.js") }}"></script>
+    <!-- apex chart js-->
+    <script src="{{ asset('realtor/assets/js/chart/apex-chart.js') }}"></script>
+    <script src="r{{ asset('realtor/assets/js/chart/stock-prices.js') }}"></script>     
+    <script src="{{ asset('realtor/assets/js/user-profile.js') }}"></script>
+    <script src="{{ asset('realtor/assets/js/admin-dashboard.js') }}"></script>
+
+     <!-- vector map js-->
+    <script src="{{ asset('realtor/assets/js/vector-map/jquery-jvectormap-2.0.2.min.js') }}"></script>
+    <script src="{{ asset('realtor/assets/js/vector-map/jquery-jvectormap-asia-mill.js') }}"></script>
 
     <!--admin js -->
+    <script src="{{ asset("realtor/assets/js/report.js") }}"></script>
     <script src="{{ asset('admin/assets/js/admin-script.js') }}"></script>
 
     <!-- Customizer js-->
@@ -548,6 +542,10 @@
     <script src="{{ asset('admin/assets/js/color/custom-colorpicker.js') }}"></script>
 
     <script src="https://unpkg.com/feather-icons"></script>
+
+    <script src="{{ asset('realtor/assets/js/checker.js') }}"><script>
+
+    @stack('scripts')
 
 
 </body>

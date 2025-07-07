@@ -25,8 +25,16 @@
     <!-- Template css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('admin/assets/css/admin.css') }}">
 
+    <!-- magnific css -->
+    <link rel="stylesheet" type="text/css" href="{{ asset("admin/assets/css/magnific-popup.css") }}">
+
     <!-- Font Awesome 6 Free CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <!-- Property Slider CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('admin/assets/css/property-slider.css') }}">
 
 </head>
 
@@ -305,7 +313,7 @@
                             <li><a href="{{ route('user-profile') }}"><span>Account </span><i
                                         data-feather="user"></i></a></li>
                            
-                            <li><a href="{{ route('admin.login') }}"><span>Log in</span><i
+                            <li><a href="{{ route("admin.login") }}"><span>Log Out</span><i
                                         data-feather="log-in"></i></a></li>
                         </ul>
                     </li>
@@ -390,12 +398,12 @@
                                     <span>Manage users</span>
                                 </a>
                                 <ul class="nav-submenu menu-content">
-                                    <li>
+                                    {{-- <li>
                                         <a href="{{ route('user-profile') }}">
                                             <i data-feather="chevrons-right"></i>
                                             Profile
                                         </a>
-                                    </li>
+                                    </li> --}}
                                     <li>
                                         <a href="{{ route('admin.add-user') }}">
                                             <i data-feather="chevrons-right"></i>
@@ -425,41 +433,41 @@
                             <li class="sidebar-item">
                                 <a href="javascript:void(0)" class="sidebar-link">
                                     <i data-feather="user-plus"></i>
-                                    <span>Realtors</span>
+                                    <span>Manage Admins</span>
                                 </a>
                                 <ul class="nav-submenu menu-content">
-                                    <li>
-                                        <a href="{{ route('agent-profile') }}">
+                                    {{-- <li>
+                                        <a href="{{ route('admin.realtor-profile') }}">
                                             <i data-feather="chevrons-right"></i>
                                             Profile
                                         </a>
-                                    </li>
+                                    </li> --}}
                                     <li>
-                                        <a href="{{ route('add-agent') }}">
+                                        <a href="{{ route('add-admin') }}">
                                             <i data-feather="chevrons-right"></i>
-                                            Add Realtor
+                                            Add Admin
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('add-agent-wizard') }}">
+                                        <a href="{{ route('add-admin-wizard') }}">
                                             <i data-feather="chevrons-right"></i>
-                                            Add Realtor wizard <span class="label label-shadow ms-1">new</span>
+                                            Add Admin wizard <span class="label label-shadow ms-1">new</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('edit-agent') }}">
+                                        <a href="{{ route('edit-admin') }}">
                                             <i data-feather="chevrons-right"></i>
-                                            Edit Realtor
+                                            Edit Admin
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('all-agents') }}">
+                                        <a href="{{ route('all-admins') }}">
                                             <i data-feather="chevrons-right"></i>
-                                            All Realtors
+                                            All Admins
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('agent-invoice') }}">
+                                        <a href="{{ route('admin-invoice') }}">
                                             <i data-feather="chevrons-right"></i>
                                             Invoice
                                         </a>
@@ -467,9 +475,53 @@
                                 </ul>
                             </li>
                             <li class="sidebar-item">
-                                <a href="{{ route('admin.map') }}" class="sidebar-link only-link">
-                                    <i data-feather="map-pin"></i>
-                                    <span>Map</span>
+                                <a href="javascript:void(0)" class="sidebar-link">
+                                    <i data-feather="user-plus"></i>
+                                    <span>Manage Realtors</span>
+                                </a>
+                                <ul class="nav-submenu menu-content">
+                                    {{-- <li>
+                                        <a href="{{ route('admin.realtor-profile') }}">
+                                            <i data-feather="chevrons-right"></i>
+                                            Profile
+                                        </a>
+                                    </li> --}}
+                                    <li>
+                                        <a href="{{ route('add-realtor') }}">
+                                            <i data-feather="chevrons-right"></i>
+                                            Add Realtor
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('add-realtor-wizard') }}">
+                                            <i data-feather="chevrons-right"></i>
+                                            Add Realtor wizard <span class="label label-shadow ms-1">new</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('edit-realtor') }}">
+                                            <i data-feather="chevrons-right"></i>
+                                            Edit Realtor
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('all-realtors') }}">
+                                            <i data-feather="chevrons-right"></i>
+                                            All Realtors
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('realtor-invoice') }}">
+                                            <i data-feather="chevrons-right"></i>
+                                            Invoice
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="{{ route('admin.events') }}" class="sidebar-link only-link">
+                                    <i data-feather="calendar"></i>
+                                    <span>Events</span>
                                 </a>
                             </li>
                             <li class="sidebar-item">
@@ -511,37 +563,22 @@
                                 </a>
                             </li>
                             <li class="sidebar-item">
+                                <a href="{{ route('admin.transactions') }}" class="sidebar-link only-link">
+                                    <i class="fas fa-atm"></i>
+                                    <span>Transactions</span>
+                                </a>
+                            <li class="sidebar-item">
+                                <a href="{{ route('admin.withdrawal') }}" class="sidebar-link only-link">
+                                    <i data-feather="bar-chart-2"></i>
+                                    <span>Withdrawal</span>
+                                </a>
+                            <li class="sidebar-item">
                                 <a href="{{ route("admin.payments") }}" class="sidebar-link only-link">
                                     <i data-feather="credit-card"></i>
                                     <span>Payments</span>
                                 </a>
                             </li>
-                            {{-- <li class="sidebar-item">
-                                <a href="javascript:void(0)" class="sidebar-link">
-                                    <i data-feather="unlock"></i>
-                                    <span>Authentication</span>
-                                </a>
-                                <ul class="nav-submenu menu-content">
-                                    <li>
-                                        <a href="{{ route('admin.login') }}">
-                                            <i data-feather="chevrons-right"></i>
-                                            Log in
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('admin.signup') }}">
-                                            <i data-feather="chevrons-right"></i>
-                                            sign up
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route("admin.not-found") }}">
-                                            <i data-feather="chevrons-right"></i>
-                                            404
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li> --}}
+                            
                         </ul>
                     </div>
                 </div>
@@ -632,8 +669,26 @@
     </div>
     <!-- customizer end -->
 
+    {{-- <script>
+        $(document).ready(function() {
+            $('#myTable').DataTable();
+        });
+    </script> --}}
+    
     <!-- latest jquery-->
     <script src="{{ asset('admin/assets/js/jquery-3.6.0.min.js') }}"></script>
+
+     <!-- DataTables JS -->
+     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+     <script>
+        $(document).ready(function() {
+            $('#myTable').DataTable();
+        });
+    </script>
+
+    <script src="{{ asset("admin/assets/js/check.js") }}"></script>
+
 
     <!-- Bootstrap js-->
     <script src="{{ asset('admin/assets/js/bootstrap.bundle.min.js') }}"></script>
@@ -642,12 +697,34 @@
     <script src="{{ asset('client/assets/js/feather-icon/feather.min.js') }}"></script>
     <script src="{{ asset('client/assets/js/feather-icon/feather-icon.js') }}"></script>
 
-     <!-- slick js -->
-     <script src="{{ asset("admin/assets/js/slick.js") }}"></script>
+    <!-- magnific js -->
+    <script src="{{ asset("admin/assets/js/zoom-gallery.js") }}"></script>
+    <script src="{{ asset("admin/assets/js/jquery.magnific-popup.js") }}"></script>
 
-      <!-- chartist chart js-->
-    <script src="{{ asset("admin/assets/js/chart/chartist/chartist.js") }}"></script>
-    <script src="{{ asset("admin/assets/js/chart/chartist/chartist-plugin-tooltip.js") }}"></script>
+     <!-- slick js -->
+    <script src="{{ asset("admin/assets/js/slick.js") }}"></script>
+    <script src="{{ asset("admin/assets/js/property-slider.js") }}"></script>
+    <script>
+    $(document).ready(function(){
+        console.log('Initializing property slider from master');
+        $('.property-slider').each(function(){
+            $(this).slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                arrows: true,
+                prevArrow: $(this).find('.prev-arrow'),
+                nextArrow: $(this).find('.next-arrow'),
+                dots: false,
+                autoplay: false,
+                infinite: true
+            });
+        });
+    });
+    </script>
+
+      {{-- <!-- chartist chart js-->
+      <script src="{{ asset("admin/assets/js/chart/chartist/chartist.js") }}"></script>
+      <script src="{{ asset("admin/assets/js/chart/chartist/chartist-plugin-tooltip.js") }}"></script> --}}
 
     <!-- sidebar js -->
     <script src="{{ asset('admin/assets/js/sidebar.js') }}"></script>
@@ -656,7 +733,7 @@
     <script src="{{ asset('admin/assets/js/chart/apex-chart/apex-chart.js') }}"></script>
     <script src="{{ asset('admin/assets/js/chart/apex-chart/stock-prices.js') }}"></script>
     <script src="{{ asset('admin/assets/js/admin-dashboard.js') }}"></script>
-    <script src="{{ asset("admin/assets/js/user-profile.js") }}"></script>
+    {{-- <script src="{{ asset("admin/assets/js/user-profile.js") }}"></script> --}}
 
       <!-- vector map js-->
       <script src="{{ asset('admin/assets/js/vector-map/jquery-jvectormap-2.0.2.min.js') }}"></script>
@@ -665,6 +742,7 @@
 
     <!--admin js -->
     <script src="{{ asset('admin/assets/js/admin-script.js') }}"></script>
+    <script src="{{ asset('admin/assets/js/report.js') }}"></script>
 
     <!-- Customizer js-->
     <script src="{{ asset('admin/assets/js/customizer.js') }}"></script>

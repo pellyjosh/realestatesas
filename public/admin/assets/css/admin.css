@@ -33287,11 +33287,11 @@ body.rtl.dark-layout .property-details ul li+li {
     color: var(--theme-default5);
 }
 
-.agent-section .agent-content a i {
+/* .agent-section .agent-content a i {
     margin-left: 10px;
-    -webkit-animation: fadeInLeft 2s ease-in-out infinite;
-    animation: fadeInLeft 2s ease-in-out infinite;
-}
+    /* -webkit-animation: fadeInLeft 2s ease-in-out infinite;
+    animation: fadeInLeft 2s ease-in-out infinite; */
+} */
 
 .agent-section .agent-content h3 a,
 .agent-section .agent-content .h3 a {

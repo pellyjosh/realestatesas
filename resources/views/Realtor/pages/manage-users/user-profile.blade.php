@@ -21,7 +21,7 @@
                                 <i class="fa fa-home"></i>
                             </a>
                         </li>
-                        <li class="breadcrumb-item active">Manage users</li>
+                        <li class="breadcrumb-item active">User Profile</li>
                     </ol>
                     <!-- Breadcrumb end -->
                     

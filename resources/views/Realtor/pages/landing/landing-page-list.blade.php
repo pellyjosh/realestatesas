@@ -46,6 +46,28 @@
         color: #333 !important;
     }
 </style>
+
+<div class="container-fluid">
+    <div class="page-header">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="page-header-left">
+                    <h3>Landing Page
+                        <small>Welcome to realtor panel</small>
+                    </h3>
+                </div>
+            </div>
+            <div class="col-sm-6">
+
+                <!-- Breadcrumb start -->
+                
+                <!-- Breadcrumb end -->
+                
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="custom-table-container">
     <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
         <h5 class="fw-bold mb-2 mb-md-0">Landing Pages</h5>
@@ -144,98 +166,8 @@
             </tr>
         </tbody>
     </table>
-</div>
+</div>  
 @endsection
 @push('scripts')
 
-<a href="#" class="text-nowrap"> Link 3</a>
-<button type="button" class="btn btn-sm copy-btn flex-shrink-0" data-clipboard-text="Link 3" title="Copy to clipboard">
-    <i class="fas fa-copy"></i>
-</button>
-<script>
-    $(document).ready(function () {
-        $('#myTable').DataTable({
-            language: {
-                paginate: {
-                    previous: 'Previous',
-                    next: 'Next'
-                }
-            },
-            drawCallback: function () {
-                const paginate = $('.dataTables_paginate');
-                paginate.addClass('mt-3 text-center');
-                paginate.find('.paginate_button').addClass('btn btn-sm mx-1 rounded-pill');
-
-                // Custom styles for pagination
-                paginate.find('.paginate_button.previous, .paginate_button.next').css({
-                    backgroundColor: '#f6faeb',
-                    color: '#333',
-                    borderColor: '#f6faeb'
-                });
-
-                paginate.find('.paginate_button.current').css({
-                    backgroundColor: '#91d20a',
-                    color: '#fff',
-                    border: '1px solid #91d20a'
-                });
-
-                paginate.find('.paginate_button').hover(function () {
-                    if (!$(this).hasClass('current')) {
-                        $(this).css({ backgroundColor: '#e5f5c7', color: '#333' });
-                    }
-                }, function () {
-                    if (!$(this).hasClass('current')) {
-                        $(this).css({ backgroundColor: '', color: '' });
-                    }
-                });
-
-                $('.dataTables_info').addClass('text-muted mt-2');
-            }
-        });
-
-        // Use event delegation for copy buttons since DataTables can redraw the table
-        // $('#myTable').on('click', '.copy-btn', function() {
-        //     console.log('Copy button clicked'); // Debugging line
-        //     const button = this;
-        //     const textToCopy = button.getAttribute('data-clipboard-text');
-
-        //     navigator.clipboard.writeText(textToCopy).then(() => {
-        //         const originalContent = button.innerHTML;
-        //         button.innerHTML = '<i class="fas fa-check"></i> Copied!';
-        //         button.disabled = true;
-
-        //         setTimeout(() => {
-        //             button.innerHTML = '<i class="fas fa-copy"></i>';
-        //             button.disabled = false;
-        //         }, 1500);
-        //     }).catch(err => { // Corrected the catch statement
-        //         console.error('Failed to copy text: ', err);
-        //         alert('Failed to copy link.');
-        //     });
-        // });
-
-        const copyButtons = document.querySelectorAll('.copy-btn');
-
-        copyButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                console.log('Copy button clicked'); // Debugging line
-            //     const textToCopy = this.getAttribute('data-clipboard-text');
-            //     navigator.clipboard.writeText(textToCopy).then(() => {
-            //         const originalContent = this.innerHTML;
-            //         this.innerHTML = '<i class="fas fa-check"></i> Copied!';
-            //         this.disabled = true;
-
-            //         setTimeout(() => {
-            //             this.innerHTML = originalContent;
-            //             this.disabled = false;
-            //         }, 1500);
-            //     }).catch(err => {
-            //         console.error('Failed to copy text: ', err);
-            //         alert('Failed to copy link.');
-            //     });
-            // });
-        });
-
-    });
-</script>
 @endpush

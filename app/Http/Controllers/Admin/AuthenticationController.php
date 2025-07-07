@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class AuthenticationController extends Controller
 {
-    public function showLoginForm()
+    public function index()
     {
         return view('admin.pages.authentication.login');
     }
@@ -15,16 +15,6 @@ class AuthenticationController extends Controller
     public function showSignupForm()
     {
         return view('admin.pages.authentication.signup');
-    }
-
-    public function login(Request $request)
-    {
-        // Handle login logic here
-    }
-
-    public function signup(Request $request)
-    {
-        // Handle signup logic here
     }
 
     public function notfound()

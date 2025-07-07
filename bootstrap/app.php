@@ -15,6 +15,11 @@ return Application::configure(basePath: dirname(__DIR__))
             'book-event',
             'retrieve-referral',
         ]);
+        $middleware->alias([
+            'user.type' => \App\Http\Middleware\CheckUserType::class,
+            'coming.soon' => \App\Http\Middleware\RedirectToComingSoon::class,
+        ]);
+        $middleware->append(\App\Http\Middleware\RedirectToComingSoon::class);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

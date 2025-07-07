@@ -16,14 +16,7 @@
                 <div class="col-sm-6">
 
                     <!-- Breadcrumb start -->
-                    <ol class="breadcrumb pull-right">
-                        <li class="breadcrumb-item">
-                            <a href="index.html">
-                                <i class="fa fa-home"></i>
-                            </a>
-                        </li>
-                        <li class="breadcrumb-item active">Dashboard</li>
-                    </ol>
+                    
                     <!-- Breadcrumb end -->
 
                 </div>
@@ -46,7 +39,7 @@
                                         <h4 class="mb-0">45</h4>
                                         <h6 class="light-font">Properties</h6>
                                     </div>
-                                    <a href="listing.html" class="arrow-animated">
+                                    <a href="{{ route("admin.listing") }}" class="arrow-animated">
                                         See all properties
                                         <i data-feather="chevron-right"></i>
                                     </a>
@@ -169,89 +162,13 @@
                 </div>
             </div>
             <div class="col-xl-3 xl-6 col-md-6 project-widgets">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="media">
-                            <div class="widget-icon bg-primary-light">
-                                <i class="fab fa-foursquare"></i>
-                            </div>
-                            <div class="media-body">
-                                <span>
-                                    Completed
-                                    <span class="font-success">
-                                        + 20%
-                                        <i data-feather="trending-up"></i>
-                                    </span>
-                                </span>
-                                <h4>Total projects</h4>
-                                <span class="status-history">New users</span>
-                            </div>
-                        </div>
-                    </div>
                 </div>
+            <div class="col-xl-3 xl-6 col-md-6 project-widgets">
             </div>
             <div class="col-xl-3 xl-6 col-md-6 project-widgets">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="media">
-                            <div class="widget-icon bg-warning-light">
-                                <i class="fab fa-behance"></i>
-                            </div>
-                            <div class="media-body">
-                                <span>
-                                    Completed
-                                    <span class="font-success">
-                                        + 15%
-                                        <i data-feather="trending-up"></i>
-                                    </span>
-                                </span>
-                                <h4>Behance project</h4>
-                                <span class="status-history">Users</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
             <div class="col-xl-3 xl-6 col-md-6 project-widgets">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="media">
-                            <div class="widget-icon bg-success-light">
-                                <i class="fab fa-angellist"></i>
-                            </div>
-                            <div class="media-body">
-                                <span>
-                                    <span class="font-success">
-                                        Coming soon
-                                    </span>
-                                </span>
-                                <h4>10,000</h4>
-                                <span class="status-history">Agents</span>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-            </div>
-            <div class="col-xl-3 xl-6 col-md-6 project-widgets">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="media">
-                            <i class="fab fa-cloudscale"></i>
-                            <div class="media-body">
-                                <span>
-                                    Monthly
-                                    <span class="font-success">
-                                        + 10%
-                                        <i data-feather="trending-up"></i>
-                                    </span>
-                                </span>
-                                <h4>36,000</h4>
-                                <span class="status-history"> New project</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="col-lg-6">
                 <div class="card">
                     <div class="card-header">
@@ -426,7 +343,7 @@
                             <img src="{{ asset('client/assets/images/property/25.jpg') }}" class="img-fluid"
                                 alt="">
                             <div class="media-body">
-                                <a href="listing.html">
+                                <a href="{{ route("admin.listing") }}">
                                     <h6>Orchard House</h6>
                                 </a>
                                 <ul>
@@ -446,7 +363,7 @@
                             <img src="{{ asset('client/assets/images/property/7.jpg') }}" class="img-fluid"
                                 alt="">
                             <div class="media-body">
-                                <a href="listing.html">
+                                <a href="{{ route("admin.listing") }}">
                                     <h6>Neverland</h6>
                                 </a>
                                 <ul>
@@ -466,7 +383,7 @@
                             <img src="{{ asset('client/assets/images/property/8.jpg') }}" class="img-fluid"
                                 alt="">
                             <div class="media-body">
-                                <a href="listing.html">
+                                <a href="{{ route("admin.listing") }}">
                                     <h6>Sea Breezes</h6>
                                 </a>
                                 <ul>

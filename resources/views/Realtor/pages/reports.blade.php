@@ -15,14 +15,7 @@
             <div class="col-sm-6">
 
                 <!-- Breadcrumb start -->
-                <ol class="breadcrumb pull-right">
-                    <li class="breadcrumb-item">
-                        <a href="index.html">
-                            <i class="fa fa-home"></i>
-                        </a>
-                    </li>
-                    <li class="breadcrumb-item active">Reports</li>
-                </ol>
+               
                 <!-- Breadcrumb end -->
                 
             </div>
@@ -270,7 +263,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-6">
+        <div class="col-xl-12">
             <div class="card">
                 <div class="card-header pb-0">
                     <h5>Income Analysis</h5>
@@ -299,16 +292,6 @@
                     <div class="income-container">
                         <div id="incomechart"></div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-6">
-            <div class="card">
-                <div class="card-header">
-                    <h5>Visitors Location</h5>
-                </div>
-                <div class="card-body">
-                    <div class="jvector-map-report" id="asia"></div>
                 </div>
             </div>
         </div>

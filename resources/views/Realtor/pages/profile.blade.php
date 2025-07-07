@@ -15,14 +15,7 @@
                 <div class="col-sm-6">
 
                     <!-- Breadcrumb start -->
-                    <ol class="breadcrumb pull-right">
-                        <li class="breadcrumb-item">
-                            <a href="index.html">
-                                <i class="fa fa-home"></i>
-                            </a>
-                        </li>
-                        <li class="breadcrumb-item active">Manage users</li>
-                    </ol>
+                    
                     <!-- Breadcrumb end -->
                     
                 </div>
