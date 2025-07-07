@@ -103,8 +103,7 @@
     <div class="loader-wrapper">
         <div class="row loader-text">
             <div class="col-12">
-                <img src="{{ asset("client/assets/images/loader/gear.gif") }}" class="img-fluid"
-                    alt="">
+                <img src="{{ asset('client/assets/images/loader/gear.gif') }}" class="img-fluid" alt="">
             </div>
             <div class="col-12">
                 <div>
@@ -206,11 +205,38 @@
                                         </ul>
                                     </li>
 
-                                    <li class="dropdown">
-                                        <a href="login.html">
-                                            <i data-feather="user"></i>
-                                        </a>
-                                    </li>
+                                    @auth
+                                        <li class="dropdown profile">
+                                            <a href="javascript:void(0)" class="nav-link dropdown-toggle"
+                                                data-bs-toggle="dropdown">
+                                                <img src="{{ auth()->user()->profile_image ?? asset('client/assets/images/default-avatar.png') }}"
+                                                    alt="User Avatar" class="img-fluid rounded-circle"
+                                                    style="width: 30px; height: 30px;">
+                                            </a>
+                                            <ul class="nav-submenu dropdown-menu">
+                                                <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                                                <li><a href="{{ route('profile.edit') }}">Profile</a></li>
+                                                <li>
+                                                    <form method="POST" action="{{ route('logout') }}">
+                                                        @csrf
+                                                        <a href="{{ route('logout') }}"
+                                                            onclick="event.preventDefault(); this.closest('form').submit();">Logout</a>
+                                                    </form>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    @else
+                                        <li class="dropdown profile">
+                                            <a href="javascript:void(0)" class="nav-link dropdown-toggle"
+                                                data-bs-toggle="dropdown">
+                                                <i data-feather="user"></i>
+                                            </a>
+                                            <ul class="nav-submenu dropdown-menu">
+                                                <li><a href="{{ route('login') }}">Login</a></li>
+                                                <li><a href="{{ route('register') }}">Register</a></li>
+                                            </ul>
+                                        </li>
+                                    @endauth
                                 </ul>
                             </li>
                         </ul>
@@ -390,6 +416,20 @@
 
     <!-- Bootstrap js-->
     <script src="{{ asset('client/assets/js/bootstrap.bundle.min.js') }}" defer></script>
+    <script>
+        // Ensure Bootstrap dropdowns are initialized
+        document.addEventListener('DOMContentLoaded', function() {
+            var dropdowns = document.querySelectorAll('.dropdown-toggle');
+            dropdowns.forEach(function(dropdown) {
+                dropdown.addEventListener('click', function() {
+                    var dropdownMenu = this.nextElementSibling;
+                    if (dropdownMenu.classList.contains('dropdown-menu')) {
+                        dropdownMenu.classList.toggle('show');
+                    }
+                });
+            });
+        });
+    </script>
 
     <!-- range slider js -->
     <script src="{{ asset('client/assets/js/jquery-ui.js') }}" defer></script>

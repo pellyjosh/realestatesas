@@ -51,6 +51,16 @@
         $('.cart ul.nav-submenu').toggleClass("open");
         $('.language ul.nav-submenu').removeClass("open");
         $(".currency ul.nav-submenu").removeClass("open");
+        $('.profile ul.nav-submenu').removeClass("open");
+    });
+
+    //Profile
+    $('.profile').on('click', function () {
+        $(this).toggleClass("active");
+        $('.profile ul.nav-submenu').toggleClass("open");
+        $('.cart ul.nav-submenu').removeClass("open");
+        $('.language ul.nav-submenu').removeClass("open");
+        $(".currency ul.nav-submenu").removeClass("open");
     });
 
     // cart icon
@@ -58,6 +68,7 @@
         $(this).toggleClass("active");
         $('.currency ul.nav-submenu').toggleClass("open");
         $('.cart ul.nav-submenu').removeClass("open");
+        $('.profile ul.nav-submenu').removeClass("open");
         $(".language ul.nav-submenu").removeClass("open");
     });
 

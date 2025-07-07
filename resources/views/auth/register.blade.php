@@ -1,5 +1,5 @@
-@extends('admin.pages.authentication.authentication_master')
-@section('title', 'Signup | Premium Refined Luxury Homes')
+@extends('auth.authentication_master')
+@section('title', 'Register | Premium Refined Luxury Homes')
 @section('content')
     <div class="card-body">
         <div class="title-3 text-start">
@@ -14,7 +14,8 @@
                             <i data-feather="user"></i>
                         </div>
                     </div>
-                    <input type="text" class="form-control" name="name" placeholder="Enter your name" value="{{ old('name') }}" required>
+                    <input type="text" class="form-control" name="name" placeholder="Enter your name"
+                        value="{{ old('name') }}" required>
                 </div>
                 @error('name')
                     <div class="text-danger mt-1">{{ $message }}</div>
@@ -27,7 +28,8 @@
                             <i data-feather="mail"></i>
                         </div>
                     </div>
-                    <input type="email" class="form-control" name="email" placeholder="Enter email address" value="{{ old('email') }}" required>
+                    <input type="email" class="form-control" name="email" placeholder="Enter email address"
+                        value="{{ old('email') }}" required>
                 </div>
                 @error('email')
                     <div class="text-danger mt-1">{{ $message }}</div>
@@ -40,7 +42,8 @@
                             <i data-feather="lock"></i>
                         </div>
                     </div>
-                    <input type="password" id="pwd-input" name="password" class="form-control" maxlength="8" placeholder="Password" required>
+                    <input type="password" id="pwd-input" name="password" class="form-control" maxlength="8"
+                        placeholder="Password" required>
                     <div class="input-group-apend">
                         <div class="input-group-text">
                             <i id="pwd-icon" class="far fa-eye-slash"></i>
@@ -61,7 +64,8 @@
                             <i data-feather="lock"></i>
                         </div>
                     </div>
-                    <input type="password" id="confirm-pwd-input" name="password_confirmation" class="form-control" maxlength="8" placeholder="Confirm Password" required>
+                    <input type="password" id="confirm-pwd-input" name="password_confirmation" class="form-control"
+                        maxlength="8" placeholder="Confirm Password" required>
                     <div class="input-group-apend">
                         <div class="input-group-text">
                             <i id="confirm-pwd-icon" class="far fa-eye-slash"></i>
@@ -90,14 +94,16 @@
             </div>
             <div class="form-group">
                 <label class="d-block mb-0" for="terms">
-                    <input class="checkbox_animated color-2" id="terms" type="checkbox" name="terms" required> I accept the Terms and Conditions
+                    <input class="checkbox_animated color-2" id="terms" type="checkbox" name="terms" required> I
+                    accept the Terms and Conditions
                 </label>
                 @error('terms')
                     <div class="text-danger mt-1">{{ $message }}</div>
                 @enderror
             </div>
             <div>
-                <button type="submit" class="btn btn-pill me-sm-3 me-2" style="background-color: #78c705; color: #fff;">Create Account</button>
+                <button type="submit" class="btn btn-pill me-sm-3 me-2"
+                    style="background-color: #78c705; color: #fff;">Create Account</button>
                 <a href="{{ route('login') }}" class="btn btn-dashed btn-pill color-2">Log in</a>
             </div>
             <div class="divider">
