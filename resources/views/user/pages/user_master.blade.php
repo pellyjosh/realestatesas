@@ -5,10 +5,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Sheltos - User dashboard page">
-    <meta name="keywords" content="sheltos">
-    <meta name="author" content="sheltos">
-    <link rel="icon" href="https://themes.pixelstrap.com/sheltos/assets/images/favicon.png" type="image/x-icon" />
+    <meta name="description" content="Premium Refined Luxury Homes - User dashboard page">
+    <meta name="keywords" content="Premium Refined Luxury Homes">
+    <meta name="author" content="Premium Refined Luxury Homes">
     <title>Sheltos - User dashboard page</title>
 
     <!--Google font-->
@@ -18,12 +17,12 @@
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Rubik:400,400i,500,500i,700,700i" rel="stylesheet">
 
-    <!-- animate css -->
-    <link rel="stylesheet" type="text/css" href="https://themes.pixelstrap.com/sheltos/assets/css/animate.css">
+     <!-- animate css -->
+     <link rel="stylesheet" type="text/css" href="{{ asset('client/assets/css/animate.css') }}">
 
-    <!-- Template css -->
-    <link rel="stylesheet" type="text/css" href="https://themes.pixelstrap.com/sheltos/assets/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="https://themes.pixelstrap.com/sheltos/assets/css/color1.css">
+   <!-- Template css -->
+   <link rel="stylesheet" type="text/css" href="{{ asset('client/assets/css/bootstrap.css') }}">
+   <link rel="stylesheet" type="text/css" href="{{ asset('client/assets/css/color1.css') }}">
 
     <!-- Font Awesome 6 Free CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -184,7 +183,7 @@
 
     <!-- breadcrumb start -->
     <section class="breadcrumb-section p-0">
-        <img src="https://themes.pixelstrap.com/sheltos/assets/images/inner-background.jpg" class="bg-img img-fluid"
+        <img src="{{ asset("client/assets/images/inner-background.jpg") }}" class="bg-img img-fluid"
             alt="">
         <div class="container">
             <div class="breadcrumb-content">
@@ -211,7 +210,7 @@
                         <div class="user-profile">
                             <div class="media">
                                 <div class="change-pic">
-                                    <img src="https://themes.pixelstrap.com/sheltos/assets/images/avatar/3.jpg"
+                                    <img src="{{ asset("admin/assets/images/avatar/3.jpg") }}"
                                         class="img-fluid update_img" alt="">
                                     <div class="change-hover">
                                         <button type="button" class="btn"><i data-feather="camera"></i></button>

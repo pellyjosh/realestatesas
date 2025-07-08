@@ -210,7 +210,7 @@
                                             </div>
                                         </div>
                                         <div class="col-lg-12">
-                                            <button type="button" onclick="document.location='list-left-sidebar.html'"
+                                            <button type="button" onclick="document.location=''"
                                                 class="btn btn-gradient color-6 mt-3">Search</button>
                                         </div>
                                     </div>
@@ -1071,7 +1071,6 @@
                         <h2>Looking to Buy a new property or Sell an existing one?
                             Real Homes provides an easy solution!</h2>
                         <div class="button-banner">
-                            {{-- <a href="submit-property.html" class="btn btn-gradient color-6">Submit property</a> --}}
                             <a href="portfolio-details.html" class="btn btn-white color-6"> <span>Browse
                                     property</span></a>
                         </div>
