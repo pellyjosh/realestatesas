@@ -151,10 +151,9 @@
                                 </div>
                             </div>
                         </nav>
-                        <ul class="header-right">
+                        <ul class="header-right d-flex align-items-center">
                             <li class="right-menu color-6">
-                                <ul class="nav-menu">
-
+                                <ul class="nav-menu d-flex align-items-center gap-2">
                                     <li class="dropdown">
                                         <a href="user-favourites.html">
                                             <i data-feather="heart"></i>
@@ -209,9 +208,8 @@
                                         <li class="dropdown profile">
                                             <a href="javascript:void(0)" class="nav-link dropdown-toggle"
                                                 data-bs-toggle="dropdown">
-                                                <img src="{{ auth()->user()->profile_image ?? asset('client/assets/images/default-avatar.png') }}"
-                                                    alt="User Avatar" class="img-fluid rounded-circle"
-                                                    style="width: 30px; height: 30px;">
+                                                <i data-feather="user"
+                                                    style="width: 20px; height: 20px; line-height: 30px; text-align: center; font-size: 16px;"></i>
                                             </a>
                                             <ul class="nav-submenu dropdown-menu">
                                                 <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
@@ -233,7 +231,7 @@
                                             </a>
                                             <ul class="nav-submenu dropdown-menu">
                                                 <li><a href="{{ route('login') }}">Login</a></li>
-                                                <li><a href="{{ route('register') }}">Register</a></li>
+                                                <li><a href="{{ route('user.dashboard') }}">Dashboard</a></li>
                                             </ul>
                                         </li>
                                     @endauth

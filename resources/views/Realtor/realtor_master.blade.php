@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Premium Refined Luxury Homes- Realtor dashboard page">
-    <meta name="keywords" content="sheltos">
-    <meta name="author" content="sheltos">
+    <meta name="keywords" content="Premium Refined Luxury Homes- Realtor dashboard page">
+    <meta name="author" content="Premium Refined Luxury Homes- Realtor dashboard page">
     <link rel="icon" href="{{ asset('client/assets/images/logo.png') }}" type="image/x-icon" />
     <title>@yield('title', 'Premim Refined Admin page')</title>
 

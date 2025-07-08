@@ -256,20 +256,20 @@
                                         <div class="overlay-option">
                                             <ul>
                                                 <li>
-                                                    <span>Beds</span>
+                                                    <span>Plot Size</span>
                                                     <h6>2</h6>
                                                 </li>
                                                 <li>
-                                                    <span>Baths</span>
-                                                    <h6>1</h6>
+                                                    <span>Location</span>
+                                                    <h6>Ibeju-Lekki</h6>
                                                 </li>
                                                 <li>
-                                                    <span>Balcony</span>
-                                                    <h6>1</h6>
+                                                    <span>Title</span>
+                                                    <h6>Registered Survey</h6>
                                                 </li>
                                                 <li>
-                                                    <span>Area</span>
-                                                    <h6>120m<sup>2</sup></h6>
+                                                    <span>Status</span>
+                                                    <h6>Dry Land</h6>
                                                 </li>
                                             </ul>
                                         </div>
@@ -301,20 +301,20 @@
                                         <div class="overlay-option">
                                             <ul>
                                                 <li>
-                                                    <span>Beds</span>
+                                                    <span>Plot Size</span>
                                                     <h6>2</h6>
                                                 </li>
                                                 <li>
-                                                    <span>Baths</span>
-                                                    <h6>1</h6>
+                                                    <span>Location</span>
+                                                    <h6>Ibeju-Lekki</h6>
                                                 </li>
                                                 <li>
-                                                    <span>Balcony</span>
-                                                    <h6>2</h6>
+                                                    <span>Title</span>
+                                                    <h6>Registered Survey</h6>
                                                 </li>
                                                 <li>
-                                                    <span>Area</span>
-                                                    <h6>480m<sup>2</sup></h6>
+                                                    <span>Status</span>
+                                                    <h6>Dry Land</h6>
                                                 </li>
                                             </ul>
                                         </div>
@@ -343,20 +343,20 @@
                                         <div class="overlay-option">
                                             <ul>
                                                 <li>
-                                                    <span>Beds</span>
+                                                    <span>Plot Size</span>
                                                     <h6>2</h6>
                                                 </li>
                                                 <li>
-                                                    <span>Baths</span>
-                                                    <h6>1</h6>
+                                                    <span>Location</span>
+                                                    <h6>Ibeju-Lekki</h6>
                                                 </li>
                                                 <li>
-                                                    <span>Balcony</span>
-                                                    <h6>0</h6>
+                                                    <span>Title</span>
+                                                    <h6>Registered Survey</h6>
                                                 </li>
                                                 <li>
-                                                    <span>Area</span>
-                                                    <h6>220m<sup>2</sup></h6>
+                                                    <span>Status</span>
+                                                    <h6>Dry Land</h6>
                                                 </li>
                                             </ul>
                                         </div>
@@ -1088,17 +1088,18 @@
             <div class="row">
                 <div class="col">
                     <div class="title-1 color-6">
-                        <span class="label label-gradient color-6">Agent</span>
-                        <h2>Meet our Agent</h2>
+                        <span class="label label-gradient color-6">Realtor</span>
+                        <h2>Meet our Realtor</h2>
                         <hr>
                     </div>
                     <div class="about-1 about-wrap arrow-white color-6">
+
                         <div>
                             <div class="about-content row">
                                 <div class="col-xl-6">
                                     <div class="about-image">
-                                        <img src="https://themes.pixelstrap.com/sheltos/assets/images/about/1.jpg"
-                                            class="img-fluid" alt="" loading="lazy">
+                                        <img src="{{ asset("client/assets/images/about/1.jpg") }}"
+                                            class="img-fluid" alt="" loading="lazy" style="max-width: 100%;">
                                         <div class="about-overlay"></div>
                                         <div class="overlay-content">
                                             <ul>
@@ -1121,27 +1122,26 @@
                                 </div>
                                 <div class="col-xl-6">
                                     <div class="our-details">
-                                        <a href="agent-profile.html">
                                             <h6 class="d-flex">Ty R. Leeva <span class="label-heart color-6 ms-2"><i
                                                         data-feather="heart"></i></span></h6>
-                                        </a>
                                         <h3>Communicating with..</h3>
                                         <span class="font-roboto"><i data-feather="mail"
                                                 class="me-1"></i>Leeva@inspirythemes.com</span>
                                         <p class="font-roboto">A real estate agent or broker is a person who represents
                                             sellers or buyers advised to consult a licensed.</p>
-                                        <a href="agent-profile.html" class="btn btn-gradient btn-pill color-6 mt-2"><i
+                                        <a href="{{ route('client.realtor-profile') }}" class="btn btn-gradient btn-pill color-6 mt-2"><i
                                                 data-feather="eye"></i>View Portfolio</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                         <div>
                             <div class="about-content row">
                                 <div class="col-xl-6">
                                     <div class="about-image">
-                                        <img src="https://themes.pixelstrap.com/sheltos/assets/images/about/2.jpg"
-                                            class="img-fluid" alt="" loading="lazy">
+                                        <img src="{{ asset("client/assets/images/about/2.jpg") }}"
+                                            class="img-fluid" alt="" loading="lazy" style="max-width: 100%;">
                                         <div class="about-overlay"></div>
                                         <div class="overlay-content">
                                             <ul>
@@ -1164,27 +1164,27 @@
                                 </div>
                                 <div class="col-xl-6">
                                     <div class="our-details">
-                                        <a href="agent-profile.html">
+                                        <a href="">
                                             <h6 class="d-flex">Mark Andry <span class="label-heart color-6 ms-2"><i
                                                         data-feather="heart"></i></span></h6>
                                         </a>
                                         <h3>Sellers of property.</h3>
                                         <span class="font-roboto"><i data-feather="mail"
                                                 class="me-1"></i>John@inspirythemes.com</span>
-                                        <p class="font-roboto">They are responsible for managing employees and overseeing
-                                            daily productivity.</p>
-                                        <a href="agent-profile.html" class="btn btn-gradient btn-pill color-6 mt-2"><i
+                                        <p class="font-roboto">Responsible for coordinating site visits, verifying land documentation, and maintaining up-to-date property records.</p>
+                                        <a href="{{ route('client.realtor-profile') }}" class="btn btn-gradient btn-pill color-6 mt-2"><i
                                                 data-feather="eye"></i>View Portfolio</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                         <div>
                             <div class="about-content row">
                                 <div class="col-xl-6">
                                     <div class="about-image">
-                                        <img src="https://themes.pixelstrap.com/sheltos/assets/images/about/1.jpg"
-                                            class="img-fluid" alt="" loading="lazy">
+                                        <img src="{{ asset("client/assets/images/about/2.jpg") }}"
+                                            class="img-fluid" alt="" loading="lazy" style="max-width: 100%;">
                                         <div class="about-overlay"></div>
                                         <div class="overlay-content">
                                             <ul>
@@ -1207,21 +1207,21 @@
                                 </div>
                                 <div class="col-xl-6">
                                     <div class="our-details">
-                                        <a href="agent-profile.html">
+                                        <a href="">
                                             <h6 class="d-flex">John David <span class="label-heart color-6 ms-2"><i
                                                         data-feather="heart"></i></span></h6>
                                         </a>
                                         <h3>Advised to consult </h3>
                                         <span class="font-roboto"><i data-feather="mail"
                                                 class="me-1"></i>John@inspirythemes.com</span>
-                                        <p class="font-roboto">Buyer's agents are brokers or salespersons who assist buyers
-                                            by helping them.</p>
-                                        <a href="agent-profile.html" class="btn btn-gradient btn-pill color-6 mt-2"><i
+                                        <p class="font-roboto">	They manage land inventories, provide expert advice to clients, and handle all aspects of the buying and selling process.</p>
+                                        <a href="{{ route('client.realtor-profile') }}" class="btn btn-gradient btn-pill color-6 mt-2"><i
                                                 data-feather="eye"></i>View Portfolio</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        
                     </div>
                 </div>
             </div>
@@ -1257,9 +1257,7 @@
                                     <li><img src="{{ asset('client/assets/images/testimonial/3.png') }}" alt="">
                                     </li>
                                 </ul>
-                                <p>Surveyors make precise measurements of property boundaries. Many industries,
-                                    including construction, rely on these measurements</p>
-                                <h6>real estate</h6>
+                                <p>	Responsible for showcasing available properties, negotiating deals, and ensuring smooth closings for land sales.</h6>
                                 <ul class="client-rating">
                                     <li><i class="fas fa-star"></i></li>
                                     <li><i class="fas fa-star"></i></li>

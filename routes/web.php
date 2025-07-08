@@ -32,9 +32,26 @@ use App\Http\Controllers\Realtor\EarningsController;
 use App\Http\Controllers\Realtor\SalesRequestController;
 use App\Http\Controllers\Realtor\RealtorEventController;
 
+
+// User Routes 
+use App\Http\Controllers\User\NormalUserController;
+use App\Http\Controllers\User\UserFavoritesController;
+use App\Http\Controllers\User\UserPaymentsController;
+use App\Http\Controllers\User\UserPrivacyController;
+use App\Http\Controllers\User\UserProfileController;
+use App\Http\Controllers\User\UserPropertiesController;
+
 Route::get('/', function () {
     return view('client.pages.index');
 })->name('client.home');
+
+Route::get('/realtor-profile', function () {
+    return view('client.pages.realtor-profile');
+})->name('client.realtor-profile');
+
+Route::get('/realtor-profile', function () {
+    return view('client.pages.realtor-profile');
+})->name('client.realtor-profile');
 
 Route::get('/compare', function () {
     return view('client.pages.compare');
@@ -218,5 +235,35 @@ Route::prefix('realtor')->group(function () {
         Route::get('/404', 'notfound')->name('realtor.not-found');
     });
 });
+
+
+Route::prefix('user')->group(function () {
+   Route::controller(NormalUserController::class)->group(function () {
+        Route::get('/dashboard', 'index')->name('user.dashboard');
+   });
+
+    Route::controller(UserFavoritesController::class)->group(function () {
+        Route::get('/user-favorites', 'index')->name('user.favorites');
+    });
+
+    Route::controller(UserPaymentsController::class)->group(function () {
+        Route::get('/user-payment', 'index')->name('user.payment');
+    });
+
+    Route::controller(UserPrivacyController::class)->group(function () {
+        Route::get('/user-privacy', 'index')->name('user.privacy');
+    });
+
+    Route::controller(UserProfileController::class)->group(function () {
+        Route::get('/user-profile', 'index')->name('user.profile');
+    });
+
+    Route::controller(UserPropertiesController::class)->group(function () {
+        Route::get('/user-properties', 'index')->name('user.properties');
+    });
+});
+
+
+Route::get('/user/dashboard', [NormalUserController::class, 'index'])->name('user.dashboard');
 
 require __DIR__ . '/auth.php';

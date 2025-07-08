@@ -1,13 +1,27 @@
 @extends('auth.authentication_master')
 @section('title', 'Register | Premium Refined Luxury Homes')
 @section('content')
-    <div class="card-body">
-        <div class="title-3 text-start">
-            <h2>Sign up</h2>
+    <div class="card-body" style="max-width: 700px; margin: 0 auto; padding: 20px;">
+        <div class="title-3 text-center mb-4">
+            <h1>Sign up</h1>
         </div>
-        <form method="POST" action="{{ route('register') }}" autocomplete="off">
+        <form method="POST" action="{{ route('register') }}" autocomplete="off" style="width: 100%;">
             @csrf
-            <div class="form-group">
+            <div class="form-group text-center mb-4">
+                <div class="profile-image-upload" style="display: inline-block; position: relative; width: 100px; height: 100px; border-radius: 50%; border: 3px solid #78c705; overflow: hidden; margin-bottom: 10px;">
+                    <input type="file" class="form-control" name="profile_image" accept="image/*" capture="user" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer;">
+                    <div class="image-placeholder" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #f8f8f8;">
+                        <i data-feather="image" style="font-size: 35px; color: #78c705;"></i>
+                    </div>
+                </div>
+                <div class="important-note" style="font-size: 0.85em; color: #666;">
+                    Upload a profile picture or take a photo using your device's camera.
+                </div>
+                @error('profile_image')
+                    <div class="text-danger mt-1">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="form-group mb-3">
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <div class="input-group-text">
@@ -21,7 +35,7 @@
                     <div class="text-danger mt-1">{{ $message }}</div>
                 @enderror
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <div class="input-group-text">
@@ -35,7 +49,7 @@
                     <div class="text-danger mt-1">{{ $message }}</div>
                 @enderror
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <div class="input-group-text">
@@ -50,14 +64,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="important-note">
-                    password should be a minimum of 8 characters and should contains letters and numbers
+                <div class="important-note" style="font-size: 0.85em; color: #666;">
+                    Password should be a minimum of 8 characters and should contain letters and numbers.
                 </div>
                 @error('password')
                     <div class="text-danger mt-1">{{ $message }}</div>
                 @enderror
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <div class="input-group-text">
@@ -76,64 +90,36 @@
                     <div class="text-danger mt-1">{{ $message }}</div>
                 @enderror
             </div>
-            <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <i data-feather="image"></i>
-                        </div>
-                    </div>
-                    <input type="file" class="form-control" name="profile_image" accept="image/*" capture="user">
-                </div>
-                <div class="important-note">
-                    Upload a profile picture or take a photo using your device's camera.
-                </div>
-                @error('profile_image')
-                    <div class="text-danger mt-1">{{ $message }}</div>
-                @enderror
-            </div>
-            <div class="form-group">
-                <label class="d-block mb-0" for="terms">
+            <div class="form-group mb-4">
+                <label class="d-block mb-0 text-center" for="terms" style="font-size: 0.9em;">
                     <input class="checkbox_animated color-2" id="terms" type="checkbox" name="terms" required> I
                     accept the Terms and Conditions
                 </label>
                 @error('terms')
-                    <div class="text-danger mt-1">{{ $message }}</div>
+                    <div class="text-danger mt-1 text-center">{{ $message }}</div>
                 @enderror
             </div>
-            <div>
-                <button type="submit" class="btn btn-pill me-sm-3 me-2"
-                    style="background-color: #78c705; color: #fff;">Create Account</button>
-                <a href="{{ route('login') }}" class="btn btn-dashed btn-pill color-2">Log in</a>
+            <div class="d-flex flex-column justify-content-center align-items-center mt-3 mb-3">
+                <button type="submit" class="btn btn-pill mb-3"
+                    style="background-color: #78c705; color: #fff; width: 180px; font-size: 0.9em;">Create Account</button>
+                <a href="{{ route('login') }}" class="btn btn-dashed btn-pill color-2" style="width: 180px; font-size: 0.9em;">Log in</a>
             </div>
-            <div class="divider">
-                <h6>or</h6>
+            <div class="divider text-center mt-3">
+                <h6 style="font-size: 0.9em;">or</h6>
             </div>
-            <div>
-                <h6>Sign up with</h6>
-                <div class="row social-connect">
-                    <div class="col-6">
-                        <a href="https://www.facebook.com/" class="btn btn-social btn-flat facebook p-0">
+            <div class="text-center mt-2">
+                <h6 style="font-size: 0.9em;">Sign up with</h6>
+                <div class="row social-connect justify-content-center">
+                    <div class="col-6 col-md-5">
+                        <a href="https://www.facebook.com/" class="btn btn-social btn-flat facebook p-0 mx-1" style="font-size: 0.85em;">
                             <i class="fab fa-facebook-f"></i>
                             <span>Facebook</span>
                         </a>
                     </div>
-                    <div class="col-6">
-                        <a href="https://twitter.com/" class="btn btn-social btn-flat twitter p-0">
-                            <i class="fab fa-twitter"></i>
-                            <span>Twitter</span>
-                        </a>
-                    </div>
-                    <div class="col-6">
-                        <a href="https://accounts.google.com/" class="btn btn-social btn-flat google p-0">
+                    <div class="col-6 col-md-5">
+                        <a href="https://accounts.google.com/" class="btn btn-social btn-flat google p-0 mx-1" style="font-size: 0.85em;">
                             <i class="fab fa-google"></i>
                             <span>Google</span>
-                        </a>
-                    </div>
-                    <div class="col-6">
-                        <a href="https://www.linkedin.com/" class="btn btn-social btn-flat linkedin p-0">
-                            <i class="fab fa-linkedin-in"></i>
-                            <span>Linkedin</span>
                         </a>
                     </div>
                 </div>

@@ -13,10 +13,10 @@
                 <div class="col-12">
                     <div class="breadcrumb-content">
                         <div>
-                            <h2>Contact us</h2>
+                            <h1>Contact us</h1>
                             <nav aria-label="breadcrumb" class="theme-breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="{{ route('client.home') }}">Home</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">Contact us</li>
                                 </ol>
                             </nav>

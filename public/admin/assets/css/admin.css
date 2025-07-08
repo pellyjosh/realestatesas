@@ -24463,7 +24463,7 @@ label {
     border-color: var(--theme-default6);
     color: var(--bs-dark);
 }
-
+    
 .btn.btn-dashed.color-2:hover::after {
     background: var(--theme-default5);
 }

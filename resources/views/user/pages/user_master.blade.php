@@ -4,97 +4,33 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> {{-- Essential for responsive design and mobile SEO --}}
-    <meta name="description"
-        content="Discover exquisite luxury homes and premium refined properties for sale. Explore high-end real estate listings with advanced search, stunning visuals, and detailed information.">
-    {{-- Optimized for search engines, max 160 characters --}}
-    <meta name="keywords"
-        content="luxury homes, premium properties, refined real estate, high-end homes, luxury real estate, homes for sale, property search, real estate listings">
-    {{-- Relevant keywords, though less impactful for Google SEO now --}}
-    <meta name="author" content="Hubolux Technologies"> {{-- Specify the author/company --}}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sheltos - User dashboard page">
+    <meta name="keywords" content="sheltos">
+    <meta name="author" content="sheltos">
+    <link rel="icon" href="https://themes.pixelstrap.com/sheltos/assets/images/favicon.png" type="image/x-icon" />
+    <title>Sheltos - User dashboard page</title>
 
-    {{-- Open Graph / Facebook / LinkedIn / WhatsApp --}}
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="{{ url()->current() }}"> {{-- Canonical URL of the page --}}
-    <meta property="og:title" content="@yield('title', 'Premium Refined Luxury Homes')"> {{-- Title for social sharing --}}
-    <meta property="og:description"
-        content="Discover exquisite luxury homes and premium refined properties for sale. Explore high-end real estate listings with advanced search, stunning visuals, and detailed information.">
-    {{-- Description for social sharing --}}
-    <meta property="og:image" content="{{ asset('client/assets/images/logo.png') }}"> {{-- URL to an image for social sharing (e.g., your logo or a hero image) --}}
-    <meta property="og:image:width" content="1200"> {{-- Recommended image width for Open Graph --}}
-    <meta property="og:image:height" content="630"> {{-- Recommended image height for Open Graph --}}
-
-    {{-- Twitter --}}
-    <meta name="twitter:card" content="summary_large_image"> {{-- Type of Twitter card --}}
-    <meta name="twitter:url" content="{{ url()->current() }}"> {{-- Canonical URL of the page --}}
-    <meta name="twitter:title" content="@yield('title', 'Premium Refined Luxury Homes')"> {{-- Title for Twitter sharing --}}
-    <meta name="twitter:description"
-        content="Discover exquisite luxury homes and premium refined properties for sale. Explore high-end real estate listings with advanced search, stunning visuals, and detailed information.">
-    {{-- Description for Twitter sharing --}}
-    <meta name="twitter:image" content="{{ asset('client/assets/images/logo.png') }}"> {{-- URL to an image for Twitter sharing --}}
-    <meta name="twitter:site" content="@YourTwitterHandle"> {{-- Your Twitter handle (e.g., @HuboluxTech) --}}
-
-    {{-- Canonical Link --}}
-    <link rel="canonical" href="{{ url()->current() }}"> {{-- Helps search engines understand t-awhe preferred version of a page --}}
-    <link rel="icon" href="{{ asset('client/assets/images/logo.png') }}" type="image/x-icon" />
-    <title>@yield('title', 'Master Page')</title>
-
-    <!-- Google font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Rubik:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+    <!--Google font-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,500,500i,600,600i,700,700i,800,800i"
         rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i&amp;display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Rubik:400,400i,500,500i,700,700i" rel="stylesheet">
+
+    <!-- animate css -->
+    <link rel="stylesheet" type="text/css" href="https://themes.pixelstrap.com/sheltos/assets/css/animate.css">
+
+    <!-- Template css -->
+    <link rel="stylesheet" type="text/css" href="https://themes.pixelstrap.com/sheltos/assets/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="https://themes.pixelstrap.com/sheltos/assets/css/color1.css">
 
     <!-- Font Awesome 6 Free CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-    <!-- range slider css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('client/assets/css/jquery-ui.css') }}">
+    <link rel="icon" href="{{ asset('client/assets/images/logo.png') }}" type="image/x-icon" />
+    <title>@yield('title', 'Master Page')</title>
 
-    <!-- animate css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('client/assets/css/animate.css') }}">
-
-    <!-- Template css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('client/assets/css/bootstrap.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('client/assets/css/color1.css') }}">
-
-    <style>
-        /* Sticky WhatsApp Button */
-        .whatsapp-sticky-button {
-            position: fixed;
-            bottom: 40px;
-            left: 30px;
-            width: 50px;
-            height: 50px;
-            background-color: #25D366;
-            color: #FFF;
-            border-radius: 50%;
-            text-align: center;
-            font-size: 30px;
-            box-shadow: 0 4px S12px rgba(0, 0, 0, 0.15);
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease-in-out;
-        }
-
-        .whatsapp-sticky-button:hover {
-            transform: scale(1.1) translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-            color: #FFF;
-        }
-
-        /* Dark mode adjustments */
-        html.dark .whatsapp-sticky-button {
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-        }
-
-        html.dark .whatsapp-sticky-button:hover {
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-        }
-    </style>
 </head>
 
 <body>
@@ -103,7 +39,7 @@
     <div class="loader-wrapper">
         <div class="row loader-text">
             <div class="col-12">
-                <img src="{{ asset('client/assets/images/loader/loader.gif') }}" class="img-fluid" alt="">
+                <img src="{{ asset('client/assets/images/loader/gear.gif') }}" class="img-fluid" alt="">
             </div>
             <div class="col-12">
                 <div>
@@ -123,7 +59,7 @@
                         <div class="brand-logo">
                             <a href="{{ route('client.home') }}">
                                 <img src="{{ asset('client/assets/images/logo.png') }}" alt=""
-                                    class="img-fluid">
+                                    class="img-fluid" style="max-width: 40%">
                             </a>
                         </div>
                         <nav>
@@ -151,12 +87,11 @@
                                 </div>
                             </div>
                         </nav>
-                        <ul class="header-right">
+                        <ul class="header-right d-flex align-items-center">
                             <li class="right-menu color-6">
-                                <ul class="nav-menu">
-
+                                <ul class="nav-menu d-flex align-items-center gap-2">
                                     <li class="dropdown">
-                                        <a href="user-favourites.html">
+                                        <a href="{{ route("user.favorites") }}">
                                             <i data-feather="heart"></i>
                                         </a>
                                     </li>
@@ -205,11 +140,37 @@
                                         </ul>
                                     </li>
 
-                                    <li class="dropdown">
-                                        <a href="login.html">
-                                            <i data-feather="user"></i>
-                                        </a>
-                                    </li>
+                                    @auth
+                                        <li class="dropdown profile">
+                                            <a href="javascript:void(0)" class="nav-link dropdown-toggle"
+                                                data-bs-toggle="dropdown">
+                                                <i data-feather="user"
+                                                    style="width: 20px; height: 20px; line-height: 30px; text-align: center; font-size: 16px;"></i>
+                                            </a>
+                                            <ul class="nav-submenu dropdown-menu">
+                                                <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                                                <li><a href="{{ route('profile.edit') }}">Profile</a></li>
+                                                <li>
+                                                    <form method="POST" action="{{ route('logout') }}">
+                                                        @csrf
+                                                        <a href="{{ route('logout') }}"
+                                                            onclick="event.preventDefault(); this.closest('form').submit();">Logout</a>
+                                                    </form>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    @else
+                                        <li class="dropdown profile">
+                                            <a href="javascript:void(0)" class="nav-link dropdown-toggle"
+                                                data-bs-toggle="dropdown">
+                                                <i data-feather="user"></i>
+                                            </a>
+                                            <ul class="nav-submenu dropdown-menu">
+                                                <li><a href="{{ route('login') }}">Login</a></li>
+                                                <li><a href="{{ route('user.dashboard') }}">Dashboard</a></li>
+                                            </ul>
+                                        </li>
+                                    @endauth
                                 </ul>
                             </li>
                         </ul>
@@ -220,7 +181,91 @@
     </header>
     <!--  header end -->
 
-    @yield('main')
+
+    <!-- breadcrumb start -->
+    <section class="breadcrumb-section p-0">
+        <img src="https://themes.pixelstrap.com/sheltos/assets/images/inner-background.jpg" class="bg-img img-fluid"
+            alt="">
+        <div class="container">
+            <div class="breadcrumb-content">
+                <div>
+                    <h2>Dashboard</h2>
+                    <nav aria-label="breadcrumb" class="theme-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{{ route("client.home") }}">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- breadcrumb end -->
+
+    <!-- user dashboard section start -->
+    <section class="user-dashboard small-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="sidebar-user sticky-cls">
+                        <div class="user-profile">
+                            <div class="media">
+                                <div class="change-pic">
+                                    <img src="https://themes.pixelstrap.com/sheltos/assets/images/avatar/3.jpg"
+                                        class="img-fluid update_img" alt="">
+                                    <div class="change-hover">
+                                        <button type="button" class="btn"><i data-feather="camera"></i></button>
+                                        <input class="updateimg" type="file" name="img"
+                                            onchange="readURL(this,0)">
+                                    </div>
+                                </div>
+                                <div class="media-body">
+                                    <h5>Zack Lee</h5>
+                                    <h6 class="font-roboto">zackle@gmail.com</h6>
+                                    <h6 class="font-roboto mb-0">+91 846 - 547 - 210</h6>
+                                </div>
+                            </div>
+                            <div class="connected-social">
+                                <h6>Connect with</h6>
+                                <ul class="agent-social">
+                                    <li><a href="https://www.facebook.com/" class="facebook"><i
+                                                class="fab fa-facebook-f"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="https://whatsapp.com/" class="twitter"
+                                            style="background-color: #25d366">
+                                            <i class="fab fa-whatsapp"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="dashboard-list">
+                            <ul class="nav nav-tabs right-line-tab">
+                                <li class="nav-item"><a class="nav-link active"
+                                        href="u{{ route("user.dashboard") }}">Dashboard</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ route("user.properties") }}">My Properties</a></li>
+                                </li>
+                                <li class="nav-item"><a class="nav-link" href="{{ route("user.profile") }}">My profile</a>
+                                </li>
+                                <li class="nav-item"><a class="nav-link" href="{{ route("user.favorites") }}">favourites</a>
+                                </li>
+                                <li class="nav-item"><a class="nav-link" href="{{ route("user.payment") }}">Cards & payment</a>
+                                </li>
+                                <li class="nav-item"><a class="nav-link" href="{{ route("user.privacy") }}">Privacy</a></li>
+                                <li class="nav-item"><a href="javascript:void(0)" data-bs-toggle="modal"
+                                        data-bs-target="#logout" class="nav-link">Log out</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                @yield('content')
+
+            </div>
+        </div>
+    </section>
+    <!-- user dashboard section end -->
 
     <!-- footer start -->
     <footer class="footer-brown">
@@ -235,7 +280,7 @@
                             <div class="footer-content">
                                 <a href="{{ route('client.home') }}">
                                     <img src="{{ asset('client/assets/images/logo.png') }}" alt=""
-                                        class="img-fluid">
+                                        class="img-fluid" style="max-width: 50%">
                                 </a>
                                 <p>This home provides entertaining spaces with a kitchen opening...</p>
                                 <div class="footer-contact">
@@ -318,20 +363,38 @@
     </footer>
     <!-- footer end -->
 
-    <!-- Sticky WhatsApp Button -->
-    {{-- Replace 1234567890 with your WhatsApp number --}}
-    <a href="https://wa.me/+2347033866480?text=Hello!%20I'm%20interested%20in%20your%20services."
-        class="whatsapp-sticky-button" target="_blank" title="Chat with us on WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
     <!-- tap to top start -->
-    <div class="tap-top color-6">
+    <div class="tap-top">
         <div>
             <i class="fas fa-arrow-up"></i>
         </div>
     </div>
     <!-- tap to top end -->
+
+    <!-- log out modal start -->
+    <div class="modal fade edit-profile-modal logout-modal" id="logout">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Logging out</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h6>Are you sure ? you want to log out.</h6>
+                    <p>Once you will be logged out and will be unable to log in back.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dashed color-2 btn-pill"
+                        data-bs-dismiss="modal">no</button>
+                    <button type="button"
+                        class="btn btn-gradient color-2 btn-pill">yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- log out modal end -->
 
     <!-- customizer start -->
     <div class="customizer-wrap">
@@ -344,7 +407,7 @@
             </div>
             <div class="layouts-settings">
                 <div class="customizer-title">
-                    <h6 class="color-6">Layout type</h6>
+                    <h6 class="color-2">Layout type</h6>
                 </div>
                 <div class="option-setting">
                     <span>Light</span>
@@ -357,7 +420,7 @@
             </div>
             <div class="layouts-settings">
                 <div class="customizer-title">
-                    <h6 class="color-6">Layout Direction</h6>
+                    <h6 class="color-2">Layout Direction</h6>
                 </div>
                 <div class="option-setting">
                     <span>LTR</span>
@@ -370,11 +433,17 @@
             </div>
             <div class="layouts-settings">
                 <div class="customizer-title">
-                    <h6 class="color-6">Unlimited Color</h6>
+                    <h6 class="color-2">Unlimited Color</h6>
                 </div>
                 <div class="option-setting unlimited-color-layout">
-                    <input id="ColorPicker8" type="color" value="#78c805" name="Default">
-                    <input id="ColorPicker9" type="color" value="#6aa504" name="Default">
+                    <div class="form-group">
+                        <label for="ColorPicker3">color 3</label>
+                        <input id="ColorPicker3" type="color" value="#ff5c41" name="Default">
+                    </div>
+                    <div class="form-group">
+                        <label for="ColorPicker4">color 4</label>
+                        <input id="ColorPicker4" type="color" value="#ff8c41" name="Default">
+                    </div>
                 </div>
             </div>
         </div>
@@ -382,43 +451,44 @@
     <!-- customizer end -->
 
     <!-- latest jquery-->
-    <script src="{{ asset('client/assets/js/jquery-3.6.0.min.js') }}" defer></script>
+    <script src="https://themes.pixelstrap.com/sheltos/assets/js/jquery-3.6.0.min.js"></script>
 
     <!-- popper js-->
-    <script src="{{ asset('client/assets/js/popper.min.js') }}" defer></script>
-
-    <!-- Bootstrap js-->
-    <script src="{{ asset('client/assets/js/bootstrap.bundle.min.js') }}" defer></script>
-
-    <!-- range slider js -->
-    <script src="{{ asset('client/assets/js/jquery-ui.js') }}" defer></script>
-    <script src="{{ asset('client/assets/js/jquery.ui.touch-punch.min.js') }}" defer></script>
-    <script src="{{ asset('client/assets/js/range-slider.js') }}" defer></script>
+    <script src="https://themes.pixelstrap.com/sheltos/assets/js/popper.min.js"></script>
 
     <!-- feather icon js-->
-    <script src="{{ asset('client/assets/js/feather-icon/feather.min.js') }}" defer></script>
-    <script src="{{ asset('client/assets/js/feather-icon/feather-icon.js') }}" defer></script>
+    <script src="https://themes.pixelstrap.com/sheltos/assets/js/feather-icon/feather.min.js"></script>
+    <script src="https://themes.pixelstrap.com/sheltos/assets/js/feather-icon/feather-icon.js"></script>
 
     <!-- slick js -->
-    <script src="{{ asset('client/assets/js/slick.js') }}" defer></script>
-    <script src="{{ asset('client/assets/js/slick-animation.min.js') }}" defer></script>
-    <script src="{{ asset('client/assets/js/custom-slick.js') }}" defer></script>
+    <script src="https://themes.pixelstrap.com/sheltos/assets/js/slick.js"></script>
+    <script src="https://themes.pixelstrap.com/sheltos/assets/js/slick-animation.min.js"></script>
+    <script src="https://themes.pixelstrap.com/sheltos/assets/js/custom-slick.js"></script>
 
-    <!-- notify js -->
-    <script src="{{ asset('client/assets/js/bootstrap-notify.min.js') }}" defer></script>
+    <!-- Bootstrap js-->
+    <script src="https://themes.pixelstrap.com/sheltos/assets/js/bootstrap.bundle.min.js"></script>
 
-    <!-- wow js-->
-    <script src="{{ asset('client/assets/js/wow.min.js') }}" defer></script>
+    <!-- chartist chart js-->
+    <script src="https://themes.pixelstrap.com/sheltos/assets/js/chart/chartist/chartist.js"></script>
+    <script src="https://themes.pixelstrap.com/sheltos/assets/js/chart/chartist/chartist-plugin-tooltip.js"></script>
+
+    <!-- apexchart js-->
+    <script src="https://themes.pixelstrap.com/sheltos/assets/js/chart/apex-chart/apex-chart.js"></script>
+
+    <!-- dashboard js-->
+    <script src="https://themes.pixelstrap.com/sheltos/assets/js/dashboard.js"></script>
 
     <!-- Template js-->
-    <script src="{{ asset('client/assets/js/script.js') }}" defer></script>
+    <script src="https://themes.pixelstrap.com/sheltos/assets/js/script.js"></script>
 
     <!-- Customizer js-->
-    <script src="{{ asset('client/assets/js/customizer.js') }}" defer></script>
+    <script src="https://themes.pixelstrap.com/sheltos/assets/js/customizer.js"></script>
+
+    <!-- wow js-->
+    <script src="https://themes.pixelstrap.com/sheltos/assets/js/wow.min.js"></script>
 
     <!-- Color-picker js-->
-    <script src="{{ asset('client/assets/js/color/layout3.js') }}" defer></script>
+    <script src="https://themes.pixelstrap.com/sheltos/assets/js/color/template-color.js"></script>
 
 </body>
-
 </html>
