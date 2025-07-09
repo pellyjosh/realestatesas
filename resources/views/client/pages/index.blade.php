@@ -248,10 +248,11 @@
                                     <div class="bottom-property">
                                         <div class="d-flex">
                                             <div>
-                                                <h5><a href="#">Neverland</a></h5>
+                                                <h5>Neverland</h5>
                                                 <h6>#13,000 <small>/ start from</small></h6>
                                             </div>
-                                            <button type="button" class="btn btn-gradient color-6 mt-3">Details</button>
+                                            <a href="{{ route('client.property-details') }}"
+                                                class="btn btn-gradient color-6 mt-3">Details</a>
                                         </div>
                                         <div class="overlay-option">
                                             <ul>
@@ -296,7 +297,8 @@
                                                 <h5><a href="#">Orchard House</a></h5>
                                                 <h6>#14,520 <small>/ start from</small></h6>
                                             </div>
-                                            <button type="button" class="btn btn-gradient color-6 mt-3">Details</button>
+                                            <a href="{{ route('client.property-details') }}"
+                                                class="btn btn-gradient color-6 mt-3">Details</a>
                                         </div>
                                         <div class="overlay-option">
                                             <ul>
@@ -338,7 +340,8 @@
                                                 <h5><a href="#">Sea Breezes</a></h5>
                                                 <h6>#12,200 <small>/ start from</small></h6>
                                             </div>
-                                            <button type="button" class="btn btn-gradient color-6 mt-3">Details</button>
+                                            <a href="{{ route('client.property-details') }}"
+                                                class="btn btn-gradient color-6 mt-3">Details</a>
                                         </div>
                                         <div class="overlay-option">
                                             <ul>
@@ -395,27 +398,18 @@
                                                                 house</span></span></h3>
                                                 </a>
                                                 <h6 class="color-6">#9554.00*</h6>
-                                                <p class="font-roboto">We specialize in the acquisition and sale of land
-                                                    across a variety of property types.
-                                                    From individual plots to large, connected parcels, we help our clients
-                                                    navigate every stage of the land investment process. </p>
-                                                {{-- <ul>
-                                                                    <li><img src="{{ asset('client/assets/images/svg/icon/double-bed.svg') }}"
-                                                                            class="img-fluid" alt="">Bed : 5</li>
-                                                                    <li><img src="{{ asset('client/assets/images/svg/icon/bathroom.svg') }}"
-                                                                            class="img-fluid" alt="">Baths : 3</li>
-                                                                    <li><img src="{{ asset('client/assets/images/svg/icon/square-ruler-tool.svg') }}"
-                                                                            class="img-fluid ruler-tool" alt="">Sq Ft : 5000
-                                                                    </li>
-                                                                </ul> --}}
+                                                <p class="font-roboto">Strategically located in a serene environment, this
+                                                    land offers a peaceful setting just 10 minutes from the city center.
+                                                    It’s fully fenced, gated, and comes with access to electricity and water
+                                                    ideal for both residential and investment purposes.</p>
                                                 <a href="#">
                                                     <span class="round-half color-6">
                                                         <i data-feather="heart"></i>
                                                     </span>
                                                 </a>
                                                 <div class="property-btn">
-                                                    <a href="#" class="btn btn-dashed btn-pill color-6"
-                                                        tabindex="0">Details</a>
+                                                    <a href="{{ route('client.property-details') }}"
+                                                        class="btn btn-gradient color-6 mt-3">Details</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -537,12 +531,9 @@
                                         <span>10</span>
                                     </div>
                                     <div class="overlay-property-box">
-                                        <a href="#" class="effect-round" data-bs-toggle="tooltip"
-                                            data-bs-placement="left" title="Compare">
-                                            <i data-feather="shuffle"></i>
-                                        </a>
+
                                         <a href="#" class="effect-round like" data-bs-toggle="tooltip"
-                                            data-bs-placement="left" title="wishlist">
+                                            data-bs-placement="left" title="favourite">
                                             <i data-feather="heart"></i>
                                         </a>
                                     </div>
@@ -554,8 +545,8 @@
                                         <h3>Acorn Farm</h3>
                                     </a>
                                     <h6 class="color-6">#6558.00*</h6>
-                                    <p class="font-roboto">From urban plots to rural acreage, we connect buyers and sellers
-                                        with clear documentation and smooth transactions.</p>
+                                    <p class="font-roboto">Flat, dry land perfect for building ready for immediate
+                                        development.</p>
                                     <ul>
                                         <li><i class="fas fa-mountain"></i> Land : 3</li>
                                         <li><i class="fas fa-building"></i> Properties : 2</li>
@@ -601,12 +592,9 @@
                                         <span>42</span>
                                     </div>
                                     <div class="overlay-property-box">
-                                        <a href="#" class="effect-round" data-bs-toggle="tooltip"
-                                            data-bs-placement="left" title="Compare">
-                                            <i data-feather="shuffle"></i>
-                                        </a>
+
                                         <a href="#" class="effect-round like" data-bs-toggle="tooltip"
-                                            data-bs-placement="left" title="wishlist">
+                                            data-bs-placement="left" title="favourite">
                                             <i data-feather="heart"></i>
                                         </a>
                                     </div>
@@ -617,8 +605,8 @@
                                         <h3>Home in Merrick Way</h3>
                                     </a>
                                     <h6 class="color-6">#4513.00*</h6>
-                                    <p class="font-roboto">From urban plots to rural acreage, we connect buyers and sellers
-                                        with clear documentation and smooth transactions..</p>
+                                    <p class="font-roboto">Located near a major highway, ensuring easy transportation
+                                        access.</p>
                                     <ul>
                                         <li><i class="fas fa-mountain"></i> Land : 3</li>
                                         <li><i class="fas fa-building"></i> Properties : 2</li>
@@ -664,12 +652,9 @@
                                         <span>25</span>
                                     </div>
                                     <div class="overlay-property-box">
-                                        <a href="#" class="effect-round" data-bs-toggle="tooltip"
-                                            data-bs-placement="left" title="Compare">
-                                            <i data-feather="shuffle"></i>
-                                        </a>
+
                                         <a href="#" class="effect-round like" data-bs-toggle="tooltip"
-                                            data-bs-placement="left" title="wishlist">
+                                            data-bs-placement="left" title="favourite">
                                             <i data-feather="heart"></i>
                                         </a>
                                     </div>
@@ -680,8 +665,8 @@
                                         <h3>Allen's Across Way</h3>
                                     </a>
                                     <h6 class="color-6">#6558.00*</h6>
-                                    <p class="font-roboto">Looking to grow your portfolio? We source high-potential
-                                        properties that deliver long-term value in the long run.</p>
+                                    <p class="font-roboto">Close to residential estates, ideal for future home
+                                        construction.</p>
                                     <ul>
                                         <li><i class="fas fa-mountain"></i> Land : 3</li>
                                         <li><i class="fas fa-building"></i> Properties : 2</li>
@@ -727,12 +712,9 @@
                                         <span>09</span>
                                     </div>
                                     <div class="overlay-property-box">
-                                        <a href="#" class="effect-round" data-bs-toggle="tooltip"
-                                            data-bs-placement="left" title="Compare">
-                                            <i data-feather="shuffle"></i>
-                                        </a>
+
                                         <a href="#" class="effect-round like" data-bs-toggle="tooltip"
-                                            data-bs-placement="left" title="wishlist">
+                                            data-bs-placement="left" title="favourite">
                                             <i data-feather="heart"></i>
                                         </a>
                                     </div>
@@ -743,8 +725,7 @@
                                         <h3>Hidden Spring Hideway</h3>
                                     </a>
                                     <h6 class="color-6">#4513.00*</h6>
-                                    <p class="font-roboto">We help you find the perfect property—whether it’s land,
-                                        residential, or commercial—securely and stress-free..</p>
+                                    <p class="font-roboto">Fertile soil suitable for farming or agro-business ventures.</p>
                                     <ul>
                                         <li><i class="fas fa-mountain"></i> Land : 3</li>
                                         <li><i class="fas fa-building"></i> Properties : 2</li>
@@ -790,12 +771,9 @@
                                         <span>25</span>
                                     </div>
                                     <div class="overlay-property-box">
-                                        <a href="#" class="effect-round" data-bs-toggle="tooltip"
-                                            data-bs-placement="left" title="Compare">
-                                            <i data-feather="shuffle"></i>
-                                        </a>
+
                                         <a href="#" class="effect-round like" data-bs-toggle="tooltip"
-                                            data-bs-placement="left" title="wishlist">
+                                            data-bs-placement="left" title="favourite">
                                             <i data-feather="heart"></i>
                                         </a>
                                     </div>
@@ -806,8 +784,8 @@
                                         <h3>Merrick in Spring Way</h3>
                                     </a>
                                     <h6 class="color-6">#4513.00*</h6>
-                                    <p class="font-roboto">Get the best value for your property. Our expert team handles
-                                        everything from listing to closing 100%.</p>
+                                    <p class="font-roboto">Within a fast-developing area, promising high investment
+                                        returns.</p>
                                     <ul>
                                         <li><i class="fas fa-mountain"></i> Land : 3</li>
                                         <li><i class="fas fa-building"></i> Properties : 2</li>
@@ -854,12 +832,9 @@
                                         <span>42</span>
                                     </div>
                                     <div class="overlay-property-box">
-                                        <a href="#" class="effect-round" data-bs-toggle="tooltip"
-                                            data-bs-placement="left" title="Compare">
-                                            <i data-feather="shuffle"></i>
-                                        </a>
+
                                         <a href="#" class="effect-round like" data-bs-toggle="tooltip"
-                                            data-bs-placement="left" title="wishlist">
+                                            data-bs-placement="left" title="favourite">
                                             <i data-feather="heart"></i>
                                         </a>
                                     </div>
@@ -870,8 +845,7 @@
                                         <h3>Hidden Spring Hideway</h3>
                                     </a>
                                     <h6 class="color-6">#9554.00*</h6>
-                                    <p class="font-roboto">Every property we list is thoroughly verified for title, zoning,
-                                        and ownership—no surprises, just solid investments.
+                                    <p class="font-roboto">Comes with a government-approved survey and clear title documents.
                                     </p>
                                     <ul>
                                         <li><i class="fas fa-mountain"></i> Land : 3</li>
@@ -914,9 +888,8 @@
                                     </div>
                                     <div class="media-body">
                                         <h6>Premium Refined Luxury Homes</h6>
-                                        <h3>Looking for the new home?</h3>
-                                        <p>10 new offers every day. 350 offers on site, trusted
-                                            by a community of thousands of users.</p>
+                                        <h3>Looking for a new property?</h3>
+                                        <p>We help you find the perfect property land, residential, or commercial securely and stress free. Let’s make your next move simple and rewarding.</p>
                                     </div>
                                 </div>
                             </div>
@@ -930,9 +903,8 @@
                                     </div>
                                     <div class="media-body">
                                         <h6>Premium Refined Luxury Homes</h6>
-                                        <h3>Are you looking for home?</h3>
-                                        <p>350 offers on site, trusted by a community of thousands of users. 10 new
-                                            offers every day. </p>
+                                        <h3>Are the properties genuine?</h3>
+                                        <p>We verify all properties before listing. Each one comes with proper documentation such as survey plans, deeds, and government approvals. </p>
                                     </div>
                                 </div>
                             </div>
@@ -1068,11 +1040,8 @@
                         <span class="big-gradient">*</span>
                         <span class="small-white">*</span>
                         <h6>Premium Refined Luxury Homes</h6>
-                        <h2>Looking to Buy a new property or Sell an existing one?
-                            Real Homes provides an easy solution!</h2>
+                        <h2>We don’t just sell land we curate legacy worthy properties that stand the test of time for generations to come.</h2>
                         <div class="button-banner">
-                            <a href="portfolio-details.html" class="btn btn-white color-6"> <span>Browse
-                                    property</span></a>
                         </div>
                     </div>
                 </div>
@@ -1097,8 +1066,8 @@
                             <div class="about-content row">
                                 <div class="col-xl-6">
                                     <div class="about-image">
-                                        <img src="{{ asset("client/assets/images/about/1.jpg") }}"
-                                            class="img-fluid" alt="" loading="lazy" style="max-width: 100%;">
+                                        <img src="{{ asset('client/assets/images/about/1.jpg') }}" class="img-fluid"
+                                            alt="" loading="lazy" style="max-width: 100%;">
                                         <div class="about-overlay"></div>
                                         <div class="overlay-content">
                                             <ul>
@@ -1121,15 +1090,16 @@
                                 </div>
                                 <div class="col-xl-6">
                                     <div class="our-details">
-                                            <h6 class="d-flex">Ty R. Leeva <span class="label-heart color-6 ms-2"><i
-                                                        data-feather="heart"></i></span></h6>
+                                        <h6 class="d-flex">Ty R. Leeva <span class="label-heart color-6 ms-2"><i
+                                                    data-feather="heart"></i></span></h6>
                                         <h3>Communicating with..</h3>
                                         <span class="font-roboto"><i data-feather="mail"
                                                 class="me-1"></i>Leeva@inspirythemes.com</span>
                                         <p class="font-roboto">A real estate agent or broker is a person who represents
                                             sellers or buyers advised to consult a licensed.</p>
-                                        <a href="{{ route('client.realtor-profile') }}" class="btn btn-gradient btn-pill color-6 mt-2"><i
-                                                data-feather="eye"></i>View Portfolio</a>
+                                        <a href="{{ route('client.realtor-profile') }}"
+                                            class="btn btn-gradient btn-pill color-6 mt-2"><i data-feather="eye"></i>View
+                                            Portfolio</a>
                                     </div>
                                 </div>
                             </div>
@@ -1139,8 +1109,8 @@
                             <div class="about-content row">
                                 <div class="col-xl-6">
                                     <div class="about-image">
-                                        <img src="{{ asset("client/assets/images/about/2.jpg") }}"
-                                            class="img-fluid" alt="" loading="lazy" style="max-width: 100%;">
+                                        <img src="{{ asset('client/assets/images/about/2.jpg') }}" class="img-fluid"
+                                            alt="" loading="lazy" style="max-width: 100%;">
                                         <div class="about-overlay"></div>
                                         <div class="overlay-content">
                                             <ul>
@@ -1170,9 +1140,11 @@
                                         <h3>Sellers of property.</h3>
                                         <span class="font-roboto"><i data-feather="mail"
                                                 class="me-1"></i>John@inspirythemes.com</span>
-                                        <p class="font-roboto">Responsible for coordinating site visits, verifying land documentation, and maintaining up-to-date property records.</p>
-                                        <a href="{{ route('client.realtor-profile') }}" class="btn btn-gradient btn-pill color-6 mt-2"><i
-                                                data-feather="eye"></i>View Portfolio</a>
+                                        <p class="font-roboto">Responsible for coordinating site visits, verifying land
+                                            documentation, and maintaining up-to-date property records.</p>
+                                        <a href="{{ route('client.realtor-profile') }}"
+                                            class="btn btn-gradient btn-pill color-6 mt-2"><i data-feather="eye"></i>View
+                                            Portfolio</a>
                                     </div>
                                 </div>
                             </div>
@@ -1182,8 +1154,8 @@
                             <div class="about-content row">
                                 <div class="col-xl-6">
                                     <div class="about-image">
-                                        <img src="{{ asset("client/assets/images/about/2.jpg") }}"
-                                            class="img-fluid" alt="" loading="lazy" style="max-width: 100%;">
+                                        <img src="{{ asset('client/assets/images/about/2.jpg') }}" class="img-fluid"
+                                            alt="" loading="lazy" style="max-width: 100%;">
                                         <div class="about-overlay"></div>
                                         <div class="overlay-content">
                                             <ul>
@@ -1213,14 +1185,16 @@
                                         <h3>Advised to consult </h3>
                                         <span class="font-roboto"><i data-feather="mail"
                                                 class="me-1"></i>John@inspirythemes.com</span>
-                                        <p class="font-roboto">	They manage land inventories, provide expert advice to clients, and handle all aspects of the buying and selling process.</p>
-                                        <a href="{{ route('client.realtor-profile') }}" class="btn btn-gradient btn-pill color-6 mt-2"><i
-                                                data-feather="eye"></i>View Portfolio</a>
+                                        <p class="font-roboto"> They manage land inventories, provide expert advice to
+                                            clients, and handle all aspects of the buying and selling process.</p>
+                                        <a href="{{ route('client.realtor-profile') }}"
+                                            class="btn btn-gradient btn-pill color-6 mt-2"><i data-feather="eye"></i>View
+                                            Portfolio</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
@@ -1256,7 +1230,7 @@
                                     <li><img src="{{ asset('client/assets/images/testimonial/3.png') }}" alt="">
                                     </li>
                                 </ul>
-                                <p>	Responsible for showcasing available properties, negotiating deals, and ensuring smooth closings for land sales.</h6>
+                                <p>Professional, transparent, and truly invested in my goals. I felt confident every step of the way. I’ll definitely work with them again.</h6>
                                 <ul class="client-rating">
                                     <li><i class="fas fa-star"></i></li>
                                     <li><i class="fas fa-star"></i></li>
@@ -1264,28 +1238,27 @@
                                     <li><i class="fas fa-star"></i></li>
                                     <li><i class="fas fa-star"></i></li>
                                 </ul>
-                                <span class="label label-white label-lg"><span class="gradient-1 color-6">Mark
-                                        Andry</span></span>
+                                <span class="label label-white label-lg"><span class="gradient-1 color-6">James
+                                    Okoh</span></span>
                             </div>
                         </div>
                         <div>
                             <div class="client-slider light-bg">
                                 <ul class="user-list">
-                                    <li><img src="https://themes.pixelstrap.com/Premium Refined Luxury Homes/assets/images/testimonial/1.png"
+                                    <li><img src="{{ asset("client/assets/images/testimonial/1.png") }}"
                                             alt="" loading="lazy"></li>
                                     <li>
-                                        <img src="https://themes.pixelstrap.com/Premium Refined Luxury Homes/assets/images/testimonial/2.png"
+                                        <img src="{{ asset("client/assets/images/testimonial/2.png") }}"
                                             alt="" loading="lazy">
                                         <div class="heart-bg">
                                         </div>
-                                        <img src="https://themes.pixelstrap.com/Premium Refined Luxury Homes/assets/images/testimonial/heart.png"
+                                        <img src="{{ asset("client/assets/images/testimonial/heart.png") }}"
                                             alt="" class="heart-icon" loading="lazy">
                                     </li>
-                                    <li><img src="https://themes.pixelstrap.com/Premium Refined Luxury Homes/assets/images/testimonial/3.png"
+                                    <li><img src="{{ asset("client/assets/images/testimonial/3.png") }}"
                                             alt="" loading="lazy"></li>
                                 </ul>
-                                <p>Residences can be classified by and connected to residences. Different types of
-                                    housing can be use same physical type.</p>
+                                <p>Working with this team was seamless from start to finish. They helped me find the perfect land with zero stress hihgly recommended!</p>
                                 <h6>real estate</h6>
                                 <ul class="client-rating">
                                     <li><i class="fas fa-star"></i></li>
@@ -1294,7 +1267,7 @@
                                     <li><i class="fas fa-star"></i></li>
                                     <li><i class="fas fa-star"></i></li>
                                 </ul>
-                                <span class="label label-white label-lg"><span class="gradient-1 color-6">John
+                                <span class="label label-white label-lg"><span class="gradient-1 color-6">Ray
                                         David</span></span>
                             </div>
                         </div>
@@ -1308,49 +1281,7 @@
     <!-- brand 2 start -->
     <section class="small-section" style="padding: 10px 0; ">
         <div class="container">
-            {{-- <div class="row">
-                    <div class="col">
-                        <div class="slide-1 brand-slider">
-                            <div>
-                                <a href="javascript:void(0)" class="logo-box">
-                                    <img src="{{ asset('client/assets/images/brand/17.png') }}" alt=""
-                                        class="img-fluid">
-                                </a>
-                            </div>
-                            <div>
-                                <a href="javascript:void(0)" class="logo-box">
-                                    <img src="{{ asset('client/assets/images/brand/18.png') }}" alt=""
-                                        class="img-fluid">
-                                </a>
-                            </div>
-                            <div>
-                                <a href="javascript:void(0)" class="logo-box">
-                                    <img src="{{ asset('client/assets/images/brand/19.png') }}" alt=""
-                                        class="img-fluid">
-                                </a>
-                            </div>
-                            <div>
-                                <a href="javascript:void(0)" class="logo-box">
-                                    <img src="{{ asset('client/assets/images/brand/20.png') }}" alt=""
-                                        class="img-fluid">
-                                </a>
-                            </div>
-                            <div>
-                                <a href="javascript:void(0)" class="logo-box">
-                                    <img src="{{ asset('client/assets/images/brand/21.png') }}" alt=""
-                                        class="img-fluid">
-                                </a>
-                            </div>
-                            <div>
-                                <a href="javascript:void(0)" class="logo-box">
-                                    <img src="{{ asset('client/assets/images/brand/18.png') }}" alt=""
-                                        class="img-fluid">
-                                </a>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
+            
         </div>
     </section>
     <!-- brand 2 end -->

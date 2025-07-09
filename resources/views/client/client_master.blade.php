@@ -155,7 +155,7 @@
                             <li class="right-menu color-6">
                                 <ul class="nav-menu d-flex align-items-center gap-2">
                                     <li class="dropdown">
-                                        <a href="user-favourites.html">
+                                        <a href="{{ route("user.favorites") }}">
                                             <i data-feather="heart"></i>
                                         </a>
                                     </li>

@@ -35,7 +35,7 @@
                 <div class="col-lg-8">
                     <div class="log-in theme-card">
                         <div class="title-3 text-start">
-                            <h2>Let's Get In Touch</h2>
+                            <h3>Let's Get In Touch</h3>
                         </div>
                         <form class="row gx-3 get-in-touch">
                             <div class="form-group col-md-12">

@@ -130,6 +130,7 @@
                                             <th class="text-uppercase small text-secondary fw-bold py-3">Amount</th>
                                             <th class="text-uppercase small text-secondary fw-bold py-3">Date</th>
                                             <th class="text-uppercase small text-secondary fw-bold py-3">Status</th>
+                                            <th class="text-uppercase small text-secondary fw-bold py-3">Approved By</th>
                                             <th class="text-uppercase small text-secondary fw-bold py-3">Actions</th>
                                         </tr>
                                     </thead>
@@ -144,10 +145,11 @@
                                             <td>
                                                 <div style="line-height: 1.2;">July 01, 2025</div>
                                             </td>
-                                            <td class="fw-semibold text-success">Completed</td>
+                                            <td class="fw-semibold text-success">Paid</td>
+                                            <td class="text-muted">John Doe</td>
                                             <td>
                                                 <div class="action-btns">
-                                                    <a href="#" class="btn btn-sm btn-info"><i
+                                                    <a href="{{ route('admin-invoice') }}" class="btn btn-sm btn-info"><i
                                                             class="fas fa-eye"></i></a>
                                                 </div>
                                             </td>
@@ -163,6 +165,7 @@
                                                 <div style="line-height: 1.2;">July 03, 2025</div>
                                             </td>
                                             <td class="fw-semibold text-warning">Pending</td>
+                                            <td class="text-muted">John Doe</td>
                                             <td>
                                                 <div class="action-btns">
                                                     <a href="#" class="btn btn-sm btn-success"><i
@@ -182,10 +185,11 @@
                                             <td>
                                                 <div style="line-height: 1.2;">June 28, 2025</div>
                                             </td>
-                                            <td class="fw-semibold text-success">Completed</td>
+                                            <td class="fw-semibold text-success">Paid</td>
+                                            <td class="text-muted">John Doe</td>
                                             <td>
                                                 <div class="action-btns">
-                                                    <a href="#" class="btn btn-sm btn-info"><i
+                                                    <a href="{{ route('admin-invoice') }}" class="btn btn-sm btn-info"><i
                                                             class="fas fa-eye"></i></a>
                                                 </div>
                                             </td>
@@ -201,9 +205,10 @@
                                                 <div style="line-height: 1.2;">June 25, 2025</div>
                                             </td>
                                             <td class="fw-semibold text-danger">Failed</td>
+                                            <td class="text-muted">John Doe</td>
                                             <td>
                                                 <div class="action-btns">
-                                                    <a href="#" class="btn btn-sm btn-info"><i
+                                                    <a href="{{ route('admin-invoice') }}" class="btn btn-sm btn-info"><i
                                                             class="fas fa-eye"></i></a>
                                                 </div>
                                             </td>

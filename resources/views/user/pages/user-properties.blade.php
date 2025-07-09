@@ -11,8 +11,8 @@
                         <div class="filter-panel">
                             <div class="top-panel">
                                 <div>
-                                    <h2>My Listing</h2>
-                                    <span class="show-result">Showing <span>1-15 of 69</span> Listings</span>
+                                    <h2>My Properties</h2>
+                                    <span class="show-result">Showing <span>1-15 of 69</span>Properties</span>
                                 </div>
                                 <ul class="grid-list-filter">
                                     <li>
@@ -155,32 +155,28 @@
                                             <span>42</span>
                                         </div>                 
                                         <div class="overlay-property-box">
-                                            <a href="compare.html" class="effect-round" data-bs-toggle="tooltip" data-bs-placement="left" title="Compare"> 
-                                                <i data-feather="shuffle"></i>
-                                            </a>
-                                            <a href="user-favourites.html" class="effect-round like" data-bs-toggle="tooltip" data-bs-placement="left" title="wishlist">
-                                                <i data-feather="heart"></i>                                                                               
-                                            </a>
+                                                                                                                         
                                         </div>
                                     </div>
     
                                     <div class="property-details">
-                                        <span class="font-roboto">France</span>
-                                        <div class="my-listing font-roboto">Added 20 min ago</div>
-                                        <a href="single-property-8.html">
-                                            <h3>Merrick in Spring Way</h3>
+                                        <span class="font-roboto">Abuja</span>
+                                        <a href="#">
+                                            <h3>Acorn Farm</h3>
                                         </a>
-                                        <h6>$6558.00*</h6>
-                                        <p class="font-roboto">Elegant retreat in a quiet Coral Gables setting. This home provides wonderful entertaining spaces with a chef
-                                            kitchen opening…</p>
+                                        <h6 class="color-6">#6558.00*</h6>
+                                        <p class="font-roboto">Flat, dry land perfect for building ready for immediate
+                                            development.</p>
                                         <ul>
-                                            <li><img src="https://themes.pixelstrap.com/sheltos/assets/images/svg/icon/double-bed.svg" class="img-fluid" alt="">Bed : 4</li>
-                                            <li><img src="https://themes.pixelstrap.com/sheltos/assets/images/svg/icon/bathroom.svg" class="img-fluid" alt="">Baths : 4</li>
-                                            <li><img src="https://themes.pixelstrap.com/sheltos/assets/images/svg/icon/square-ruler-tool.svg" class="img-fluid ruler-tool" alt="">Sq Ft : 5000</li>
+                                            <li><i class="fas fa-mountain"></i> Land : 3</li>
+                                            <li><i class="fas fa-building"></i> Properties : 2</li>
+                                            <li>
+                                                <i class="fas fa-ruler-combined"></i> Sq Ft : 5000
+                                            </li>
                                         </ul>
                                         <div class="property-btn d-flex">
-                                            <span>July 18, 2022</span>
-                                            <button type="button"  onclick="document.location='single-property-8.html'" class="btn btn-dashed btn-pill color-2">Details</button>
+                                            <span>August 4, 2022</span>
+                                            <a type="button" href="{{ route("user.property-details") }}" class="btn btn-dashed btn-pill color-6">Details</a>
                                         </div>
                                     </div>
                                 </div>
@@ -216,12 +212,7 @@
                                             <span>10</span>
                                         </div>                 
                                         <div class="overlay-property-box">
-                                            <a href="compare.html" class="effect-round" data-bs-toggle="tooltip" data-bs-placement="left" title="Compare"> 
-                                                <i data-feather="shuffle"></i>
-                                            </a>
-                                            <a href="user-favourites.html" class="effect-round like" data-bs-toggle="tooltip" data-bs-placement="left" title="wishlist">
-                                                <i data-feather="heart"></i>                                                                               
-                                            </a>
+                                           
                                         </div>
                                     </div>
                                     <div class="property-details">
@@ -240,7 +231,7 @@
                                         </ul>
                                         <div class="property-btn d-flex">
                                             <span>June 20, 2022</span>
-                                            <button type="button"  onclick="document.location='single-property-8.html'" class="btn btn-dashed btn-pill color-2">Details</button>
+                                            <a type="button" href="{{ route("user.property-details") }}" class="btn btn-dashed btn-pill color-6">Details</a>
                                         </div>
                                     </div>
                                 </div>
@@ -277,12 +268,7 @@
                                             <span>25</span>
                                         </div>                 
                                         <div class="overlay-property-box">
-                                            <a href="compare.html" class="effect-round" data-bs-toggle="tooltip" data-bs-placement="left" title="Compare"> 
-                                                <i data-feather="shuffle"></i>
-                                            </a>
-                                            <a href="user-favourites.html" class="effect-round like" data-bs-toggle="tooltip" data-bs-placement="left" title="wishlist">
-                                                <i data-feather="heart"></i>                                                                               
-                                            </a>
+                                           
                                         </div>
                                     </div>
                                     <div class="property-details">
@@ -301,7 +287,7 @@
                                         </ul>
                                         <div class="property-btn d-flex">
                                             <span>August 4, 2022</span>
-                                            <button type="button"  onclick="document.location='single-property-8.html'" class="btn btn-dashed btn-pill color-2">Details</button>
+                                            <a type="button" href="{{ route("user.property-details") }}" class="btn btn-dashed btn-pill color-6">Details</a>
                                         </div>
                                     </div>
                                 </div>

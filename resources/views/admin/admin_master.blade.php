@@ -510,12 +510,7 @@
                                             All Realtors
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="{{ route('realtor-invoice') }}">
-                                            <i data-feather="chevrons-right"></i>
-                                            Invoice
-                                        </a>
-                                    </li>
+                                   
                                 </ul>
                             </li>
                             <li class="sidebar-item">

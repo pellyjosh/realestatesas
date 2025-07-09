@@ -17,7 +17,9 @@
                                 <i class="far fa-star"></i>
                             </div>
                         </div>
-                        <span data-bs-toggle="modal" data-bs-target="#edit-profile" class="label label-light label-flat color-4">Edit</span>
+                        <span data-bs-toggle="modal" data-bs-target="#edit-profile" class="label label-light label-flat color-4">
+                            <i class="fas fa-edit"></i>
+                          </span>
                     </div>
                     <ul class="user-detail">
                         <li>
@@ -75,12 +77,16 @@
                                         <li>
                                             <span>Email :</span>
                                             <a href="javascript:void(0)">zackle@gmail.com</a>
-                                            <span data-bs-toggle="modal" data-bs-target="#edit-address" class="label label-light label-flat color-4">Edit</span>
+                                            <span data-bs-toggle="modal" data-bs-target="#edit-profile" class="label label-light label-flat color-4">
+                                                <i class="fas fa-edit"></i>
+                                              </span>
                                         </li>
                                         <li>
                                             <span>Password :</span>
                                             <a href="javascript:void(0)">&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;</a>
-                                            <span data-bs-toggle="modal" data-bs-target="#edit-password" class="label label-light label-flat color-4">Edit</span>
+                                            <span data-bs-toggle="modal" data-bs-target="#edit-password" class="label label-light label-flat color-4">
+                                                <i class="fas fa-edit"></i>
+                                              </span>
                                         </li>
                                     </ul>
                                 </div>

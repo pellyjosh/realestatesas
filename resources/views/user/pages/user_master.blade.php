@@ -241,8 +241,7 @@
                         </div>
                         <div class="dashboard-list">
                             <ul class="nav nav-tabs right-line-tab">
-                                <li class="nav-item"><a class="nav-link active"
-                                        href="u{{ route("user.dashboard") }}">Dashboard</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ route("user.dashboard") }}">Dashboard</a></li>
                                 <li class="nav-item"><a class="nav-link" href="{{ route("user.properties") }}">My Properties</a></li>
                                 </li>
                                 <li class="nav-item"><a class="nav-link" href="{{ route("user.profile") }}">My profile</a>

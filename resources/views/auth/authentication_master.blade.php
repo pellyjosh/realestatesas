@@ -21,10 +21,10 @@
     <link href="https://fonts.googleapis.com/css?family=Rubik:400,400i,500,500i,700,700i" rel="stylesheet">
 
     <!-- animate css -->
-    <link rel="stylesheet" type="text/css" href="https://themes.pixelstrap.com/sheltos/assets/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset("client/assets/css/animate.css") }}">
 
     <!-- Template css -->
-    <link rel="stylesheet" type="text/css" href="https://themes.pixelstrap.com/sheltos/assets/css/admin.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset("admin/assets/css/admin.css") }}">
 
 
     <!-- Font Awesome 6 Free CDN -->

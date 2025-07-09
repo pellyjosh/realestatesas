@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\TypesController;
 use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\Admin\AdminEventController;
+use App\Http\Controllers\Admin\AdminInvoice;
 use App\Http\Controllers\Admin\AdminWithdrawalController;
 use App\Http\Controllers\Admin\AuthenticationController;
 use App\Http\Controllers\Admin\AdminTransactionsController;
@@ -40,6 +41,7 @@ use App\Http\Controllers\User\UserPaymentsController;
 use App\Http\Controllers\User\UserPrivacyController;
 use App\Http\Controllers\User\UserProfileController;
 use App\Http\Controllers\User\UserPropertiesController;
+use App\Http\Controllers\User\UserPropertyDetailsController;
 
 Route::get('/', function () {
     return view('client.pages.index');
@@ -56,6 +58,10 @@ Route::get('/realtor-profile', function () {
 Route::get('/compare', function () {
     return view('client.pages.compare');
 })->name('client.compare');
+
+Route::get('/property-details', function () {
+    return view('client.pages.property-details');
+})->name('client.property-details');
 
 Route::controller(EventController::class)->group(function () {
     Route::get('/events', 'index')->name('client.events');
@@ -89,7 +95,7 @@ Route::prefix('management')->middleware(['auth', 'user.type:admin'])->group(func
         Route::get('/edit-admin', 'editAdmin')->name('edit-admin');
         Route::get('/all-admins', 'allAdmins')->name('all-admins');
         Route::get('/add-admin-wizard', 'addAdminWizard')->name('add-admin-wizard');
-        Route::get('/admin-invoice', 'adminInvoice')->name('admin-invoice');
+        Route::get('/admin-invoice', 'adminInvoice');
     });
 
     Route::controller(PropertyController::class)->group(function () {
@@ -113,7 +119,6 @@ Route::prefix('management')->middleware(['auth', 'user.type:admin'])->group(func
         Route::get('/add-realtor-wizard', 'addRealtorWizardIndex')->name('add-realtor-wizard');
         Route::get('/edit-realtor', 'editRealtorIndex')->name('edit-realtor');
         Route::get('/all-realtors', 'allRealtorIndex')->name('all-realtors');
-        Route::get('/realtor-invoice', 'RealtorInvoiceIndex')->name('realtor-invoice');
     });
 
     Route::controller(MapController::class)->group(function () {
@@ -142,6 +147,10 @@ Route::prefix('management')->middleware(['auth', 'user.type:admin'])->group(func
 
     Route::controller(AdminTransactionsController::class)->group(function () {
         Route::get('/transactions', 'index')->name('admin.transactions');
+    });
+
+    Route::controller(AdminInvoice::class)->group(function () {
+       Route::get('/invoice', 'index')->name('admin-invoice');
     });
 });
 
@@ -237,6 +246,10 @@ Route::prefix('realtor')->group(function () {
 });
 
 
+
+// user routes
+// user routes
+// user routes
 Route::prefix('user')->group(function () {
    Route::controller(NormalUserController::class)->group(function () {
         Route::get('/dashboard', 'index')->name('user.dashboard');
@@ -260,6 +273,10 @@ Route::prefix('user')->group(function () {
 
     Route::controller(UserPropertiesController::class)->group(function () {
         Route::get('/user-properties', 'index')->name('user.properties');
+    });
+
+    Route::controller(UserPropertyDetailsController::class)->group(function () {
+        Route::get('/user-property-details', 'index')->name('user.property-details');
     });
 });
 
