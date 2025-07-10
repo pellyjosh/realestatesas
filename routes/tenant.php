@@ -54,15 +54,15 @@ use App\Http\Controllers\User\UserPropertyDetailsController;
 |
 */
 
-Route::group(
-    [
-        'middleware' => [
-            'web',
-            'tenancy.domain',
-            'tenancy.prevent-central',
-        ],
-    ],
-    function () {
+// Route::group(
+//     [
+//         'middleware' => [
+//             'web',
+//             'tenancy.domain',
+//             'tenancy.prevent-central',
+//         ],
+//     ],
+//     function () {
         Route::get('/tenant', function () {
             return view('client.pages.index');
         })->name('client.home');
@@ -205,5 +205,5 @@ Route::group(
                 Route::get('/events', 'index')->name('realtor.events');
             });
         });
-    }
-);
+//     }
+// );

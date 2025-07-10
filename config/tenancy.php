@@ -19,7 +19,9 @@ return [
     'central_domains' => [
         '127.0.0.1',
         'localhost',
-        'nationally-emerging-killdeer.ngrok-free.app', // add your real admin domain if deployed
+        'premiumrefined.net',
+        'www.premiumrefined.net',
+        'https://premiumrefined.net/'
     ],
 
     /**
@@ -53,7 +55,7 @@ return [
          * prefix + tenant_id + suffix.
          */
         'prefix' => 'tenant',
-        'suffix' => '.sqlite',
+        'suffix' => '',
 
         /**
          * TenantDatabaseManagers are classes that handle the creation & deletion of tenant databases.

@@ -26,8 +26,8 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
 
         $middleware->append([
-            PreventAccessFromCentralDomains::class,
             InitializeTenancyByDomain::class,
+            PreventAccessFromCentralDomains::class,
             \App\Http\Middleware\RedirectToComingSoon::class,
         ]);
     })
