@@ -18,8 +18,9 @@ class TenantAndDomainSeeder extends Seeder
     {
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         DB::table('tenants')->truncate();
-        Tenant::create(['id' => 'estate1']);
-        Tenant::create(['id' => 'estate2']);
+        Tenant::create(['id' => 'client1']);
+        Tenant::create(['id' => 'client2']);
+        Tenant::create(['id' => 'client3']);
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
@@ -30,7 +31,7 @@ class TenantAndDomainSeeder extends Seeder
         foreach ($tenants as $tenant) {
             Domain::create([
                 'tenant_id' => $tenant->id,
-                'domain' => "{$tenant->id}.premiumrefined.net",
+                'domain' => "{$tenant->id}.localhost.test",
             ]);
         }
     }

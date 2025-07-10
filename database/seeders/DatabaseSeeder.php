@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,9 +15,10 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(TenantAndDomainSeeder::class);
 
+        DB::table('users')->truncate();
         User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+            'name' => 'Super Admin',
+            'email' => 'superadmin@example.com',
         ]);
     }
 }
