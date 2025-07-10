@@ -7,7 +7,7 @@ use App\Models\Tenant;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
 
-class DomainSeeder extends Seeder
+class TenantAndDomainSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,6 +16,12 @@ class DomainSeeder extends Seeder
      */
     public function run()
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        DB::table('tenants')->truncate();
+        Tenant::create(['id' => 'estate1']);
+        Tenant::create(['id' => 'estate2']);
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         DB::table('domains')->truncate();
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
