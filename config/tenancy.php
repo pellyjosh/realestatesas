@@ -21,7 +21,6 @@ return [
         'localhost',
         'premiumrefined.net',
         'www.premiumrefined.net',
-        'https://premiumrefined.net/'
     ],
 
     /**
