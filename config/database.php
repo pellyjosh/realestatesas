@@ -31,6 +31,12 @@ return [
 
     'connections' => [
 
+        'tenant' => [
+            'driver' => 'sqlite',
+            'database' => '', // Empty; will be filled dynamically
+            'prefix' => '',
+        ],
+
         'sqlite' => [
             'driver' => 'sqlite',
             'url' => env('DB_URL'),
