@@ -31,7 +31,7 @@ class TenantAndDomainSeeder extends Seeder
         foreach ($tenants as $tenant) {
             Domain::create([
                 'tenant_id' => $tenant->id,
-                'domain' => "{$tenant->id}.localhost.test",
+                'domain' => "{$tenant->id}.central.test",
             ]);
         }
     }
