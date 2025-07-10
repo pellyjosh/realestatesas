@@ -16,7 +16,9 @@ class DomainSeeder extends Seeder
      */
     public function run()
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         DB::table('domains')->truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         $tenants = Tenant::all();
 
         foreach ($tenants as $tenant) {
