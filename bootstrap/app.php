@@ -23,13 +23,11 @@ return Application::configure(basePath: dirname(__DIR__))
             'coming.soon' => \App\Http\Middleware\RedirectToComingSoon::class,
             'tenancy.prevent-central' => PreventAccessFromCentralDomains::class,
             'tenancy.domain' => InitializeTenancyByDomain::class,
-
         ]);
 
         $middleware->append([
-            // PreventAccessFromCentralDomains::class,
-            // InitializeTenancyByDomain::class,
-
+            PreventAccessFromCentralDomains::class,
+            InitializeTenancyByDomain::class,
             \App\Http\Middleware\RedirectToComingSoon::class,
         ]);
     })
