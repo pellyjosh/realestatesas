@@ -86,6 +86,7 @@ new class extends \Livewire\Volt\Component {
 
     public function store(): void
     {
+        dd('Store method reached');
         $validated = $this->validate();
 
         $logoPath = null;
@@ -111,8 +112,7 @@ new class extends \Livewire\Volt\Component {
         $tenant->domains()->create(['domain' => $full_domain]);
 
         $this->loadTenants();
-        $this->reset(['name', 'subdomain', 'full_domain', 'domain_type', 'logo', 'email', 'phone', 'address', 'city', 'state', 'zip', 'country', 'theme', 'primary_color']);
-        session()->flash('message', 'Tenant created successfully.');
+        dd('Resetting fields');
     }
 };
 ?>
