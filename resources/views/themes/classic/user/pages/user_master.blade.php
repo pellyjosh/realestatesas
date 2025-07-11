@@ -79,7 +79,7 @@
                                             <a href="{{ route('client.events') }}" class="nav-link">Events</a>
                                         </li>
                                         <li class="dropdown">
-                                            <a href="{{ route('client.contact') }}"
+                                            <a href="{{ route('tenant.client.contact') }}"
                                                 class="nav-link menu-title">Contact</a>
                                         </li>
                                     </ul>
@@ -90,7 +90,7 @@
                             <li class="right-menu color-6">
                                 <ul class="nav-menu d-flex align-items-center gap-2">
                                     <li class="dropdown">
-                                        <a href="{{ route('user.favorites') }}">
+                                        <a href="{{ route('tenant.user.favorites') }}">
                                             <i data-feather="heart"></i>
                                         </a>
                                     </li>
@@ -249,7 +249,7 @@
                                         profile</a>
                                 </li>
                                 <li class="nav-item"><a class="nav-link"
-                                        href="{{ route('user.favorites') }}">favourites</a>
+                                        href="{{ route('tenant.user.favorites') }}">favourites</a>
                                 </li>
                                 <li class="nav-item"><a class="nav-link" href="{{ route('user.payment') }}">Cards &
                                         payment</a>
@@ -317,7 +317,7 @@
                                     <a href="{{ route('client.events') }}">Events</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('client.contact') }}">Contact</a>
+                                    <a href="{{ route('tenant.client.contact') }}">Contact</a>
                                 </li>
                             </ul>
                         </div>

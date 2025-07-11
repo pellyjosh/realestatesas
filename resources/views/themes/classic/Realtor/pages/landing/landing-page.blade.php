@@ -98,7 +98,7 @@
                                             <a href="{{ route('client.events') }}"
                                                 class="nav-link menu-title">Events</a>
                                         <li class="dropdown">
-                                            <a href="{{ route('client.contact') }}"
+                                            <a href="{{ route('tenant.client.contact') }}"
                                                 class="nav-link menu-title">Contact</a>
                                         </li>
                                     </ul>
@@ -590,7 +590,7 @@
                                     <a href="{{ route('client.events') }}">Events</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('client.contact') }}">Contact</a>
+                                    <a href="{{ route('tenant.client.contact') }}">Contact</a>
                                 </li>
                             </ul>
                         </div>

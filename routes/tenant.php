@@ -16,7 +16,7 @@ use App\Http\Controllers\Client\EventController;
 // use App\Http\Controllers\Admin\AuthenticationController;
 // use App\Http\Controllers\Admin\AdminTransactionsController;
 
-// Realtor routes
+// Realtor Import
 use App\Http\Controllers\Realtor\RealtorAuthenticationController;
 use App\Http\Controllers\Realtor\RealtorPropertyController;
 use App\Http\Controllers\Realtor\RealtorUserController;
@@ -33,8 +33,7 @@ use App\Http\Controllers\Realtor\SalesRequestController;
 use App\Http\Controllers\Realtor\RealtorEventController;
 
 
-// User Routes 
-use App\Http\Controllers\User\NormalUserController;
+// User Import 
 use App\Http\Controllers\User\UserFavoritesController;
 use App\Http\Controllers\User\UserPaymentsController;
 use App\Http\Controllers\User\UserPrivacyController;
@@ -42,10 +41,22 @@ use App\Http\Controllers\User\UserProfileController;
 use App\Http\Controllers\User\UserPropertiesController;
 use App\Http\Controllers\User\UserPropertyDetailsController;
 
+// Tenant Import
 use Stancl\Tenancy\Middleware\PreventAccessFromCentralDomains;
 use Stancl\Tenancy\Middleware\InitializeTenancyByDomain;
 
 
+// Auth imports
+use App\Http\Controllers\Tenant\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Tenant\Auth\ConfirmablePasswordController;
+use App\Http\Controllers\Tenant\Auth\EmailVerificationNotificationController;
+use App\Http\Controllers\Tenant\Auth\EmailVerificationPromptController;
+use App\Http\Controllers\Tenant\Auth\NewPasswordController;
+use App\Http\Controllers\Tenant\Auth\PasswordController;
+use App\Http\Controllers\Tenant\Auth\PasswordResetLinkController;
+use App\Http\Controllers\Tenant\Auth\RegisteredUserController;
+use App\Http\Controllers\Tenant\Auth\VerifyEmailController;
+use App\Http\Controllers\Tenant\Client\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -79,45 +90,45 @@ Route::middleware([
     })->name('client.property-details');
 
     Route::controller(EventController::class)->group(function () {
-        Route::get('/events', 'index')->name('client.events');
+        Route::get('/events', 'index')->name('tenant.client.events');
         Route::post('/book-event', 'bookEvent');
         Route::post('/retrieve-referral', 'retrieveReferral');
     });
 
     Route::get("/contact", function () {
         return tenant_view('client.pages.contact');
-    })->name('client.contact');
+    })->name('tenant.client.contact');
 
     // user routes
     Route::middleware('auth:tenant')->group(function () {
-        
-        Route::controller(NormalUserController::class)->group(function () {
-            Route::get('/dashboard', 'index')->name('user.dashboard');
+
+        Route::controller(DashboardController::class)->group(function () {
+            Route::get('/dashboard', 'index')->name('tenant.user.dashboard');
         });
 
-        Route::controller(UserFavoritesController::class)->group(function () {
-            Route::get('/user-favorites', 'index')->name('user.favorites');
-        });
+        Route::get('/user-favorites', function () {
+            return tenant_view('user.pages.user-favorites');
+        })->name('tenant.user.favorites');
 
-        Route::controller(UserPaymentsController::class)->group(function () {
-            Route::get('/user-payment', 'index')->name('user.payment');
-        });
+        Route::get('/user-payment', function () {
+            return tenant_view('user.pages.user-payment');
+        })->name('user.payment');
 
-        Route::controller(UserPrivacyController::class)->group(function () {
-            Route::get('/user-privacy', 'index')->name('user.privacy');
-        });
+        Route::get('/user-privacy', function () {
+            return tenant_view('user.pages.user-privacy');
+        })->name('user.privacy');
 
-        Route::controller(UserProfileController::class)->group(function () {
-            Route::get('/user-profile', 'index')->name('user.profile');
-        });
+        Route::get('/user-profile', function () {
+            return tenant_view('user.pages.user-profile');
+        })->name('user.profile');
 
-        Route::controller(UserPropertiesController::class)->group(function () {
-            Route::get('/user-properties', 'index')->name('user.properties');
-        });
+        Route::get('/user-properties', function () {
+            return tenant_view('user.pages.user-properties');
+        })->name('user.properties');
 
-        Route::controller(UserPropertyDetailsController::class)->group(function () {
-            Route::get('/user-property-details', 'index')->name('user.property-details');
-        });
+        Route::get('/user-property-details', function () {
+            return tenant_view('user.pages.user-property-details');
+        })->name('user.property-details');
     });
 
     // Realtor Routes
@@ -200,5 +211,53 @@ Route::middleware([
         Route::controller(RealtorEventController::class)->group(function () {
             Route::get('/events', 'index')->name('realtor.events');
         });
+    });
+
+    // Auth Routes
+    Route::middleware('guest')->group(function () {
+        Route::get('register', [RegisteredUserController::class, 'create'])
+            ->name('tenant.register');
+
+        Route::post('register', [RegisteredUserController::class, 'store']);
+
+        Route::get('login', [AuthenticatedSessionController::class, 'create'])
+            ->name('tenant.login');
+
+        Route::post('login', [AuthenticatedSessionController::class, 'store']);
+
+        Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
+            ->name('tenant.password.request');
+
+        Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])
+            ->name('tenant.password.email');
+
+        Route::get('reset-password/{token}', [NewPasswordController::class, 'create'])
+            ->name('tenant.password.reset');
+
+        Route::post('reset-password', [NewPasswordController::class, 'store'])
+            ->name('tenant.password.store');
+    });
+
+    Route::middleware('auth:tenant')->group(function () {
+        Route::get('verify-email', EmailVerificationPromptController::class)
+            ->name('tenant.verification.notice');
+
+        Route::get('verify-email/{id}/{hash}', VerifyEmailController::class)
+            ->middleware(['signed', 'throttle:6,1'])
+            ->name('tenant.verification.verify');
+
+        Route::post('email/verification-notification', [EmailVerificationNotificationController::class, 'store'])
+            ->middleware('throttle:6,1')
+            ->name('tenant.verification.send');
+
+        Route::get('confirm-password', [ConfirmablePasswordController::class, 'show'])
+            ->name('tenant.password.confirm');
+
+        Route::post('confirm-password', [ConfirmablePasswordController::class, 'store']);
+
+        Route::put('password', [PasswordController::class, 'update'])->name('tenant.password.update');
+
+        Route::match(['POST', 'GET'], 'logout', [AuthenticatedSessionController::class, 'destroy'])
+            ->name('tenant.logout');
     });
 });

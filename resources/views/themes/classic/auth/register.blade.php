@@ -5,7 +5,7 @@
         <div class="title-3 text-center mb-4">
             <h1>Sign up</h1>
         </div>
-        <form method="POST" action="{{ route('register') }}" autocomplete="off" style="width: 100%;">
+        <form method="POST" action="{{ route('tenant.register') }}" autocomplete="off" style="width: 100%;">
             @csrf
             <div class="form-group text-center mb-4">
                 <div class="profile-image-upload"
@@ -105,7 +105,7 @@
             <div class="d-flex flex-column justify-content-center align-items-center mt-3 mb-3">
                 <button type="submit" class="btn btn-pill mb-3"
                     style="background-color: #78c705; color: #fff; width: 180px; font-size: 0.9em;">Create Account</button>
-                <a href="{{ route('login') }}" class="btn btn-dashed btn-pill color-2"
+                <a href="{{ route('tenant.login') }}" class="btn btn-dashed btn-pill color-2"
                     style="width: 180px; font-size: 0.9em;">Log in</a>
             </div>
             <div class="divider text-center mt-3">

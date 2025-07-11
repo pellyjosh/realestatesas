@@ -29,7 +29,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->append([
             // PreventAccessFromCentralDomains::class,
             // InitializeTenancyByDomain::class,
-            \App\Http\Middleware\RedirectToComingSoon::class,
+            // \App\Http\Middleware\RedirectToComingSoon::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

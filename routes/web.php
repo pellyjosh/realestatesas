@@ -32,6 +32,7 @@ foreach (config('tenancy.central_domains', []) as $domain) {
     });
 
 
+
     // Auth Routes
     Route::middleware('guest')->group(function () {
         Route::get('register', [RegisteredUserController::class, 'create'])
@@ -57,7 +58,7 @@ foreach (config('tenancy.central_domains', []) as $domain) {
             ->name('password.store');
     });
 
-    Route::middleware('auth')->group(function () {
+    Route::middleware('auth:web')->group(function () {
         Route::get('verify-email', EmailVerificationPromptController::class)
             ->name('verification.notice');
 
