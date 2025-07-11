@@ -35,9 +35,9 @@ class AdminController extends Controller
             'country' => 'nullable|string|max:255',
             'email' => 'nullable|email|max:255',
             'phone' => 'nullable|string|max:20',
-            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Adjust mimes and max as needed
+            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'theme' => 'nullable|string|max:255',
-            'primary_color' => 'nullable|string|max:7', // Hex color code
+            'primary_color' => 'nullable|string|max:7',
         ]);
 
         // Handle Logo Upload
