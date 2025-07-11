@@ -13,6 +13,7 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
+        $middleware->group('universal', []);
         $middleware->validateCsrfTokens(except: [
             'book-event',
             'retrieve-referral',

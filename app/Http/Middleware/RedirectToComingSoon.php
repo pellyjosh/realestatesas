@@ -35,7 +35,7 @@ class RedirectToComingSoon
             }
         }
 
-        if (in_array($path, $comingSoonPaths)) {
+        if (is_array($comingSoonPaths) && in_array($path, $comingSoonPaths)) {
             return response()->view('coming-soon');
         }
 

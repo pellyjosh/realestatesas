@@ -1,14 +1,18 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SuperAdmin\AdminController;
+use \App\Http\Controllers\SuperAdmin\BillingController;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
 
+Route::get('/', [AdminController::class, 'onboarding'])->name('superadmin.onboarding');
 
 
 require __DIR__ . '/auth.php';
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::post('/superadmin/tenants', [AdminController::class, 'storeTenant'])->name('superadmin.tenants.store');
+});
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/billings', [\App\Http\Controllers\BillingController::class, 'index'])->name('billings.index');

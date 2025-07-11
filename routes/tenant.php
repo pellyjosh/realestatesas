@@ -63,27 +63,19 @@ Route::middleware([
     PreventAccessFromCentralDomains::class,
 ])->group(function () {
     Route::get('/', function () {
-        return 'This is your multi-tenant application. The id of the current tenant is ' . tenant('id');
-    });
-
-    Route::get('/tenant', function () {
-        return view('client.pages.index');
-    })->name('client.home');
+        return tenant_view('client.pages.index');
+    })->name('tenant.client.home');
 
     Route::get('/realtor-profile', function () {
-        return view('client.pages.realtor-profile');
-    })->name('client.realtor-profile');
-
-    Route::get('/realtor-profile', function () {
-        return view('client.pages.realtor-profile');
+        return tenant_view('client.pages.realtor-profile');
     })->name('client.realtor-profile');
 
     Route::get('/compare', function () {
-        return view('client.pages.compare');
+        return tenant_view('client.pages.compare');
     })->name('client.compare');
 
     Route::get('/property-details', function () {
-        return view('client.pages.property-details');
+        return tenant_view('client.pages.property-details');
     })->name('client.property-details');
 
     Route::controller(EventController::class)->group(function () {
@@ -93,7 +85,7 @@ Route::middleware([
     });
 
     Route::get("/contact", function () {
-        return view('client.pages.contact');
+        return tenant_view('client.pages.contact');
     })->name('client.contact');
 
     // user routes
@@ -184,7 +176,7 @@ Route::middleware([
         });
 
         Route::get('/profile', function () {
-            return view('realtor.pages.profile');
+            return tenant_view('realtor.pages.profile');
         })->name('realtor.profile');
 
         Route::controller(LandingPageController::class)->group(function () {
@@ -209,8 +201,3 @@ Route::middleware([
         });
     });
 });
-
-
-
-
-
