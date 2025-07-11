@@ -129,7 +129,7 @@
                                     class="img-fluid">
                             </a>
                         </div>
-                        {{ dd($tenantLogo) }}
+                        {{-- {{ dd($tenantLogo) }} --}}
                         <nav>
                             <div class="main-navbar">
                                 <div id="mainnav">
