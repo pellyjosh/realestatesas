@@ -31,11 +31,11 @@ return [
 
     'connections' => [
 
-        'tenant' => [
-            'driver' => 'sqlite',
-            'database' => '', // Empty; will be filled dynamically
-            'prefix' => '',
-        ],
+        // 'tenant' => [
+        //     'driver' => 'sqlite',
+        //     'database' => '', // Empty; will be filled dynamically
+        //     'prefix' => '',
+        // ],
 
         'sqlite' => [
             'driver' => 'sqlite',

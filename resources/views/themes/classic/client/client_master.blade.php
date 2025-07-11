@@ -125,7 +125,7 @@
                     <div class="menu">
                         <div class="brand-logo">
                             <a href="{{ route('tenant.client.home') }}">
-                                <img src="{{ asset('storage/' . tenant()->logo) }}" alt="{{ tenant()->name }}"
+                                <img src="{{ asset(tenant()->logo_path) }}" alt="{{ tenant()->logo_path }}"
                                     class="img-fluid">
                             </a>
                         </div>

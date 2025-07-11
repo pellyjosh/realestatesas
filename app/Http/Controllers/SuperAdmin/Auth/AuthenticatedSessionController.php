@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\SuperAdmin\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
@@ -17,7 +17,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function create(): View
     {
-        return view('auth.login');
+        return view('superadmin.auth.login');
     }
 
     /**
@@ -37,7 +37,7 @@ class AuthenticatedSessionController extends Controller
 
         // Log::alert(['route' => $routeName, 'user' => Auth::user()]);
 
-        return redirect()->intended(route($routeName, [], false));
+        return redirect()->intended(route('superadmin.dashboard', [], false));
     }
 
     /**

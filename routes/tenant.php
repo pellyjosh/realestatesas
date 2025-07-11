@@ -89,7 +89,8 @@ Route::middleware([
     })->name('client.contact');
 
     // user routes
-    Route::prefix('user')->group(function () {
+    Route::middleware('auth:tenant')->group(function () {
+        
         Route::controller(NormalUserController::class)->group(function () {
             Route::get('/dashboard', 'index')->name('user.dashboard');
         });
