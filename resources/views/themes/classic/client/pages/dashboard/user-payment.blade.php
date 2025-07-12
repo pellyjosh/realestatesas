@@ -1,4 +1,5 @@
-@extends('user.pages.user_master')
+@extends('themes.classic.client.pages.dashboard.user_master')
+
 @section('title', 'Dashboard | Premium Refined Luxury Homes')
 @section('content')
 
@@ -19,8 +20,10 @@
                                     </div>
                                     <div class="card-number">
                                         <div>
-                                            <img src="https://themes.pixelstrap.com/sheltos/assets/images/icon/chip.png" class="img-fluid" alt="">
-                                            <img src="https://themes.pixelstrap.com/sheltos/assets/images/icon/wifi.png" class="img-fluid" alt="">
+                                            <img src="https://themes.pixelstrap.com/sheltos/assets/images/icon/chip.png"
+                                                class="img-fluid" alt="">
+                                            <img src="https://themes.pixelstrap.com/sheltos/assets/images/icon/wifi.png"
+                                                class="img-fluid" alt="">
                                         </div>
                                         <h3>XXXX-XXXX-XXXX-3401</h3>
                                     </div>
@@ -38,7 +41,8 @@
                                             <h5>Zack Lee</h5>
                                         </div>
                                         <div class="card-img">
-                                            <img src="https://themes.pixelstrap.com/sheltos/assets/images/icon/master.png" class="img-fluid" alt="">
+                                            <img src="https://themes.pixelstrap.com/sheltos/assets/images/icon/master.png"
+                                                class="img-fluid" alt="">
                                         </div>
                                     </div>
                                 </div>
@@ -56,8 +60,10 @@
                                     </div>
                                     <div class="card-number">
                                         <div>
-                                            <img src="https://themes.pixelstrap.com/sheltos/assets/images/icon/chip.png" class="img-fluid" alt="">
-                                            <img src="https://themes.pixelstrap.com/sheltos/assets/images/icon/wifi.png" class="img-fluid" alt="">
+                                            <img src="https://themes.pixelstrap.com/sheltos/assets/images/icon/chip.png"
+                                                class="img-fluid" alt="">
+                                            <img src="https://themes.pixelstrap.com/sheltos/assets/images/icon/wifi.png"
+                                                class="img-fluid" alt="">
                                         </div>
                                         <h3>XXXX-XXXX-XXXX-3401</h3>
                                     </div>
@@ -75,7 +81,8 @@
                                             <h5>Zack Lee</h5>
                                         </div>
                                         <div class="card-img">
-                                            <img src="https://themes.pixelstrap.com/sheltos/assets/images/icon/visa.png" class="img-fluid" alt="">
+                                            <img src="https://themes.pixelstrap.com/sheltos/assets/images/icon/visa.png"
+                                                class="img-fluid" alt="">
                                         </div>
                                     </div>
                                 </div>
@@ -93,8 +100,10 @@
                                     </div>
                                     <div class="card-number">
                                         <div>
-                                            <img src="https://themes.pixelstrap.com/sheltos/assets/images/icon/chip.png" class="img-fluid" alt="">
-                                            <img src="https://themes.pixelstrap.com/sheltos/assets/images/icon/wifi.png" class="img-fluid" alt="">
+                                            <img src="https://themes.pixelstrap.com/sheltos/assets/images/icon/chip.png"
+                                                class="img-fluid" alt="">
+                                            <img src="https://themes.pixelstrap.com/sheltos/assets/images/icon/wifi.png"
+                                                class="img-fluid" alt="">
                                         </div>
                                         <h3>XXXX-XXXX-XXXX-3401</h3>
                                     </div>
@@ -112,7 +121,8 @@
                                             <h5>Zack Lee</h5>
                                         </div>
                                         <div class="card-img">
-                                            <img src="https://themes.pixelstrap.com/sheltos/assets/images/icon/american.jpg" class="img-fluid" alt="">
+                                            <img src="https://themes.pixelstrap.com/sheltos/assets/images/icon/american.jpg"
+                                                class="img-fluid" alt="">
                                         </div>
                                     </div>
                                 </div>
@@ -129,7 +139,7 @@
                                         <i class="fas fa-plus-circle"></i>
                                         <h5>add new card</h5>
                                     </div>
-                                </div> 
+                                </div>
                             </div>
                         </div>
                     </div>

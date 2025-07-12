@@ -1,26 +1,19 @@
-@extends('user.pages.user_master')
-@section('title', 'Dashboard | Premium Refined Luxury Homes')
-@section('content')
+@extends('themes.classic.client.pages.dashboard.user_master')
 
-    <!-- page content -->
+@section('title', 'Favorites | Premium Refined Luxury Homes')
+@section('content')
     <div class="col-lg-9">
         <div class="dashboard-content">
-            <div class="tab-listing" id="listing">
+            <div class="tab-listing" id="favourites">
                 <div class="property-section">
                     <div class="property-grid-2 ratio_63">
                         <div class="filter-panel">
                             <div class="top-panel">
                                 <div>
-                                    <h2>My Properties</h2>
-                                    <span class="show-result">Showing <span>1-15 of 69</span>Properties</span>
+                                    <h2>Favourites</h2>
+                                    <span class="show-result">Showing <span>1-15 of 69</span> Listings</span>
                                 </div>
                                 <ul class="grid-list-filter">
-                                    <li>
-                                        <div class="filter-bottom-title">
-                                            <h6 class="mb-0 font-roboto">Advance search <i data-feather="align-center"
-                                                    class="float-end ms-2"></i></h6>
-                                        </div>
-                                    </li>
                                     <li>
                                         <div class="dropdown">
                                             <span class="dropdown-toggle font-rubik" data-bs-toggle="dropdown"><span>Sort by
@@ -32,6 +25,12 @@
                                                 <a class="dropdown-item" href="javascript:void(0)">Sort by price(Low to
                                                     high)</a>
                                             </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="filter-bottom-title">
+                                            <h6 class="mb-0 font-roboto">Advance search <i data-feather="align-center"
+                                                    class="float-end ms-2"></i></h6>
                                         </div>
                                     </li>
                                 </ul>
@@ -95,8 +94,8 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="dropdown">
-                                        <span class="dropdown-toggle font-rubik" data-bs-toggle="dropdown"><span>Bed</span> <i
-                                                class="fas fa-angle-down"></i></span>
+                                        <span class="dropdown-toggle font-rubik" data-bs-toggle="dropdown"><span>Bed</span>
+                                            <i class="fas fa-angle-down"></i></span>
                                         <div class="dropdown-menu text-start">
                                             <a class="dropdown-item" href="javascript:void(0)">Bed</a>
                                             <a class="dropdown-item" href="javascript:void(0)">1</a>
@@ -108,7 +107,8 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="dropdown">
-                                        <span class="dropdown-toggle font-rubik" data-bs-toggle="dropdown"><span>Bath</span> <i
+                                        <span class="dropdown-toggle font-rubik"
+                                            data-bs-toggle="dropdown"><span>Bath</span> <i
                                                 class="fas fa-angle-down"></i></span>
                                         <div class="dropdown-menu text-start">
                                             <a class="dropdown-item" href="javascript:void(0)">Bath</a>
@@ -120,29 +120,34 @@
                                     </div>
                                 </div>
                                 <div class="col-12 text-end">
-                                    <a href="javascript:void(0)" class="mt-3 btn btn-gradient color-2 btn-pill">Search Property</a>
+                                    <a href="javascript:void(0)" class="mt-3 btn btn-gradient color-2 btn-pill">Search
+                                        Property</a>
                                 </div>
                             </div>
                         </div>
                         <div class="property-2 row column-sm zoom-gallery property-label property-grid list-view">
                             <div class="col-md-12">
-                                <div class="property-box">
+                                <div class="property-box liked-img">
                                     <div class="property-image">
                                         <div class="property-slider">
                                             <a href="javascript:void(0)">
-                                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/10.jpg" class="bg-img" alt="">
+                                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/10.jpg"
+                                                    class="bg-img" alt="">
                                             </a>
                                             <a href="javascript:void(0)">
-                                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/5.jpg" class="bg-img" alt="">
-                                                
+                                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/5.jpg"
+                                                    class="bg-img" alt="">
+
                                             </a>
                                             <a href="javascript:void(0)">
-                                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/3.jpg" class="bg-img" alt="">
-                                                
+                                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/3.jpg"
+                                                    class="bg-img" alt="">
+
                                             </a>
                                             <a href="javascript:void(0)">
-                                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/4.jpg" class="bg-img" alt="">
-                                                
+                                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/4.jpg"
+                                                    class="bg-img" alt="">
+
                                             </a>
                                         </div>
                                         <div class="labels-left">
@@ -152,54 +157,68 @@
                                         </div>
                                         <div class="seen-data">
                                             <i data-feather="camera"></i>
-                                            <span>42</span>
-                                        </div>                 
+                                            <span>25</span>
+                                        </div>
                                         <div class="overlay-property-box">
-                                                                                                                         
+                                            <a href="compare.html" class="effect-round" data-bs-toggle="tooltip"
+                                                data-bs-placement="left" title="Compare">
+                                                <i data-feather="shuffle"></i>
+                                            </a>
+                                            <a href="user-favourites.html" class="effect-round like"
+                                                data-bs-toggle="tooltip" data-bs-placement="left" title="wishlist">
+                                                <i data-feather="heart"></i>
+                                            </a>
                                         </div>
                                     </div>
-    
+
                                     <div class="property-details">
-                                        <span class="font-roboto">Abuja</span>
-                                        <a href="#">
-                                            <h3>Acorn Farm</h3>
+                                        <span class="font-roboto">France</span>
+                                        <div class="my-listing font-roboto">Added 20 min ago</div>
+                                        <a href="single-property-8.html">
+                                            <h3>Merrick in Spring Way</h3>
                                         </a>
-                                        <h6 class="color-6">#6558.00*</h6>
-                                        <p class="font-roboto">Flat, dry land perfect for building ready for immediate
-                                            development.</p>
+                                        <h6>$6558.00*</h6>
+                                        <p class="font-roboto">Real estate is divided into several categories, including
+                                            residential property, commercial property and industrial property.</p>
                                         <ul>
-                                            <li><i class="fas fa-mountain"></i> Land : 3</li>
-                                            <li><i class="fas fa-building"></i> Properties : 2</li>
-                                            <li>
-                                                <i class="fas fa-ruler-combined"></i> Sq Ft : 5000
-                                            </li>
+                                            <li><img src="https://themes.pixelstrap.com/sheltos/assets/images/svg/icon/double-bed.svg"
+                                                    class="img-fluid" alt="">Bed : 4</li>
+                                            <li><img src="https://themes.pixelstrap.com/sheltos/assets/images/svg/icon/bathroom.svg"
+                                                    class="img-fluid" alt="">Baths : 4</li>
+                                            <li><img src="https://themes.pixelstrap.com/sheltos/assets/images/svg/icon/square-ruler-tool.svg"
+                                                    class="img-fluid ruler-tool" alt="">Sq Ft : 5000</li>
                                         </ul>
                                         <div class="property-btn d-flex">
-                                            <span>August 4, 2022</span>
-                                            <a type="button" href="{{ route("user.property-details") }}" class="btn btn-dashed btn-pill color-6">Details</a>
+                                            <span>July 18, 2022</span>
+                                            <button type="button" onclick="document.location='single-property-8.html'"
+                                                class="btn btn-dashed btn-pill color-2">Details</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-12">
-                                <div class="property-box">
+                                <div class="property-box liked-img">
                                     <div class="property-image">
                                         <div class="property-slider">
                                             <a href="javascript:void(0)">
-                                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/11.jpg" class="bg-img" alt="">
-                                                
+                                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/11.jpg"
+                                                    class="bg-img" alt="">
+
                                             </a>
                                             <a href="javascript:void(0)">
-                                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/4.jpg" class="bg-img" alt="">
-                                                
+                                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/4.jpg"
+                                                    class="bg-img" alt="">
+
                                             </a>
                                             <a href="javascript:void(0)">
-                                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/6.jpg" class="bg-img" alt="">
-                                                
+                                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/6.jpg"
+                                                    class="bg-img" alt="">
+
                                             </a>
                                             <a href="javascript:void(0)">
-                                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/2.jpg" class="bg-img" alt="">
-                                                
+                                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/2.jpg"
+                                                    class="bg-img" alt="">
+
                                             </a>
                                         </div>
                                         <div class="labels-left">
@@ -210,9 +229,16 @@
                                         <div class="seen-data">
                                             <i data-feather="camera"></i>
                                             <span>10</span>
-                                        </div>                 
+                                        </div>
                                         <div class="overlay-property-box">
-                                           
+                                            <a href="compare.html" class="effect-round" data-bs-toggle="tooltip"
+                                                data-bs-placement="left" title="Compare">
+                                                <i data-feather="shuffle"></i>
+                                            </a>
+                                            <a href="user-favourites.html" class="effect-round like"
+                                                data-bs-toggle="tooltip" data-bs-placement="left" title="wishlist">
+                                                <i data-feather="heart"></i>
+                                            </a>
                                         </div>
                                     </div>
                                     <div class="property-details">
@@ -222,72 +248,21 @@
                                             <h3>Home in Merrick Way</h3>
                                         </a>
                                         <h6>$9554.00*</h6>
-                                        <p class="font-roboto">Elegant retreat in a quiet Coral Gables setting. This home provides wonderful entertaining spaces with a chef
+                                        <p class="font-roboto">Elegant retreat in a quiet Coral Gables setting. This home
+                                            provides wonderful entertaining spaces with a chef
                                             kitchen opening…</p>
                                         <ul>
-                                            <li><img src="https://themes.pixelstrap.com/sheltos/assets/images/svg/icon/double-bed.svg" class="img-fluid" alt="">Bed : 4</li>
-                                            <li><img src="https://themes.pixelstrap.com/sheltos/assets/images/svg/icon/bathroom.svg" class="img-fluid" alt="">Baths : 4</li>
-                                            <li><img src="https://themes.pixelstrap.com/sheltos/assets/images/svg/icon/square-ruler-tool.svg" class="img-fluid ruler-tool" alt="">Sq Ft : 5000</li>
+                                            <li><img src="https://themes.pixelstrap.com/sheltos/assets/images/svg/icon/double-bed.svg"
+                                                    class="img-fluid" alt="">Bed : 4</li>
+                                            <li><img src="https://themes.pixelstrap.com/sheltos/assets/images/svg/icon/bathroom.svg"
+                                                    class="img-fluid" alt="">Baths : 4</li>
+                                            <li><img src="https://themes.pixelstrap.com/sheltos/assets/images/svg/icon/square-ruler-tool.svg"
+                                                    class="img-fluid ruler-tool" alt="">Sq Ft : 5000</li>
                                         </ul>
                                         <div class="property-btn d-flex">
                                             <span>June 20, 2022</span>
-                                            <a type="button" href="{{ route("user.property-details") }}" class="btn btn-dashed btn-pill color-6">Details</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="property-box">
-                                    <div class="property-image">
-                                        <div class="property-slider">
-                                            <a href="javascript:void(0)">
-                                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/14.jpg" class="bg-img" alt="">
-                                                
-                                            </a>
-                                            <a href="javascript:void(0)">
-                                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/6.jpg" class="bg-img" alt="">
-                                                
-                                            </a>
-                                            <a href="javascript:void(0)">
-                                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/10.jpg" class="bg-img" alt="">
-                                                
-                                            </a>
-                                            <a href="javascript:void(0)">
-                                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/9.jpg" class="bg-img" alt="">
-                                                
-                                            </a>
-                                        </div>
-                                        <div class="labels-left">
-                                            <div>
-                                                <span class="label label-dark">no fees</span>
-                                            </div>
-                                            <span class="label label-success">open house</span>
-                                        </div>
-                                        <div class="seen-data">
-                                            <i data-feather="camera"></i>
-                                            <span>25</span>
-                                        </div>                 
-                                        <div class="overlay-property-box">
-                                           
-                                        </div>
-                                    </div>
-                                    <div class="property-details">
-                                        <span class="font-roboto">usa</span>
-                                        <div class="my-listing font-roboto">Added 2 Hour ago</div>
-                                        <a href="single-property-8.html">
-                                            <h3>Merrick in Spring Way</h3>
-                                        </a>
-                                        <h6>$8654.00*</h6>
-                                        <p class="font-roboto">Elegant retreat in a quiet Coral Gables setting. This home provides wonderful entertaining spaces with a chef
-                                            kitchen opening…</p>
-                                        <ul>
-                                            <li><img src="https://themes.pixelstrap.com/sheltos/assets/images/svg/icon/double-bed.svg" class="img-fluid" alt="">Bed : 4</li>
-                                            <li><img src="https://themes.pixelstrap.com/sheltos/assets/images/svg/icon/bathroom.svg" class="img-fluid" alt="">Baths : 4</li>
-                                            <li><img src="https://themes.pixelstrap.com/sheltos/assets/images/svg/icon/square-ruler-tool.svg" class="img-fluid ruler-tool" alt="">Sq Ft : 5000</li>
-                                        </ul>
-                                        <div class="property-btn d-flex">
-                                            <span>August 4, 2022</span>
-                                            <a type="button" href="{{ route("user.property-details") }}" class="btn btn-dashed btn-pill color-6">Details</a>
+                                            <button type="button" onclick="document.location='single-property-8.html'"
+                                                class="btn btn-dashed btn-pill color-2">Details</button>
                                         </div>
                                     </div>
                                 </div>
@@ -317,5 +292,4 @@
             </div>
         </div>
     </div>
-    <!-- emd of page content -->
 @endsection

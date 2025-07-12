@@ -2,19 +2,19 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Client\EventController;
-// use App\Http\Controllers\Admin\AdminController;
-// use App\Http\Controllers\Admin\PropertyController;
-// use App\Http\Controllers\Admin\UserController;
-// use App\Http\Controllers\Admin\AdminRealtorController;
-// use App\Http\Controllers\Admin\MapController;
-// use App\Http\Controllers\Admin\TypesController;
-// use App\Http\Controllers\Admin\ReportController;
-// use App\Http\Controllers\Admin\PaymentController;
-// use App\Http\Controllers\Admin\AdminEventController;
-// use App\Http\Controllers\Admin\AdminInvoice;
-// use App\Http\Controllers\Admin\AdminWithdrawalController;
-// use App\Http\Controllers\Admin\AuthenticationController;
-// use App\Http\Controllers\Admin\AdminTransactionsController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\PropertyController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\AdminRealtorController;
+use App\Http\Controllers\Admin\MapController;
+use App\Http\Controllers\Admin\TypesController;
+use App\Http\Controllers\Admin\ReportController;
+use App\Http\Controllers\Admin\PaymentController;
+use App\Http\Controllers\Admin\AdminEventController;
+use App\Http\Controllers\Admin\AdminInvoice;
+use App\Http\Controllers\Admin\AdminWithdrawalController;
+use App\Http\Controllers\Admin\AuthenticationController;
+use App\Http\Controllers\Admin\AdminTransactionsController;
 
 // Realtor Import
 use App\Http\Controllers\Realtor\RealtorAuthenticationController;
@@ -57,6 +57,7 @@ use App\Http\Controllers\Tenant\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Tenant\Auth\RegisteredUserController;
 use App\Http\Controllers\Tenant\Auth\VerifyEmailController;
 use App\Http\Controllers\Tenant\Client\DashboardController;
+use Stancl\Tenancy\Middleware\ScopeSessions;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,6 +73,7 @@ Route::middleware([
     'web',
     InitializeTenancyByDomain::class,
     PreventAccessFromCentralDomains::class,
+    ScopeSessions::class,
 ])->group(function () {
     Route::get('/', function () {
         return tenant_view('client.pages.index');
@@ -101,7 +103,6 @@ Route::middleware([
 
     // user routes
     Route::middleware('auth:tenant')->group(function () {
-
         Route::controller(DashboardController::class)->group(function () {
             Route::get('/dashboard', 'index')->name('tenant.user.dashboard');
         });
@@ -112,106 +113,287 @@ Route::middleware([
 
         Route::get('/user-payment', function () {
             return tenant_view('user.pages.user-payment');
-        })->name('user.payment');
+        })->name('tenant.user.payment');
 
         Route::get('/user-privacy', function () {
             return tenant_view('user.pages.user-privacy');
-        })->name('user.privacy');
+        })->name('tenant.user.privacy');
 
         Route::get('/user-profile', function () {
             return tenant_view('user.pages.user-profile');
-        })->name('user.profile');
+        })->name('tenant.user.profile');
 
         Route::get('/user-properties', function () {
             return tenant_view('user.pages.user-properties');
-        })->name('user.properties');
+        })->name('tenant.user.properties');
 
         Route::get('/user-property-details', function () {
             return tenant_view('user.pages.user-property-details');
-        })->name('user.property-details');
+        })->name('tenant.user.property-details');
     });
 
     // Realtor Routes
     Route::prefix('realtor')->group(function () {
-        Route::controller(RealtorAuthenticationController::class)->group(function () {
-            Route::get('/login', 'showLoginForm')->name('realtor.login');
-            Route::get('/signup', 'showSignupForm')->name('realtor.signup');
-            Route::get('/404', 'notfound')->name('realtor.not-found');
-        });
 
-        Route::controller(RealtorController::class)->group(function () {
-            Route::get('/dashboard', 'index')->name('realtor.dashboard');
+        Route::middleware(['auth:tenant', 'user.type:realtor'])->group(function () {
+            Route::get('/dashboard', function () {
+                return tenant_view('realtor.pages.dashboard');
+            })->name('tenant.realtor.dashboard');
 
             Route::get('/', function () {
-                return redirect()->route('realtor.dashboard');
+                return redirect()->route('tenant.realtor.dashboard');
             });
-        });
 
-        Route::controller(RealtorPropertyController::class)->group(function () {
-            Route::get('/my-properties/add-property', 'addPropertyIndex')->name('realtor.add-property');
-            Route::get('/my-properties/edit-property', 'editPropertyIndex')->name('realtor.edit-property');
-            Route::get('/my-properties/listing', 'listingIndex')->name('realtor.listing');
-            Route::get('/my-properties/favourites', 'favouritesIndex')->name('realtor.favourites');
-        });
+            // My Properties
+            Route::get('/my-properties/add-property', function () {
+                return tenant_view('realtor.pages.my-properties.add-property');
+            })->name('tenant.realtor.add-property');
 
-        Route::controller(RealtorUserController::class)->group(function () {
-            Route::get('/manage-users/user-profile', 'index')->name('realtor-user-profile');
-            Route::get('/manage-users/add-user', 'addUserIndex')->name('realtor-add-user');
-            Route::get('/manage-users/add-user-wizard', 'addUserWizardIndex')->name('realtor-add-user-wizard');
-            Route::get('/manage-users/edit-user', 'editUserIndex')->name('realtor-edit-user');
-            Route::get('/manage-users/all-users', 'allUsersIndex')->name('realtor-all-users');
-        });
+            Route::get('/my-properties/edit-property', function () {
+                return tenant_view('realtor.pages.my-properties.edit-property');
+            })->name('tenant.realtor.edit-property');
 
-        Route::controller(RealtorAgentController::class)->group(function () {
-            Route::get('/agent-profile', 'agentProfileIndex')->name('realtor-agent-profile');
-            Route::get('/add-agent', 'addAgentIndex')->name('realtor-add-agent');
-            Route::get('/add-agent-wizard', 'addAgentWizardIndex')->name('realtor-add-agent-wizard');
-            Route::get('/edit-agent', 'editAgentIndex')->name('realtor-edit-agent');
-            Route::get('/all-agents', 'allAgentsIndex')->name('realtor-all-agents');
-            Route::get('/agent-invoice', 'agentInvoiceIndex')->name('realtor-agent-invoice');
-        });
+            Route::get('/my-properties/listing', function () {
+                return tenant_view('realtor.pages.my-properties.listing');
+            })->name('tenant.realtor.listing');
 
-        Route::controller(RealtorMapController::class)->group(function () {
-            Route::get('/map', 'index')->name('realtor.map');
-        });
+            Route::get('/my-properties/favourites', function () {
+                return tenant_view('realtor.pages.my-properties.favourites');
+            })->name('tenant.realtor.favourites');
 
-        Route::controller(RealtorTypesController::class)->group(function () {
-            Route::get('/family-house', 'houseIndex')->name('realtor.family-house');
-        });
+            // Manage Users
+            Route::get('/manage-users/user-profile', function () {
+                return tenant_view('realtor.pages.manage-users.user-profile');
+            })->name('tenant.realtor-user-profile');
 
-        Route::controller(RealtorReportController::class)->group(function () {
-            Route::get('/reports', 'index')->name('realtor.reports');
-        });
+            Route::get('/manage-users/add-user', function () {
+                return tenant_view('realtor.pages.manage-users.add-user');
+            })->name('tenant.realtor-add-user');
 
-        Route::controller(RealtorPaymentController::class)->group(function () {
-            Route::get('/payments', 'index')->name('realtor.payments');
-        });
+            Route::get('/manage-users/add-user-wizard', function () {
+                return tenant_view('realtor.pages.manage-users.add-user-wizard');
+            })->name('tenant.realtor-add-user-wizard');
 
-        Route::get('/profile', function () {
-            return tenant_view('realtor.pages.profile');
-        })->name('realtor.profile');
+            Route::get('/manage-users/edit-user', function () {
+                return tenant_view('realtor.pages.manage-users.edit-user');
+            })->name('tenant.realtor-edit-user');
 
-        Route::controller(LandingPageController::class)->group(function () {
-            Route::get('/landing-page-list', 'index')->name('realtor.landing-page-list');
-            Route::get('/landing-page', 'show')->name('realtor.landing-page');
-        });
+            Route::get('/manage-users/all-users', function () {
+                return tenant_view('realtor.pages.manage-users.all-users');
+            })->name('tenant.realtor-all-users');
 
-        Route::controller(ReferralController::class)->group(function () {
-            Route::get('/referral', 'index')->name('realtor.referrals');
-        });
+            // Agents
+            Route::get('/agent-profile', function () {
+                return tenant_view('realtor.pages.agents.agent-profile');
+            })->name('tenant.realtor-agent-profile');
 
-        Route::controller(EarningsController::class)->group(function () {
-            Route::get('/earnings', 'index')->name('realtor.earnings');
-        });
+            Route::get('/add-agent', function () {
+                return tenant_view('realtor.pages.agents.add-agent');
+            })->name('tenant.realtor-add-agent');
 
-        Route::controller(SalesRequestController::class)->group(function () {
-            Route::get('/sales-request', 'index')->name('realtor.sales-request');
-        });
+            Route::get('/add-agent-wizard', function () {
+                return tenant_view('realtor.pages.agents.add-agent-wizard');
+            })->name('tenant.realtor-add-agent-wizard');
 
-        Route::controller(RealtorEventController::class)->group(function () {
-            Route::get('/events', 'index')->name('realtor.events');
+            Route::get('/edit-agent', function () {
+                return tenant_view('realtor.pages.agents.edit-agent');
+            })->name('tenant.realtor-edit-agent');
+
+            Route::get('/all-agents', function () {
+                return tenant_view('realtor.pages.agents.all-agents');
+            })->name('tenant.realtor-all-agents');
+
+            Route::get('/agent-invoice', function () {
+                return tenant_view('realtor.pages.agents.agent-invoice');
+            })->name('tenant.realtor-agent-invoice');
+
+            // Map
+            Route::get('/map', function () {
+                return tenant_view('realtor.pages.map.index');
+            })->name('tenant.realtor.map');
+
+            // Family House
+            Route::get('/family-house', function () {
+                return tenant_view('realtor.pages.types.family-house');
+            })->name('tenant.realtor.family-house');
+
+            // Reports
+            Route::get('/reports', function () {
+                return tenant_view('realtor.pages.reports.index');
+            })->name('tenant.realtor.reports');
+
+            // Payments
+            Route::get('/payments', function () {
+                return tenant_view('realtor.pages.payments.index');
+            })->name('tenant.realtor.payments');
+
+            // Profile
+            Route::get('/profile', function () {
+                return tenant_view('realtor.pages.profile');
+            })->name('tenant.realtor.profile');
+
+            // Landing Page
+            Route::get('/landing-page-list', function () {
+                return tenant_view('realtor.pages.landing-page.list');
+            })->name('tenant.realtor.landing-page-list');
+
+            Route::get('/landing-page', function () {
+                return tenant_view('realtor.pages.landing-page.show');
+            })->name('tenant.realtor.landing-page');
+
+            // Referrals
+            Route::get('/referral', function () {
+                return tenant_view('realtor.pages.referrals.index');
+            })->name('tenant.realtor.referrals');
+
+            // Earnings
+            Route::get('/earnings', function () {
+                return tenant_view('realtor.pages.earnings.index');
+            })->name('tenant.realtor.earnings');
+
+            // Sales Request
+            Route::get('/sales-request', function () {
+                return tenant_view('realtor.pages.sales-request.index');
+            })->name('tenant.realtor.sales-request');
+
+            // Events
+            Route::get('/events', function () {
+                return tenant_view('realtor.pages.events.index');
+            })->name('tenant.realtor.events');
         });
     });
+
+    Route::prefix('management')->group(function () {
+        Route::middleware(['auth:tenant', 'user.type:admin'])->group(function () {
+
+            Route::get('/', function () {
+                return redirect()->route('tenant.admin.dashboard');
+            });
+
+            Route::get('/dashboard', function () {
+                return tenant_view('admin.pages.dashboard');
+            })->name('tenant.admin.dashboard');
+
+            Route::get('/add-admin', function () {
+                return tenant_view('admin.pages.manage-admins.add-admin');
+            })->name('add-admin');
+
+            Route::get('/edit-admin', function () {
+                return tenant_view('admin.pages.manage-admins.edit-admin');
+            })->name('edit-admin');
+
+            Route::get('/all-admins', function () {
+                return tenant_view('admin.pages.manage-admins.all-admin');
+            })->name('all-admins');
+
+            Route::get('/add-admin-wizard', function () {
+                return tenant_view('admin.pages.manage-admins.add-admin-wizard');
+            })->name('add-admin-wizard');
+
+            Route::get('/admin-invoice', function () {
+                return tenant_view('admin.pages.manage-admins.admin-invoice');
+            })->name('admin-invoice');
+
+            Route::get('/my-properties/add-property', function () {
+                return tenant_view('admin.pages.my-properties.add-property');
+            })->name('admin.add-property');
+
+            Route::get('/my-properties/edit-property', function () {
+                return tenant_view('admin.pages.my-properties.edit-property');
+            })->name('admin.edit-property');
+
+            Route::get('/my-properties/listing', function () {
+                return tenant_view('admin.pages.my-properties.listing');
+            })->name('admin.listing');
+
+            Route::get('/my-properties/favourites', function () {
+                return tenant_view('admin.pages.my-properties.favourites');
+            })->name('admin.favourites');
+
+
+            Route::prefix('manage-users')->group(function () {
+                Route::get('/user-profile', function () {
+                    return tenant_view('admin.pages.manage-users.user-profile');
+                })->name('user-profile');
+
+                Route::get('/add-user', function () {
+                    return tenant_view('admin.pages.manage-users.add-user');
+                })->name('admin.add-user');
+
+                Route::get('/add-user-wizard', function () {
+                    return tenant_view('admin.pages.manage-users.add-user-wizard');
+                })->name('admin.add-user-wizard');
+
+                Route::get('/edit-user', function () {
+                    return tenant_view('admin.pages.manage-users.edit-user');
+                })->name('edit-user');
+
+                Route::get('/all-users', function () {
+                    return tenant_view('admin.pages.manage-users.all-users');
+                })->name('all-users');
+            });
+
+            Route::get('/realtor-profile', function () {
+                return tenant_view('admin.pages.realtor.realtor-profile');
+            })->name('admin.realtor-profile');
+
+            Route::get('/add-realtor', function () {
+                return tenant_view('admin.pages.realtor.add-realtor');
+            })->name('add-realtor');
+
+            Route::get('/add-realtor-wizard', function () {
+                return tenant_view('admin.pages.realtor.add-realtor-wizard');
+            })->name('add-realtor-wizard');
+
+            Route::get('/edit-realtor', function () {
+                return tenant_view('admin.pages.realtor.edit-realtor');
+            })->name('edit-realtor');
+
+            Route::get('/all-realtors', function () {
+                return tenant_view('admin.pages.realtor.all-realtor');
+            })->name('all-realtors');
+
+            Route::get('/realtor-invoice', function () {
+                return tenant_view('admin.pages.realtor.realtor-invoice');
+            })->name('admin.realtor-invoice');
+
+
+
+            Route::get('/map', function () {
+                return tenant_view('admin.pages.map');
+            })->name('admin.pages.map');
+
+            Route::get('/family-house', function () {
+                return tenant_view('admin.pages.types.family-house');
+            })->name('admin.family-house');
+
+            Route::get('/reports', function () {
+                return tenant_view('admin.pages.reports');
+            })->name('admin.reports');
+
+            Route::get('/payments', function () {
+                return tenant_view('admin.pages.payments');
+            })->name('admin.payments');
+
+            Route::get('/events', function () {
+                return tenant_view('admin.pages.events');
+            })->name('admin.events');
+
+            Route::get('/withdrawal', function () {
+                return tenant_view('admin.pages.withdrawal');
+            })->name('admin.withdrawal');
+
+            Route::get('/transactions', function () {
+                return tenant_view('admin.pages.transactions');
+            })->name('admin.transactions');
+
+            Route::get('/invoice', function () {
+                return tenant_view('admin.pages.invoice');
+            })->name('admin-invoice');
+        });
+    });
+
+
 
     // Auth Routes
     Route::middleware('guest')->group(function () {

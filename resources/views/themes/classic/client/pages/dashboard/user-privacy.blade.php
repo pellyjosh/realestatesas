@@ -1,4 +1,5 @@
-@extends('user.pages.user_master')
+@extends('themes.classic.client.pages.dashboard.user_master')
+
 @section('title', 'Dashboard | Premium Refined Luxury Homes')
 @section('content')
 
@@ -18,7 +19,8 @@
                                 <p class="font-roboto">all peoples will be able to see my profile</p>
                             </div>
                             <label class="switch">
-                                <input type="radio" name="radio1" value="option1" checked=""><span class="switch-state"></span>
+                                <input type="radio" name="radio1" value="option1" checked=""><span
+                                    class="switch-state"></span>
                             </label>
                         </div>
                         <div class="media">
@@ -37,16 +39,19 @@
                         <div class="media">
                             <div class="media-body">
                                 <h6 class="font-roboto">Deleting Your Account Will Permanently</h6>
-                                <p class="font-roboto">Once your account is deleted, you will be logged out and will be unable to log in back.</p>
+                                <p class="font-roboto">Once your account is deleted, you will be logged out and will be
+                                    unable to log in back.</p>
                             </div>
                             <label class="switch">
-                                <input type="radio" name="radio2" value="option2" checked=""><span class="switch-state"></span>
+                                <input type="radio" name="radio2" value="option2" checked=""><span
+                                    class="switch-state"></span>
                             </label>
                         </div>
                         <div class="media">
                             <div class="media-body">
                                 <h6 class="font-roboto">Deleting Your Account Will Temporary</h6>
-                                <p class="font-roboto">Once your account is deleted, you will be logged out and you will be create new account </p>
+                                <p class="font-roboto">Once your account is deleted, you will be logged out and you will be
+                                    create new account </p>
                             </div>
                             <label class="switch">
                                 <input type="radio" name="radio2" value="option2"><span class="switch-state"></span>

@@ -76,7 +76,7 @@
                                             <a href="{{ route('tenant.client.home') }}" class="nav-link">Home</a>
                                         </li>
                                         <li>
-                                            <a href="{{ route('client.events') }}" class="nav-link">Events</a>
+                                            <a href="{{ route('tenant.client.events') }}" class="nav-link">Events</a>
                                         </li>
                                         <li class="dropdown">
                                             <a href="{{ route('tenant.client.contact') }}"
@@ -147,12 +147,12 @@
                                                     style="width: 20px; height: 20px; line-height: 30px; text-align: center; font-size: 16px;"></i>
                                             </a>
                                             <ul class="nav-submenu dropdown-menu">
-                                                <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                                                <li><a href="{{ route('profile.edit') }}">Profile</a></li>
+                                                <li><a href="{{ route('tenant.user.dashboard') }}">Dashboard</a></li>
+                                                {{-- <li><a href="{{ route('tenant.profile.edit') }}">Profile</a></li> --}}
                                                 <li>
-                                                    <form method="POST" action="{{ route('logout') }}">
+                                                    <form method="POST" action="{{ route('tenant.logout') }}">
                                                         @csrf
-                                                        <a href="{{ route('logout') }}"
+                                                        <a href="{{ route('tenant.logout') }}"
                                                             onclick="event.preventDefault(); this.closest('form').submit();">Logout</a>
                                                     </form>
                                                 </li>
@@ -165,8 +165,8 @@
                                                 <i data-feather="user"></i>
                                             </a>
                                             <ul class="nav-submenu dropdown-menu">
-                                                <li><a href="{{ route('login') }}">Login</a></li>
-                                                <li><a href="{{ route('user.dashboard') }}">Dashboard</a></li>
+                                                <li><a href="{{ route('tenant.login') }}">Login</a></li>
+                                                <li><a href="{{ route('tenant.user.dashboard') }}">Dashboard</a></li>
                                             </ul>
                                         </li>
                                     @endauth
@@ -190,7 +190,7 @@
                     <h2>Dashboard</h2>
                     <nav aria-label="breadcrumb" class="theme-breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('client.home') }}">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('tenant.client.home') }}">Home</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
                         </ol>
                     </nav>
@@ -241,21 +241,24 @@
                         <div class="dashboard-list">
                             <ul class="nav nav-tabs right-line-tab">
                                 <li class="nav-item"><a class="nav-link"
-                                        href="{{ route('user.dashboard') }}">Dashboard</a></li>
-                                <li class="nav-item"><a class="nav-link" href="{{ route('user.properties') }}">My
+                                        href="{{ route('tenant.user.dashboard') }}">Dashboard</a></li>
+                                <li class="nav-item"><a class="nav-link"
+                                        href="{{ route('tenant.user.properties') }}">My
                                         Properties</a></li>
                                 </li>
-                                <li class="nav-item"><a class="nav-link" href="{{ route('user.profile') }}">My
+                                <li class="nav-item"><a class="nav-link"
+                                        href="{{ route('tenant.user.profile') }}">My
                                         profile</a>
                                 </li>
                                 <li class="nav-item"><a class="nav-link"
                                         href="{{ route('tenant.user.favorites') }}">favourites</a>
                                 </li>
-                                <li class="nav-item"><a class="nav-link" href="{{ route('user.payment') }}">Cards &
+                                <li class="nav-item"><a class="nav-link"
+                                        href="{{ route('tenant.user.payment') }}">Cards &
                                         payment</a>
                                 </li>
                                 <li class="nav-item"><a class="nav-link"
-                                        href="{{ route('user.privacy') }}">Privacy</a></li>
+                                        href="{{ route('tenant.user.privacy') }}">Privacy</a></li>
                                 <li class="nav-item"><a href="javascript:void(0)" data-bs-toggle="modal"
                                         data-bs-target="#logout" class="nav-link">Log out</a></li>
                             </ul>
@@ -314,7 +317,7 @@
                                     <a href="{{ route('tenant.client.home') }}">Home</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('client.events') }}">Events</a>
+                                    <a href="{{ route('tenant.client.events') }}">Events</a>
                                 </li>
                                 <li>
                                     <a href="{{ route('tenant.client.contact') }}">Contact</a>

@@ -9,6 +9,6 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return tenant_view('user.pages.dashboard');
+        return tenant_view('client.pages.dashboard.dashboard');
     }
 }

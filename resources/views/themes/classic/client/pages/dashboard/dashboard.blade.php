@@ -1,4 +1,4 @@
-@extends('user.pages.user_master')
+@extends('themes.classic.client.pages.dashboard.user_master')
 @section('title', 'Dashboard | Premium Refined Luxury Homes')
 @section('content')
 
