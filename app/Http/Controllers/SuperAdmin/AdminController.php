@@ -68,4 +68,9 @@ class AdminController extends Controller
         // Redirect
         return redirect()->route('superadmin.dashboard')->with('success', 'Tenant created successfully.');
     }
+
+    public function LandingPage()
+    {
+        return view('superadmin.pages.landing-page');
+    }
 }
