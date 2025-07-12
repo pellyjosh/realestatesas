@@ -29,12 +29,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        $routeName = match (Auth::user()->type) {
-            'admin' => 'admin.dashboard',
-            'realtor' => 'realtor.dashboard',
-            default => 'dashboard',
-        };
-
         // Log::alert(['route' => $routeName, 'user' => Auth::user()]);
 
         return redirect()->intended(route('superadmin.dashboard', [], false));
