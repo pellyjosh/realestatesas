@@ -1,8 +1,8 @@
-@extends('realtor.realtor_master')
-@section('title', ' Agent  Invoice | Premium Refined Luxury Homes')
+@extends('themes.classic.realtor.realtor_master')
+@section('title', ' Agent Invoice | Premium Refined Luxury Homes')
 @section('content')
-     <!-- Container-fluid start -->
-     <div class="container-fluid">
+    <!-- Container-fluid start -->
+    <div class="container-fluid">
         <div class="page-header">
             <div class="row">
                 <div class="col-sm-6">
@@ -24,7 +24,7 @@
                         <li class="breadcrumb-item active">Agents</li>
                     </ol>
                     <!-- Breadcrumb end -->
-                    
+
                 </div>
             </div>
         </div>
@@ -41,10 +41,12 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="invoice-logo">
-                                        <img src="{{ asset("client/assets/images/logo2.png") }}" class="img-fluid for-light" alt="">
-                                        <img src="{{ asset("client/assets/images/logo2.png") }}" class="img-fluid for-dark" alt="">
-                                       <span class="d-block mt-1">support@premiumrefinedluxuryhomes.com</span>
-                                       <span class="d-block">289-335-6503</span>
+                                        <img src="{{ asset('client/assets/images/logo2.png') }}" class="img-fluid for-light"
+                                            alt="">
+                                        <img src="{{ asset('client/assets/images/logo2.png') }}" class="img-fluid for-dark"
+                                            alt="">
+                                        <span class="d-block mt-1">support@premiumrefinedluxuryhomes.com</span>
+                                        <span class="d-block">289-335-6503</span>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
@@ -75,7 +77,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                
+
                             </div>
                             <div class="table-responsive invoice-table">
                                 <table class="table table-bordered table-striped">
@@ -132,19 +134,23 @@
                             <div class="row invoice-note">
                                 <div class="col-md-4">
                                     <div>
-                                        <img src="https://themes.pixelstrap.com/sheltos/assets/images/signature/3.png" class="img-fluid" alt="">
+                                        <img src="https://themes.pixelstrap.com/sheltos/assets/images/signature/3.png"
+                                            class="img-fluid" alt="">
                                     </div>
                                 </div>
                                 <div class="col-md-8 text-md-end">
-                                    <p class="legal"><strong>Thank you for your business!</strong>&nbsp; Payment is expected within 31 days; please process this invoice within that time. There will be a 5% interest charge per month on late invoices.</p>
+                                    <p class="legal"><strong>Thank you for your business!</strong>&nbsp; Payment is
+                                        expected within 31 days; please process this invoice within that time. There will be
+                                        a 5% interest charge per month on late invoices.</p>
                                 </div>
                                 <div class="col-sm-12 text-center mt-3">
-                                    <button onclick="myFunction()" type="button" class="btn btn-pill btn-gradient color-4">Print</button>
+                                    <button onclick="myFunction()" type="button"
+                                        class="btn btn-pill btn-gradient color-4">Print</button>
                                     <button type="button" class="btn btn-pill btn-dashed color-4 ms-2">cancel</button>
                                 </div>
                             </div>
                         </div>
-                    </div> 
+                    </div>
                 </div>
             </div>
         </div>

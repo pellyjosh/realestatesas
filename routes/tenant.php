@@ -1,45 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Client\EventController;
-use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\PropertyController;
-use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\Admin\AdminRealtorController;
-use App\Http\Controllers\Admin\MapController;
-use App\Http\Controllers\Admin\TypesController;
-use App\Http\Controllers\Admin\ReportController;
-use App\Http\Controllers\Admin\PaymentController;
-use App\Http\Controllers\Admin\AdminEventController;
-use App\Http\Controllers\Admin\AdminInvoice;
-use App\Http\Controllers\Admin\AdminWithdrawalController;
-use App\Http\Controllers\Admin\AuthenticationController;
-use App\Http\Controllers\Admin\AdminTransactionsController;
+use App\Http\Controllers\Tenant\Client\EventController;
 
 // Realtor Import
-use App\Http\Controllers\Realtor\RealtorAuthenticationController;
-use App\Http\Controllers\Realtor\RealtorPropertyController;
-use App\Http\Controllers\Realtor\RealtorUserController;
-use App\Http\Controllers\Realtor\RealtorMapController;
-use App\Http\Controllers\Realtor\RealtorTypesController;
-use App\Http\Controllers\Realtor\RealtorReportController;
-use App\Http\Controllers\Realtor\RealtorController;
-use App\Http\Controllers\Realtor\RealtorAgentController;
-use App\Http\Controllers\Realtor\RealtorPaymentController;
-use App\Http\Controllers\Realtor\LandingPageController;
-use App\Http\Controllers\Realtor\ReferralController;
-use App\Http\Controllers\Realtor\EarningsController;
-use App\Http\Controllers\Realtor\SalesRequestController;
-use App\Http\Controllers\Realtor\RealtorEventController;
-
-
-// User Import 
-use App\Http\Controllers\User\UserFavoritesController;
-use App\Http\Controllers\User\UserPaymentsController;
-use App\Http\Controllers\User\UserPrivacyController;
-use App\Http\Controllers\User\UserProfileController;
-use App\Http\Controllers\User\UserPropertiesController;
-use App\Http\Controllers\User\UserPropertyDetailsController;
+use App\Http\Controllers\Tenant\Realtor\LandingPageController;
 
 // Tenant Import
 use Stancl\Tenancy\Middleware\PreventAccessFromCentralDomains;
@@ -57,6 +22,8 @@ use App\Http\Controllers\Tenant\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Tenant\Auth\RegisteredUserController;
 use App\Http\Controllers\Tenant\Auth\VerifyEmailController;
 use App\Http\Controllers\Tenant\Client\DashboardController;
+use App\Http\Controllers\Tenant\Realtor\ReferralsController;
+use App\Http\Controllers\Tenant\Realtor\SalesController;
 use Stancl\Tenancy\Middleware\ScopeSessions;
 
 /*
@@ -209,7 +176,7 @@ Route::middleware([
 
             // Map
             Route::get('/map', function () {
-                return tenant_view('realtor.pages.map.index');
+                return tenant_view('realtor.pages.map');
             })->name('tenant.realtor.map');
 
             // Family House
@@ -219,12 +186,12 @@ Route::middleware([
 
             // Reports
             Route::get('/reports', function () {
-                return tenant_view('realtor.pages.reports.index');
+                return tenant_view('realtor.pages.reports');
             })->name('tenant.realtor.reports');
 
             // Payments
             Route::get('/payments', function () {
-                return tenant_view('realtor.pages.payments.index');
+                return tenant_view('realtor.pages.payments');
             })->name('tenant.realtor.payments');
 
             // Profile
@@ -233,32 +200,37 @@ Route::middleware([
             })->name('tenant.realtor.profile');
 
             // Landing Page
-            Route::get('/landing-page-list', function () {
-                return tenant_view('realtor.pages.landing-page.list');
-            })->name('tenant.realtor.landing-page-list');
+            Route::controller(LandingPageController::class)->group(function () {
+                Route::get('/landing-page-list', 'index')->name('tenant.realtor.landing-page-list');
+                Route::get('/landing-page/{userId}/{propertyId}', 'show')->name('tenant.realtor.landing-page');
+                Route::post('/landing-pages/create', 'create')->name('landing-pages.create');
+                Route::post('/landing-pages/deactivate/{id}', 'deactivate')->name('landing-pages.deactivate');
+                Route::delete('/landing-pages/delete/{id}', 'delete')->name('landing-pages.delete');
+            });
 
-            Route::get('/landing-page', function () {
-                return tenant_view('realtor.pages.landing-page.show');
-            })->name('tenant.realtor.landing-page');
 
             // Referrals
-            Route::get('/referral', function () {
-                return tenant_view('realtor.pages.referrals.index');
-            })->name('tenant.realtor.referrals');
+            Route::controller(ReferralsController::class)->group(function () {
+                Route::get('/referral', 'index')->name('tenant.realtor.referrals');
+                Route::post('/referral/create', 'create')->name('tenant.realtor.referrals.create');
+                Route::get('/referral/deactivate/{id}', 'index')->name('tenant.realtor.referrals.deactivate');
+                Route::get('/referral/delete/{id}', 'index')->name('tenant.realtor.referrals.delete');
+            });
 
-            // Earnings
-            Route::get('/earnings', function () {
-                return tenant_view('realtor.pages.earnings.index');
-            })->name('tenant.realtor.earnings');
+            // Sales
+            Route::controller(SalesController::class)->group(function () {
+                Route::get('/sales', 'index')->name('tenant.realtor.sales');
+                Route::post('/sales/create', 'index')->name('tenant.realtor.sales.create');
+            });
 
             // Sales Request
             Route::get('/sales-request', function () {
-                return tenant_view('realtor.pages.sales-request.index');
+                return tenant_view('realtor.pages.sales-request');
             })->name('tenant.realtor.sales-request');
 
             // Events
             Route::get('/events', function () {
-                return tenant_view('realtor.pages.events.index');
+                return tenant_view('realtor.pages.events');
             })->name('tenant.realtor.events');
         });
     });

@@ -1,7 +1,7 @@
-@extends('realtor.realtor_master')
+@extends('themes.classic.realtor.realtor_master')
 @section('title', 'Add Property | Premium Refined Luxury Homes')
 @section('content')
-        <!-- Container-fluid start -->
+    <!-- Container-fluid start -->
     <div class="container-fluid">
         <div class="page-header">
             <div class="row">
@@ -24,7 +24,7 @@
                         <li class="breadcrumb-item active">My properties</li>
                     </ol>
                     <!-- Breadcrumb end -->
-                    
+
                 </div>
             </div>
         </div>
@@ -35,7 +35,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <div class="card"> 
+                <div class="card">
                     <div class="card-header pb-0">
                         <h5>Add property details</h5>
                     </div>
@@ -43,12 +43,14 @@
                         <form class="row gx-3">
                             <div class="form-group col-sm-4">
                                 <label>Property Type</label>
-                                <input type="text" class="form-control" placeholder="office,villa,apartment" required="">
+                                <input type="text" class="form-control" placeholder="office,villa,apartment"
+                                    required="">
                             </div>
                             <div class="form-group col-sm-4">
                                 <label>Property Status</label>
                                 <div class="dropdown">
-                                    <span class="dropdown-toggle font-rubik" data-bs-toggle="dropdown"><span>For Sale</span> <i class="fas fa-angle-down"></i></span>
+                                    <span class="dropdown-toggle font-rubik" data-bs-toggle="dropdown"><span>For Sale</span>
+                                        <i class="fas fa-angle-down"></i></span>
                                     <div class="dropdown-menu text-start">
                                         <a class="dropdown-item" href="javascript:void(0)">For Rent</a>
                                         <a class="dropdown-item" href="javascript:void(0)">For Sale</a>
@@ -62,7 +64,8 @@
                             <div class="form-group col-sm-4">
                                 <label>Max Rooms</label>
                                 <div class="dropdown">
-                                    <span class="dropdown-toggle font-rubik" data-bs-toggle="dropdown"><span>1</span> <i class="fas fa-angle-down"></i></span>
+                                    <span class="dropdown-toggle font-rubik" data-bs-toggle="dropdown"><span>1</span> <i
+                                            class="fas fa-angle-down"></i></span>
                                     <div class="dropdown-menu text-start">
                                         <a class="dropdown-item" href="javascript:void(0)">2</a>
                                         <a class="dropdown-item" href="javascript:void(0)">3</a>
@@ -75,7 +78,8 @@
                             <div class="form-group col-sm-4">
                                 <label>Beds</label>
                                 <div class="dropdown">
-                                    <span class="dropdown-toggle font-rubik" data-bs-toggle="dropdown"><span>1</span> <i class="fas fa-angle-down"></i></span>
+                                    <span class="dropdown-toggle font-rubik" data-bs-toggle="dropdown"><span>1</span> <i
+                                            class="fas fa-angle-down"></i></span>
                                     <div class="dropdown-menu text-start">
                                         <a class="dropdown-item" href="javascript:void(0)">2</a>
                                         <a class="dropdown-item" href="javascript:void(0)">3</a>
@@ -88,7 +92,8 @@
                             <div class="form-group col-sm-4">
                                 <label>Baths</label>
                                 <div class="dropdown">
-                                    <span class="dropdown-toggle font-rubik" data-bs-toggle="dropdown"><span>1</span> <i class="fas fa-angle-down"></i></span>
+                                    <span class="dropdown-toggle font-rubik" data-bs-toggle="dropdown"><span>1</span> <i
+                                            class="fas fa-angle-down"></i></span>
                                     <div class="dropdown-menu text-start">
                                         <a class="dropdown-item" href="javascript:void(0)">2</a>
                                         <a class="dropdown-item" href="javascript:void(0)">3</a>
@@ -109,9 +114,8 @@
                             <div class="form-group col-sm-4">
                                 <label>Agencies</label>
                                 <div class="dropdown">
-                                    <span class="dropdown-toggle font-rubik"
-                                        data-bs-toggle="dropdown"><span>Premiere</span> <i
-                                            class="fas fa-angle-down"></i></span>
+                                    <span class="dropdown-toggle font-rubik" data-bs-toggle="dropdown"><span>Premiere</span>
+                                        <i class="fas fa-angle-down"></i></span>
                                     <div class="dropdown-menu text-start">
                                         <a class="dropdown-item" href="javascript:void(0)">Blue Sky</a>
                                         <a class="dropdown-item" href="javascript:void(0)">Zephyr</a>
@@ -134,7 +138,9 @@
                             <div class="form-group col-sm-4">
                                 <label>Any Country</label>
                                 <div class="dropdown">
-                                    <span class="dropdown-toggle font-rubik" data-bs-toggle="dropdown"><span>Austria</span> <i class="fas fa-angle-down"></i></span>
+                                    <span class="dropdown-toggle font-rubik"
+                                        data-bs-toggle="dropdown"><span>Austria</span> <i
+                                            class="fas fa-angle-down"></i></span>
                                     <div class="dropdown-menu text-start">
                                         <a class="dropdown-item" href="javascript:void(0)">Austria</a>
                                         <a class="dropdown-item" href="javascript:void(0)">Brazil</a>
@@ -146,7 +152,8 @@
                             <div class="form-group col-sm-4">
                                 <label>Any City</label>
                                 <div class="dropdown">
-                                    <span class="dropdown-toggle font-rubik" data-bs-toggle="dropdown"><span>Amreli</span> <i class="fas fa-angle-down"></i></span>
+                                    <span class="dropdown-toggle font-rubik" data-bs-toggle="dropdown"><span>Amreli</span>
+                                        <i class="fas fa-angle-down"></i></span>
                                     <div class="dropdown-menu text-start">
                                         <a class="dropdown-item" href="javascript:void(0)">Gandhinagar</a>
                                         <a class="dropdown-item" href="javascript:void(0)">Bharuch</a>
@@ -164,7 +171,7 @@
                             <label>Media</label>
                             <form class="dropzone" id="multiFileUpload" action="">
                                 <div class="dz-message needsclick"><i class="fas fa-cloud-upload-alt"></i>
-                                <h6>Drop files here or click to upload.</h6>
+                                    <h6>Drop files here or click to upload.</h6>
                                 </div>
                             </form>
                         </div>
@@ -177,34 +184,43 @@
                                 <label>Additional features</label>
                                 <div class="additional-checkbox">
                                     <label for="chk-ani">
-                                        <input class="checkbox_animated color-4" id="chk-ani" type="checkbox"> Emergency Exit
+                                        <input class="checkbox_animated color-4" id="chk-ani" type="checkbox">
+                                        Emergency Exit
                                     </label>
                                     <label for="chk-ani1">
                                         <input class="checkbox_animated color-4" id="chk-ani1" type="checkbox"> CCTV
                                     </label>
                                     <label for="chk-ani2">
-                                        <input class="checkbox_animated color-4" id="chk-ani2" type="checkbox" checked> Free Wi-Fi
+                                        <input class="checkbox_animated color-4" id="chk-ani2" type="checkbox" checked>
+                                        Free Wi-Fi
                                     </label>
                                     <label for="chk-ani3">
-                                        <input class="checkbox_animated color-4" id="chk-ani3" type="checkbox">  Free Parking In The Area
+                                        <input class="checkbox_animated color-4" id="chk-ani3" type="checkbox"> Free
+                                        Parking In The Area
                                     </label>
                                     <label for="chk-ani4">
-                                        <input class="checkbox_animated color-4" id="chk-ani4" type="checkbox">  Air Conditioning
+                                        <input class="checkbox_animated color-4" id="chk-ani4" type="checkbox"> Air
+                                        Conditioning
                                     </label>
                                     <label for="chk-ani5">
-                                        <input class="checkbox_animated color-4" id="chk-ani5" type="checkbox">  Security Guard
+                                        <input class="checkbox_animated color-4" id="chk-ani5" type="checkbox"> Security
+                                        Guard
                                     </label>
                                     <label for="chk-ani6">
-                                        <input class="checkbox_animated color-4" id="chk-ani6" type="checkbox" checked>  Terrace
+                                        <input class="checkbox_animated color-4" id="chk-ani6" type="checkbox" checked>
+                                        Terrace
                                     </label>
                                     <label for="chk-ani7">
-                                        <input class="checkbox_animated color-4" id="chk-ani7" type="checkbox">  Laundry Service
+                                        <input class="checkbox_animated color-4" id="chk-ani7" type="checkbox"> Laundry
+                                        Service
                                     </label>
                                     <label for="chk-ani8">
-                                        <input class="checkbox_animated color-4" id="chk-ani8" type="checkbox">  Elevator Lift
+                                        <input class="checkbox_animated color-4" id="chk-ani8" type="checkbox"> Elevator
+                                        Lift
                                     </label>
                                     <label for="chk-ani9">
-                                        <input class="checkbox_animated color-4" id="chk-ani9" type="checkbox" checked>  Balcony
+                                        <input class="checkbox_animated color-4" id="chk-ani9" type="checkbox" checked>
+                                        Balcony
                                     </label>
                                 </div>
                             </div>

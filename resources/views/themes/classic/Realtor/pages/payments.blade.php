@@ -1,4 +1,4 @@
-@extends('realtor.realtor_master')
+@extends('themes.classic.realtor.realtor_master')
 @section('title', 'Payments | Premium Refined Luxury Homes')
 @section('content')
     <!-- Container-fluid start -->
@@ -15,9 +15,9 @@
                 <div class="col-sm-6">
 
                     <!-- Breadcrumb start -->
-                  
+
                     <!-- Breadcrumb end -->
-                    
+
                 </div>
             </div>
         </div>
@@ -28,7 +28,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <div class="card"> 
+                <div class="card">
                     <div class="card-header pb-0">
                         <h5>Payment lists</h5>
                     </div>

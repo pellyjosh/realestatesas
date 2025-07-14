@@ -5,12 +5,14 @@
         <div class="title-3 text-center mb-4">
             <h1>Sign up</h1>
         </div>
-        <form method="POST" action="{{ route('tenant.register') }}" autocomplete="off" style="width: 100%;">
+        <form method="POST" action="{{ route('tenant.register') }}" autocomplete="off" enctype="multipart/form-data"
+            style="width: 100%;">
             @csrf
+            <input type="hidden" name="referred_by_code" value="{{ $referralCode }}">
             <div class="form-group text-center mb-4">
                 <div class="profile-image-upload"
                     style="display: inline-block; position: relative; width: 100px; height: 100px; border-radius: 50%; border: 3px solid #78c705; overflow: hidden; margin-bottom: 10px;">
-                    <input type="file" class="form-control" name="profile_image" accept="image/*" capture="user"
+                    <input type="file" class="form-control" name="image" accept="image/*" capture="user"
                         style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer;">
                     <div class="image-placeholder"
                         style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #f8f8f8;">
@@ -49,6 +51,20 @@
                         value="{{ old('email') }}" required>
                 </div>
                 @error('email')
+                    <div class="text-danger mt-1">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="form-group mb-3">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <i data-feather="phone"></i>
+                        </div>
+                    </div>
+                    <input type="tel" class="form-control" name="phone" placeholder="Enter phone number"
+                        value="{{ old('phone') }}" required>
+                </div>
+                @error('phone')
                     <div class="text-danger mt-1">{{ $message }}</div>
                 @enderror
             </div>

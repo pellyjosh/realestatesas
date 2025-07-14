@@ -1,4 +1,4 @@
-@extends('realtor.realtor_master')
+@extends('themes.classic.realtor.realtor_master')
 @section('title, Favorites Property | Premium Refined Luxury Homes')
 @section('content')
     <!-- Container-fluid start -->

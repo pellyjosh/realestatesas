@@ -10,5 +10,5 @@ class TenantUser extends Authenticatable
 {
     protected $table = 'users';
 
-    protected $fillable = ['name', 'email', 'password'];
+    protected $fillable = ['name', 'email','phone', 'image_url', 'password', 'referral_code', 'referred_by_code', 'type'];
 }

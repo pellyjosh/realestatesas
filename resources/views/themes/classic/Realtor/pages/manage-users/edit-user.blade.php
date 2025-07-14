@@ -1,4 +1,4 @@
-@extends('realtor.realtor_master')
+@extends('themes.classic.realtor.realtor_master')
 @section('title, Edit User | Premium Refined Luxury Homes')
 @section('content')
     <!-- Container-fluid start -->
@@ -24,7 +24,7 @@
                         <li class="breadcrumb-item active">Manage users</li>
                     </ol>
                     <!-- Breadcrumb end -->
-                    
+
                 </div>
             </div>
         </div>
@@ -35,11 +35,11 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <div class="card"> 
+                <div class="card">
                     <div class="card-header pb-0">
                         <h5>Edit user details</h5>
                     </div>
-                     <div class="card-body admin-form">
+                    <div class="card-body admin-form">
                         <form class="row gx-3">
                             <div class="form-group col-md-4 col-sm-6">
                                 <label>First name <span class="font-danger">*</span></label>
@@ -52,7 +52,8 @@
                             <div class="form-group col-md-4 col-sm-6">
                                 <label>Gender <span class="font-danger">*</span></label>
                                 <div class="dropdown">
-                                    <span class="dropdown-toggle font-rubik" data-bs-toggle="dropdown"><span>Male</span> <i class="fas fa-angle-down"></i></span>
+                                    <span class="dropdown-toggle font-rubik" data-bs-toggle="dropdown"><span>Male</span> <i
+                                            class="fas fa-angle-down"></i></span>
                                     <div class="dropdown-menu text-start">
                                         <a class="dropdown-item" href="javascript:void(0)">Male</a>
                                         <a class="dropdown-item" href="javascript:void(0)">Female</a>
@@ -96,7 +97,7 @@
                             <label>Media</label>
                             <form class="dropzone" id="multiFileUpload" action="">
                                 <div class="dz-message needsclick"><i class="fas fa-cloud-upload-alt"></i>
-                                <h6>Drop files here or click to upload.</h6>
+                                    <h6>Drop files here or click to upload.</h6>
                                 </div>
                             </form>
                         </div>
@@ -104,7 +105,7 @@
                             <button type="button" class="btn btn-pill btn-gradient color-4">Save</button>
                             <button type="button" class="btn btn-pill btn-dashed color-4">Cancel</button>
                         </div>
-                     </div>
+                    </div>
                 </div>
             </div>
         </div>

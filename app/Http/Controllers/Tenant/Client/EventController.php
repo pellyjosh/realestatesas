@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Client;
+namespace App\Http\Controllers\Tenant\Client;
 
 use App\Http\Controllers\Controller;
 // Make sure to import the Event model
@@ -17,7 +17,7 @@ class EventController extends Controller
         // Fetch all events from the database
         $events = Event::all();
         // Return the view and pass the events data to it
-        return view('client.pages.events', compact('events'));
+        return tenant_view('client.pages.events', compact('events'));
     }
 
     public function bookEvent(Request $request)

@@ -1,4 +1,4 @@
-@extends('realtor.realtor_master')
+@extends('themes.classic.realtor.realtor_master')
 @section('title', 'Events | Premium Refined Luxury Homes')
 @section('content')
 
@@ -70,7 +70,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb pull-right">
                         <li class="breadcrumb-item">
-                            <a href="{{ route('realtor.dashboard') }}">
+                            <a href="{{ route('tenant.realtor.dashboard') }}">
                                 <i class="fas fa-home"></i>
                             </a>
                         </li>

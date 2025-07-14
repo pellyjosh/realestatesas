@@ -1,8 +1,8 @@
-@extends('realtor.realtor_master')
+@extends('themes.classic.realtor.realtor_master')
 @section('title, Agent Profile | Premium Refined Luxury Homes')
 @section('content')
-     <!-- Container-fluid start -->
-     <div class="container-fluid">
+    <!-- Container-fluid start -->
+    <div class="container-fluid">
         <div class="page-header">
             <div class="row">
                 <div class="col-sm-6">
@@ -24,7 +24,7 @@
                         <li class="breadcrumb-item active">Agents</li>
                     </ol>
                     <!-- Breadcrumb end -->
-                    
+
                 </div>
             </div>
         </div>
@@ -40,15 +40,21 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="media contact-media">
-                                    <img src="https://themes.pixelstrap.com/sheltos/assets/images/avatar/5.jpg" class="img-fluid img-80" alt="">
+                                    <img src="https://themes.pixelstrap.com/sheltos/assets/images/avatar/5.jpg"
+                                        class="img-fluid img-80" alt="">
                                     <div class="media-body">
                                         <h4>Good Evening , Zack Lee</h4>
-                                        <span class="light-font">My current address <a href="javascript:void(0)">Mina Road, Dubai, United Arab Emirates</a></span>
+                                        <span class="light-font">My current address <a href="javascript:void(0)">Mina Road,
+                                                Dubai, United Arab Emirates</a></span>
                                         <ul class="agent-social mt-2">
-                                            <li><a href="https://www.facebook.com/" class="facebook"><i class="fab fa-facebook-f"></i></a></li>
-                                            <li><a href="https://twitter.com/" class="twitter"><i class="fab fa-twitter"></i></a></li>
-                                            <li><a href="https://account.google.com/" class="google"><i class="fab fa-google"></i></a></li>
-                                            <li><a href="https://www.linkedin.com/" class="linkedin"><i class="fab fa-linkedin-in"></i></a></li>
+                                            <li><a href="https://www.facebook.com/" class="facebook"><i
+                                                        class="fab fa-facebook-f"></i></a></li>
+                                            <li><a href="https://twitter.com/" class="twitter"><i
+                                                        class="fab fa-twitter"></i></a></li>
+                                            <li><a href="https://account.google.com/" class="google"><i
+                                                        class="fab fa-google"></i></a></li>
+                                            <li><a href="https://www.linkedin.com/" class="linkedin"><i
+                                                        class="fab fa-linkedin-in"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -56,7 +62,8 @@
                                     <ul class="light-box user-info-icon">
                                         <li>
                                             <div class="media">
-                                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/svg/icon/1.svg" class="img-fluid" alt="">
+                                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/svg/icon/1.svg"
+                                                    class="img-fluid" alt="">
                                                 <div class="media-body">
                                                     <h5>18</h5>
                                                     <span class="light-font">Sold</span>
@@ -65,7 +72,8 @@
                                         </li>
                                         <li>
                                             <div class="media">
-                                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/svg/icon/3.png" class="img-fluid" alt="">
+                                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/svg/icon/3.png"
+                                                    class="img-fluid" alt="">
                                                 <div class="media-body">
                                                     <h5>20</h5>
                                                     <span class="light-font">Waiting</span>
@@ -74,7 +82,8 @@
                                         </li>
                                         <li>
                                             <div class="media">
-                                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/svg/icon/2.png" class="img-fluid" alt="">
+                                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/svg/icon/2.png"
+                                                    class="img-fluid" alt="">
                                                 <div class="media-body">
                                                     <h5>40</h5>
                                                     <span class="light-font">Rent</span>
@@ -84,8 +93,10 @@
                                     </ul>
                                 </div>
                                 <div class="contact-btn">
-                                    <button type="button" onclick="document.location='all-users.html'" class="btn btn-gradient color-4 btn-pill">Email</button>
-                                    <button type="button" onclick="document.location='add-user.html'" class="btn btn-dashed color-4 ms-2 btn-pill">Message</button>
+                                    <button type="button" onclick="document.location='all-users.html'"
+                                        class="btn btn-gradient color-4 btn-pill">Email</button>
+                                    <button type="button" onclick="document.location='add-user.html'"
+                                        class="btn btn-dashed color-4 ms-2 btn-pill">Message</button>
                                 </div>
                             </div>
                         </div>
@@ -100,7 +111,8 @@
                                     <ul>
                                         <li>
                                             <div class="media">
-                                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/avatar/2.jpg" class="img-fluid img-50" alt="">
+                                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/avatar/2.jpg"
+                                                    class="img-fluid img-50" alt="">
                                                 <div class="media-body">
                                                     <h6>Bob Frapples</h6>
                                                     <span class="light-font">bobf@gmail.com</span>
@@ -110,7 +122,8 @@
                                         </li>
                                         <li>
                                             <div class="media">
-                                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/avatar/3.jpg" class="img-fluid img-50" alt="">
+                                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/avatar/3.jpg"
+                                                    class="img-fluid img-50" alt="">
                                                 <div class="media-body">
                                                     <h6>Greta Life</h6>
                                                     <span class="light-font">gretali@gmail.com</span>
@@ -120,7 +133,8 @@
                                         </li>
                                         <li>
                                             <div class="media">
-                                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/avatar/4.jpg" class="img-fluid img-50" alt="">
+                                                <img src="https://themes.pixelstrap.com/sheltos/assets/images/avatar/4.jpg"
+                                                    class="img-fluid img-50" alt="">
                                                 <div class="media-body">
                                                     <h6>Zack Lee</h6>
                                                     <span class="light-font">zack@gmail.com</span>
@@ -173,36 +187,44 @@
                             <div class="col-xl-12 xl-12 col-lg-6">
                                 <div class="card">
                                     <div class="card-body">
-                                       <div class="partner-info">
-                                           <div class="title-about">
-                                               <h5>Project meetings</h5>
-                                           </div>
-                                           <div class="time-details">
-                                               <div>
+                                        <div class="partner-info">
+                                            <div class="title-about">
+                                                <h5>Project meetings</h5>
+                                            </div>
+                                            <div class="time-details">
+                                                <div>
                                                     <ul>
                                                         <li>
-                                                            <img src="https://themes.pixelstrap.com/sheltos/assets/images/avatar/6.jpg" class="img-fluid" alt="">
+                                                            <img src="https://themes.pixelstrap.com/sheltos/assets/images/avatar/6.jpg"
+                                                                class="img-fluid" alt="">
                                                         </li>
                                                         <li>
-                                                            <img src="https://themes.pixelstrap.com/sheltos/assets/images/avatar/5.jpg" class="img-fluid" alt="">
+                                                            <img src="https://themes.pixelstrap.com/sheltos/assets/images/avatar/5.jpg"
+                                                                class="img-fluid" alt="">
                                                         </li>
                                                         <li>
-                                                            <img src="https://themes.pixelstrap.com/sheltos/assets/images/avatar/9.jpg" class="img-fluid" alt="">
+                                                            <img src="https://themes.pixelstrap.com/sheltos/assets/images/avatar/9.jpg"
+                                                                class="img-fluid" alt="">
                                                         </li>
                                                     </ul>
                                                     <a href="all-users.html" class="arrow-animated">
                                                         Join now
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                            height="24" viewBox="0 0 24 24" fill="none"
+                                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" class="feather feather-chevron-right">
+                                                            <polyline points="9 18 15 12 9 6"></polyline>
+                                                        </svg>
                                                     </a>
-                                               </div>
-                                               <div>
+                                                </div>
+                                                <div>
                                                     <h6>4:00 - 5:00 PM</h6>
                                                     <span class="label label-light color-4">10 mins left</span>
-                                               </div>
-                                           </div>
-                                       </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                               </div>
+                                </div>
                             </div>
                             <div class="about-info col-xl-12 xl-6 col-lg-6  friend-agent">
                                 <div class="card">
@@ -213,34 +235,46 @@
                                         <div class="friend-list">
                                             <ul class="row">
                                                 <li class="col-md-4 col-sm-3 col-4 xl-2">
-                                                    <img src="https://themes.pixelstrap.com/sheltos/assets/images/avatar/9.jpg" class="img-fluid img-50" alt="">
+                                                    <img src="https://themes.pixelstrap.com/sheltos/assets/images/avatar/9.jpg"
+                                                        class="img-fluid img-50" alt="">
                                                     <h6>Bob</h6>
-                                                    <a href="add-agent.html" class="label label-light label-flat color-4">Message</a>
+                                                    <a href="add-agent.html"
+                                                        class="label label-light label-flat color-4">Message</a>
                                                 </li>
                                                 <li class="col-md-4 col-sm-3 col-4 xl-2">
-                                                    <img src="https://themes.pixelstrap.com/sheltos/assets/images/avatar/8.jpg" class="img-fluid img-50" alt="">
+                                                    <img src="https://themes.pixelstrap.com/sheltos/assets/images/avatar/8.jpg"
+                                                        class="img-fluid img-50" alt="">
                                                     <h6>Greta</h6>
-                                                    <a href="add-agent.html" class="label label-light label-flat color-4">Message</a>
+                                                    <a href="add-agent.html"
+                                                        class="label label-light label-flat color-4">Message</a>
                                                 </li>
                                                 <li class="col-md-4 col-sm-3 col-4 xl-2">
-                                                    <img src="https://themes.pixelstrap.com/sheltos/assets/images/avatar/5.jpg" class="img-fluid img-50" alt="">
+                                                    <img src="https://themes.pixelstrap.com/sheltos/assets/images/avatar/5.jpg"
+                                                        class="img-fluid img-50" alt="">
                                                     <h6>Zack</h6>
-                                                    <a href="add-agent.html" class="label label-light label-flat color-4">Message</a>
+                                                    <a href="add-agent.html"
+                                                        class="label label-light label-flat color-4">Message</a>
                                                 </li>
                                                 <li class="col-md-4 col-sm-3 col-4 xl-2">
-                                                    <img src="https://themes.pixelstrap.com/sheltos/assets/images/avatar/6.jpg" class="img-fluid img-50" alt="">
+                                                    <img src="https://themes.pixelstrap.com/sheltos/assets/images/avatar/6.jpg"
+                                                        class="img-fluid img-50" alt="">
                                                     <h6>Paige</h6>
-                                                    <a href="add-agent.html" class="label label-light label-flat color-4">Message</a>
+                                                    <a href="add-agent.html"
+                                                        class="label label-light label-flat color-4">Message</a>
                                                 </li>
                                                 <li class="col-md-4 col-sm-3 col-4 xl-2">
-                                                    <img src="https://themes.pixelstrap.com/sheltos/assets/images/avatar/7.jpg" class="img-fluid img-50" alt="">
+                                                    <img src="https://themes.pixelstrap.com/sheltos/assets/images/avatar/7.jpg"
+                                                        class="img-fluid img-50" alt="">
                                                     <h6>Mary</h6>
-                                                    <a href="add-agent.html" class="label label-light label-flat color-4">Message</a>
+                                                    <a href="add-agent.html"
+                                                        class="label label-light label-flat color-4">Message</a>
                                                 </li>
                                                 <li class="col-md-4 col-sm-3 col-4 xl-2">
-                                                    <img src="https://themes.pixelstrap.com/sheltos/assets/images/avatar/1.png" class="img-fluid img-50" alt="">
+                                                    <img src="https://themes.pixelstrap.com/sheltos/assets/images/avatar/1.png"
+                                                        class="img-fluid img-50" alt="">
                                                     <h6>Vella</h6>
-                                                    <a href="add-agent.html" class="label label-light label-flat color-4">Message</a>
+                                                    <a href="add-agent.html"
+                                                        class="label label-light label-flat color-4">Message</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -270,7 +304,8 @@
                                                 <tr>
                                                     <td>
                                                         <div class="media">
-                                                            <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/4.jpg" class="img-fluid img-80" alt="">
+                                                            <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/4.jpg"
+                                                                class="img-fluid img-80" alt="">
                                                             <div class="media-body">
                                                                 <h6>Orchard House</h6>
                                                                 <span class="light-font">Brazil</span>
@@ -293,7 +328,8 @@
                                                 <tr>
                                                     <td>
                                                         <div class="media">
-                                                            <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/2.jpg" class="img-fluid img-80" alt="">
+                                                            <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/2.jpg"
+                                                                class="img-fluid img-80" alt="">
                                                             <div class="media-body">
                                                                 <h6>Neverland</h6>
                                                                 <span class="light-font">France</span>
@@ -316,7 +352,8 @@
                                                 <tr>
                                                     <td class="pb-0">
                                                         <div class="media">
-                                                            <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/3.jpg" class="img-fluid img-80" alt="">
+                                                            <img src="https://themes.pixelstrap.com/sheltos/assets/images/property/3.jpg"
+                                                                class="img-fluid img-80" alt="">
                                                             <div class="media-body">
                                                                 <h6>Sea Breezes</h6>
                                                                 <span class="light-font">USA</span>
@@ -370,45 +407,45 @@
                             <div class="col-xl-12 col-md-6">
                                 <div class="card timeline-card timeline-agent">
                                     <div class="card-body">
-                                       <div class="partner-info">
-                                           <div class="title-about">
-                                               <h5>Monthly installment</h5>
-                                           </div>
-                                           <div class="timeline-pay">
-                                               <ul>
-                                                   <li class="pay">
-                                                       <div>
-                                                           <i class="fas fa-check-circle"></i>
-                                                           <span>Oct 18</span>
-                                                       </div>
-                                                   </li>
-                                                   <li>
-                                                       <div>
-                                                           <i class="fas fa-check-circle"></i>
-                                                           <span>Sep 25</span>
-                                                       </div>
-                                                   </li>
-                                                   <li>
-                                                       <div>
-                                                           <i class="fas fa-check-circle"></i>
-                                                           <span>Aug 10</span>
-                                                       </div>
-                                                   </li>
-                                               </ul>
-                                               <div class="timeline-right">
-                                                   <h5 class="mb-0">$4.500</h5>
-                                                   <a href="agent-invoice.html">
-                                                       View Details
-                                                   </a>
-                                               </div>
-                                           </div>
-                                       </div>
+                                        <div class="partner-info">
+                                            <div class="title-about">
+                                                <h5>Monthly installment</h5>
+                                            </div>
+                                            <div class="timeline-pay">
+                                                <ul>
+                                                    <li class="pay">
+                                                        <div>
+                                                            <i class="fas fa-check-circle"></i>
+                                                            <span>Oct 18</span>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <i class="fas fa-check-circle"></i>
+                                                            <span>Sep 25</span>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <i class="fas fa-check-circle"></i>
+                                                            <span>Aug 10</span>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                                <div class="timeline-right">
+                                                    <h5 class="mb-0">$4.500</h5>
+                                                    <a href="agent-invoice.html">
+                                                        View Details
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                               </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-               </div>
+                </div>
             </div>
         </div>
     </div>

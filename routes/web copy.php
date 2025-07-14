@@ -119,7 +119,7 @@ foreach (config('tenancy.central_domains') as $domain) {
                 Route::get('/dashboard', 'index')->name('realtor.dashboard');
 
                 Route::get('/', function () {
-                    return redirect()->route('realtor.dashboard');
+                    return redirect()->route('tenant.realtor.dashboard');
                 });
             });
 
@@ -268,7 +268,7 @@ Route::prefix('management')->middleware(['auth', 'user.type:admin'])->group(func
     });
 
     Route::controller(AdminInvoice::class)->group(function () {
-       Route::get('/invoice', 'index')->name('admin-invoice');
+        Route::get('/invoice', 'index')->name('admin-invoice');
     });
 });
 

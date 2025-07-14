@@ -8,7 +8,7 @@
     $(".sidebar-link").on('click', function () {
         $(".sidebar-link").removeClass("active");
         $(".menu-content").slideUp("normal");
-        if ($(this).next().is(":hidden") == true) {
+        if ($(this).next().is(":hidden") === true) {
             $(this).addClass("active");
             $(this).next().slideDown("normal");
         }
@@ -20,14 +20,19 @@
     $(".main-sidebar").find("li").removeClass("active");
 
     var current = window.location.pathname;
-    $(".main-sidebar ul>li a").filter(function () {
+
+    $(".main-sidebar ul>li a").each(function () {
         var link = $(this).attr("href");
         if (link) {
-            if (current.indexOf(link) != -1) {
-                $(this).parents().children("a").addClass("active");
-                $(this).parents().children("ul").css("display", "block");
-                $(this).addClass("active");
-                return false;
+            try {
+                var linkPath = new URL(link, window.location.origin).pathname;
+                if (current.startsWith(linkPath)) {
+                    $(this).addClass("active");
+                    $(this).parents("li").addClass("active");
+                    $(this).parents(".menu-content").slideDown("normal");
+                }
+            } catch (e) {
+                console.warn("Invalid link:", link);
             }
         }
     });
@@ -85,4 +90,3 @@
         }
     });
 })(jQuery);
-  

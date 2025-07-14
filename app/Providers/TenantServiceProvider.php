@@ -29,9 +29,9 @@ class TenantServiceProvider extends ServiceProvider
             if (tenant()) {
                 $data = tenant()->data ?? [];
 
-                $logo = $data['logo'] ?? 'default-logo.png';
-                $primaryColor = $data['primary_color'] ?? '#000000';
-                $name = $data['name'] ?? 'Unknown Tenant';
+                $logo = $data->logo ?? 'default-logo.png';
+                $primaryColor = $data->primary_color ?? '#000000';
+                $name = $data->name ?? 'Unknown Tenant';
 
                 Log::info('Tenant View Composer', [
                     'id' => tenant()->id,

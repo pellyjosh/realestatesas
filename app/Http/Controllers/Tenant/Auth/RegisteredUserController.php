@@ -10,16 +10,24 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
-use Illuminate\View\View;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Str;
+use Illuminate\Http\UploadedFile;
+
+
 
 class RegisteredUserController extends Controller
 {
     /**
      * Display the registration view.
      */
-    public function create(): View
+    public function create(Request $request)
     {
-        return tenant_view('auth.register');
+        $referralCode = $request->query('ref');
+
+        return tenant_view('auth.register', [
+            'referralCode' => $referralCode,
+        ]);
     }
 
     /**
@@ -27,23 +35,47 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
+
+    // use Illuminate\Support\Facades\Storage;
+
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            // 'image' => ['nullable', 'image', 'max:2048'],
+            'referred_by_code' => [
+                'nullable',
+                'string',
+                Rule::exists('users', 'referral_code')->whereNot('id', Auth::id())
+            ],
         ]);
+
+        // Generate unique referral code
+        do {
+            $referralCode = Str::random(10);
+        } while (User::where('referral_code', $referralCode)->exists());
+
+        // Store image in a per-tenant folder
+        $imagePath = null;
+        if ($request->hasFile('image')) {
+            $tenantId = tenant()->id ?? 'default'; // fallback if tenant()->id is not available
+            $imagePath = $request->file('image')->store("tenant_{$tenantId}/users", 'public');
+        }
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'phone' => $request->phone,
             'password' => Hash::make($request->password),
+            'referral_code' => $referralCode,
+            'referred_by_code' => $request->referred_by_code,
+            'image_url' => $imagePath,
         ]);
 
         event(new Registered($user));
 
-        // ✅ Use the tenant guard
         Auth::guard('tenant')->login($user);
 
         return redirect(route('tenant.user.dashboard', absolute: false));

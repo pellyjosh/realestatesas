@@ -8,7 +8,7 @@
     <meta name="description" content="Premium Refined Luxury Homes- Realtor dashboard page">
     <meta name="keywords" content="Premium Refined Luxury Homes- Realtor dashboard page">
     <meta name="author" content="Premium Refined Luxury Homes- Realtor dashboard page">
-    <link rel="icon" href="{{ asset('client/assets/images/logo.png') }}" type="image/x-icon" />
+    <link rel="icon" href="{{ asset('themes/classic/client/assets/images/logo.png') }}" type="image/x-icon" />
     <title>@yield('title', 'Premim Refined Admin page')</title>
 
     <!--Google font-->
@@ -18,11 +18,22 @@
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Rubik:400,400i,500,500i,700,700i" rel="stylesheet">
 
+    {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> --}}
+    {{-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"> --}}
+    <link href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.css" rel="stylesheet">
+    {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
+    {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> --}}
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
+    {{-- <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.js"></script> --}}
+
+
     <!-- Font Awesome 6 Free CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
     <!-- animate css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('client/assets/css/animate.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('themes/classic/client/assets/css/animate.css') }}">
 
     <!-- Template css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('themes/classic/admin/assets/css/admin.css') }}">
@@ -38,6 +49,8 @@
             font-weight: 600 !important;
         }
     </style>
+    @stack('styles')
+
 </head>
 
 <body>
@@ -46,7 +59,8 @@
     <div class="loader-wrapper">
         <div class="row loader-text">
             <div class="col-12">
-                <img src="{{ asset('client/assets/images/loader/gear.gif') }}" class="img-fluid" alt="">
+                <img src="{{ asset('themes/classic/client/assets/images/loader/gear.gif') }}" class="img-fluid"
+                    alt="">
             </div>
             <div class="col-12">
                 <div>
@@ -282,10 +296,10 @@
             <div class="page-sidebar">
                 <div class="logo-wrap">
                     <a href="{{ route('tenant.realtor.dashboard') }}">
-                        <img src="{{ asset('client/assets/images/logo2.png') }}" class="img-fluid for-light"
-                            alt="">
-                        <img src="{{ asset('client/assets/images/logo2.png') }}" class="img-fluid for-dark"
-                            alt="">
+                        <img src="{{ asset('themes/classic/client/assets/images/logo2.png') }}"
+                            class="img-fluid for-light" alt="">
+                        <img src="{{ asset('themes/classic/client/assets/images/logo2.png') }}"
+                            class="img-fluid for-dark" alt="">
                     </a>
                     <div class="back-btn d-lg-none d-inline-block">
                         <i data-feather="chevrons-left"></i>
@@ -300,9 +314,9 @@
                             </div>
                             <div class="media-body">
                                 {{-- <a href="{{ route('tenant.user-profile') }}"> --}}
-                                <h6>Zack Lee</h6>
+                                <h6>{{ Auth::guard('tenant')->user()->name }}</h6>
                                 {{-- </a> --}}
-                                <span class="font-roboto">zackle@gmail.com</span>
+                                <span class="font-roboto">{{ Auth::guard('tenant')->user()->email }}</span>
                             </div>
                         </div>
                     </div>
@@ -310,54 +324,62 @@
                     {{-- Main sidebar start --}}
                     <div id="mainsidebar">
                         <ul class="sidebar-menu custom-scrollbar">
-                            <li class="sidebar-item {{ request()->is('realtor/dashboard*') ? 'active' : '' }}">
-                                <a href="{{ route('tenant.realtor.dashboard') }}" class="sidebar-link only-link">
+                            <li class="sidebar-item active">
+                                <a href="{{ route('tenant.realtor.dashboard') }}"
+                                    class="sidebar-link only-link active">
                                     <i data-feather="airplay"></i>
                                     <span class="">Dashboard</span>
                                 </a>
                             </li>
-                            <li class="sidebar-item {{ request()->is('realtor/profile*') ? 'active' : '' }}">
-                                <a href="{{ route('tenant.realtor.profile') }}" class="sidebar-link only-link">
-                                    <i data-feather="user"></i>
-                                    <span>Profile</span>
-                                </a>
-                            </li>
-                            <li class="sidebar-item {{ request()->is('realtor/landing-page*') ? 'active' : '' }}">
+
+                            <li class="sidebar-item">
                                 <a href="{{ route('tenant.realtor.landing-page-list') }}"
-                                    class="sidebar-link only-link">
+                                    class="sidebar-link only-link {{ request()->is('realtor/landing-page*') ? 'active' : '' }}">
                                     <i data-feather="user"></i>
                                     <span>Landing Page</span>
                                 </a>
                             </li>
 
-                            <li class="sidebar-item {{ request()->is('realtor/reports*') ? 'active' : '' }}">
-                                <a href="{{ route('tenant.realtor.reports') }}" class="sidebar-link only-link">
-                                    <i data-feather="bar-chart-2"></i>
-                                    <span>Reports</span>
-                                </a>
-                            </li>
-                            <li class="sidebar-item {{ request()->is('realtor/referrals*') ? 'active' : '' }}">
-                                <a href="{{ route('tenant.realtor.referrals') }}" class="sidebar-link only-link">
+                            <li class="sidebar-item">
+                                <a href="{{ route('tenant.realtor.referrals') }}"
+                                    class="sidebar-link only-link {{ request()->is('realtor/referrals*') ? 'active' : '' }}">
                                     <i data-feather="users"></i>
-                                    <span>Referals</span>
+                                    <span>Referrals</span>
                                 </a>
                             </li>
-                            <li class="sidebar-item {{ request()->is('realtor/referrals*') ? 'active' : '' }}">
-                                <a href="{{ route('tenant.realtor.events') }}" class="sidebar-link only-link">
+                            <li class="sidebar-item">
+                                <a href="{{ route('tenant.realtor.events') }}"
+                                    class="sidebar-link only-link {{ request()->is('realtor/events*') ? 'active' : '' }}">
                                     <i data-feather="calendar"></i>
                                     <span>Events</span>
                                 </a>
                             </li>
-                            <li class="sidebar-item {{ request()->is('realtor/earnings*') ? 'active' : '' }}">
-                                <a href="{{ route('tenant.realtor.earnings') }}" class="sidebar-link only-link">
+                            <li class="sidebar-item">
+                                <a href="{{ route('tenant.realtor.sales') }}"
+                                    class="sidebar-link only-link {{ request()->is('realtor/sales*') ? 'active' : '' }}">
                                     <i data-feather="dollar-sign"></i>
-                                    <span>Earnings</span>
+                                    <span>Sales</span>
                                 </a>
                             </li>
-                            <li class="sidebar-item {{ request()->is('realtor/payments*') ? 'active' : '' }}">
-                                <a href="{{ route('tenant.realtor.payments') }}" class="sidebar-link only-link">
+                            <li class="sidebar-item">
+                                <a href="{{ route('tenant.realtor.payments') }}"
+                                    class="sidebar-link only-link {{ request()->is('realtor/payments*') ? 'active' : '' }}">
                                     <i data-feather="credit-card"></i>
                                     <span>Payments</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="{{ route('tenant.realtor.reports') }}"
+                                    class="sidebar-link only-link {{ request()->is('realtor/reports*') ? 'active' : '' }}">
+                                    <i data-feather="bar-chart-2"></i>
+                                    <span>Reports</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="{{ route('tenant.realtor.profile') }}"
+                                    class="sidebar-link only-link {{ request()->is('realtor/profile*') ? 'active' : '' }}">
+                                    <i data-feather="user"></i>
+                                    <span>Profile</span>
                                 </a>
                             </li>
                         </ul>
@@ -450,7 +472,7 @@
         </div>
     </div>
     <!-- customizer end -->
-
+    @include('themes.classic.realtor.partials.modal-confirmation')
     <!-- latest jquery-->
     <script src="{{ asset('themes/classic/admin/assets/js/jquery-3.6.0.min.js') }}"></script>
 
@@ -468,27 +490,27 @@
     <script src="{{ asset('themes/classic/admin/assets/js/bootstrap.bundle.min.js') }}"></script>
 
     <!-- feather icon js-->
-    <script src="{{ asset('client/assets/js/feather-icon/feather.min.js') }}"></script>
-    <script src="{{ asset('client/assets/js/feather-icon/feather-icon.js') }}"></script>
+    <script src="{{ asset('themes/classic/client/assets/js/feather-icon/feather.min.js') }}"></script>
+    <script src="{{ asset('themes/classic/client/assets/js/feather-icon/feather-icon.js') }}"></script>
 
     <!-- sidebar js -->
     <script src="{{ asset('themes/classic/admin/assets/js/sidebar.js') }}"></script>
 
-    <script src="{{ asset('realtor/assets/js/chart/chartist.js') }}"></script>
-    <script src="{{ asset('realtor/assets/js/chart/chartist-plugin-tooltip.js') }}"></script>
+    <script src="{{ asset('themes/classic/realtor/assets/js/chart/chartist.js') }}"></script>
+    <script src="{{ asset('themes/classic/realtor/assets/js/chart/chartist-plugin-tooltip.js') }}"></script>
 
     <!-- apex chart js-->
-    <script src="{{ asset('realtor/assets/js/chart/apex-chart.js') }}"></script>
-    <script src="r{{ asset('realtor/assets/js/chart/stock-prices.js') }}"></script>
-    <script src="{{ asset('realtor/assets/js/user-profile.js') }}"></script>
-    <script src="{{ asset('realtor/assets/js/admin-dashboard.js') }}"></script>
+    <script src="{{ asset('themes/classic/realtor/assets/js/chart/apex-chart.js') }}"></script>
+    <script src="r{{ asset('themes/classic/realtor/assets/js/chart/stock-prices.js') }}"></script>
+    <script src="{{ asset('themes/classic/realtor/assets/js/user-profile.js') }}"></script>
+    <script src="{{ asset('themes/classic/realtor/assets/js/admin-dashboard.js') }}"></script>
 
     <!-- vector map js-->
-    <script src="{{ asset('realtor/assets/js/vector-map/jquery-jvectormap-2.0.2.min.js') }}"></script>
-    <script src="{{ asset('realtor/assets/js/vector-map/jquery-jvectormap-asia-mill.js') }}"></script>
+    <script src="{{ asset('themes/classic/realtor/assets/js/vector-map/jquery-jvectormap-2.0.2.min.js') }}"></script>
+    <script src="{{ asset('themes/classic/realtor/assets/js/vector-map/jquery-jvectormap-asia-mill.js') }}"></script>
 
     <!--admin js -->
-    <script src="{{ asset('realtor/assets/js/report.js') }}"></script>
+    <script src="{{ asset('themes/classic/realtor/assets/js/report.js') }}"></script>
     <script src="{{ asset('themes/classic/admin/assets/js/admin-script.js') }}"></script>
 
     <!-- Customizer js-->
@@ -499,14 +521,12 @@
 
     <script src="https://unpkg.com/feather-icons"></script>
 
-    <script src="{{ asset('realtor/assets/js/checker.js') }}">
-        < script >
+    <script src="{{ asset('themes/classic/realtor/assets/js/checker.js') }}"></script>
 
-            @stack('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
+    @stack('scripts')
+</body>
 
-            <
-            /body>
-
-            <
-            /html>
+</html>
