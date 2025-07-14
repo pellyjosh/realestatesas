@@ -1,4 +1,4 @@
-@extends('realtor.realtor_master')
+@extends('themes.classic.realtor.realtor_master')
 @section('title', 'Dashboard | Premium Refined Luxury Homes')
 @section('content')
 <style>
@@ -40,13 +40,13 @@
                         <div class="card all-properties">
                             <div class="card-body">
                                 <div class="media align-items-center">
-                                    <img src="{{ asset('admin/assets/images/svg/icon/1.svg') }}" alt="">
+                                    <img src="{{ asset('themes/classic/admin/assets/images/svg/icon/1.svg') }}" alt="">
                                     <div class="media-body">
                                         <h4 class="mb-0">45</h4>
                                         <h6 class="light-font mb-0">Referrals</h6>
                                     </div>
                                     <div class="d-flex flex-column align-items-end">
-                                        <a href="{{ route("realtor.landing-page-list") }}" class="arrow-animated">
+                                        <a href="{{ route("tenant.realtor.landing-page-list") }}" class="arrow-animated">
                                             See all referrals
                                             <i data-feather="chevron-right"></i>
                                         </a>
@@ -55,21 +55,21 @@
                                 </div>
                                 <ul class="light-box d-flex flex-column gap-3 p-0 m-0" style="list-style: none;">
                                     <li class="d-flex align-items-center gap-3 p-2 rounded shadow-sm" style="background: #f8f9fa;">
-                                        <img src="{{ asset('admin/assets/images/svg/icon/sold.png') }}" class="img-fluid" alt="" style="width: 40px; height: 40px;">
+                                        <img src="{{ asset('themes/classic/admin/assets/images/svg/icon/sold.png') }}" class="img-fluid" alt="" style="width: 40px; height: 40px;">
                                         <div>
                                             <h5 class="mb-1">1500</h5>
                                             <span class="light-font">Total balance</span>
                                         </div>
                                     </li>
                                     <li class="d-flex align-items-center gap-3 p-2 rounded shadow-sm" style="background: #f8f9fa;">
-                                        <img src="{{ asset('admin/assets/images/svg/icon/rent.png') }}" class="img-fluid" alt="" style="width: 40px; height: 40px;">
+                                        <img src="{{ asset('themes/classic/admin/assets/images/svg/icon/rent.png') }}" class="img-fluid" alt="" style="width: 40px; height: 40px;">
                                         <div>
                                             <h5 class="mb-1">380</h5>
                                             <span class="light-font">Referral Commission</span>
                                         </div>
                                     </li>
                                     <li class="d-flex align-items-center gap-3 p-2 rounded shadow-sm" style="background: #f8f9fa;">
-                                        <img src="{{ asset('admin/assets/images/svg/icon/unlisted.png') }}" class="img-fluid" alt="" style="width: 40px; height: 40px;">
+                                        <img src="{{ asset('themes/classic/admin/assets/images/svg/icon/unlisted.png') }}" class="img-fluid" alt="" style="width: 40px; height: 40px;">
                                         <div>
                                             <h5 class="mb-1">240</h5>
                                             <span class="light-font">Sales Commission</span>
@@ -203,7 +203,7 @@
                                     <tr>
                                         <td>
                                             <div class="media">
-                                                <img src="{{ asset('admin/assets/images/avatar/1.jpg') }}"
+                                                <img src="{{ asset('themes/classic/admin/assets/images/avatar/1.jpg') }}"
                                                     class="img-fluid" alt="">
                                                 <div class="media-body">
                                                     <a href="user-profile.html"><a href="user-profile.html">
@@ -229,7 +229,7 @@
                                     <tr>
                                         <td>
                                             <div class="media">
-                                                <img src="{{ asset('admin/assets/images/avatar/3.jpg') }}"
+                                                <img src="{{ asset('themes/classic/admin/assets/images/avatar/3.jpg') }}"
                                                     class="img-fluid" alt="">
                                                 <div class="media-body">
                                                     <a href="user-profile.html"><a href="user-profile.html">
@@ -255,7 +255,7 @@
                                     <tr>
                                         <td>
                                             <div class="media">
-                                                <img src="{{ asset('admin/assets/images/avatar/5.jpg') }}"
+                                                <img src="{{ asset('themes/classic/admin/assets/images/avatar/5.jpg') }}"
                                                     class="img-fluid" alt="">
                                                 <div class="media-body">
                                                     <a href="user-profile.html">
@@ -281,7 +281,7 @@
                                     <tr>
                                         <td>
                                             <div class="media">
-                                                <img src="{{ asset('admin/assets/images/avatar/7.jpg') }}"
+                                                <img src="{{ asset('themes/classic/admin/assets/images/avatar/7.jpg') }}"
                                                     class="img-fluid" alt="">
                                                 <div class="media-body">
                                                     <a href="user-profile.html">
@@ -307,7 +307,7 @@
                                     <tr>
                                         <td>
                                             <div class="media">
-                                                <img src="{{ asset('admin/assets/images/avatar/4.jpg') }}"
+                                                <img src="{{ asset('themes/classic/admin/assets/images/avatar/4.jpg') }}"
                                                     class="img-fluid" alt="">
                                                 <div class="media-body">
                                                     <a href="user-profile.html">
@@ -420,7 +420,7 @@
                                     <tr>
                                         <td>
                                             <div class="media">
-                                                <img src="{{ asset('admin/assets/images/svg/icon/pdf.png') }}"
+                                                <img src="{{ asset('themes/classic/admin/assets/images/svg/icon/pdf.png') }}"
                                                     class="img-fluid" alt="">
                                                 <div class="media-body">
                                                     <h6>Report 8/10/22 - 15/10/22</h6>
@@ -436,7 +436,7 @@
                                     <tr>
                                         <td>
                                             <div class="media">
-                                                <img src="{{ asset('admin/assets/images/svg/icon/microsoft.png') }}"
+                                                <img src="{{ asset('themes/classic/admin/assets/images/svg/icon/microsoft.png') }}"
                                                     class="img-fluid" alt="">
                                                 <div class="media-body">
                                                     <h6>Report 20/10/22 - 25/10/22</h6>
@@ -468,7 +468,7 @@
                                     <tr>
                                         <td>
                                             <div class="media">
-                                                <img src="{{ asset('admin/assets/images/svg/icon/pdf.png') }}"
+                                                <img src="{{ asset('themes/classic/admin/assets/images/svg/icon/pdf.png') }}"
                                                     class="img-fluid" alt="">
                                                 <div class="media-body">
                                                     <h6>Report 10/11/22 - 15/11/22</h6>
@@ -484,7 +484,7 @@
                                     <tr>
                                         <td>
                                             <div class="media">
-                                                <img src="{{ asset('admin/assets/images/svg/icon/excel.png') }}"
+                                                <img src="{{ asset('themes/classic/admin/assets/images/svg/icon/excel.png') }}"
                                                     class="img-fluid" alt="">
                                                 <div class="media-body">
                                                     <h6>Report 20/11/22 - 25/11/22</h6>
@@ -522,7 +522,7 @@
                             <div class="d-flex">
                                 <div class="media">
                                     <div class="with-reload">
-                                        <img src="{{ asset('admin/assets/images/svg/icon/1.svg') }}" class="img-fluid"
+                                        <img src="{{ asset('themes/classic/admin/assets/images/svg/icon/1.svg') }}" class="img-fluid"
                                             alt="">
                                     </div>
                                     <div class="media-body">

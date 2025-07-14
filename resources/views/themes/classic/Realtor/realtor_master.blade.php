@@ -25,16 +25,16 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('client/assets/css/animate.css') }}">
 
     <!-- Template css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('admin/assets/css/admin.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('themes/classic/admin/assets/css/admin.css') }}">
 
     <!-- DataTables CSS -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
 
     <style>
-        .active{
+        .active {
             background-color: rgba(145, 210, 10, 0.1) !important;
             color: #91d20a !important;
-            border-left: 3px solid #91d20a !important; 
+            border-left: 3px solid #91d20a !important;
             font-weight: 600 !important;
         }
     </style>
@@ -86,7 +86,7 @@
                         <div class="notification-dropdown onhover-show-div">
                             <div class="dropdown-title">
                                 <h6>Recent Attachments</h6>
-                                <a href="{{ route('realtor.reports') }}">Show all</a>
+                                <a href="{{ route('tenant.realtor.reports') }}">Show all</a>
                             </div>
                             <ul>
                                 <li>
@@ -95,7 +95,7 @@
                                             <i class="fas fa-file-word"></i>
                                         </div>
                                         <div class="media-body">
-                                            <a href="{{ route('realtor.reports') }}">
+                                            <a href="{{ route('tenant.realtor.reports') }}">
                                                 <h6>Doc_file.doc</h6>
                                             </a>
                                             <span>800MB</span>
@@ -108,7 +108,7 @@
                                             <i class="fas fa-file-image"></i>
                                         </div>
                                         <div class="media-body">
-                                            <a href="{{ route('realtor.reports') }}">
+                                            <a href="{{ route('tenant.realtor.reports') }}">
                                                 <h6>Apartment.jpg</h6>
                                             </a>
                                             <span>500kb</span>
@@ -121,7 +121,7 @@
                                             <i class="fas fa-file-pdf"></i>
                                         </div>
                                         <div class="media-body">
-                                            <a href="{{ route('realtor.reports') }}">
+                                            <a href="{{ route('tenant.realtor.reports') }}">
                                                 <h6>villa_report.pdf</h6>
                                             </a>
                                             <span>26MB</span>
@@ -139,7 +139,7 @@
                         <div class="notification-dropdown onhover-show-div">
                             <div class="dropdown-title">
                                 <h6>Notifications</h6>
-                                <a href="{{ route('realtor.favourites') }}">Show all</a>
+                                <a href="{{ route('tenant.realtor.favourites') }}">Show all</a>
                             </div>
                             <ul>
                                 <li>
@@ -154,7 +154,7 @@
                                             <ul class="user-group">
                                                 <li>
                                                     <a href="javascript:void(0)">
-                                                        <img src="{{ asset('admin/assets/images/about/4.jpg') }}"
+                                                        <img src="{{ asset('themes/classic/admin/assets/images/about/4.jpg') }}"
                                                             class="img-fluid" alt="">
                                                     </a>
                                                 </li>
@@ -178,19 +178,19 @@
                                             <ul class="user-group">
                                                 <li>
                                                     <a href="javascript:void(0)">
-                                                        <img src="{{ asset('admin/assets/images/about/1.jpg') }}"
+                                                        <img src="{{ asset('themes/classic/admin/assets/images/about/1.jpg') }}"
                                                             class="img-fluid" alt="">
                                                     </a>
                                                 </li>
                                                 <li>
                                                     <a href="javascript:void(0)">
-                                                        <img src="{{ asset('admin/assets/images/about/2.jpg') }}"
+                                                        <img src="{{ asset('themes/classic/admin/assets/images/about/2.jpg') }}"
                                                             class="img-fluid" alt="">
                                                     </a>
                                                 </li>
                                                 <li>
                                                     <a href="javascript:void(0)">
-                                                        <img src="{{ asset('admin/assets/images/about/3.jpg') }}"
+                                                        <img src="{{ asset('themes/classic/admin/assets/images/about/3.jpg') }}"
                                                             class="img-fluid" alt="">
                                                     </a>
                                                 </li>
@@ -210,13 +210,13 @@
                                             <ul class="user-group">
                                                 <li>
                                                     <a href="javascript:void(0)">
-                                                        <img src="{{ asset('admin/assets/images/about/2.jpg') }}"
+                                                        <img src="{{ asset('themes/classic/admin/assets/images/about/2.jpg') }}"
                                                             class="img-fluid" alt="">
                                                     </a>
                                                 </li>
                                                 <li>
                                                     <a href="javascript:void(0)">
-                                                        <img src="{{ asset('admin/assets/images/about/3.jpg') }}"
+                                                        <img src="{{ asset('themes/classic/admin/assets/images/about/3.jpg') }}"
                                                             class="img-fluid" alt="">
                                                     </a>
                                                 </li>
@@ -239,17 +239,17 @@
                         <div class="notification-dropdown chat-dropdown onhover-show-div">
                             <div class="dropdown-title">
                                 <h6>Messages</h6>
-                                <a href="{{ route('user-profile') }}">View all</a>
+                                <a href="">View all</a>
                             </div>
                             <ul>
                                 <li>
                                     <div class="media">
                                         <div class="chat-user">
-                                            <img src="{{ asset('admin/assets/images/avatar/1.jpg') }}"
+                                            <img src="{{ asset('themes/classic/admin/assets/images/avatar/1.jpg') }}"
                                                 class="img-fluid" alt="">
                                         </div>
                                         <div class="media-body">
-                                            <a href="{{ route('user-profile') }}">
+                                            <a href="">
                                                 <h6>Bob Frapples</h6>
                                             </a>
                                             <span>Template Represents simply...</span>
@@ -257,63 +257,18 @@
                                         <div class="status online">online</div>
                                     </div>
                                 </li>
-                                <li>
-                                    <div class="media">
-                                        <div class="chat-user">
-                                            <img src="{{ asset('admin/assets/images/avatar/3.jpg') }}"
-                                                class="img-fluid" alt="">
-                                        </div>
-                                        <div class="media-body">
-                                            <a href="{{ route('user-profile') }}">
-                                                <h6>Greta Life</h6>
-                                            </a>
-                                            <span>Template Represents simply...</span>
-                                        </div>
-                                        <div class="status away">Away</div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="media">
-                                        <div class="chat-user">
-                                            <img src="{{ asset('admin/assets/images/avatar/4.jpg') }}"
-                                                class="img-fluid" alt="">
-                                        </div>
-                                        <div class="media-body">
-                                            <a href="{{ route('user-profile') }}">
-                                                <h6>Greta Life</h6>
-                                            </a>
-                                            <span>Template Represents simply...</span>
-                                        </div>
-                                        <div class="status online">online</div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="media">
-                                        <div class="chat-user">
-                                            <img src="{{ asset('admin/assets/images/avatar/7.jpg') }}"
-                                                class="img-fluid" alt="">
-                                        </div>
-                                        <div class="media-body">
-                                            <a href="{{ route('user-profile') }}">
-                                                <h6>Greta Life</h6>
-                                            </a>
-                                            <span>Template Represents simply...</span>
-                                        </div>
-                                        <div class="status busy">Busy</div>
-                                    </div>
-                                </li>
                             </ul>
                         </div>
                     </li>
                     <li class="profile-avatar onhover-dropdown">
                         <div>
-                            <img src="{{ asset('admin/assets/images/avatar/3.jpg') }}" class="img-fluid"
-                                alt="">
+                            <img src="{{ asset('themes/classic/admin/assets/images/avatar/3.jpg') }}"
+                                class="img-fluid" alt="">
                         </div>
                         <ul class="profile-dropdown onhover-show-div">
-                            <li><a href="{{ route('user-profile') }}"><span>Account </span><i
-                                        data-feather="user"></i></a></li>
-                            <li><a href="{{ route('realtor.login') }}"><span>Log in</span><i
+                            {{-- <li><a href="{{ route('tenats.tenant.user-profile') }}"><span>Account </span><i
+                                        data-feather="user"></i></a></li> --}}
+                            <li><a href="{{ route('tenant.login') }}"><span>Log in</span><i
                                         data-feather="log-in"></i></a></li>
                         </ul>
                     </li>
@@ -326,7 +281,7 @@
             <!-- page sidebar start -->
             <div class="page-sidebar">
                 <div class="logo-wrap">
-                    <a href="{{ route('realtor.dashboard') }}">
+                    <a href="{{ route('tenant.realtor.dashboard') }}">
                         <img src="{{ asset('client/assets/images/logo2.png') }}" class="img-fluid for-light"
                             alt="">
                         <img src="{{ asset('client/assets/images/logo2.png') }}" class="img-fluid for-dark"
@@ -340,13 +295,13 @@
                     <div class="user-profile">
                         <div class="media">
                             <div class="change-pic">
-                                <img src="{{ asset('admin/assets/images/avatar/3.jpg') }}" class="img-fluid"
-                                    alt="">
+                                <img src="{{ asset('themes/classic/admin/assets/images/avatar/3.jpg') }}"
+                                    class="img-fluid" alt="">
                             </div>
                             <div class="media-body">
-                                <a href="{{ route('user-profile') }}">
-                                    <h6>Zack Lee</h6>
-                                </a>
+                                {{-- <a href="{{ route('tenant.user-profile') }}"> --}}
+                                <h6>Zack Lee</h6>
+                                {{-- </a> --}}
                                 <span class="font-roboto">zackle@gmail.com</span>
                             </div>
                         </div>
@@ -356,50 +311,51 @@
                     <div id="mainsidebar">
                         <ul class="sidebar-menu custom-scrollbar">
                             <li class="sidebar-item {{ request()->is('realtor/dashboard*') ? 'active' : '' }}">
-                                <a href="{{ route('realtor.dashboard') }}" class="sidebar-link only-link">
+                                <a href="{{ route('tenant.realtor.dashboard') }}" class="sidebar-link only-link">
                                     <i data-feather="airplay"></i>
                                     <span class="">Dashboard</span>
                                 </a>
                             </li>
                             <li class="sidebar-item {{ request()->is('realtor/profile*') ? 'active' : '' }}">
-                                <a href="{{ route('realtor.profile') }}" class="sidebar-link only-link">
+                                <a href="{{ route('tenant.realtor.profile') }}" class="sidebar-link only-link">
                                     <i data-feather="user"></i>
                                     <span>Profile</span>
                                 </a>
                             </li>
                             <li class="sidebar-item {{ request()->is('realtor/landing-page*') ? 'active' : '' }}">
-                                <a href="{{ route('realtor.landing-page-list') }}" class="sidebar-link only-link">
+                                <a href="{{ route('tenant.realtor.landing-page-list') }}"
+                                    class="sidebar-link only-link">
                                     <i data-feather="user"></i>
                                     <span>Landing Page</span>
                                 </a>
                             </li>
 
                             <li class="sidebar-item {{ request()->is('realtor/reports*') ? 'active' : '' }}">
-                                <a href="{{ route('realtor.reports') }}" class="sidebar-link only-link">
+                                <a href="{{ route('tenant.realtor.reports') }}" class="sidebar-link only-link">
                                     <i data-feather="bar-chart-2"></i>
                                     <span>Reports</span>
                                 </a>
                             </li>
                             <li class="sidebar-item {{ request()->is('realtor/referrals*') ? 'active' : '' }}">
-                                <a href="{{ route('realtor.referrals') }}" class="sidebar-link only-link">
+                                <a href="{{ route('tenant.realtor.referrals') }}" class="sidebar-link only-link">
                                     <i data-feather="users"></i>
                                     <span>Referals</span>
                                 </a>
                             </li>
                             <li class="sidebar-item {{ request()->is('realtor/referrals*') ? 'active' : '' }}">
-                                <a href="{{ route('realtor.events') }}" class="sidebar-link only-link">
+                                <a href="{{ route('tenant.realtor.events') }}" class="sidebar-link only-link">
                                     <i data-feather="calendar"></i>
                                     <span>Events</span>
                                 </a>
                             </li>
                             <li class="sidebar-item {{ request()->is('realtor/earnings*') ? 'active' : '' }}">
-                                <a href="{{ route('realtor.earnings') }}" class="sidebar-link only-link">
+                                <a href="{{ route('tenant.realtor.earnings') }}" class="sidebar-link only-link">
                                     <i data-feather="dollar-sign"></i>
                                     <span>Earnings</span>
                                 </a>
                             </li>
                             <li class="sidebar-item {{ request()->is('realtor/payments*') ? 'active' : '' }}">
-                                <a href="{{ route('realtor.payments') }}" class="sidebar-link only-link">
+                                <a href="{{ route('tenant.realtor.payments') }}" class="sidebar-link only-link">
                                     <i data-feather="credit-card"></i>
                                     <span>Payments</span>
                                 </a>
@@ -496,58 +452,61 @@
     <!-- customizer end -->
 
     <!-- latest jquery-->
-    <script src="{{ asset('admin/assets/js/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ asset('themes/classic/admin/assets/js/jquery-3.6.0.min.js') }}"></script>
 
     <!-- DataTables JS -->
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 
     <!-- Initialize the DataTable -->
-        <script>
-            $(document).ready(function() {
-                $('#myTable').DataTable();
-            });
-        </script>
+    <script>
+        $(document).ready(function() {
+            $('#myTable').DataTable();
+        });
+    </script>
 
     <!-- Bootstrap js-->
-    <script src="{{ asset('admin/assets/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('themes/classic/admin/assets/js/bootstrap.bundle.min.js') }}"></script>
 
     <!-- feather icon js-->
     <script src="{{ asset('client/assets/js/feather-icon/feather.min.js') }}"></script>
     <script src="{{ asset('client/assets/js/feather-icon/feather-icon.js') }}"></script>
 
     <!-- sidebar js -->
-    <script src="{{ asset('admin/assets/js/sidebar.js') }}"></script>
+    <script src="{{ asset('themes/classic/admin/assets/js/sidebar.js') }}"></script>
 
     <script src="{{ asset('realtor/assets/js/chart/chartist.js') }}"></script>
     <script src="{{ asset('realtor/assets/js/chart/chartist-plugin-tooltip.js') }}"></script>
 
     <!-- apex chart js-->
     <script src="{{ asset('realtor/assets/js/chart/apex-chart.js') }}"></script>
-    <script src="r{{ asset('realtor/assets/js/chart/stock-prices.js') }}"></script>     
+    <script src="r{{ asset('realtor/assets/js/chart/stock-prices.js') }}"></script>
     <script src="{{ asset('realtor/assets/js/user-profile.js') }}"></script>
     <script src="{{ asset('realtor/assets/js/admin-dashboard.js') }}"></script>
 
-     <!-- vector map js-->
+    <!-- vector map js-->
     <script src="{{ asset('realtor/assets/js/vector-map/jquery-jvectormap-2.0.2.min.js') }}"></script>
     <script src="{{ asset('realtor/assets/js/vector-map/jquery-jvectormap-asia-mill.js') }}"></script>
 
     <!--admin js -->
-    <script src="{{ asset("realtor/assets/js/report.js") }}"></script>
-    <script src="{{ asset('admin/assets/js/admin-script.js') }}"></script>
+    <script src="{{ asset('realtor/assets/js/report.js') }}"></script>
+    <script src="{{ asset('themes/classic/admin/assets/js/admin-script.js') }}"></script>
 
     <!-- Customizer js-->
-    <script src="{{ asset('admin/assets/js/customizer.js') }}"></script>
+    <script src="{{ asset('themes/classic/admin/assets/js/customizer.js') }}"></script>
 
     <!-- Color-picker js-->
-    <script src="{{ asset('admin/assets/js/color/custom-colorpicker.js') }}"></script>
+    <script src="{{ asset('themes/classic/admin/assets/js/color/custom-colorpicker.js') }}"></script>
 
     <script src="https://unpkg.com/feather-icons"></script>
 
-    <script src="{{ asset('realtor/assets/js/checker.js') }}"><script>
+    <script src="{{ asset('realtor/assets/js/checker.js') }}">
+        < script >
 
-    @stack('scripts')
+            @stack('scripts')
 
 
-</body>
+            <
+            /body>
 
-</html>
+            <
+            /html>

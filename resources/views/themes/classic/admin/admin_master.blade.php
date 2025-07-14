@@ -328,7 +328,7 @@
             <div class="page-sidebar">
                 <div class="logo-wrap">
                     <a href="{{ route('admin.dashboard') }}">
-                        <img src="{{ asset('client/assets/images/logo2.png') }}" class="img-fluid for-light"
+                        <img src="{{ asset('themes/classic/client/assets/images/logo2.png') }}" class="img-fluid for-light"
                             alt="">
                         <img src="{{ asset('client/assets/images/logo2.png') }}" class="img-fluid for-dark"
                             alt="">

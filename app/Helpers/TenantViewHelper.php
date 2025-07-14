@@ -10,7 +10,7 @@ if (! function_exists('tenant_view')) {
      */
     function tenant_view(string $viewPath, array $data = [])
     {
-        $theme = tenant()?->data['theme'] ?? 'classic';
+        $theme = tenant()->theme ?? 'classic';
         $viewPath = "themes.{$theme}.{$viewPath}";
 
         if (view()->exists($viewPath)) {
@@ -18,7 +18,7 @@ if (! function_exists('tenant_view')) {
         }
 
         $fallbackViewPath = "themes.classic.{$viewPath}";
-        
+
         if (view()->exists($fallbackViewPath)) {
             return view($fallbackViewPath, $data);
         }

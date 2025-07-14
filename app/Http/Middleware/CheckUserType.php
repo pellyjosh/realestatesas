@@ -18,21 +18,21 @@ class CheckUserType
      */
     public function handle(Request $request, Closure $next, $type)
     {
-        if (!Auth::check()) {
-            return redirect()->route('login');
+        $guard = 'tenant';
+
+        if (!Auth::guard($guard)->check()) {
+            return redirect()->route('tenant.login');
         }
 
-        $user = Auth::user();
+        $user = Auth::guard($guard)->user();
+
         if ($user->type !== $type) {
-            // Redirect based on user type or show unauthorized page
-            switch ($user->type) {
-                case 'admin':
-                    return redirect()->route('admin.dashboard');
-                case 'realtor':
-                    return redirect()->route('realtor.dashboard');
-                default:
-                    return redirect()->route('dashboard');
-            }
+            // Redirect based on user type
+            return match ($user->type) {
+                'admin' => redirect()->route('tenant.admin.dashboard'),
+                'realtor' => redirect()->route('tenant.realtor.dashboard'),
+                default => redirect()->route('tenant.client.home'),
+            };
         }
 
         return $next($request);

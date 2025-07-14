@@ -1,11 +1,11 @@
-@extends('auth.authentication_master')
+@extends('superadmin.auth.authentication_master')
 @section('title', 'Login | Premium Refined Luxury Homes')
 @section('content')
     <div class="card-body">
         <div class="title-3 text-start">
             <h1>Log in</h1>
         </div>
-        <form method="POST" action="{{ route('login') }}" autocomplete="off">
+        <form method="POST" action="{{ route('tenant.login') }}" autocomplete="off">
             @csrf
             <div class="form-group">
                 <div class="input-group">
@@ -48,12 +48,12 @@
                     <input class="checkbox_animated color-2" id="chk-ani" type="checkbox" name="remember"
                         {{ old('remember') ? 'checked' : '' }}> Remember me
                 </label>
-                <a href="{{ route('password.request') }}" class="font-rubik text-color-2">Forgot password?</a>
+                <a href="{{ route('tenant.password.request') }}" class="font-rubik text-color-2">Forgot password?</a>
             </div>
             <div>
                 <button type="submit" class="btn btn-pill me-sm-3 me-2" style="background-color: #78c705; color: #fff;">Log
                     in</button>
-                <a href="{{ route('register') }}" class="btn btn-dashed btn-pill color-2">Create Account</a>
+                <a href="{{ route('tenant.register') }}" class="btn btn-dashed btn-pill color-2">Create Account</a>
             </div>
             <div class="divider">
                 <h6>or</h6>

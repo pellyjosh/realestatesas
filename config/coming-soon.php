@@ -17,13 +17,13 @@ return [
         'client.compare',
         // 'client.events',
         // 'client.contact',
-        
+
         // General User Routes
         // 'dashboard',
         // 'profile.edit',
         // 'profile.update',
         // 'profile.destroy',
-        
+
         // Admin Routes
         // 'admin.dashboard',
         'add-admin',
@@ -56,7 +56,7 @@ return [
         'admin.login',
         'admin.signup',
         'admin.not-found',
-        
+
         // Realtor Routes
         // 'realtor.dashboard',
         'realtor.add-property',
@@ -88,9 +88,9 @@ return [
         'realtor.login',
         'realtor.signup',
         'realtor.not-found',
-        
+
         // Catch-all Route
-        'coming-soon',
+        // 'coming-soon',
         // Add more route names here if new routes are defined in web.php
     ],
 ];

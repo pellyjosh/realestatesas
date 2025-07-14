@@ -30,7 +30,7 @@
                                                         class="img-fluid m-0" alt="">
                                                     <h6>Buy or Sell with Confidence</h6>
                                                     <h1>Find Your Perfect Plot or Elegant Home</h1>
-                                                    <a href="{{ route('client.contact') }}"
+                                                    <a href="{{ route('tenant.client.contact') }}"
                                                         class="btn btn-gradient color-6">Contact Us</a>
                                                 </div>
                                             </div>
