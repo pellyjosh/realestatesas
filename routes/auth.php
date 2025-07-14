@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\SuperAdmin\AdminController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
@@ -57,3 +58,11 @@ Route::middleware('auth')->group(function () {
     Route::match(['POST', 'GET'], 'logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
 });
+
+Route::controller(AdminController::class)->group(function () {
+    Route::get('/superadmin-login', [AdminController::class, 'superAdminLogin'])->name('superadmin.login');
+    Route::get('/superadmin-register', [AdminController::class, 'superAdminRegister'])->name('superadmin.register');
+    Route::get('/superadmin-forgot-password', [AdminController::class, 'superAdminForgotPassword'])->name('superadmin.forgot-password');
+    Route::get('/superadmin-reset-password', [AdminController::class, 'superAdminResetPassword'])->name('superadmin.reset-password');
+});
+    
