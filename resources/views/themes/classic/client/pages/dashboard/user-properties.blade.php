@@ -183,7 +183,7 @@
                                         </ul>
                                         <div class="property-btn d-flex">
                                             <span>August 4, 2022</span>
-                                            <a type="button" href="{{ route('user.property-details') }}"
+                                            <a type="button" href="{{ route('tenant.user.property-details') }}"
                                                 class="btn btn-dashed btn-pill color-6">Details</a>
                                         </div>
                                     </div>
@@ -247,7 +247,7 @@
                                         </ul>
                                         <div class="property-btn d-flex">
                                             <span>June 20, 2022</span>
-                                            <a type="button" href="{{ route('user.property-details') }}"
+                                            <a type="button" href="{{ route('tenant.user.property-details') }}"
                                                 class="btn btn-dashed btn-pill color-6">Details</a>
                                         </div>
                                     </div>
@@ -312,7 +312,7 @@
                                         </ul>
                                         <div class="property-btn d-flex">
                                             <span>August 4, 2022</span>
-                                            <a type="button" href="{{ route('user.property-details') }}"
+                                            <a type="button" href="{{ route('tenant.user.property-details') }}"
                                                 class="btn btn-dashed btn-pill color-6">Details</a>
                                         </div>
                                     </div>

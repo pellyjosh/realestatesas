@@ -8,7 +8,7 @@
     <meta name="description" content="Premium Refined Luxury Homes- Admin dashboard page">
     <meta name="keywords" content="Premium Refined Luxury Homes, Admin Dashboard, Real Estate, Property Management">
     <meta name="author" content="Premium Refined Luxury Homes">
-    <link rel="icon" href="{{ asset('client/assets/images/logo.png') }}" type="image/x-icon" />
+    <link rel="icon" href="{{ asset('themes/classic/client/assets/images/logo.png') }}" type="image/x-icon" />
     <title>@yield('title', 'Premim Refined Admin page')</title>
     <link rel="stylesheet" href="https://cdn.datatables.net/2.3.2/css/dataTables.dataTables.css" />
 
@@ -20,13 +20,13 @@
     <link href="https://fonts.googleapis.com/css?family=Rubik:400,400i,500,500i,700,700i" rel="stylesheet">
 
     <!-- animate css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('client/assets/css/animate.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('themes/classic/client/assets/css/animate.css') }}">
 
     <!-- Template css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('admin/assets/css/admin.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('themes/classic/admin/assets/css/admin.css') }}">
 
     <!-- magnific css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset("admin/assets/css/magnific-popup.css") }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('themes/classic/admin/assets/css/magnific-popup.css') }}">
 
     <!-- Font Awesome 6 Free CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -34,7 +34,7 @@
     <!-- DataTables CSS -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
     <!-- Property Slider CSS -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('admin/assets/css/property-slider.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('themes/classic/admin/assets/css/property-slider.css') }}">
 
 </head>
 
@@ -44,7 +44,7 @@
     <div class="loader-wrapper">
         <div class="row loader-text">
             <div class="col-12">
-                <img src="{{ asset("client/assets/images/loader/gear.gif") }}" class="img-fluid"
+                <img src="{{ asset("themes/classic/client/assets/images/loader/gear.gif") }}" class="img-fluid"
                     alt="">
             </div>
             <div class="col-12">
@@ -153,7 +153,7 @@
                                             <ul class="user-group">
                                                 <li>
                                                     <a href="javascript:void(0)">
-                                                        <img src="{{ asset('admin/assets/images/about/4.jpg') }}"
+                                                        <img src="{{ asset('themes/classic/admin/assets/images/about/4.jpg') }}"
                                                             class="img-fluid" alt="">
                                                     </a>
                                                 </li>
@@ -671,7 +671,7 @@
     </script> --}}
     
     <!-- latest jquery-->
-    <script src="{{ asset('admin/assets/js/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ asset('themes/classic/admin/assets/js/jquery-3.6.0.min.js') }}"></script>
 
      <!-- DataTables JS -->
      <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
@@ -682,23 +682,23 @@
         });
     </script>
 
-    <script src="{{ asset("admin/assets/js/check.js") }}"></script>
+    <script src="{{ asset("themes/classic/admin/assets/js/check.js") }}"></script>
 
 
     <!-- Bootstrap js-->
-    <script src="{{ asset('admin/assets/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('themes/classic/admin/assets/js/bootstrap.bundle.min.js') }}"></script>
 
     <!-- feather icon js-->
-    <script src="{{ asset('client/assets/js/feather-icon/feather.min.js') }}"></script>
-    <script src="{{ asset('client/assets/js/feather-icon/feather-icon.js') }}"></script>
+    <script src="{{ asset('themes/classic/client/assets/js/feather-icon/feather.min.js') }}"></script>
+    <script src="{{ asset('themes/classic/client/assets/js/feather-icon/feather-icon.js') }}"></script>
 
     <!-- magnific js -->
-    <script src="{{ asset("admin/assets/js/zoom-gallery.js") }}"></script>
-    <script src="{{ asset("admin/assets/js/jquery.magnific-popup.js") }}"></script>
+    <script src="{{ asset("themes/classic/admin/assets/js/zoom-gallery.js") }}"></script>
+    <script src="{{ asset("themes/classic/admin/assets/js/jquery.magnific-popup.js") }}"></script>
 
      <!-- slick js -->
-    <script src="{{ asset("admin/assets/js/slick.js") }}"></script>
-    <script src="{{ asset("admin/assets/js/property-slider.js") }}"></script>
+    <script src="{{ asset("themes/classic/admin/assets/js/slick.js") }}"></script>
+    <script src="{{ asset("themes/classic/admin/assets/js/property-slider.js") }}"></script>
     <script>
     $(document).ready(function(){
         console.log('Initializing property slider from master');
@@ -722,28 +722,28 @@
       <script src="{{ asset("admin/assets/js/chart/chartist/chartist-plugin-tooltip.js") }}"></script> --}}
 
     <!-- sidebar js -->
-    <script src="{{ asset('admin/assets/js/sidebar.js') }}"></script>
+    <script src="{{ asset('themes/classic/admin/assets/js/sidebar.js') }}"></script>
 
     <!-- apex chart js-->
-    <script src="{{ asset('admin/assets/js/chart/apex-chart/apex-chart.js') }}"></script>
-    <script src="{{ asset('admin/assets/js/chart/apex-chart/stock-prices.js') }}"></script>
-    <script src="{{ asset('admin/assets/js/admin-dashboard.js') }}"></script>
+    <script src="{{ asset('themes/classic/admin/assets/js/chart/apex-chart/apex-chart.js') }}"></script>
+    <script src="{{ asset('themes/classic/admin/assets/js/chart/apex-chart/stock-prices.js') }}"></script>
+    <script src="{{ asset('themes/classic/admin/assets/js/admin-dashboard.js') }}"></script>
     {{-- <script src="{{ asset("admin/assets/js/user-profile.js") }}"></script> --}}
 
       <!-- vector map js-->
-      <script src="{{ asset('admin/assets/js/vector-map/jquery-jvectormap-2.0.2.min.js') }}"></script>
-      <script src="{{ asset('admin/assets/js/vector-map/jquery-jvectormap-asia-mill.js') }}"></script>
-      
+      <script src="{{ asset('themes/classic/admin/assets/js/vector-map/jquery-jvectormap-2.0.2.min.js') }}"></script>
+      <script src="{{ asset('themes/classic/admin/assets/js/vector-map/jquery-jvectormap-asia-mill.js') }}"></script>
+
 
     <!--admin js -->
-    <script src="{{ asset('admin/assets/js/admin-script.js') }}"></script>
-    <script src="{{ asset('admin/assets/js/report.js') }}"></script>
+    <script src="{{ asset('themes/classic/admin/assets/js/admin-script.js') }}"></script>
+    <script src="{{ asset('themes/classic/admin/assets/js/report.js') }}"></script>
 
     <!-- Customizer js-->
-    <script src="{{ asset('admin/assets/js/customizer.js') }}"></script>
+    <script src="{{ asset('themes/classic/admin/assets/js/customizer.js') }}"></script>
 
     <!-- Color-picker js-->
-    <script src="{{ asset('admin/assets/js/color/custom-colorpicker.js') }}"></script>
+    <script src="{{ asset('themes/classic/admin/assets/js/color/custom-colorpicker.js') }}"></script>
 
 
 </body>

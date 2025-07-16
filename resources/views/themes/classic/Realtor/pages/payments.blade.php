@@ -40,4 +40,10 @@
         </div>
     </div>
     <!-- Container-fluid end -->
+
+    @push('scripts')
+        <script src="{{ asset('themes/classic/realtor/assets/js/jsgrid/jsgrid.min.js') }}"></script>
+        <script src="{{ asset('themes/classic/realtor/assets/js/jsgrid/griddata-payment.js') }}"></script>
+        <script src="{{ asset('themes/classic/realtor/assets/js/jsgrid/jsgrid-payment.js') }}"></script>
+    @endpush
 @endsection

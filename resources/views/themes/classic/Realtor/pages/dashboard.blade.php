@@ -1,12 +1,12 @@
 @extends('themes.classic.realtor.realtor_master')
 @section('title', 'Dashboard | Premium Refined Luxury Homes')
 @section('content')
-<style>
-    /* This will remove the shadow from the "Withdraw" button */
-    .all-properties .btn-solid::after {
-        box-shadow: none !important;
-    }
-</style>
+    <style>
+        /* This will remove the shadow from the "Withdraw" button */
+        .all-properties .btn-solid::after {
+            box-shadow: none !important;
+        }
+    </style>
 
     <!-- Container-fluid start -->
     <div class="container-fluid">
@@ -22,7 +22,7 @@
                 <div class="col-sm-6">
 
                     <!-- Breadcrumb start -->
-                    
+
                     <!-- Breadcrumb end -->
 
                 </div>
@@ -40,13 +40,14 @@
                         <div class="card all-properties">
                             <div class="card-body">
                                 <div class="media align-items-center">
-                                    <img src="{{ asset('themes/classic/admin/assets/images/svg/icon/1.svg') }}" alt="">
+                                    <img src="{{ asset('themes/classic/admin/assets/images/svg/icon/1.svg') }}"
+                                        alt="">
                                     <div class="media-body">
                                         <h4 class="mb-0">45</h4>
                                         <h6 class="light-font mb-0">Referrals</h6>
                                     </div>
                                     <div class="d-flex flex-column align-items-end">
-                                        <a href="{{ route("tenant.realtor.landing-page-list") }}" class="arrow-animated">
+                                        <a href="{{ route('tenant.realtor.landing-page-list') }}" class="arrow-animated">
                                             See all referrals
                                             <i data-feather="chevron-right"></i>
                                         </a>
@@ -54,22 +55,28 @@
                                     </div>
                                 </div>
                                 <ul class="light-box d-flex flex-column gap-3 p-0 m-0" style="list-style: none;">
-                                    <li class="d-flex align-items-center gap-3 p-2 rounded shadow-sm" style="background: #f8f9fa;">
-                                        <img src="{{ asset('themes/classic/admin/assets/images/svg/icon/sold.png') }}" class="img-fluid" alt="" style="width: 40px; height: 40px;">
+                                    <li class="d-flex align-items-center gap-3 p-2 rounded shadow-sm"
+                                        style="background: #f8f9fa;">
+                                        <img src="{{ asset('themes/classic/admin/assets/images/svg/icon/sold.png') }}"
+                                            class="img-fluid" alt="" style="width: 40px; height: 40px;">
                                         <div>
                                             <h5 class="mb-1">1500</h5>
                                             <span class="light-font">Total balance</span>
                                         </div>
                                     </li>
-                                    <li class="d-flex align-items-center gap-3 p-2 rounded shadow-sm" style="background: #f8f9fa;">
-                                        <img src="{{ asset('themes/classic/admin/assets/images/svg/icon/rent.png') }}" class="img-fluid" alt="" style="width: 40px; height: 40px;">
+                                    <li class="d-flex align-items-center gap-3 p-2 rounded shadow-sm"
+                                        style="background: #f8f9fa;">
+                                        <img src="{{ asset('themes/classic/admin/assets/images/svg/icon/rent.png') }}"
+                                            class="img-fluid" alt="" style="width: 40px; height: 40px;">
                                         <div>
                                             <h5 class="mb-1">380</h5>
                                             <span class="light-font">Referral Commission</span>
                                         </div>
                                     </li>
-                                    <li class="d-flex align-items-center gap-3 p-2 rounded shadow-sm" style="background: #f8f9fa;">
-                                        <img src="{{ asset('themes/classic/admin/assets/images/svg/icon/unlisted.png') }}" class="img-fluid" alt="" style="width: 40px; height: 40px;">
+                                    <li class="d-flex align-items-center gap-3 p-2 rounded shadow-sm"
+                                        style="background: #f8f9fa;">
+                                        <img src="{{ asset('themes/classic/admin/assets/images/svg/icon/unlisted.png') }}"
+                                            class="img-fluid" alt="" style="width: 40px; height: 40px;">
                                         <div>
                                             <h5 class="mb-1">240</h5>
                                             <span class="light-font">Sales Commission</span>
@@ -167,7 +174,7 @@
                 </div>
             </div>
             <div class="col-xl-3 xl-6 col-md-6 project-widgets">
-                
+
             </div>
             <div class="col-xl-3 xl-6 col-md-6 project-widgets">
             </div>
@@ -346,8 +353,8 @@
                     </div>
                     <div class="card-body properties-list">
                         <div class="media">
-                            <img src="{{ asset('client/assets/images/property/25.jpg') }}" class="img-fluid"
-                                alt="">
+                            <img src="{{ asset('themes/classic/client/assets/images/property/25.jpg') }}"
+                                class="img-fluid" alt="">
                             <div class="media-body">
                                 <a href="listing.html">
                                     <h6>Orchard House</h6>
@@ -366,8 +373,8 @@
                             </div>
                         </div>
                         <div class="media">
-                            <img src="{{ asset('client/assets/images/property/7.jpg') }}" class="img-fluid"
-                                alt="">
+                            <img src="{{ asset('themes/classic/client/assets/images/property/7.jpg') }}"
+                                class="img-fluid" alt="">
                             <div class="media-body">
                                 <a href="listing.html">
                                     <h6>Neverland</h6>
@@ -386,8 +393,8 @@
                             </div>
                         </div>
                         <div class="media">
-                            <img src="{{ asset('client/assets/images/property/8.jpg') }}" class="img-fluid"
-                                alt="">
+                            <img src="{{ asset('themes/classic/client/assets/images/property/8.jpg') }}"
+                                class="img-fluid" alt="">
                             <div class="media-body">
                                 <a href="listing.html">
                                     <h6>Sea Breezes</h6>
@@ -522,8 +529,8 @@
                             <div class="d-flex">
                                 <div class="media">
                                     <div class="with-reload">
-                                        <img src="{{ asset('themes/classic/admin/assets/images/svg/icon/1.svg') }}" class="img-fluid"
-                                            alt="">
+                                        <img src="{{ asset('themes/classic/admin/assets/images/svg/icon/1.svg') }}"
+                                            class="img-fluid" alt="">
                                     </div>
                                     <div class="media-body">
                                         <h5>78</h5>
@@ -563,4 +570,9 @@
         </div>
     </div>
     <!-- Container-fluid end -->
+
+    @include('themes.classic.realtor.pages.partials.apex-chart')
+    @push('scripts')
+        <script src="{{ asset('themes/classic/realtor/assets/js/admin-dashboard.js') }}"></script>
+    @endpush
 @endsection

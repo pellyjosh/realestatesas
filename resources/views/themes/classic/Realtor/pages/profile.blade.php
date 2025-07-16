@@ -33,8 +33,8 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="media contact-media">
-                                    <img src="{{ asset('admin/assets/images/avatar/7.jpg') }}" class="img-fluid img-80"
-                                        alt="">
+                                    <img src="{{ asset('themes/classic/admin/assets/images/avatar/7.jpg') }}"
+                                        class="img-fluid img-80" alt="">
                                     <div class="media-body">
                                         <h4>Good Evening , Brock Lee</h4>
                                         <span class="light-font">My current address <a href="javascript:void(0)">Mina Road,
@@ -72,23 +72,23 @@
                                         <div>
                                             <ul>
                                                 <li>
-                                                    <img src="{{ asset('admin/assets/images/avatar/6.jpg') }}"
+                                                    <img src="{{ asset('themes/classic/admin/assets/images/avatar/6.jpg') }}"
                                                         class="img-fluid" alt="">
                                                 </li>
                                                 <li>
-                                                    <img src="{{ asset('admin/assets/images/avatar/5.jpg') }}"
+                                                    <img src="{{ asset('themes/classic/admin/assets/images/avatar/5.jpg') }}"
                                                         class="img-fluid" alt="">
                                                 </li>
                                                 <li>
-                                                    <img src="{{ asset('admin/assets/images/avatar/7.jpg') }}"
+                                                    <img src="{{ asset('themes/classic/admin/assets/images/avatar/7.jpg') }}"
                                                         class="img-fluid" alt="">
                                                 </li>
                                                 <li>
-                                                    <img src="{{ asset('admin/assets/images/avatar/3.jpg') }}"
+                                                    <img src="{{ asset('themes/classic/admin/assets/images/avatar/3.jpg') }}"
                                                         class="img-fluid" alt="">
                                                 </li>
                                                 <li>
-                                                    <img src="{{ asset('admin/assets/images/avatar/5.jpg') }}"
+                                                    <img src="{{ asset('themes/classic/admin/assets/images/avatar/5.jpg') }}"
                                                         class="img-fluid" alt="">
                                                 </li>
 
@@ -193,42 +193,42 @@
                                         <div class="friend-list">
                                             <ul class="row">
                                                 <li class="col-md-4 col-sm-3 col-4">
-                                                    <img src="{{ asset('admin/assets/images/avatar/9.jpg') }}"
+                                                    <img src="{{ asset('themes/classic/admin/assets/images/avatar/9.jpg') }}"
                                                         class="img-fluid img-50" alt="">
                                                     <h6>Bob</h6>
                                                     <a href="add-user.html"
                                                         class="label label-light label-flat color-4">Message</a>
                                                 </li>
                                                 <li class="col-md-4 col-sm-3 col-4">
-                                                    <img src="{{ asset('admin/assets/images/avatar/4.jpg') }}"
+                                                    <img src="{{ asset('themes/classic/admin/assets/images/avatar/4.jpg') }}"
                                                         class="img-fluid img-50" alt="">
                                                     <h6>Greta</h6>
                                                     <a href="add-user.html"
                                                         class="label label-light label-flat color-4">Message</a>
                                                 </li>
                                                 <li class="col-md-4 col-sm-3 col-4">
-                                                    <img src="{{ asset('admin/assets/images/avatar/3.jpg') }}"
+                                                    <img src="{{ asset('themes/classic/admin/assets/images/avatar/3.jpg') }}"
                                                         class="img-fluid img-50" alt="">
                                                     <h6>Zack</h6>
                                                     <a href="add-user.html"
                                                         class="label label-light label-flat color-4">Message</a>
                                                 </li>
                                                 <li class="col-md-4 col-sm-3 col-4">
-                                                    <img src=" {{ asset('admin/assets/images/avatar/6.jpg') }}"
+                                                    <img src="{{ asset('themes/classic/admin/assets/images/avatar/6.jpg') }}"
                                                         class="img-fluid img-50" alt="">
                                                     <h6>Paige</h6>
                                                     <a href="add-user.html"
                                                         class="label label-light label-flat color-4">Message</a>
                                                 </li>
                                                 <li class="col-md-4 col-sm-3 col-4">
-                                                    <img src="{{ asset('admin/assets/images/avatar/7.jpg') }}"
+                                                    <img src="{{ asset('themes/classic/admin/assets/images/avatar/7.jpg') }}"
                                                         class="img-fluid img-50" alt="">
                                                     <h6>Mary</h6>
                                                     <a href="add-user.html"
                                                         class="label label-light label-flat color-4">Message</a>
                                                 </li>
                                                 <li class="col-md-4 col-sm-3 col-4">
-                                                    <img src="{{ asset('admin/assets/images/avatar/1.jpg') }}"
+                                                    <img src="{{ asset('themes/classic/admin/assets/images/avatar/1.jpg') }}"
                                                         class="img-fluid img-50" alt="">
                                                     <h6>Vella</h6>
                                                     <a href="add-user.html"
@@ -262,7 +262,7 @@
                                                 <tr>
                                                     <td>
                                                         <div class="media">
-                                                            <img src="{{ asset('client/assets/images/property/2.jpg') }}"
+                                                            <img src="{{ asset('themes/classic/client/assets/images/property/2.jpg') }}"
                                                                 class="img-fluid img-80" alt="">
                                                             <div class="media-body">
                                                                 <h6>Orchard House</h6>
@@ -286,7 +286,7 @@
                                                 <tr>
                                                     <td>
                                                         <div class="media">
-                                                            <img src="{{ asset('client/assets/images/property/2.jpg') }}"
+                                                            <img src="{{ asset('themes/classic/client/assets/images/property/2.jpg') }}"
                                                                 class="img-fluid img-80" alt="">
                                                             <div class="media-body">
                                                                 <h6>Neverland</h6>
@@ -310,7 +310,7 @@
                                                 <tr>
                                                     <td class="pb-0">
                                                         <div class="media">
-                                                            <img src="{{ asset('client/assets/images/property/3.jpg') }}"
+                                                            <img src="{{ asset('themes/classic/client/assets/images/property/3.jpg') }}"
                                                                 class="img-fluid img-80" alt="">
                                                             <div class="media-body">
                                                                 <h6>Sea Breezes</h6>
@@ -369,7 +369,7 @@
                                         <ul>
                                             <li>
                                                 <div class="media">
-                                                    <img src="{{ asset('admin/assets/images/avatar/9.jpg') }}"
+                                                    <img src="{{ asset('themes/classic/admin/assets/images/avatar/9.jpg') }}"
                                                         class="img-fluid img-50" alt="">
                                                     <div class="media-body">
                                                         <h6>Bob Frapples</h6>
@@ -380,7 +380,7 @@
                                             </li>
                                             <li>
                                                 <div class="media">
-                                                    <img src="{{ asset('admin/assets/images/avatar/7.jpg') }}"
+                                                    <img src="{{ asset('themes/classic/admin/assets/images/avatar/7.jpg') }}"
                                                         class="img-fluid img-50" alt="">
                                                     <div class="media-body">
                                                         <h6>Greta Life</h6>
@@ -391,7 +391,7 @@
                                             </li>
                                             <li>
                                                 <div class="media">
-                                                    <img src="{{ asset('admin/assets/images/avatar/6.jpg') }}"
+                                                    <img src="{{ asset('themes/classic/admin/assets/images/avatar/6.jpg') }}"
                                                         class="img-fluid img-50" alt="">
                                                     <div class="media-body">
                                                         <h6>Zack Lee</h6>
@@ -402,7 +402,7 @@
                                             </li>
                                             <li>
                                                 <div class="media">
-                                                    <img src="{{ asset('admin/assets/images/avatar/4.jpg') }}"
+                                                    <img src="{{ asset('themes/classic/admin/assets/images/avatar/4.jpg') }}"
                                                         class="img-fluid img-50" alt="">
                                                     <div class="media-body">
                                                         <h6>Zack Lee</h6>
@@ -422,4 +422,14 @@
         </div>
     </div>
     <!-- Container-fluid end -->
+
+    @include('themes.classic.realtor.pages.partials.apex-chart')
+    @push('scripts')
+        <!-- chartist chart js-->
+        <script src="{{ asset('themes/classic/realtor/assets/js/chart/chartist.js') }}"></script>
+        <script src="{{ asset('themes/classic/realtor/assets/js/chart/chartist-plugin-tooltip.js') }}"></script>
+
+        <script src="{{ asset('themes/classic/client/assets/js/slick.js') }}"></script>
+        <script src="{{ asset('themes/classic/realtor/assets/js/user-profile.js') }}"></script>
+    @endpush
 @endsection

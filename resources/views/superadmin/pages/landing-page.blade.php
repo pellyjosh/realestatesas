@@ -116,248 +116,8 @@
                 </span>
             </div>
         </div>
-    </div><!--==============================
-    Mobile Menu
-  ============================== -->
-    <div class="th-menu-wrapper onepage-nav">
-        <div class="th-menu-area text-center">
-            <button class="th-menu-toggle"><i class="fal fa-times"></i></button>
-            <div class="mobile-logo">
-                <a href="index.html">
-                    <img src="{{ asset('superadmin/landing-page/assets/img/logo-white.svg') }}" alt="Realar">
-                </a>
-            </div>
-            <div class="th-mobile-menu">
-                <ul>
-                    <li class="menu-item-has-children">
-                        <a href="index.html">
-                            Home
-                        </a>
-                        <ul class="sub-menu">
-                            <li class="menu-item-has-children">
-                                <a href="#">Multipage</a>
-                                <ul class="sub-menu">
-                                    <li><a href="index.html">Luxury Duplex</a></li>
-                                    <li><a href="home-2.html">Real Estate Agency</a></li>
-                                    <li><a href="home-3.html">Commercial Real Estate</a></li>
-                                    <li><a href="home-4.html">Luxury Apartment</a></li>
-                                    <li><a href="home-5.html">Residencial Real Estate</a></li>
-                                    <li><a href="home-6.html">Urban Real Estate</a></li>
-                                    <li><a href="home-7.html">Industrial Demo</a></li>
-                                    <li><a href="home-8.html">Commercial Apartment</a></li>
-                                    <li><a href="home-9.html">Vacation Rental</a></li>
-                                    <li><a href="home-10.html">Residencial Apartment</a></li>
-                                    <li><a href="home-11.html">Architectural Demo</a></li>
-                                    <li><a href="home-12.html">Forest House</a></li>
-                                    <li><a href="home-13.html">Property Listing</a></li>
-                                    <li><a href="home-14.html">Multiple Properties</a></li>
-                                    <li><a href="home-15.html">Property Rental</a></li>
-                                    <li><a href="home-16.html">Single Agent</a></li>
-                                </ul>
-                            </li>
-                            <li class="menu-item-has-children">
-                                <a href="#">Onepage</a>
-                                <ul class="sub-menu">
-                                    <li><a href="home-1-op.html">Luxury Duplex</a></li>
-                                    <li><a href="home-2-op.html">Real Estate Agency</a></li>
-                                    <li><a href="home-3-op.html">Commercial Real Estate</a></li>
-                                    <li><a href="home-4-op.html">Luxury Apartment</a></li>
-                                    <li><a href="home-5-op.html">Residencial Real Estate</a></li>
-                                    <li><a href="home-6-op.html">Urban Real Estate</a></li>
-                                    <li><a href="home-7-op.html">Industrial Demo</a></li>
-                                    <li><a href="home-8-op.html">Commercial Apartment</a></li>
-                                    <li><a href="home-9-op.html">Vacation Rental</a></li>
-                                    <li><a href="home-10-op.html">Residencial Apartment</a></li>
-                                    <li><a href="home-11-op.html">Architectural Demo</a></li>
-                                    <li><a href="home-12-op.html">Forest House</a></li>
-                                    <li><a href="home-13-op.html">Property Listing</a></li>
-                                    <li><a href="home-14-op.html">Multiple Properties</a></li>
-                                    <li><a href="home-15-op.html">Property Rental</a></li>
-                                </ul>
-                            </li>
-                            <li class="menu-item-has-children">
-                                <a href="#">RTL</a>
-                                <ul class="sub-menu">
-                                    <li><a href="home-1-rtl.html">Luxury Duplex</a></li>
-                                    <li><a href="home-2-rtl.html">Real Estate Agency</a></li>
-                                    <li><a href="home-3-rtl.html">Commercial Real Estate</a></li>
-                                    <li><a href="home-4-rtl.html">Luxury Apartment</a></li>
-                                    <li><a href="home-5-rtl.html">Residencial Real Estate</a></li>
-                                    <li><a href="home-6-rtl.html">Urban Real Estate</a></li>
-                                    <li><a href="home-7-rtl.html">Industrial Demo</a></li>
-                                    <li><a href="home-8-rtl.html">Commercial Apartment</a></li>
-                                    <li><a href="home-9-rtl.html">Vacation Rental</a></li>
-                                    <li><a href="home-10-rtl.html">Residencial Apartment</a></li>
-                                    <li><a href="home-11-rtl.html">Architectural Demo</a></li>
-                                    <li><a href="home-12-rtl.html">Forest House</a></li>
-                                    <li><a href="home-13-rtl.html">Property Listing</a></li>
-                                    <li><a href="home-14-rtl.html">Multiple Properties</a></li>
-                                    <li><a href="home-15-rtl.html">Property Rental</a></li>
-                                    <li><a href="home-16-rtl.html">Single Agent</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a href="about.html">
-                            About Us
-                        </a></li>
-                    <li class="menu-item-has-children">
-                        <a href="property.html">
-                            Properties
-                        </a>
-                        <ul class="sub-menu">
-                            <li><a href="property.html">
-                                    Properties
-                                </a></li>
-                            <li><a href="property-details.html">
-                                    Property Details
-                                </a></li>
-                        </ul>
-                    </li>
-                    <li class="menu-item-has-children">
-                        <a href="agency.html">
-                            Agencies
-                        </a>
-                        <ul class="sub-menu">
-                            <li><a href="agency.html">
-                                    Agencies
-                                </a></li>
-                            <li><a href="agency-details.html">
-                                    Agencies Details
-                                </a></li>
-                        </ul>
-                    </li>
-                    <li class="menu-item-has-children">
-                        <a href="#">
-                            Pages
-                        </a>
-                        <ul class="sub-menu">
-                            <li><a href="team.html">
-                                    Agent Page
-                                </a></li>
-                            <li><a href="team-details.html">
-                                    Agent Details
-                                </a></li>
-                            <li><a href="pricing.html">
-                                    Pricing Page
-                                </a></li>
-                            <li class="menu-item-has-children"><a href="shop.html">
-                                    Shop Page
-                                </a>
-                                <ul class="sub-menu">
-                                    <li><a href="shop.html">
-                                            Shop Page
-                                        </a></li>
-                                    <li><a href="shop-details.html">
-                                            Shop Details
-                                        </a></li>
-                                    <li><a href="cart.html">
-                                            Cart Page
-                                        </a></li>
-                                    <li><a href="checkout.html">
-                                            Checkout Page
-                                        </a></li>
-                                    <li><a href="wishlist.html">
-                                            Wistlist Page
-                                        </a></li>
-                                </ul>
-                            </li>
-                            <li><a href="error.html">
-                                    Error Page
-                                </a></li>
-                        </ul>
-                    </li>
-                    <li class="menu-item-has-children">
-                        <a href="blog.html">
-                            Blog
-                        </a>
-                        <ul class="sub-menu">
-                            <li><a href="blog.html">
-                                    Blog Page
-                                </a></li>
-                            <li><a href="blog-details.html">
-                                    Blog Details
-                                </a></li>
-                        </ul>
-                    </li>
-                    <li><a href="contact.html">
-                            Contact Us
-                        </a></li>
-                </ul>
-            </div>
-        </div>
     </div>
     <!--==============================
-    Sidemenu
-============================== -->
-        <div class="sidemenu-wrapper sidemenu-info d-none d-lg-block ">
-            <div class="sidemenu-content">
-                <button class="closeButton sideMenuCls"><i class="far fa-times"></i></button>
-                <div class="widget  ">
-                    <div class="th-widget-about">
-                        <div class="about-logo">
-                            <a href="index.html"><img src="{{ asset('superadmin/landing-page/assets/img/logo.svg') }}"
-                                    alt="Realar"></a>
-                        </div>
-                        <p class="about-text"> Rapidiously myocardinate cross-platform intellectual capital model.
-                            Appropriately create interactive infrastructures</p>
-                    </div>
-                </div>
-                <div class="widget  ">
-                    <h3 class="widget_title">Get In Touch</h3>
-                    <div class="th-widget-contact">
-                        <div class="info-box_text">
-                            <div class="icon"><img
-                                    src="{{ asset('superadmin/landing-page/assets/img/icon/location-dot.svg') }}"
-                                    alt="img"></div>
-                            <div class="details">
-                                <p>789 Inner Lane, Holy park,</p>
-                                <p>California, USA</p>
-                            </div>
-                        </div>
-                        <div class="info-box_text">
-                            <div class="icon">
-                                <img src="{{ asset('superadmin/landing-page/assets/img/icon/phone.svg') }}"
-                                    alt="img">
-                            </div>
-                            <div class="details">
-                                <p><a href="tel:+0123456789" class="info-box_link">+01 234 567 890</a></p>
-                                <p><a href="tel:+09876543210" class="info-box_link">+09 876 543 210</a></p>
-                            </div>
-                        </div>
-                        <div class="info-box_text">
-                            <div class="icon">
-                                <img src="{{ asset('superadmin/landing-page/assets/img/icon/envelope.svg') }}"
-                                    alt="img">
-                            </div>
-                            <div class="details">
-                                <p><a href="mailto:mailinfo00@realar.com" class="info-box_link">mailinfo00@realar.com</a>
-                                </p>
-                                <p><a href="mailto:support24@realar.com" class="info-box_link">support24@realar.com</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="widget newsletter-widget  ">
-                    <h3 class="widget_title">Subscribe Now</h3>
-                    <form class="newsletter-form">
-                        <div class="form-group">
-                            <input class="form-control" type="email" placeholder="Email Address" required="">
-                            <button type="submit" class="th-btn"><i class="far fa-paper-plane text-theme"></i></button>
-                        </div>
-                    </form>
-                    <div class="th-social style2">
-                        <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.twitter.com/"><i class="fab fa-twitter"></i></a>
-                        <a href="https://www.linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://www.behance.com/"><i class="fab fa-behance"></i></a>
-                        <a href="https://www.vimeo.com/"><i class="fab fa-vimeo-v"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--==============================
  Header Area
 ==============================-->
     <header class="th-header header-layout1 onepage-nav">
@@ -374,329 +134,20 @@
                                 </a>
                             </div>
                         </div>
-                        {{-- <div class="col-auto">
+                        <div class="col-auto">
                             <nav class="main-menu d-none d-lg-inline-block">
                                 <ul>
-                                    <li class="menu-item-has-children">
+                                    <li>
                                         <a href="#hero">
                                             Home
                                         </a>
-                                        <ul class="mega-menu mega-menu-content">
-                                            <li>
-                                                <div class="container">
-                                                    <div class="row gy-4">
-                                                        <div class="col-lg-3">
-                                                            <div class="mega-menu-box">
-                                                                <div class="mega-menu-img">
-                                                                    <img src="{{ asset('superadmin/landing-page/assets/img/pages/index.jpg') }}"
-                                                                        alt="Home One">
-                                                                    <div class="btn-wrap">
-                                                                        <a href="index.html"
-                                                                            class="th-btn style-border">Multipage</a>
-                                                                        <a href="home-1-op.html"
-                                                                            class="th-btn style-border">Onepage</a>
-                                                                        <a href="home-1-rtl.html"
-                                                                            class="th-btn style-border">RTL Demo</a>
-                                                                    </div>
-                                                                </div>
-                                                                <h3 class="mega-menu-title"><a
-                                                                        href="index.html">Luxury Duplex</a></h3>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <div class="mega-menu-box">
-                                                                <div class="mega-menu-img">
-                                                                    <img src="{{ asset('superadmin/landing-page/assets/img/pages/home-2.jpg') }}"
-                                                                        alt="Home Two">
-                                                                    <div class="btn-wrap">
-                                                                        <a href="home-2.html"
-                                                                            class="th-btn style-border">Multipage</a>
-                                                                        <a href="home-2-op.html"
-                                                                            class="th-btn style-border">Onepage</a>
-                                                                        <a href="home-2-rtl.html"
-                                                                            class="th-btn style-border">RTL Demo</a>
-                                                                    </div>
-                                                                </div>
-                                                                <h3 class="mega-menu-title"><a href="home-2.html">Real
-                                                                        Estate Agency</a></h3>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <div class="mega-menu-box">
-                                                                <div class="mega-menu-img">
-                                                                    <img src="{{ asset('superadmin/landing-page/assets/img/pages/home-3.jpg') }}"
-                                                                        alt="Home Three">
-                                                                    <div class="btn-wrap">
-                                                                        <a href="home-3.html"
-                                                                            class="th-btn style-border">Multipage</a>
-                                                                        <a href="home-3-op.html"
-                                                                            class="th-btn style-border">Onepage</a>
-                                                                        <a href="home-3-rtl.html"
-                                                                            class="th-btn style-border">RTL Demo</a>
-                                                                    </div>
-                                                                </div>
-                                                                <h3 class="mega-menu-title"><a
-                                                                        href="home-3.html">Commercial Real Estate</a>
-                                                                </h3>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <div class="mega-menu-box">
-                                                                <div class="mega-menu-img">
-                                                                    <img src="{{ asset('superadmin/landing-page/assets/img/pages/home-4.jpg') }}"
-                                                                        alt="Home Four">
-                                                                    <div class="btn-wrap">
-                                                                        <a href="home-4.html"
-                                                                            class="th-btn style-border">Multipage</a>
-                                                                        <a href="home-4-op.html"
-                                                                            class="th-btn style-border">Onepage</a>
-                                                                        <a href="home-4-rtl.html"
-                                                                            class="th-btn style-border">RTL Demo</a>
-                                                                    </div>
-                                                                </div>
-                                                                <h3 class="mega-menu-title"><a
-                                                                        href="home-4.html">Luxury Apartment</a></h3>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <div class="mega-menu-box">
-                                                                <div class="mega-menu-img">
-                                                                    <img src="{{ asset('superadmin/landing-page/assets/img/pages/home-5.jpg') }}"
-                                                                        alt="Home Five">
-                                                                    <div class="btn-wrap">
-                                                                        <a href="home-5.html"
-                                                                            class="th-btn style-border">Multipage</a>
-                                                                        <a href="home-5-op.html"
-                                                                            class="th-btn style-border">Onepage</a>
-                                                                        <a href="home-5-rtl.html"
-                                                                            class="th-btn style-border">RTL Demo</a>
-                                                                    </div>
-                                                                </div>
-                                                                <h3 class="mega-menu-title"><a
-                                                                        href="home-5.html">Residencial Real Estate</a>
-                                                                </h3>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <div class="mega-menu-box">
-                                                                <div class="mega-menu-img">
-                                                                    <img src="{{ asset('superadmin/landing-page/assets/img/pages/home-6.jpg') }}"
-                                                                        alt="Home Six">
-                                                                    <div class="btn-wrap">
-                                                                        <a href="home-6.html"
-                                                                            class="th-btn style-border">Multipage</a>
-                                                                        <a href="home-6-op.html"
-                                                                            class="th-btn style-border">Onepage</a>
-                                                                        <a href="home-6-rtl.html"
-                                                                            class="th-btn style-border">RTL Demo</a>
-                                                                    </div>
-                                                                </div>
-                                                                <h3 class="mega-menu-title"><a
-                                                                        href="home-6.html">Urban Real Estate</a></h3>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <div class="mega-menu-box">
-                                                                <div class="mega-menu-img">
-                                                                    <img src="{{ asset('superadmin/landing-page/assets/img/pages/home-7.jpg') }}"
-                                                                        alt="Home Seven">
-                                                                    <div class="btn-wrap">
-                                                                        <a href="home-7.html"
-                                                                            class="th-btn style-border">Multipage</a>
-                                                                        <a href="home-7-op.html"
-                                                                            class="th-btn style-border">Onepage</a>
-                                                                        <a href="home-7-rtl.html"
-                                                                            class="th-btn style-border">RTL Demo</a>
-                                                                    </div>
-                                                                </div>
-                                                                <h3 class="mega-menu-title"><a
-                                                                        href="home-7.html">Industrial Demo</a></h3>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <div class="mega-menu-box">
-                                                                <div class="mega-menu-img">
-                                                                    <img src="{{ asset('superadmin/landing-page/assets/img/pages/home-8.jpg') }}"
-                                                                        alt="Home Eight">
-                                                                    <div class="btn-wrap">
-                                                                        <a href="home-8.html"
-                                                                            class="th-btn style-border">Multipage</a>
-                                                                        <a href="home-8-op.html"
-                                                                            class="th-btn style-border">Onepage</a>
-                                                                        <a href="home-8-rtl.html"
-                                                                            class="th-btn style-border">RTL Demo</a>
-                                                                    </div>
-                                                                </div>
-                                                                <h3 class="mega-menu-title"><a
-                                                                        href="home-8.html">Commercial Apartment</a>
-                                                                </h3>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <div class="mega-menu-box">
-                                                                <div class="mega-menu-img">
-                                                                    <img src="{{ asset('superadmin/landing-page/assets/img/pages/home-9.jpg') }}"
-                                                                        alt="Home Nine">
-                                                                    <div class="btn-wrap">
-                                                                        <a href="home-9.html"
-                                                                            class="th-btn style-border">Multipage</a>
-                                                                        <a href="home-9-op.html"
-                                                                            class="th-btn style-border">Onepage</a>
-                                                                        <a href="home-9-rtl.html"
-                                                                            class="th-btn style-border">RTL Demo</a>
-                                                                    </div>
-                                                                </div>
-                                                                <h3 class="mega-menu-title"><a
-                                                                        href="home-9.html">Vacation Rental</a></h3>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <div class="mega-menu-box">
-                                                                <div class="mega-menu-img">
-                                                                    <img src="{{ asset('superadmin/landing-page/assets/img/pages/home-10.jpg') }}"
-                                                                        alt="Home Ten">
-                                                                    <div class="btn-wrap">
-                                                                        <a href="home-10.html"
-                                                                            class="th-btn style-border">Multipage</a>
-                                                                        <a href="home-10-op.html"
-                                                                            class="th-btn style-border">Onepage</a>
-                                                                        <a href="home-10-rtl.html"
-                                                                            class="th-btn style-border">RTL Demo</a>
-                                                                    </div>
-                                                                </div>
-                                                                <h3 class="mega-menu-title"><a
-                                                                        href="home-10.html">Residencial Apartment</a>
-                                                                </h3>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <div class="mega-menu-box">
-                                                                <div class="mega-menu-img">
-                                                                    <img src="{{ asset('superadmin/landing-page/assets/img/pages/home-11.jpg') }}"
-                                                                        alt="Home Eleven">
-                                                                    <div class="btn-wrap">
-                                                                        <a href="home-11.html"
-                                                                            class="th-btn style-border">Multipage</a>
-                                                                        <a href="home-11-op.html"
-                                                                            class="th-btn style-border">Onepage</a>
-                                                                        <a href="home-11-rtl.html"
-                                                                            class="th-btn style-border">RTL Demo</a>
-                                                                    </div>
-                                                                </div>
-                                                                <h3 class="mega-menu-title"><a
-                                                                        href="home-11.html">Architectural Demo</a></h3>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <div class="mega-menu-box">
-                                                                <div class="mega-menu-img">
-                                                                    <img src="{{ asset('superadmin/landing-page/assets/img/pages/home-12.jpg') }}"
-                                                                        alt="Home Twelve">
-                                                                    <div class="btn-wrap">
-                                                                        <a href="home-12.html"
-                                                                            class="th-btn style-border">Multipage</a>
-                                                                        <a href="home-12-op.html"
-                                                                            class="th-btn style-border">Onepage</a>
-                                                                        <a href="home-12-rtl.html"
-                                                                            class="th-btn style-border">RTL Demo</a>
-                                                                    </div>
-                                                                </div>
-                                                                <h3 class="mega-menu-title"><a
-                                                                        href="home-12.html">Forest House</a></h3>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <div class="mega-menu-box">
-                                                                <div class="mega-menu-img">
-                                                                    <img src="{{ asset('superadmin/landing-page/assets/img/pages/home-13.jpg') }}"
-                                                                        alt="Home Thirteen">
-                                                                    <div class="btn-wrap">
-                                                                        <a href="home-13.html"
-                                                                            class="th-btn style-border">Multipage</a>
-                                                                        <a href="home-13-op.html"
-                                                                            class="th-btn style-border">Onepage</a>
-                                                                        <a href="home-13-rtl.html"
-                                                                            class="th-btn style-border">RTL Demo</a>
-                                                                    </div>
-                                                                </div>
-                                                                <h3 class="mega-menu-title"><a
-                                                                        href="home-13.html">Property Listing</a></h3>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <div class="mega-menu-box">
-                                                                <div class="mega-menu-img">
-                                                                    <img src="{{ asset('superadmin/landing-page/assets/img/pages/home-14.jpg') }}"
-                                                                        alt="Home Fourteen">
-                                                                    <div class="btn-wrap">
-                                                                        <a href="home-14.html"
-                                                                            class="th-btn style-border">Multipage</a>
-                                                                        <a href="home-14-op.html"
-                                                                            class="th-btn style-border">Onepage</a>
-                                                                        <a href="home-14-rtl.html"
-                                                                            class="th-btn style-border">RTL Demo</a>
-                                                                    </div>
-                                                                </div>
-                                                                <h3 class="mega-menu-title"><a
-                                                                        href="home-14.html">Multiple Properties</a>
-                                                                </h3>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <div class="mega-menu-box">
-                                                                <div class="mega-menu-img">
-                                                                    <img src="{{ asset('superadmin/landing-page/assets/img/pages/home-15.jpg') }}"
-                                                                        alt="Home Fifteen">
-                                                                    <div class="btn-wrap">
-                                                                        <a href="home-15.html"
-                                                                            class="th-btn style-border">Multipage</a>
-                                                                        <a href="home-15-op.html"
-                                                                            class="th-btn style-border">Onepage</a>
-                                                                        <a href="home-15-rtl.html"
-                                                                            class="th-btn style-border">RTL Demo</a>
-                                                                    </div>
-                                                                </div>
-                                                                <h3 class="mega-menu-title"><a
-                                                                        href="home-15.html">Property Rental</a></h3>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <div class="mega-menu-box">
-                                                                <div class="mega-menu-img">
-                                                                    <img src="{{ asset('superadmin/landing-page/assets/img/pages/home-16.jpg') }}"
-                                                                        alt="Home Sixteen">
-                                                                    <div class="btn-wrap">
-                                                                        <a href="home-16.html"
-                                                                            class="th-btn style-border">Live Demo</a>
-                                                                        <a href="home-16-rtl.html"
-                                                                            class="th-btn style-border">RTL Demo</a>
-                                                                    </div>
-                                                                </div>
-                                                                <h3 class="mega-menu-title"><a
-                                                                        href="home-16.html">Single Agent</a></h3>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
                                     </li>
                                     <li><a href="#about-sec">
                                             About Us
                                         </a></li>
                                     <li>
                                         <a href="#property-sec">
-                                            Properties
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#team-sec">
-                                            Agents
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#blog-sec">
-                                            Blog
+                                            Pricing
                                         </a>
                                     </li>
                                     <li><a href="#contact-sec">
@@ -708,11 +159,10 @@
                                 <button type="button" class="th-menu-toggle sidebar-btn">
                                     <span class="line"></span>
                                     <span class="line"></span>
-                                    <span class="line"></span>
                                 </button>
                             </div>
                         </div>
-                        <div class="col-auto d-none d-xl-block">
+                        {{-- <div class="col-auto d-none d-xl-block">
                             <div class="header-button">
                                 <a href="contact.html" class="th-btn btn-mask th-btn-icon">Contact Us</a>
                                 <button type="button" class="simple-icon sideMenuInfo sidebar-btn">
@@ -1170,230 +620,138 @@ Portfolio Area
 Property Area
 ==============================-->
     <section class="space bg-theme" id="property-sec">
-        <div class="container">
-            <div class="row justify-content-between align-items-center">
-                <div class="col-lg-6">
-                    <div class="title-area">
-                        <span class="shadow-title">HUBLOX</span>
-                        <h2 class="sec-title text-white">Featured Demo Property</h2>
-                        <p class="sec-text text-white">
-                            Explore a sample listing powered by our platform — fully customizable, mobile-ready, and
-                            designed to help real estate businesses attract and convert more buyers.
-                        </p>
-                    </div>
-                </div>
-                <div class="col-auto">
-                    <div class="sec-btn">
-                        <a href="property.html" class="th-btn btn-mask th-btn-icon">All Properties</a>
-                    </div>
-                </div>
-            </div>
-            <div class="property-card-wrap">
-                <div class="property-thumb img-shine"
-                    data-mask-src="{{ asset('superadmin/landing-page/assets/img/shape/property-card1-img-mask.png') }}">
-                    <img src="{{ asset('superadmin/landing-page/assets/img/property/property1-1.png') }}"
-                        alt="img">
-                </div>
-                <div class="property-card">
-                    <div class="property-card-number">
-                        01 </div>
-                    <div class="property-card-details">
-                        <span class="property-card-subtitle">Template Showcase</span>
-                        <h4 class="property-card-title">
-                            <a href="property-details.html">Hublox Modern Realtor Theme</a>
-                        </h4>
-                        <p class="property-card-text">
-                            A high-converting website template for real estate agencies. Fully customizable,
-                            mobile-optimized, and ready to launch in minutes.
-                        </p>
-                        <div class="property-card-price-meta">
-                            <h5 class="property-card-price">Starting at #1,000,000/year</h5>
-                            <div class="property-ratting-wrap">
-                                <div class="star-ratting">
-                                    <i class="fas fa-star"></i>
-                                    4.9
-                                </div>
-                                <span>10 Reviews</span>
-                            </div>
-                        </div>
-                        <div class="property-card-meta">
-                            <span>
-                                <i class="fas fa-mobile-alt text-white me-1"></i>Responsive Design
-                            </span>
-                            <span>
-                                <i class="fas fa-tools text-white me-1"></i>Built-in CMS
-                            </span>
-                            <span>
-                                <i class="fas fa-search text-white me-1"></i>SEO Optimized
-                            </span>
-                        </div>
-                        <div class="property-btn-wrap">
-                            <div class="property-author-wrap">
-                                <img src="{{ asset('superadmin/landing-page/assets/img/property/property-user-1-1.png') }}"
-                                    alt="img">
-                                <a href="property-details.html">Hublox Admin</a>
-                            </div>
-                            <a href="property-details.html" class="th-btn btn-mask2 th-btn-icon">View Template</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="property-card-wrap">
-                <div class="property-thumb img-shine"
-                    data-mask-src="{{ asset('superadmin/landing-page/assets/img/shape/property-card1-img-mask.png') }}">
-                    <img src="{{ asset('superadmin/landing-page/assets/img/property/property1-2.png') }}"
-                        alt="img">
-                </div>
-                <div class="property-card">
-                    <div class="property-card-number">
-                        02 </div>
-                    <div class="property-card-details">
-                        <span class="property-card-subtitle">Agency Website Template</span>
-                        <h4 class="property-card-title">
-                            <a href="property-details.html">Toronto-Inspired Realtor Theme</a>
-                        </h4>
-                        <p class="property-card-text">
-                            A modern, responsive real estate website theme designed to attract leads and close deals —
-                            perfect for agencies looking to go digital fast.
-                        </p>
-                        <div class="property-card-price-meta">
-                            <h5 class="property-card-price">From #1,000,000/month</h5>
-                            <div class="property-ratting-wrap">
-                                <div class="star-ratting">
-                                    <i class="fas fa-star"></i>
-                                    4.9
-                                </div>
-                                <span>10 Reviews</span>
-                            </div>
-                        </div>
-                        <div class="property-card-meta">
-                            <span>
-                                <i class="fas fa-mobile-alt text-white me-1"></i>Mobile-Ready
-                            </span>
-                            <span>
-                                <i class="fas fa-sliders-h text-white me-1"></i>Customizable
-                            </span>
-                            <span>
-                                <i class="fas fa-lock text-white me-1"></i>Secure Hosting
-                            </span>
-                        </div>
-                        <div class="property-btn-wrap">
-                            <div class="property-author-wrap">
-                                <img src="{{ asset('superadmin/landing-page/assets/img/property/property-user-1-2.png') }}"
-                                    alt="img">
-                                <a href="property-details.html">Hublox Admin</a>
-                            </div>
-                            <a href="property-details.html" class="th-btn btn-mask2 th-btn-icon">View Template</a>
-                        </div>
-                    </div>
+    <style>
+        .pricing-card-glass {
+            background: rgba(255,255,255,0.15);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.10);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1.5px solid rgba(255,255,255,0.25);
+            transition: box-shadow 0.3s, border 0.3s, background 0.3s;
+        }
+        .pricing-card-glass:hover, .pricing-card-glass.active {
+            background: rgba(255,255,255,0.25);
+            box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.18);
+            border: 2px solid rgba(255,255,255,0.35);
+        }
+        .pricing-header {
+            margin-bottom: 1.5rem;
+        }
+        .pricing-badge {
+            font-size: 0.95rem;
+            padding: 0.35em 1em;
+            border-radius: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            display: inline-block;
+        }
+        .pricing-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.5px;
+        }
+        .pricing-price {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 8px rgba(13,110,253,0.08);
+        }
+        .pricing-features {
+            font-size: 1.08rem;
+            color: #f8f9fa;
+            margin-bottom: 1.5rem;
+        }
+        .pricing-features li {
+            margin-bottom: 0.7em;
+            font-weight: 500;
+            letter-spacing: 0.2px;
+        }
+        .pricing-card-glass .th-btn {
+            font-size: 1.08rem;
+            font-weight: 700;
+            border-radius: 12px;
+            padding: 0.75em 1em;
+            box-shadow: 0 2px 8px rgba(13,110,253,0.08);
+        }
+    </style>
+    <div class="container">
+        <div class="row justify-content-center text-center">
+            <div class="col-lg-8">
+                <div class="title-area">
+                    <span class="shadow-title">HUBLOX</span>
+                    <h2 class="sec-title text-white">Choose Your Plan</h2>
+                    <p class="sec-text text-white">
+                        Flexible pricing plans tailored for every stage of your real estate business. Select a plan
+                        and launch your website today.
+                    </p>
                 </div>
             </div>
-
-            <div class="property-card-wrap">
-                <div class="property-thumb img-shine"
-                    data-mask-src="{{ asset('superadmin/landing-page/assets/img/shape/property-card1-img-mask.png') }}">
-                    <img src="{{ asset('superadmin/landing-page/assets/img/property/property1-3.png') }}"
-                        alt="img">
-                </div>
-                <div class="property-card">
-                    <div class="property-card-number">
-                        03 </div>
-                    <div class="property-card-details">
-                        <span class="property-card-subtitle">Premium Site Template</span>
-                        <h4 class="property-card-title">
-                            <a href="property-details.html">Vineyard Elegance Theme</a>
-                        </h4>
-                        <p class="property-card-text">
-                            A premium real estate website theme designed for high-end property brands. Elegant layout,
-                            smooth performance, and full customization.
-                        </p>
-                        <div class="property-card-price-meta">
-                            <h5 class="property-card-price">Premium – $89/month</h5>
-                            <div class="property-ratting-wrap">
-                                <div class="star-ratting">
-                                    <i class="fas fa-star"></i>
-                                    4.9
-                                </div>
-                                <span>10 Reviews</span>
-                            </div>
-                        </div>
-                        <div class="property-card-meta">
-                            <span>
-                                <i class="fas fa-paint-brush text-white me-1"></i>Elegant UI
-                            </span>
-                            <span>
-                                <i class="fas fa-cloud-upload-alt text-white me-1"></i>One-Click Launch
-                            </span>
-                            <span>
-                                <i class="fas fa-shield-alt text-white me-1"></i>SSL Secured
-                            </span>
-                        </div>
-                        <div class="property-btn-wrap">
-                            <div class="property-author-wrap">
-                                <img src="{{ asset('superadmin/landing-page/assets/img/property/property-user-1-3.png') }}"
-                                    alt="img">
-                                <a href="property-details.html">Hublox Admin</a>
-                            </div>
-                            <a href="property-details.html" class="th-btn btn-mask2 th-btn-icon">View Template</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="property-card-wrap">
-                <div class="property-thumb img-shine"
-                    data-mask-src="{{ asset('superadmin/landing-page/assets/img/shape/property-card1-img-mask.png') }}">
-                    <img src="{{ asset('superadmin/landing-page/assets/img/property/property1-4.png') }}"
-                        alt="img">
-                </div>
-                <div class="property-card">
-                    <div class="property-card-number">
-                        04 </div>
-                    <div class="property-card-details">
-                        <span class="property-card-subtitle">Modern Real Estate Theme</span>
-                        <h4 class="property-card-title">
-                            <a href="property-details.html">Auckland Clean Template</a>
-                        </h4>
-                        <p class="property-card-text">
-                            A fast-loading, mobile-optimized real estate website template built for modern agencies that
-                            value clarity, speed, and conversion.
-                        </p>
-                        <div class="property-card-price-meta">
-                            <h5 class="property-card-price">Starts at #1,000,000/month</h5>
-                            <div class="property-ratting-wrap">
-                                <div class="star-ratting">
-                                    <i class="fas fa-star"></i>
-                                    4.9
-                                </div>
-                                <span>10 Reviews</span>
-                            </div>
-                        </div>
-                        <div class="property-card-meta">
-                            <span>
-                                <i class="fas fa-bolt text-white me-1"></i>Lightning Fast
-                            </span>
-                            <span>
-                                <i class="fas fa-tablet-alt text-white me-1"></i>Tablet Friendly
-                            </span>
-                            <span>
-                                <i class="fas fa-sync-alt text-white me-1"></i>Auto Updates
-                            </span>
-                        </div>
-                        <div class="property-btn-wrap">
-                            <div class="property-author-wrap">
-                                <img src="{{ asset('superadmin/landing-page/assets/img/property/property-user-1-4.png') }}"
-                                    alt="img">
-                                <a href="property-details.html">Hublox Admin</a>
-                            </div>
-                            <a href="property-details.html" class="th-btn btn-mask2 th-btn-icon">View Template</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
-    </section><!--==============================
+        <div class="row gy-4 justify-content-center">
+            <!-- Free Plan -->
+            <div class="col-md-6 col-lg-4">
+                <div class="pricing-card-glass text-center h-100 p-4">
+                    <div class="pricing-header">
+                        <span class="pricing-badge bg-theme text-white mb-2">Free</span>
+                        <div class="pricing-title">Free Plan</div>
+                        <div class="pricing-price">₦0 <span class="fs-6 text-muted fw-bold">/ Month</span></div>
+                    </div>
+                    <ul class="pricing-features list-unstyled text-start mb-4">
+                        <li><i class="fas fa-check-circle text-success me-2"></i> Basic Template</li>
+                        <li><i class="fas fa-check-circle text-success me-2"></i> 5 Property Listings</li>
+                        <li><i class="fas fa-check-circle text-success me-2"></i> Hublox Subdomain</li>
+                        <li><i class="fas fa-times-circle text-danger me-2"></i> No Custom Domain</li>
+                        <li><i class="fas fa-times-circle text-danger me-2"></i> Limited Support</li>
+                    </ul>
+                    <a href="#" class="th-btn style2 w-100">Get Started</a>
+                </div>
+            </div>
+            <!-- Basic Plan -->
+            <div class="col-md-6 col-lg-4">
+                <div class="pricing-card-glass text-center h-100 p-4 active">
+                    <div class="pricing-header">
+                        <span class="pricing-badge bg-theme text-white mb-2">Popular</span>
+                        <div class="pricing-title">Basic Plan</div>
+                        <div class="pricing-price">₦1,000,000 <span class="fs-6 text-muted fw-bold">/ Month</span></div>
+                    </div>
+                    <ul class="pricing-features list-unstyled text-start mb-4">
+                        <li><i class="fas fa-check-circle text-success me-2"></i> Choice of Templates</li>
+                        <li><i class="fas fa-check-circle text-success me-2"></i> Up to 50 Listings</li>
+                        <li><i class="fas fa-check-circle text-success me-2"></i> Custom Domain</li>
+                        <li><i class="fas fa-check-circle text-success me-2"></i> Analytics Dashboard</li>
+                        <li><i class="fas fa-check-circle text-success me-2"></i> Email Support</li>
+                    </ul>
+                    <a href="#" class="th-btn w-100">Subscribe</a>
+                </div>
+            </div>
+            <!-- Premium Plan -->
+            <div class="col-md-6 col-lg-4">
+                <div class="pricing-card-glass text-center h-100 p-4">
+                    <div class="pricing-header">
+                        <span class="pricing-badge bg-theme text-white mb-2">Best Value</span>
+                        <div class="pricing-title">Premium Plan</div>
+                        <div class="pricing-price">₦2,500,000 <span class="fs-6 text-muted fw-bold">/ Month</span></div>
+                    </div>
+                    <ul class="pricing-features list-unstyled text-start mb-4">
+                        <li><i class="fas fa-check-circle text-success me-2"></i> All Templates + Custom Design</li>
+                        <li><i class="fas fa-check-circle text-success me-2"></i> Unlimited Listings</li>
+                        <li><i class="fas fa-check-circle text-success me-2"></i> Free SSL & Hosting</li>
+                        <li><i class="fas fa-check-circle text-success me-2"></i> Priority Support</li>
+                        <li><i class="fas fa-check-circle text-success me-2"></i> Dedicated Success Manager</li>
+                    </ul>
+                    <a href="#" class="th-btn w-100">Go Premium</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    <!--==============================
 Property Area
 ==============================-->
     <section class="space overflow-hidden">
@@ -1635,8 +993,7 @@ Video Area
         <div class="video-area-1 ">
             <div class="video-wrap1">
                 <div class="video-box1">
-                    <img src="{{ asset('superadmin/landing-page/assets/img/normal/video_1_1.png') }}"
-                        alt="img">
+                    <img src="{{ asset('superadmin/landing-page/assets/img/normal/video_1_1.png') }}" alt="img">
                     <a href="https://www.youtube.com/watch?v=_sI_Ps7JSEk" class="play-btn style3 popup-video"><i
                             class="fa-sharp fa-solid fa-play"></i></a>
                 </div>
@@ -1721,12 +1078,10 @@ Team Area
                                 <div class="th-social">
                                     <a target="_blank" href="https://facebook.com/"><i
                                             class="fab fa-facebook-f"></i></a>
-                                    <a target="_blank" href="https://twitter.com/"><i
-                                            class="fab fa-twitter"></i></a>
+                                    <a target="_blank" href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
                                     <a target="_blank" href="https://linkedin.com/"><i
                                             class="fab fa-linkedin-in"></i></a>
-                                    <a target="_blank" href="https://youtube.com/"><i
-                                            class="fab fa-youtube"></i></a>
+                                    <a target="_blank" href="https://youtube.com/"><i class="fab fa-youtube"></i></a>
                                     <a target="_blank" href="https://instagram.com/"><i
                                             class="fab fa-instagram"></i></a>
                                 </div>
@@ -1759,12 +1114,10 @@ Team Area
                                 <div class="th-social">
                                     <a target="_blank" href="https://facebook.com/"><i
                                             class="fab fa-facebook-f"></i></a>
-                                    <a target="_blank" href="https://twitter.com/"><i
-                                            class="fab fa-twitter"></i></a>
+                                    <a target="_blank" href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
                                     <a target="_blank" href="https://linkedin.com/"><i
                                             class="fab fa-linkedin-in"></i></a>
-                                    <a target="_blank" href="https://youtube.com/"><i
-                                            class="fab fa-youtube"></i></a>
+                                    <a target="_blank" href="https://youtube.com/"><i class="fab fa-youtube"></i></a>
                                     <a target="_blank" href="https://instagram.com/"><i
                                             class="fab fa-instagram"></i></a>
                                 </div>
@@ -1797,12 +1150,10 @@ Team Area
                                 <div class="th-social">
                                     <a target="_blank" href="https://facebook.com/"><i
                                             class="fab fa-facebook-f"></i></a>
-                                    <a target="_blank" href="https://twitter.com/"><i
-                                            class="fab fa-twitter"></i></a>
+                                    <a target="_blank" href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
                                     <a target="_blank" href="https://linkedin.com/"><i
                                             class="fab fa-linkedin-in"></i></a>
-                                    <a target="_blank" href="https://youtube.com/"><i
-                                            class="fab fa-youtube"></i></a>
+                                    <a target="_blank" href="https://youtube.com/"><i class="fab fa-youtube"></i></a>
                                     <a target="_blank" href="https://instagram.com/"><i
                                             class="fab fa-instagram"></i></a>
                                 </div>
@@ -1835,12 +1186,10 @@ Team Area
                                 <div class="th-social">
                                     <a target="_blank" href="https://facebook.com/"><i
                                             class="fab fa-facebook-f"></i></a>
-                                    <a target="_blank" href="https://twitter.com/"><i
-                                            class="fab fa-twitter"></i></a>
+                                    <a target="_blank" href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
                                     <a target="_blank" href="https://linkedin.com/"><i
                                             class="fab fa-linkedin-in"></i></a>
-                                    <a target="_blank" href="https://youtube.com/"><i
-                                            class="fab fa-youtube"></i></a>
+                                    <a target="_blank" href="https://youtube.com/"><i class="fab fa-youtube"></i></a>
                                     <a target="_blank" href="https://instagram.com/"><i
                                             class="fab fa-instagram"></i></a>
                                 </div>
@@ -1873,12 +1222,10 @@ Team Area
                                 <div class="th-social">
                                     <a target="_blank" href="https://facebook.com/"><i
                                             class="fab fa-facebook-f"></i></a>
-                                    <a target="_blank" href="https://twitter.com/"><i
-                                            class="fab fa-twitter"></i></a>
+                                    <a target="_blank" href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
                                     <a target="_blank" href="https://linkedin.com/"><i
                                             class="fab fa-linkedin-in"></i></a>
-                                    <a target="_blank" href="https://youtube.com/"><i
-                                            class="fab fa-youtube"></i></a>
+                                    <a target="_blank" href="https://youtube.com/"><i class="fab fa-youtube"></i></a>
                                     <a target="_blank" href="https://instagram.com/"><i
                                             class="fab fa-instagram"></i></a>
                                 </div>
@@ -1938,7 +1285,7 @@ Team Area
     <!--==============================
 Cta Area
 ==============================-->
-    <section class="space-bottom bg-theme overflow-hidden" id="contact-sec">
+    <section class="space-bottom bg-theme overflow-hidden" >
         <div class="container">
             <div class="row gy-80 gx-40 align-items-center">
                 <div class="col-xl-6">
@@ -1967,296 +1314,71 @@ Cta Area
             </div>
         </div>
     </section>
-    <!--==============================
-Testimonial Area
-==============================-->
-    {{-- <section class="testi-sec-1 overflow-hidden space overflow-hidden">
-        <div class="container">
-            <div class="row gy-80 flex-row-reverse">
-                <div class="col-xl-5">
-                    <div class="testi-thumb-wrap">
-                        <div class="img1">
-                            <img src="{{ asset('superadmin/landing-page/assets/img/testimonial/testi_thumb_1_1.png') }}"
-                                alt="img">
+    <div class="th-modal modal fade" id="portfolioModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="container">
+                    <button type="button" class="icon-btn btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"><i class="fas fa-xmark"></i></button>
+                    <div class="page-single bg-theme">
+                        <div class="page-img mb-30">
+                            <img class="w-100 rounded-20"
+                                src="{{ asset('superadmin/landing-page/assets/img/project/project_pop1_1.png') }}"
+                                alt="portfolio Image">
                         </div>
-                        <div class="img2 jump">
-                            <img src="{{ asset('superadmin/landing-page/assets/img/testimonial/testi_thumb_1_2.png') }}"
-                                alt="img">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-7">
-                    <div class="title-area">
-                        <span class="shadow-title style2">Testimonials</span>
-                        <h2 class="sec-title">What Our Clients Say</h2>
-                    </div>
-                    <div class="swiper th-slider testi-slider1" id="testiSlider1"
-                        data-slider-options='{"breakpoints":{"0":{"slidesPerView":1},"576":{"slidesPerView":"1"},"768":{"slidesPerView":"1"},"992":{"slidesPerView":"1"},"1200":{"slidesPerView":"1"}}}'>
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <div class="testi-card">
-                                    <div class="testi-grid_review">
-                                        <i class="fa-sharp fa-solid fa-star"></i><i
-                                            class="fa-sharp fa-solid fa-star"></i><i
-                                            class="fa-sharp fa-solid fa-star"></i><i
-                                            class="fa-sharp fa-solid fa-star"></i><i
-                                            class="fa-sharp fa-solid fa-star"></i>
-                                    </div>
-                                    <p class="testi-card_text">There are so many wonderful things to say about Quere.
-                                        Their staff genuinely cares about their clients and is competent and
-                                        professional. They assisted me in locating the ideal house for my household.</p>
-                                    <div class="testi-grid-wrap">
-                                        <div class="testi-card_profile">
-                                            <div class="avatar"
-                                                data-mask-src="{{ asset('superadmin/landing-page/assets/img/shape/testi_1_1-mask.png') }}">
-                                                <img src="{{ asset('superadmin/landing-page/assets/img/testimonial/testi_1_1.png') }}"
-                                                    alt="avatar">
-                                            </div>
-                                            <div class="testi-card_profile-details">
-                                                <h3 class="testi-card_name">Janny Muna</h3>
-                                                <span class="testi-card_desig">CEO of Company</span>
-                                            </div>
-                                        </div>
-                                        <div class="quote-icon">
-                                            <img src="{{ asset('superadmin/landing-page/assets/img/icon/qoute.svg') }}"
-                                                alt="icon">
-                                        </div>
+                        <div class="page-content">
+                            <h2 class="h3 page-title text-white fw-medium">Where Visibility Meets Success</h2>
+                            <div class="row gy-30">
+                                <div class="col-xl-7">
+                                    <p class="mb-20 text-light">The duration of setup depends on the selected template
+                                        and custom needs. Most clients go live within days. More tailored solutions may
+                                        take longer, depending on feedback and branding requirements.</p>
+
+                                    <p class="mb-xl-4 mb-0 text-light">We streamline launch timelines to help you go
+                                        live fast. Using our pre-built themes and onboarding tools, your agency site can
+                                        be up and running quickly — no technical skills required.</p>
+                                </div>
+                                <div class="col-xl-5">
+                                    <div class="checklist">
+                                        <ul>
+                                            <li class="text-light"><strong>Service Category:</strong> Realtor Website
+                                                Template</li>
+                                            <li class="text-light"><strong>Clients:</strong> Greenspace Realty</li>
+                                            <li class="text-light"><strong>Project Date:</strong> 15 May, 2024</li>
+                                            <li class="text-light"><strong>Go-Live Date:</strong> 22 May, 2024</li>
+                                            <li class="text-light"><strong>Locations:</strong> Lagos, Nigeria</li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
-                            <div class="swiper-slide">
-                                <div class="testi-card">
-                                    <div class="testi-grid_review">
-                                        <i class="fa-sharp fa-solid fa-star"></i><i
-                                            class="fa-sharp fa-solid fa-star"></i><i
-                                            class="fa-sharp fa-solid fa-star"></i><i
-                                            class="fa-sharp fa-solid fa-star"></i><i
-                                            class="fa-sharp fa-solid fa-star"></i>
-                                    </div>
-                                    <p class="testi-card_text">Home is where love resides, memories are created, and
-                                        dreams are nurtured. I've found my sanctuary in this beautiful property. Finding
-                                        the perfect that resonates with your own coupled with modern.</p>
-                                    <div class="testi-grid-wrap">
-                                        <div class="testi-card_profile">
-                                            <div class="avatar"
-                                                data-mask-src="{{ asset('superadmin/landing-page/assets/img/shape/testi_1_1-mask.png') }}">
-                                                <img src="{{ asset('superadmin/landing-page/assets/img/testimonial/testi_1_2.png') }}"
-                                                    alt="avatar">
-                                            </div>
-                                            <div class="testi-card_profile-details">
-                                                <h3 class="testi-card_name">Alexan Micelito</h3>
-                                                <span class="testi-card_desig">Senior Manager</span>
-                                            </div>
-                                        </div>
-                                        <div class="quote-icon">
-                                            <img src="{{ asset('superadmin/landing-page/assets/img/icon/qoute.svg') }}"
-                                                alt="icon">
-                                        </div>
+
+                            <div class="row gy-30 gx-40 align-items-center">
+                                <div class="col-xl-6">
+                                    <div class="page-img mb-0">
+                                        <img class="w-100"
+                                            src="{{ asset('superadmin/landing-page/assets/img/project/project_1_2.png') }}"
+                                            alt="portfolio Image">
                                     </div>
                                 </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="testi-card">
-                                    <div class="testi-grid_review">
-                                        <i class="fa-sharp fa-solid fa-star"></i><i
-                                            class="fa-sharp fa-solid fa-star"></i><i
-                                            class="fa-sharp fa-solid fa-star"></i><i
-                                            class="fa-sharp fa-solid fa-star"></i><i
-                                            class="fa-sharp fa-solid fa-star"></i>
+                                <div class="col-xl-6">
+                                    <h4 class="box-title text-white fw-medium">Service Benefits:</h4>
+                                    <p class="text-light">Whether you're just starting out or scaling up, Hublox
+                                        supports your brand with reliable hosting, sleek templates, and continuous
+                                        maintenance — so you can focus on selling properties, not managing code.</p>
+                                    <div class="checklist style3">
+                                        <ul>
+                                            <li class="text-light"><i class="far fa-check-circle"></i>Launch your
+                                                website in minutes</li>
+                                            <li class="text-light"><i class="far fa-check-circle"></i>No coding or
+                                                technical setup required</li>
+                                            <li class="text-light"><i class="far fa-check-circle"></i>Ongoing
+                                                updates and support</li>
+                                            <li class="text-light"><i class="far fa-check-circle"></i>Custom domains
+                                                or use our subdomain</li>
+                                            <li class="text-light"><i class="far fa-check-circle"></i>Optimized for
+                                                mobile, SEO, and speed</li>
+                                        </ul>
                                     </div>
-                                    <p class="testi-card_text">A home that perfectly blends sustainability with luxury
-                                        until I discovered Ecoland Residence. From the moment I stepped into this
-                                        community, I knew it was where I wanted to live commitment to living.</p>
-                                    <div class="testi-grid-wrap">
-                                        <div class="testi-card_profile">
-                                            <div class="avatar"
-                                                data-mask-src="{{ asset('superadmin/landing-page/assets/img/shape/testi_1_1-mask.png') }}">
-                                                <img src="{{ asset('superadmin/landing-page/assets/img/testimonial/testi_1_3.png') }}"
-                                                    alt="avatar">
-                                            </div>
-                                            <div class="testi-card_profile-details">
-                                                <h3 class="testi-card_name">Brooklyn Simmons</h3>
-                                                <span class="testi-card_desig">Junior Manager</span>
-                                            </div>
-                                        </div>
-                                        <div class="quote-icon">
-                                            <img src="{{ asset('superadmin/landing-page/assets/img/icon/qoute.svg') }}"
-                                                alt="icon">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="slider-pagination style2"></div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section> --}}
-
-    <!--==============================
-Download Area
-==============================-->
-    {{-- <section class="download-area-1 space-top overflow-hidden"
-        data-bg-src="{{ asset('superadmin/landing-page/assets/img/bg/download-bg-1-1.png') }}" data-opacity="5"
-        data-overlay="title">
-        <div class="container">
-            <div class="row gx-40">
-
-                <div class="col-xxl-6 col-lg-7 align-self-center">
-                    <div class="space-bottom text-lg-start text-center">
-                        <div class="title-area mb-30">
-                            <span class="shadow-title">Applicaton</span>
-                            <h2 class="sec-title text-white">Get A Luxury Home It’s Easy</h2>
-                            <p class="sec-text text-white">Rapidiously myocardinate cross-platform intellectual
-                                capital model. Appropriately create interactive infrastructures</p>
-                        </div>
-                        <div class="btn-wrap justify-content-lg-start justify-content-center">
-                            <a href="contact.html" class="th-btn btn-mask th-btn-icon">Download App</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xxl-6 col-lg-5 align-self-end">
-                    <div class="download-thumb text-center">
-                        <img src="{{ asset('superadmin/landing-page/assets/img/normal/download_1_1.png') }}"
-                            alt="img">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> --}}
-    <!--==============================
-Blog Area
-==============================-->
-    {{-- <section class="space bg-theme" id="blog-sec">
-        <div class="container">
-            <div class="row justify-content-between align-items-center">
-                <div class="col-xl-5 col-lg-7">
-                    <div class="title-area">
-                        <span class="shadow-title">Blog</span>
-                        <h2 class="sec-title text-white">Latest Blog & News</h2>
-                    </div>
-                </div>
-                <div class="col-auto">
-                    <div class="sec-btn">
-                        <a href="blog.html" class="th-btn btn-mask th-btn-icon">Browse All Blog</a>
-                    </div>
-                </div>
-            </div>
-            <div class="blog-grid">
-                <div class="blog-img img-shine"
-                    data-mask-src="{{ asset('superadmin/landing-page/assets/img/shape/blog-card1-img-mask.png') }}">
-                    <a href="blog-details.html">
-                        <img src="{{ asset('superadmin/landing-page/assets/img/blog/blog_1_1.jpg') }}"
-                            alt="blog image">
-                    </a>
-                </div>
-                <div class="blog-content">
-                    <span class="subtitle">Housing</span>
-                    <h3 class="box-title"><a href="blog-details.html">Imaging Trends Will Shape the Future of
-                            Architecture Design</a></h3>
-                    <p class="blog-text">Rapidiously myocardinate cross-platform intellectual capital model.
-                        Appropriately create interactive infrastructures</p>
-                    <div class="blog-bottom-wrap">
-                        <div class="blog-author-wrap">
-                            <div class="avatar">
-                                <img src="{{ asset('superadmin/landing-page/assets/img/blog/avatar_1.png') }}"
-                                    alt="">
-                            </div>
-                            <a href="blog.html">By Admin</a>
-                        </div>
-                        <div class="blog-date">
-                            April 12, 2025 </div>
-                        <a href="blog-details.html" class="th-btn btn-mask2 th-btn-icon">Read More</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="blog-grid">
-                <div class="blog-img img-shine"
-                    data-mask-src="{{ asset('superadmin/landing-page/assets/img/shape/blog-card1-img-mask.png') }}">
-                    <a href="blog-details.html">
-                        <img src="{{ asset('superadmin/landing-page/assets/img/blog/blog_1_2.jpg') }}"
-                            alt="blog image">
-                    </a>
-                </div>
-                <div class="blog-content">
-                    <span class="subtitle">Housing</span>
-                    <h3 class="box-title"><a href="blog-details.html">We endowed Villa 1 with interestingly spatial
-                            experiences.</a></h3>
-                    <p class="blog-text">Rapidiously myocardinate cross-platform intellectual capital model.
-                        Appropriately create interactive infrastructures</p>
-                    <div class="blog-bottom-wrap">
-                        <div class="blog-author-wrap">
-                            <div class="avatar">
-                                <img src="{{ asset('superadmin/landing-page/assets/img/blog/avatar_2.png') }}"
-                                    alt="">
-                            </div>
-                            <a href="blog.html">By Admin</a>
-                        </div>
-                        <div class="blog-date">
-                            March 16, 2025 </div>
-                        <a href="blog-details.html" class="th-btn btn-mask2 th-btn-icon">Read More</a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section> --}}
-    <!--==============================
-    Popup Modal v1
-============================== -->
-   <div class="th-modal modal fade" id="portfolioModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-            <div class="container">
-                <button type="button" class="icon-btn btn-close" data-bs-dismiss="modal"
-                    aria-label="Close"><i class="fas fa-xmark"></i></button>
-                <div class="page-single bg-theme">
-                    <div class="page-img mb-30">
-                        <img class="w-100 rounded-20" src="{{ asset('superadmin/landing-page/assets/img/project/project_pop1_1.png') }}"
-                            alt="portfolio Image">
-                    </div>
-                    <div class="page-content">
-                        <h2 class="h3 page-title text-white fw-medium">Where Visibility Meets Success</h2>
-                        <div class="row gy-30">
-                            <div class="col-xl-7">
-                                <p class="mb-20 text-light">The duration of setup depends on the selected template and custom needs. Most clients go live within days. More tailored solutions may take longer, depending on feedback and branding requirements.</p>
-
-                                <p class="mb-xl-4 mb-0 text-light">We streamline launch timelines to help you go live fast. Using our pre-built themes and onboarding tools, your agency site can be up and running quickly — no technical skills required.</p>
-                            </div>
-                            <div class="col-xl-5">
-                                <div class="checklist">
-                                    <ul>
-                                        <li class="text-light"><strong>Service Category:</strong> Realtor Website Template</li>
-                                        <li class="text-light"><strong>Clients:</strong> Greenspace Realty</li>
-                                        <li class="text-light"><strong>Project Date:</strong> 15 May, 2024</li>
-                                        <li class="text-light"><strong>Go-Live Date:</strong> 22 May, 2024</li>
-                                        <li class="text-light"><strong>Locations:</strong> Lagos, Nigeria</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row gy-30 gx-40 align-items-center">
-                            <div class="col-xl-6">
-                                <div class="page-img mb-0">
-                                    <img class="w-100" src="{{ asset('superadmin/landing-page/assets/img/project/project_1_2.png') }}"
-                                        alt="portfolio Image">
-                                </div>
-                            </div>
-                            <div class="col-xl-6">
-                                <h4 class="box-title text-white fw-medium">Service Benefits:</h4>
-                                <p class="text-light">Whether you're just starting out or scaling up, Hublox supports your brand with reliable hosting, sleek templates, and continuous maintenance — so you can focus on selling properties, not managing code.</p>
-                                <div class="checklist style3">
-                                    <ul>
-                                        <li class="text-light"><i class="far fa-check-circle"></i>Launch your website in minutes</li>
-                                        <li class="text-light"><i class="far fa-check-circle"></i>No coding or technical setup required</li>
-                                        <li class="text-light"><i class="far fa-check-circle"></i>Ongoing updates and support</li>
-                                        <li class="text-light"><i class="far fa-check-circle"></i>Custom domains or use our subdomain</li>
-                                        <li class="text-light"><i class="far fa-check-circle"></i>Optimized for mobile, SEO, and speed</li>
-                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -2265,60 +1387,74 @@ Blog Area
             </div>
         </div>
     </div>
-</div>
     <!--==============================
     Popup Modal v1
 ============================== -->
-   <div class="th-modal modal fade" id="portfolioModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-            <div class="container">
-                <button type="button" class="icon-btn btn-close" data-bs-dismiss="modal"
-                    aria-label="Close"><i class="fas fa-xmark"></i></button>
-                <div class="page-single bg-theme">
-                    <div class="page-img mb-30">
-                        <img class="w-100 rounded-20" src="{{ asset('superadmin/landing-page/assets/img/project/project_pop1_1.png') }}"
-                            alt="portfolio Image">
-                    </div>
-                    <div class="page-content">
-                        <h2 class="h3 page-title text-white fw-medium">Where Visibility Meets Success</h2>
-                        <div class="row gy-30">
-                            <div class="col-xl-7">
-                                <p class="mb-20 text-light">The duration of setup depends on the selected template and custom needs. Most clients go live within days. More tailored solutions may take longer, depending on feedback and branding requirements.</p>
-
-                                <p class="mb-xl-4 mb-0 text-light">We streamline launch timelines to help you go live fast. Using our pre-built themes and onboarding tools, your agency site can be up and running quickly — no technical skills required.</p>
-                            </div>
-                            <div class="col-xl-5">
-                                <div class="checklist">
-                                    <ul>
-                                        <li class="text-light"><strong>Service Category:</strong> Realtor Website Template</li>
-                                        <li class="text-light"><strong>Clients:</strong> Greenspace Realty</li>
-                                        <li class="text-light"><strong>Project Date:</strong> 15 May, 2024</li>
-                                        <li class="text-light"><strong>Go-Live Date:</strong> 22 May, 2024</li>
-                                        <li class="text-light"><strong>Locations:</strong> Lagos, Nigeria</li>
-                                    </ul>
-                                </div>
-                            </div>
+    <div class="th-modal modal fade" id="portfolioModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="container">
+                    <button type="button" class="icon-btn btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"><i class="fas fa-xmark"></i></button>
+                    <div class="page-single bg-theme">
+                        <div class="page-img mb-30">
+                            <img class="w-100 rounded-20"
+                                src="{{ asset('superadmin/landing-page/assets/img/project/project_pop1_1.png') }}"
+                                alt="portfolio Image">
                         </div>
+                        <div class="page-content">
+                            <h2 class="h3 page-title text-white fw-medium">Where Visibility Meets Success</h2>
+                            <div class="row gy-30">
+                                <div class="col-xl-7">
+                                    <p class="mb-20 text-light">The duration of setup depends on the selected template
+                                        and custom needs. Most clients go live within days. More tailored solutions may
+                                        take longer, depending on feedback and branding requirements.</p>
 
-                        <div class="row gy-30 gx-40 align-items-center">
-                            <div class="col-xl-6">
-                                <div class="page-img mb-0">
-                                    <img class="w-100" src="{{ asset('superadmin/landing-page/assets/img/project/project_1_2.png') }}"
-                                        alt="portfolio Image">
+                                    <p class="mb-xl-4 mb-0 text-light">We streamline launch timelines to help you go
+                                        live fast. Using our pre-built themes and onboarding tools, your agency site can
+                                        be up and running quickly — no technical skills required.</p>
+                                </div>
+                                <div class="col-xl-5">
+                                    <div class="checklist">
+                                        <ul>
+                                            <li class="text-light"><strong>Service Category:</strong> Realtor Website
+                                                Template</li>
+                                            <li class="text-light"><strong>Clients:</strong> Greenspace Realty</li>
+                                            <li class="text-light"><strong>Project Date:</strong> 15 May, 2024</li>
+                                            <li class="text-light"><strong>Go-Live Date:</strong> 22 May, 2024</li>
+                                            <li class="text-light"><strong>Locations:</strong> Lagos, Nigeria</li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-xl-6">
-                                <h4 class="box-title text-white fw-medium">Service Benefits:</h4>
-                                <p class="text-light">Whether you're just starting out or scaling up, Hublox supports your brand with reliable hosting, sleek templates, and continuous maintenance — so you can focus on selling properties, not managing code.</p>
-                                <div class="checklist style3">
-                                    <ul>
-                                        <li class="text-light"><i class="far fa-check-circle"></i>Launch your website in minutes</li>
-                                        <li class="text-light"><i class="far fa-check-circle"></i>No coding or technical setup required</li>
-                                        <li class="text-light"><i class="far fa-check-circle"></i>Ongoing updates and support</li>
-                                        <li class="text-light"><i class="far fa-check-circle"></i>Custom domains or use our subdomain</li>
-                                        <li class="text-light"><i class="far fa-check-circle"></i>Optimized for mobile, SEO, and speed</li>
-                                    </ul>
+
+                            <div class="row gy-30 gx-40 align-items-center">
+                                <div class="col-xl-6">
+                                    <div class="page-img mb-0">
+                                        <img class="w-100"
+                                            src="{{ asset('superadmin/landing-page/assets/img/project/project_1_2.png') }}"
+                                            alt="portfolio Image">
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <h4 class="box-title text-white fw-medium">Service Benefits:</h4>
+                                    <p class="text-light">Whether you're just starting out or scaling up, Hublox
+                                        supports your brand with reliable hosting, sleek templates, and continuous
+                                        maintenance — so you can focus on selling properties, not managing code.</p>
+                                    <div class="checklist style3">
+                                        <ul>
+                                            <li class="text-light"><i class="far fa-check-circle"></i>Launch your
+                                                website in minutes</li>
+                                            <li class="text-light"><i class="far fa-check-circle"></i>No coding or
+                                                technical setup required</li>
+                                            <li class="text-light"><i class="far fa-check-circle"></i>Ongoing
+                                                updates and support</li>
+                                            <li class="text-light"><i class="far fa-check-circle"></i>Custom domains
+                                                or use our subdomain</li>
+                                            <li class="text-light"><i class="far fa-check-circle"></i>Optimized for
+                                                mobile, SEO, and speed</li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -2327,11 +1463,10 @@ Blog Area
             </div>
         </div>
     </div>
-</div>
     <!--==============================
  Footer Area
 ==============================-->
-    <footer class="footer-wrapper footer-layout1 bg-theme">
+    <footer class="footer-wrapper footer-layout1 bg-theme" id="contact-sec">
         <div class="footer-wrap bg-smoke"
             data-mask-src="{{ asset('superadmin/landing-page/assets/img/bg/footer-bg-mask.png') }}">
             <div class="widget-area space">

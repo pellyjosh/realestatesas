@@ -97,7 +97,7 @@
                                                     style="width: 20px; height: 20px; line-height: 30px; text-align: center; font-size: 16px;"></i>
                                             </a>
                                             <ul class="nav-submenu dropdown-menu">
-                                                <li><a href="{{ route('tenant.dashboard') }}">Dashboard</a></li>
+                                                <li><a href="{{ route('tenant.user.dashboard') }}">Dashboard</a></li>
                                                 <li><a href="{{ route('tenant.profile.edit') }}">Profile</a></li>
                                                 <li>
                                                     <form method="POST" action="{{ route('tenant.logout') }}">

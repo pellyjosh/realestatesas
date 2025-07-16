@@ -18,17 +18,14 @@
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Rubik:400,400i,500,500i,700,700i" rel="stylesheet">
 
-    {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> --}}
-    {{-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"> --}}
+   
     <link href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.css" rel="stylesheet">
-    {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
-    {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> --}}
+    
+    
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
-    {{-- <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.js"></script> --}}
-
-
+   
     <!-- Font Awesome 6 Free CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
@@ -472,9 +469,11 @@
         </div>
     </div>
     <!-- customizer end -->
+
     @include('themes.classic.realtor.partials.modal-confirmation')
+
     <!-- latest jquery-->
-    <script src="{{ asset('themes/classic/admin/assets/js/jquery-3.6.0.min.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <!-- DataTables JS -->
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
@@ -493,22 +492,12 @@
     <script src="{{ asset('themes/classic/client/assets/js/feather-icon/feather.min.js') }}"></script>
     <script src="{{ asset('themes/classic/client/assets/js/feather-icon/feather-icon.js') }}"></script>
 
+    @stack('scripts')
+
+
     <!-- sidebar js -->
     <script src="{{ asset('themes/classic/admin/assets/js/sidebar.js') }}"></script>
-
-    <script src="{{ asset('themes/classic/realtor/assets/js/chart/chartist.js') }}"></script>
-    <script src="{{ asset('themes/classic/realtor/assets/js/chart/chartist-plugin-tooltip.js') }}"></script>
-
-    <!-- apex chart js-->
-    <script src="{{ asset('themes/classic/realtor/assets/js/chart/apex-chart.js') }}"></script>
-    <script src="r{{ asset('themes/classic/realtor/assets/js/chart/stock-prices.js') }}"></script>
-    <script src="{{ asset('themes/classic/realtor/assets/js/user-profile.js') }}"></script>
-    <script src="{{ asset('themes/classic/realtor/assets/js/admin-dashboard.js') }}"></script>
-
-    <!-- vector map js-->
-    <script src="{{ asset('themes/classic/realtor/assets/js/vector-map/jquery-jvectormap-2.0.2.min.js') }}"></script>
-    <script src="{{ asset('themes/classic/realtor/assets/js/vector-map/jquery-jvectormap-asia-mill.js') }}"></script>
-
+    
     <!--admin js -->
     <script src="{{ asset('themes/classic/realtor/assets/js/report.js') }}"></script>
     <script src="{{ asset('themes/classic/admin/assets/js/admin-script.js') }}"></script>
@@ -523,10 +512,13 @@
 
     <script src="{{ asset('themes/classic/realtor/assets/js/checker.js') }}"></script>
 
+
     <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
-    @stack('scripts')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
 </body>
 
 </html>

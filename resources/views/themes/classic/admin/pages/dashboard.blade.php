@@ -1,4 +1,4 @@
-@extends('admin.admin_master')
+@extends('themes.classic.admin.admin_master')
 @section('title', 'Dashboard | Premium Refined Luxury Homes')
 @section('content')
 

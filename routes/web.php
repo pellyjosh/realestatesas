@@ -78,6 +78,7 @@ Route::controller(AdminController::class)->group(function () {
     Route::get('/superadmin', function () {
         return redirect()->route('superadmin.index');
     });
+
     Route::get('/superadmin-dashboard', 'dashboard')->name('superadmin.dashboard');
     Route::get('/superadmin-domains', 'domains')->name('superadmin.domains');
     Route::get('/superadmin-templates', 'templates')->name('superadmin.templates');
@@ -92,10 +93,16 @@ Route::controller(AdminController::class)->group(function () {
     Route::get('/superadmin-domain-view', 'domainView')->name('superadmin.domain.view');
 });
 
-Route::controller(AdminController::class)->group(function () {
-    Route::get('/superadmin-login', [AdminController::class, 'superAdminLogin'])->name('superadmin.login');
-    Route::get('/superadmin-register', [AdminController::class, 'superAdminRegister'])->name('superadmin.register');
-    Route::get('/superadmin-forgot-password', [AdminController::class, 'superAdminForgotPassword'])->name('superadmin.forgot-password');
-    Route::get('/superadmin-reset-password', [AdminController::class, 'superAdminResetPassword'])->name('superadmin.reset-password');
-});
+Route::get('/superadmin-login', function () {
+    return view('superadmin.auth.login');
+})->name('superadmin.login');
+Route::get('/superadmin-register', function () {
+    return view('superadmin.auth.register');
+})->name('superadmin.register');
+Route::get('/superadmin-forgot-password', function () {
+    return view('superadmin.auth.forgot-password');
+})->name('superadmin.forgot-password');
+Route::get('/superadmin-reset-password', function () {
+    return view('superadmin.auth.reset-password');
+})->name('superadmin.reset-password');
 

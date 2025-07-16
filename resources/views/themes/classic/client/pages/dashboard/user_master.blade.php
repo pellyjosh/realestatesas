@@ -18,16 +18,16 @@
     <link href="https://fonts.googleapis.com/css?family=Rubik:400,400i,500,500i,700,700i" rel="stylesheet">
 
     <!-- animate css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('client/assets/css/animate.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('themes/classic/client/assets/css/animate.css') }}">
 
     <!-- Template css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('client/assets/css/bootstrap.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('client/assets/css/color1.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('themes/classic/client/assets/css/bootstrap.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('themes/classic/client/assets/css/color1.css') }}">
 
     <!-- Font Awesome 6 Free CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-    <link rel="icon" href="{{ asset('client/assets/images/logo.png') }}" type="image/x-icon" />
+    <link rel="icon" href="{{ asset('themes/classic/client/assets/images/logo.png') }}" type="image/x-icon" />
     <title>@yield('title', 'Master Page')</title>
 
 </head>
@@ -38,7 +38,7 @@
     <div class="loader-wrapper">
         <div class="row loader-text">
             <div class="col-12">
-                <img src="{{ asset('client/assets/images/loader/gear.gif') }}" class="img-fluid" alt="">
+                <img src="{{ asset('themes/classic/client/assets/images/loader/gear.gif') }}" class="img-fluid" alt="">
             </div>
             <div class="col-12">
                 <div>
@@ -57,7 +57,7 @@
                     <div class="menu">
                         <div class="brand-logo">
                             <a href="{{ route('tenant.client.home') }}">
-                                <img src="{{ asset('client/assets/images/logo.png') }}" alt="" class="img-fluid"
+                                <img src="{{ asset('themes/classic/client/assets/images/logo.png') }}" alt="" class="img-fluid"
                                     style="max-width: 40%">
                             </a>
                         </div>
@@ -101,7 +101,7 @@
                                         <ul class="nav-submenu">
                                             <li>
                                                 <div class="media">
-                                                    <img src="{{ asset('client/assets/images/property/2.jpg') }}"
+                                                    <img src="{{ asset('themes/classic/client/assets/images/property/2.jpg') }}"
                                                         class="img-fluid" alt="">
                                                     <div class="media-body">
                                                         <a href="single-propertyx-8.html">
@@ -117,7 +117,7 @@
                                             </li>
                                             <li>
                                                 <div class="media">
-                                                    <img src="{{ asset('client/assets/images/property/3.jpg') }}"x
+                                                    <img src="{{ asset('themes/classic/client/assets/images/property/3.jpg') }}"
                                                         class="img-fluid" alt="">
                                                     <div class="media-body">
                                                         <a href="single-property-8.html">
@@ -183,7 +183,7 @@
 
     <!-- breadcrumb start -->
     <section class="breadcrumb-section p-0">
-        <img src="{{ asset('client/assets/images/inner-background.jpg') }}" class="bg-img img-fluid" alt="">
+        <img src="{{ asset('themes/classic/client/assets/images/inner-background.jpg') }}" class="bg-img img-fluid" alt="">
         <div class="container">
             <div class="breadcrumb-content">
                 <div>
@@ -209,7 +209,7 @@
                         <div class="user-profile">
                             <div class="media">
                                 <div class="change-pic">
-                                    <img src="{{ asset('admin/assets/images/avatar/3.jpg') }}"
+                                    <img src="{{ asset('themes/classic/admin/assets/images/avatar/3.jpg') }}"
                                         class="img-fluid update_img" alt="">
                                     <div class="change-hover">
                                         <button type="button" class="btn"><i data-feather="camera"></i></button>
@@ -285,7 +285,7 @@
                             </h5>
                             <div class="footer-content">
                                 <a href="{{ route('tenant.client.home') }}">
-                                    <img src="{{ asset('client/assets/images/logo.png') }}" alt=""
+                                    <img src="{{ asset('themes/classic/client/assets/images/logo.png') }}" alt=""
                                         class="img-fluid" style="max-width: 50%">
                                 </a>
                                 <p>This home provides entertaining spaces with a kitchen opening...</p>
@@ -389,12 +389,11 @@
                 </div>
                 <div class="modal-body">
                     <h6>Are you sure ? you want to log out.</h6>
-                    <p>Once you will be logged out and will be unable to log in back.</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-dashed color-2 btn-pill"
                         data-bs-dismiss="modal">no</button>
-                    <button type="button" class="btn btn-gradient color-2 btn-pill">yes</button>
+                    <button type="button"  onclick="" class="btn btn-gradient color-2 btn-pill">yes</button>
                 </div>
             </div>
         </div>
@@ -456,44 +455,44 @@
     <!-- customizer end -->
 
     <!-- latest jquery-->
-    <script src="https://themes.pixelstrap.com/sheltos/assets/js/jquery-3.6.0.min.js"></script>
+    <script src="{{ asset("themes/classic/client/assets/js/jquery-3.6.0.min.js") }}"></script>
 
     <!-- popper js-->
-    <script src="https://themes.pixelstrap.com/sheltos/assets/js/popper.min.js"></script>
+    <script src="{{ asset("themes/classic/client/assets/js/popper.min.js") }}"></script>
 
     <!-- feather icon js-->
-    <script src="https://themes.pixelstrap.com/sheltos/assets/js/feather-icon/feather.min.js"></script>
-    <script src="https://themes.pixelstrap.com/sheltos/assets/js/feather-icon/feather-icon.js"></script>
+    <script src="{{ asset("themes/classic/client/assets/js/feather-icon/feather.min.js") }}"></script>
+    <script src="{{ asset("themes/classic/client/assets/js/feather-icon/feather-icon.js") }}"></script>
 
     <!-- slick js -->
-    <script src="https://themes.pixelstrap.com/sheltos/assets/js/slick.js"></script>
-    <script src="https://themes.pixelstrap.com/sheltos/assets/js/slick-animation.min.js"></script>
-    <script src="https://themes.pixelstrap.com/sheltos/assets/js/custom-slick.js"></script>
+    <script src="{{ asset("themes/classic/client/assets/js/slick.js") }}"></script>
+    <script src="{{ asset("themes/classic/client/assets/js/slick-animation.min.js") }}"></script>
+    <script src="{{ asset("themes/classic/client/assets/js/custom-slick.js") }}"></script>
 
     <!-- Bootstrap js-->
-    <script src="https://themes.pixelstrap.com/sheltos/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset("themes/classic/client/assets/js/bootstrap.bundle.min.js") }}"></script>
 
     <!-- chartist chart js-->
-    <script src="https://themes.pixelstrap.com/sheltos/assets/js/chart/chartist/chartist.js"></script>
-    <script src="https://themes.pixelstrap.com/sheltos/assets/js/chart/chartist/chartist-plugin-tooltip.js"></script>
+    <script src="{{ asset("themes/classic/admin/assets/js/chart/chartist/chartist.js") }}"></script>
+    <script src="{{ asset("themes/classic/admin/assets/js/chart/chartist/chartist-plugin-tooltip.js") }}"></script>
 
     <!-- apexchart js-->
-    <script src="https://themes.pixelstrap.com/sheltos/assets/js/chart/apex-chart/apex-chart.js"></script>
+    <script src="{{ asset("themes/classic/admin/assets/js/chart/apex-chart/apex-chart.js") }}"></script>
 
     <!-- dashboard js-->
-    <script src="https://themes.pixelstrap.com/sheltos/assets/js/dashboard.js"></script>
+    <script src="{{ asset("themes/classic/client/assets/js/dashboard.js") }}"></script>
 
     <!-- Template js-->
-    <script src="https://themes.pixelstrap.com/sheltos/assets/js/script.js"></script>
+    <script src="{{ asset("themes/classic/client/assets/js/script.js") }}"></script>
 
     <!-- Customizer js-->
-    <script src="https://themes.pixelstrap.com/sheltos/assets/js/customizer.js"></script>
+    <script src="{{ asset("themes/classic/client/assets/js/customizer.js") }}"></script>
 
     <!-- wow js-->
-    <script src="https://themes.pixelstrap.com/sheltos/assets/js/wow.min.js"></script>
+    <script src="{{ asset("themes/classic/client/assets/js/wow.min.js") }}"></script>
 
     <!-- Color-picker js-->
-    <script src="https://themes.pixelstrap.com/sheltos/assets/js/color/template-color.js"></script>
+     <script src="{{ asset('themes/classic/client/assets/js/color/layout3.js') }}" defer></script>
 
 </body>
 

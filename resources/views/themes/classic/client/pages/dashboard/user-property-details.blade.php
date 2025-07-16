@@ -25,17 +25,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
     <!-- magnific css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('realtor/assets/css/magnific-popup.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('themes/classic/realtor/assets/css/magnific-popup.css') }}">
 
     <!-- range slider css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('client/assets/css/jquery-ui.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('themes/classic/client/assets/css/jquery-ui.css') }}">
 
     <!-- animate css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('client/assets/css/animate.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('themes/classic/client/assets/css/animate.css') }}">
 
     <!-- Template css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('client/assets/css/bootstrap.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('client/assets/css/color1.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('themes/classic/client/assets/css/bootstrap.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('themes/classic/client/assets/css/color1.css') }}">
 </head>
 
 <body>
@@ -44,7 +44,7 @@
     <div class="loader-wrapper">
         <div class="row loader-text">
             <div class="col-12">
-                <img src="{{ asset('client/assets/images/loader/gear.gif') }}" class="img-fluid" alt="">
+                <img src="{{ asset('themes/classic/client/assets/images/loader/gear.gif') }}" class="img-fluid" alt="">
             </div>
             <div class="col-12">
                 <div>
@@ -83,7 +83,7 @@
                                                 class="nav-link menu-title">Home</a>
                                         </li>
                                         <li class="mega-menu">
-                                            <a href="{{ route('client.events') }}" class="nav-link menu-title">
+                                            <a href="{{ route('tenant.client.events') }}" class="nav-link menu-title">
                                                 Events
                                             </a>
                                         </li>
@@ -110,7 +110,7 @@
                                         <ul class="nav-submenu">
                                             <li>
                                                 <div class="media">
-                                                    <img src="{{ asset('client/assets/images/property/2.jpg') }}"
+                                                    <img src="{{ asset('themes/classic/client/assets/images/property/2.jpg') }}"
                                                         class="img-fluid" alt="">
                                                     <div class="media-body">
                                                         <a href="single-propertyx-8.html">
@@ -126,7 +126,7 @@
                                             </li>
                                             <li>
                                                 <div class="media">
-                                                    <img src="{{ asset('client/assets/images/property/3.jpg') }}"x
+                                                    <img src="{{ asset('themes/classic/client/assets/images/property/3.jpg') }}"x
                                                         class="img-fluid" alt="">
                                                     <div class="media-body">
                                                         <a href="single-property-8.html">
@@ -156,8 +156,8 @@
                                                     style="width: 20px; height: 20px; line-height: 30px; text-align: center; font-size: 16px;"></i>
                                             </a>
                                             <ul class="nav-submenu dropdown-menu">
-                                                <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                                                <li><a href="{{ route('profile.edit') }}">Profile</a></li>
+                                                <li><a href="{{ route('tenant.user.dashboard') }}">Dashboard</a></li>
+                                                <li><a href="{{ route('tenant.user.profile') }}">Profile</a></li>
                                                 <li>
                                                     <form method="POST" action="{{ route('logout') }}">
                                                         @csrf
@@ -590,7 +590,7 @@
                                     <a href="{{ route('tenant.client.home') }}">Home</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('client.events') }}">Events</a>
+                                    <a href="{{ route('tenant.client.events') }}">Events</a>
                                 </li>
                                 <li>
                                     <a href="{{ route('tenant.client.contact') }}">Contact</a>

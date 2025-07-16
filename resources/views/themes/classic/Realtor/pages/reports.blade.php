@@ -94,7 +94,7 @@
                                     <tr>
                                         <td>
                                             <div class="media">
-                                                <img src="{{ asset('admin/assets/images/svg/icon/pdf.png') }}"
+                                                <img src="{{ asset('themes/classic/admin/assets/images/svg/icon/pdf.png') }}"
                                                     class="img-fluid" alt="">
                                                 <div class="media-body">
                                                     <h6>Report 8/10/22 - 15/10/22</h6>
@@ -110,7 +110,7 @@
                                     <tr>
                                         <td>
                                             <div class="media">
-                                                <img src="{{ asset('admin/assets/images/svg/icon/pdf.png') }}"
+                                                <img src="{{ asset('themes/classic/admin/assets/images/svg/icon/pdf.png') }}"
                                                     class="img-fluid" alt="">
                                                 <div class="media-body">
                                                     <h6>Report 20/10/22 - 25/10/22</h6>
@@ -126,7 +126,7 @@
                                     <tr>
                                         <td>
                                             <div class="media">
-                                                <img src="{{ asset('admin/assets/images/svg/icon/pdf.png') }}"
+                                                <img src="{{ asset('themes/classic/admin/assets/images/svg/icon/pdf.png') }}"
                                                     class="img-fluid" alt="">
                                                 <div class="media-body">
                                                     <h6>Report 30/10/22 - 5/11/22</h6>
@@ -142,7 +142,7 @@
                                     <tr>
                                         <td>
                                             <div class="media">
-                                                <img src="{{ asset('admin/assets/images/svg/icon/pdf.png') }}"
+                                                <img src="{{ asset('themes/classic/admin/assets/images/svg/icon/pdf.png') }}"
                                                     class="img-fluid" alt="">
                                                 <div class="media-body">
                                                     <h6>Report 10/11/22 - 15/11/22</h6>
@@ -158,7 +158,7 @@
                                     <tr>
                                         <td>
                                             <div class="media">
-                                                <img src="{{ asset('admin/assets/images/svg/icon/pdf.png') }}"
+                                                <img src="{{ asset('themes/classic/admin/assets/images/svg/icon/pdf.png') }}"
                                                     class="img-fluid" alt="">
                                                 <div class="media-body">
                                                     <h6>Report 20/11/22 - 25/11/22</h6>
@@ -210,7 +210,7 @@
                                     <tr>
                                         <td>
                                             <div class="media">
-                                                <img src="{{ asset('client/assets/images/property/2.jpg') }}"
+                                                <img src="{{ asset('themes/classic/client/assets/images/property/2.jpg') }}"
                                                     class="img-fluid img-80" alt="">
                                                 <div class="media-body">
                                                     <h6>Orchard House</h6>
@@ -226,7 +226,7 @@
                                     <tr>
                                         <td>
                                             <div class="media">
-                                                <img src="{{ asset('client/assets/images/property/3.jpg') }}"
+                                                <img src="{{ asset('themes/classic/client/assets/images/property/3.jpg') }}"
                                                     class="img-fluid img-80" alt="">
                                                 <div class="media-body">
                                                     <h6>Neverland</h6>
@@ -242,7 +242,7 @@
                                     <tr>
                                         <td>
                                             <div class="media">
-                                                <img src="{{ asset('client/assets/images/property/6.jpg') }}"
+                                                <img src="{{ asset('themes/classic/client/assets/images/property/6.jpg') }}"
                                                     class="img-fluid img-80" alt="">
                                                 <div class="media-body">
                                                     <h6>Sea Breezes</h6>
@@ -258,7 +258,7 @@
                                     <tr>
                                         <td class="pb-0">
                                             <div class="media">
-                                                <img src="{{ asset('client/assets/images/property/2.jpg') }}"
+                                                <img src="{{ asset('themes/classic/client/assets/images/property/2.jpg') }}"
                                                     class="img-fluid img-80" alt="">
                                                 <div class="media-body">
                                                     <h6>Orchard House</h6>
@@ -334,7 +334,7 @@
                                         <td>1</td>
                                         <td>
                                             <div class="media">
-                                                <img src="{{ asset('client/assets/images/property/2.jpg') }}"
+                                                <img src="{{ asset('themes/classic/client/assets/images/property/2.jpg') }}"
                                                     class="img-fluid img-80" alt="">
                                                 <div class="media-body">
                                                     <h6>Orchard House</h6>
@@ -353,7 +353,7 @@
                                         <td>2</td>
                                         <td>
                                             <div class="media">
-                                                <img src="{{ asset('client/assets/images/property/22.jpg') }}"
+                                                <img src="{{ asset('themes/classic/client/assets/images/property/22.jpg') }}"
                                                     class="img-fluid img-80" alt="">
                                                 <div class="media-body">
                                                     <h6>Sea Breezes</h6>
@@ -372,7 +372,7 @@
                                         <td>3</td>
                                         <td class="pb-0">
                                             <div class="media">
-                                                <img src="{{ asset('client/assets/images/property/6.jpg') }}"
+                                                <img src="{{ asset('themes/classic/client/assets/images/property/6.jpg') }}"
                                                     class="img-fluid img-80" alt="">
                                                 <div class="media-body">
                                                     <h6>Neverland</h6>
@@ -396,4 +396,19 @@
         </div>
     </div>
     <!-- Container-fluid end -->
+
+    @include('themes.classic.realtor.pages.partials.apex-chart')
+    @push('scripts')
+        <!-- apex chart js-->
+       
+
+        <script src="{{ asset('themes/classic/realtor/assets/js/admin-dashboard.js') }}"></script>
+
+        <script src="{{ asset('themes/classic/realtor/assets/js/report.js') }}"></script>
+
+        <!-- vector map js-->
+        <script src="{{ asset('themes/classic/realtor/assets/js/vector-map/jquery-jvectormap-2.0.2.min.js') }}"></script>
+        <script src="{{ asset('themes/classic/realtor/assets/js/vector-map/jquery-jvectormap-asia-mill.js') }}"></script>
+    @endpush
+
 @endsection
