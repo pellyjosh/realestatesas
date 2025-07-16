@@ -1,88 +1,9 @@
-@extends('superadmin.auth.authentication_master')
-@section('title', 'Login | Premium Refined Luxury Homes')
-@section('content')
-    <div class="card-body">
-        <div class="title-3 text-start">
-            <h1>Log in</h1>
-        </div>
-        <form method="POST" action="{{ route('login') }}" autocomplete="off">
-            @csrf
-            <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <i data-feather="user"></i>
-                        </div>
-                    </div>
-                    <input type="text" class="form-control" name="email" placeholder="Enter Email" autocomplete="off"
-                        value="{{ old('email') }}">
-                </div>
-                @error('email')
-                    <div class="text-danger mt-1">{{ $message }}</div>
-                @enderror
-            </div>
-            <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <i data-feather="mail"></i>
-                        </div>
-                    </div>
-                    <input type="password" id="pwd-input" name="password" class="form-control" placeholder="Password"
-                        autocomplete="off" maxlength="8">
-                    <div class="input-group-apend">
-                        <div class="input-group-text">
-                            <i id="pwd-icon" class="far fa-eye-slash"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="important-note">
-                    password should be a minimum of 8 characters and should contains letters and numbers
-                </div>
-                @error('password')
-                    <div class="text-danger mt-1">{{ $message }}</div>
-                @enderror
-            </div>
-            <div class="d-flex">
-                <label class="d-block mb-0" for="chk-ani">
-                    <input class="checkbox_animated color-2" id="chk-ani" type="checkbox" name="remember"
-                        {{ old('remember') ? 'checked' : '' }}> Remember me
-                </label>
-                <a href="{{ route('password.request') }}" class="font-rubik text-color-2">Forgot password?</a>
-            </div>
-            <div>
-                <button type="submit" class="btn btn-pill me-sm-3 me-2" style="background-color: #78c705; color: #fff;">Log
-                    in</button>
-                <a href="{{ route('register') }}" class="btn btn-dashed btn-pill color-2">Create Account</a>
-            </div>
-            <div class="divider">
-                <h6>or</h6>
-            </div>
-            <div>
-                <h6>Log in with</h6>
-                <div class="row social-connect">
-                    <div class="col-6">
-                        <a href="https://www.facebook.com/" class="btn btn-social btn-flat facebook p-0">
-                            <i class="fab fa-facebook-f"></i>
-                            <span>Facebook</span>
-                        </a>
-                    </div>
-                    <div class="col-6">
-                        <a href="https://accounts.google.com/" class="btn btn-social btn-flat google p-0">
-                            <i class="fab fa-google"></i>
-                            <span>Google</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
-@endsection
 @extends('superadmin.auth.auth_master')
 @section('title', 'Login')
 @section('content')
     <!-- content  -->
-    <form class="form" method="" action="#">
+    <form class="form" method="POST" action="{{ route('login') }}">
+        @csrf
         <div class="header">
             <div class="logo-container">
                 <img src="https://wrraptheme.com/templates/oreo/realestate/html/assets/images/logo.svg" alt="">
@@ -91,24 +12,38 @@
         </div>
         <div class="content">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Enter User Name">
+                <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" 
+                       placeholder="Enter Email" value="{{ old('email') }}" required>
                 <span class="input-group-addon">
-                    <i class="zmdi zmdi-account-circle"></i>
+                    <i class="zmdi zmdi-email"></i>
                 </span>
+                @error('email')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
             </div>
             <div class="input-group">
-                <input type="password" placeholder="Password" class="form-control" />
+                <input type="password" name="password" placeholder="Password" 
+                       class="form-control @error('password') is-invalid @enderror" required />
                 <span class="input-group-addon">
                     <i class="zmdi zmdi-lock"></i>
                 </span>
+                @error('password')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="checkbox">
+                <input id="remember" name="remember" type="checkbox">
+                <label for="remember">Remember Me</label>
             </div>
         </div>
         <div class="footer text-center">
-            <a href="index.html" class="btn btn-primary btn-round btn-lg btn-block ">SIGN IN</a>
-            <h5><a href="forgot-password.html" class="link">Forgot Password?</a></h5>
+            <button type="submit" class="btn btn-primary btn-round btn-lg btn-block waves-effect waves-light">
+                SIGN IN
+            </button>
+            <h5><a href="{{ route('password.request') }}" class="link">Forgot Password?</a></h5>
         </div>
         <div class="footer text-center">
-            <h5> Don’t have an account? <a href="{{ route('superadmin.register') }}">Sign Up</a></h5>
+            <h5> Don’t have an account? <a href="{{ route('register') }}">Sign Up</a></h5>
         </div>
     </form>
     <!-- end content -->
