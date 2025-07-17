@@ -89,7 +89,7 @@
                                         </ul>
                                     </li>
 
-                                    @auth
+                                    @if (auth()->guard('tenant')->check())
                                         <li class="dropdown profile">
                                             <a href="javascript:void(0)" class="nav-link dropdown-toggle"
                                                 data-bs-toggle="dropdown">
@@ -98,7 +98,7 @@
                                             </a>
                                             <ul class="nav-submenu dropdown-menu">
                                                 <li><a href="{{ route('tenant.user.dashboard') }}">Dashboard</a></li>
-                                                <li><a href="{{ route('tenant.profile.edit') }}">Profile</a></li>
+                                                <li><a href="{{ route('tenant.user.profile') }}">Profile</a></li>
                                                 <li>
                                                     <form method="POST" action="{{ route('tenant.logout') }}">
                                                         @csrf
@@ -116,10 +116,10 @@
                                             </a>
                                             <ul class="nav-submenu dropdown-menu">
                                                 <li><a href="{{ route('tenant.login') }}">Login</a></li>
-                                                <li><a href="{{ route('tenant.user.dashboard') }}">Dashboard</a></li>
+                                                <li><a href="{{ route('tenant.register') }}">Register</a></li>
                                             </ul>
                                         </li>
-                                    @endauth
+                                    @endif
                                 </ul>
                             </li>
                         </ul>
