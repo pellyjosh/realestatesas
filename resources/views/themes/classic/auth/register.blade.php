@@ -12,19 +12,22 @@
             <div class="form-group text-center mb-4">
                 <div class="profile-image-upload"
                     style="display: inline-block; position: relative; width: 100px; height: 100px; border-radius: 50%; border: 3px solid #78c705; overflow: hidden; margin-bottom: 10px;">
-                    <input type="file" class="form-control" name="image" accept="image/*" capture="user"
+
+                    <input type="file" class="form-control" name="image" accept="image/*" capture="user" id="profile-image-input"
                         style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer;">
-                    <div class="image-placeholder"
+
+                    <div class="image-placeholder" id="image-preview-container"
                         style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #f8f8f8;">
-                        <i data-feather="image" style="font-size: 35px; color: #78c705;"></i>
+
+                        <!-- Default placeholder image -->
+                        <img id="profile-preview" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="User Icon"
+                            style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                 </div>
+
                 <div class="important-note" style="font-size: 0.85em; color: #666;">
                     Upload a profile picture or take a photo using your device's camera.
                 </div>
-                @error('profile_image')
-                    <div class="text-danger mt-1">{{ $message }}</div>
-                @enderror
             </div>
             <div class="form-group mb-3">
                 <div class="input-group">
@@ -75,7 +78,7 @@
                             <i data-feather="lock"></i>
                         </div>
                     </div>
-                    <input type="password" id="pwd-input" name="password" class="form-control" maxlength="8"
+                    <input type="password" id="pwd-input" name="password" class="form-control" 
                         placeholder="Password" required>
                     <div class="input-group-apend">
                         <div class="input-group-text">
@@ -98,7 +101,7 @@
                         </div>
                     </div>
                     <input type="password" id="confirm-pwd-input" name="password_confirmation" class="form-control"
-                        maxlength="8" placeholder="Confirm Password" required>
+                        placeholder="Confirm Password" required>
                     <div class="input-group-apend">
                         <div class="input-group-text">
                             <i id="confirm-pwd-icon" class="far fa-eye-slash"></i>
@@ -148,4 +151,40 @@
             </div>
         </form>
     </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const imageInput = document.getElementById('profile-image-input');
+        const profilePreview = document.getElementById('profile-preview');
+        const defaultImage = 'https://cdn-icons-png.flaticon.com/512/149/149071.png';
+
+        imageInput.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            
+            if (file) {
+                // Check if the file is an image
+                if (file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    
+                    reader.onload = function(e) {
+                        profilePreview.src = e.target.result;
+                        profilePreview.alt = 'Selected Profile Picture';
+                    };
+                    
+                    reader.readAsDataURL(file);
+                } else {
+                    // Reset to default if not an image
+                    profilePreview.src = defaultImage;
+                    profilePreview.alt = 'User Icon';
+                    alert('Please select a valid image file.');
+                    imageInput.value = '';
+                }
+            } else {
+                // Reset to default if no file selected
+                profilePreview.src = defaultImage;
+                profilePreview.alt = 'User Icon';
+            }
+        });
+    });
+    </script>
 @endsection
