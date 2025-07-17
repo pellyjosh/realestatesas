@@ -5,11 +5,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Premium Refined Homes - Realtor profile page">
-    <meta name="keywords" content="Premium Refined Homes - Realtor profile page">
-    <meta name="author" content="Premium Refined Homes - Realtor profile page">
-    <link rel="icon" href="{{ asset('client/assets/images/logo.png') }}" type="image/x-icon" />
-    <title>Premium Refined Homes - Realtor profile page</title>
+    <meta name="description" content="Premium Refined Luxury Homes - User dashboard page">
+    <meta name="keywords" content="Premium Refined Luxury Homes">
+    <meta name="author" content="Premium Refined Luxury Homes">
+    <title>Sheltos - User dashboard page</title>
 
     <!--Google font-->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,500,500i,600,600i,700,700i,800,800i"
@@ -18,21 +17,18 @@
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Rubik:400,400i,500,500i,700,700i" rel="stylesheet">
 
-    <!-- magnific css -->
-    <link rel="stylesheet" type="text/css" href="https://themes.pixelstrap.com/sheltos/assets/css/magnific-popup.css">
-
-    <!-- range slider css -->
-    <link rel="stylesheet" type="text/css" href="https://themes.pixelstrap.com/sheltos/assets/css/jquery-ui.css">
-
     <!-- animate css -->
-    <link rel="stylesheet" type="text/css" href="https://themes.pixelstrap.com/sheltos/assets/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('themes/classic/client/assets/css/animate.css') }}">
 
     <!-- Template css -->
-    <link rel="stylesheet" type="text/css" href="https://themes.pixelstrap.com/sheltos/assets/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="https://themes.pixelstrap.com/sheltos/assets/css/color1.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('themes/classic/client/assets/css/bootstrap.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('themes/classic/client/assets/css/color1.css') }}">
 
     <!-- Font Awesome 6 Free CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <link rel="icon" href="{{ asset('themes/classic/client/assets/images/logo.png') }}" type="image/x-icon" />
+    <title>@yield('title', 'Master Page')</title>
 
 </head>
 
@@ -42,7 +38,7 @@
     <div class="loader-wrapper">
         <div class="row loader-text">
             <div class="col-12">
-                <img src="{{ asset('client/assets/images/loader/gear.gif') }}" class="img-fluid" alt="">
+                <img src="{{ asset('themes/classic/client/assets/images/loader/gear.gif') }}" class="img-fluid" alt="">
             </div>
             <div class="col-12">
                 <div>
@@ -61,8 +57,8 @@
                     <div class="menu">
                         <div class="brand-logo">
                             <a href="{{ route('tenant.client.home') }}">
-                                <img src="{{ asset('client/assets/images/logo.png') }}" alt="" class="img-fluid"
-                                    style="max-width: 40%;">
+                                <img src="{{ asset('themes/classic/client/assets/images/logo.png') }}" alt="" class="img-fluid"
+                                    style="max-width: 40%">
                             </a>
                         </div>
                         <nav>
@@ -80,7 +76,7 @@
                                             <a href="{{ route('tenant.client.home') }}" class="nav-link">Home</a>
                                         </li>
                                         <li>
-                                            <a href="{{ route('client.events') }}" class="nav-link">Events</a>
+                                            <a href="{{ route('tenant.client.events') }}" class="nav-link">Events</a>
                                         </li>
                                         <li class="dropdown">
                                             <a href="{{ route('tenant.client.contact') }}"
@@ -94,7 +90,7 @@
                             <li class="right-menu color-6">
                                 <ul class="nav-menu d-flex align-items-center gap-2">
                                     <li class="dropdown">
-                                        <a href="user-favourites.html">
+                                        <a href="{{ route('tenant.user.favorites') }}">
                                             <i data-feather="heart"></i>
                                         </a>
                                     </li>
@@ -105,7 +101,7 @@
                                         <ul class="nav-submenu">
                                             <li>
                                                 <div class="media">
-                                                    <img src="{{ asset('client/assets/images/property/2.jpg') }}"
+                                                    <img src="{{ asset('themes/classic/client/assets/images/property/2.jpg') }}"
                                                         class="img-fluid" alt="">
                                                     <div class="media-body">
                                                         <a href="single-propertyx-8.html">
@@ -121,7 +117,7 @@
                                             </li>
                                             <li>
                                                 <div class="media">
-                                                    <img src="{{ asset('client/assets/images/property/3.jpg') }}"x
+                                                    <img src="{{ asset('themes/classic/client/assets/images/property/3.jpg') }}"
                                                         class="img-fluid" alt="">
                                                     <div class="media-body">
                                                         <a href="single-property-8.html">
@@ -151,12 +147,12 @@
                                                     style="width: 20px; height: 20px; line-height: 30px; text-align: center; font-size: 16px;"></i>
                                             </a>
                                             <ul class="nav-submenu dropdown-menu">
-                                                <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                                                <li><a href="{{ route('profile.edit') }}">Profile</a></li>
+                                                <li><a href="{{ route('tenant.user.dashboard') }}">Dashboard</a></li>
+                                                {{-- <li><a href="{{ route('tenant.profile.edit') }}">Profile</a></li> --}}
                                                 <li>
-                                                    <form method="POST" action="{{ route('logout') }}">
+                                                    <form method="POST" action="{{ route('tenant.logout') }}">
                                                         @csrf
-                                                        <a href="{{ route('logout') }}"
+                                                        <a href="{{ route('tenant.logout') }}"
                                                             onclick="event.preventDefault(); this.closest('form').submit();">Logout</a>
                                                     </form>
                                                 </li>
@@ -169,8 +165,8 @@
                                                 <i data-feather="user"></i>
                                             </a>
                                             <ul class="nav-submenu dropdown-menu">
-                                                <li><a href="{{ route('login') }}">Login</a></li>
-                                                <li><a href="{{ route('register') }}">Register</a></li>
+                                                <li><a href="{{ route('tenant.login') }}">Login</a></li>
+                                                <li><a href="{{ route('tenant.user.dashboard') }}">Dashboard</a></li>
                                             </ul>
                                         </li>
                                     @endauth
@@ -187,16 +183,15 @@
 
     <!-- breadcrumb start -->
     <section class="breadcrumb-section p-0">
-        <img src="https://themes.pixelstrap.com/sheltos/assets/images/inner-background.jpg" class="bg-img img-fluid"
-            alt="">
+        <img src="{{ asset('themes/classic/client/assets/images/inner-background.jpg') }}" class="bg-img img-fluid" alt="">
         <div class="container">
             <div class="breadcrumb-content">
                 <div>
-                    <h2>Realtor Profile</h2>
+                    <h2>Dashboard</h2>
                     <nav aria-label="breadcrumb" class="theme-breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('client.home') }}l">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Realtor Profile</li>
+                            <li class="breadcrumb-item"><a href="{{ route('tenant.client.home') }}">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
                         </ol>
                     </nav>
                 </div>
@@ -205,61 +200,35 @@
     </section>
     <!-- breadcrumb end -->
 
-    <!-- agent profile section start -->
-    <section class="agent-section property-section agent-profile-wrap">
+    <!-- user dashboard section start -->
+    <section class="user-dashboard small-section">
         <div class="container">
-            <div class="row ratio_55">
-                <div class="container">
-                    <div class="our-agent theme-card">
-                        <div class="row">
-                            <div class="col-sm-6 ratio_landscape">
-                                <div class="agent-image">
-                                    <img src="https://themes.pixelstrap.com/sheltos/assets/images/avatar/5.jpg"
-                                        class="img-fluid bg-img" alt="">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="sidebar-user sticky-cls">
+                        <div class="user-profile">
+                            <div class="media">
+                                <div class="change-pic">
+                                    <img src="{{ asset('themes/classic/admin/assets/images/avatar/3.jpg') }}"
+                                        class="img-fluid update_img" alt="">
+                                    <div class="change-hover">
+                                        <button type="button" class="btn"><i data-feather="camera"></i></button>
+                                        <input class="updateimg" type="file" name="img"
+                                            onchange="readURL(this,0)">
+                                    </div>
+                                </div>
+                                <div class="media-body">
+                                    <h5>Zack Lee</h5>
+                                    <h6 class="font-roboto">zackle@gmail.com</h6>
+                                    <h6 class="font-roboto mb-0">+91 846 - 547 - 210</h6>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
-                                <div class="our-agent-details">
-                                    <h3 class="f-w-600">Jonathan Scott</h3>
-                                    <h6>Real estate Property Realtor</h6>
-                                    <ul>
-                                        <li>
-                                            <div class="media">
-                                                <div class="icons-square">
-                                                    <i data-feather="map-pin"></i>
-                                                </div>
-                                                <div class="media-body">
-                                                    <h6>A-32, Albany, Newyork.</h6>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="media">
-                                                <div class="icons-square">
-                                                    <i data-feather="phone-call"></i>
-                                                </div>
-                                                <div class="media-body">
-                                                    <h6>(+066) 518 - 457 - 5181</h6>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="media">
-                                                <div class="icons-square">
-                                                    <i data-feather="mail"></i>
-                                                </div>
-                                                <div class="media-body">
-                                                    <h6>Contact@gmail.com</h6>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="with-link">
-                                        </li>
-                                    </ul>
-                                </div>
+                            <div class="connected-social">
+                                <h6>Connect with</h6>
                                 <ul class="agent-social">
                                     <li><a href="https://www.facebook.com/" class="facebook"><i
-                                                class="fab fa-facebook-f"></i></a></li>
+                                                class="fab fa-facebook-f"></i></a>
+                                    </li>
                                     <li>
                                         <a href="https://whatsapp.com/" class="twitter"
                                             style="background-color: #25d366">
@@ -269,33 +238,40 @@
                                 </ul>
                             </div>
                         </div>
-                    </div>
-                    <div class="about-agent theme-card">
-                        <h3>About the agent</h3>
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <p class="font-roboto">Residences can be classified by and how they are connected
-                                    residences and land. Different types
-                                    of housing tenure can be used for the same physical type.</p>
-                            </div>
-                            <div class="col-sm-4">
-                                <p class="font-roboto">Connected residences owned by a single entity leased out, or
-                                    owned separately with an agreement covering the relationship between units and
-                                    common areas.</p>
-                            </div>
-                            <div class="col-sm-4">
-                                <p class="font-roboto">Residential real estate may contain either a single family or
-                                    multifamily structure that is available for occupation or
-                                    for non-business purposes.</p>
-                            </div>
+                        <div class="dashboard-list">
+                            <ul class="nav nav-tabs right-line-tab">
+                                <li class="nav-item"><a class="nav-link"
+                                        href="{{ route('tenant.user.dashboard') }}">Dashboard</a></li>
+                                <li class="nav-item"><a class="nav-link"
+                                        href="{{ route('tenant.user.properties') }}">My
+                                        Properties</a></li>
+                                </li>
+                                <li class="nav-item"><a class="nav-link"
+                                        href="{{ route('tenant.user.profile') }}">My
+                                        profile</a>
+                                </li>
+                                <li class="nav-item"><a class="nav-link"
+                                        href="{{ route('tenant.user.favorites') }}">favourites</a>
+                                </li>
+                                <li class="nav-item"><a class="nav-link"
+                                        href="{{ route('tenant.user.payment') }}">Cards &
+                                        payment</a>
+                                </li>
+                                <li class="nav-item"><a class="nav-link"
+                                        href="{{ route('tenant.user.privacy') }}">Privacy</a></li>
+                                <li class="nav-item"><a href="javascript:void(0)" data-bs-toggle="modal"
+                                        data-bs-target="#logout" class="nav-link">Log out</a></li>
+                            </ul>
                         </div>
                     </div>
-
                 </div>
+
+                @yield('content')
+
             </div>
         </div>
     </section>
-    <!-- agent profile section end -->
+    <!-- user dashboard section end -->
 
     <!-- footer start -->
     <footer class="footer-brown">
@@ -309,8 +285,8 @@
                             </h5>
                             <div class="footer-content">
                                 <a href="{{ route('tenant.client.home') }}">
-                                    <img src="{{ asset('client/assets/images/logo.png') }}" alt=""
-                                        class="img-fluid">
+                                    <img src="{{ asset('themes/classic/client/assets/images/logo.png') }}" alt=""
+                                        class="img-fluid" style="max-width: 50%">
                                 </a>
                                 <p>This home provides entertaining spaces with a kitchen opening...</p>
                                 <div class="footer-contact">
@@ -341,7 +317,7 @@
                                     <a href="{{ route('tenant.client.home') }}">Home</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('client.events') }}">Events</a>
+                                    <a href="{{ route('tenant.client.events') }}">Events</a>
                                 </li>
                                 <li>
                                     <a href="{{ route('tenant.client.contact') }}">Contact</a>
@@ -401,6 +377,29 @@
     </div>
     <!-- tap to top end -->
 
+    <!-- log out modal start -->
+    <div class="modal fade edit-profile-modal logout-modal" id="logout">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Logging out</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h6>Are you sure ? you want to log out.</h6>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dashed color-2 btn-pill"
+                        data-bs-dismiss="modal">no</button>
+                    <button type="button"  onclick="" class="btn btn-gradient color-2 btn-pill">yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- log out modal end -->
+
     <!-- customizer start -->
     <div class="customizer-wrap">
         <div class="customizer-links">
@@ -456,47 +455,45 @@
     <!-- customizer end -->
 
     <!-- latest jquery-->
-    <script src="https://themes.pixelstrap.com/sheltos/assets/js/jquery-3.6.0.min.js"></script>
+    <script src="{{ asset("themes/classic/client/assets/js/jquery-3.6.0.min.js") }}"></script>
 
     <!-- popper js-->
-    <script src="https://themes.pixelstrap.com/sheltos/assets/js/popper.min.js"></script>
-
-    <!-- magnific js -->
-    <script src="https://themes.pixelstrap.com/sheltos/assets/js/jquery.magnific-popup.js"></script>
-    <script src="https://themes.pixelstrap.com/sheltos/assets/js/zoom-gallery.js"></script>
-
-    <!-- Bootstrap js-->
-    <script src="https://themes.pixelstrap.com/sheltos/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset("themes/classic/client/assets/js/popper.min.js") }}"></script>
 
     <!-- feather icon js-->
-    <script src="https://themes.pixelstrap.com/sheltos/assets/js/feather-icon/feather.min.js"></script>
-    <script src="https://themes.pixelstrap.com/sheltos/assets/js/feather-icon/feather-icon.js"></script>
-
-    <!-- range slider js -->
-    <script src="https://themes.pixelstrap.com/sheltos/assets/js/jquery-ui.js"></script>
-    <script src="https://themes.pixelstrap.com/sheltos/assets/js/jquery.ui.touch-punch.min.js"></script>
-    <script src="https://themes.pixelstrap.com/sheltos/assets/js/range-slider.js"></script>
+    <script src="{{ asset("themes/classic/client/assets/js/feather-icon/feather.min.js") }}"></script>
+    <script src="{{ asset("themes/classic/client/assets/js/feather-icon/feather-icon.js") }}"></script>
 
     <!-- slick js -->
-    <script src="https://themes.pixelstrap.com/sheltos/assets/js/slick.js"></script>
-    <script src="https://themes.pixelstrap.com/sheltos/assets/js/slick-animation.min.js"></script>
-    <script src="https://themes.pixelstrap.com/sheltos/assets/js/custom-slick.js"></script>
+    <script src="{{ asset("themes/classic/client/assets/js/slick.js") }}"></script>
+    <script src="{{ asset("themes/classic/client/assets/js/slick-animation.min.js") }}"></script>
+    <script src="{{ asset("themes/classic/client/assets/js/custom-slick.js") }}"></script>
 
-    <!--grid js -->
-    <script src="https://themes.pixelstrap.com/sheltos/assets/js/grid-list.js"></script>
+    <!-- Bootstrap js-->
+    <script src="{{ asset("themes/classic/client/assets/js/bootstrap.bundle.min.js") }}"></script>
+
+    <!-- chartist chart js-->
+    <script src="{{ asset("themes/classic/admin/assets/js/chart/chartist/chartist.js") }}"></script>
+    <script src="{{ asset("themes/classic/admin/assets/js/chart/chartist/chartist-plugin-tooltip.js") }}"></script>
+
+    <!-- apexchart js-->
+    <script src="{{ asset("themes/classic/admin/assets/js/chart/apex-chart/apex-chart.js") }}"></script>
+
+    <!-- dashboard js-->
+    <script src="{{ asset("themes/classic/client/assets/js/dashboard.js") }}"></script>
 
     <!-- Template js-->
-    <script src="https://themes.pixelstrap.com/sheltos/assets/js/script.js"></script>
+    <script src="{{ asset("themes/classic/client/assets/js/script.js") }}"></script>
 
     <!-- Customizer js-->
-    <script src="https://themes.pixelstrap.com/sheltos/assets/js/customizer.js"></script>
+    <script src="{{ asset("themes/classic/client/assets/js/customizer.js") }}"></script>
+
+    <!-- wow js-->
+    <script src="{{ asset("themes/classic/client/assets/js/wow.min.js") }}"></script>
 
     <!-- Color-picker js-->
-    <script src="https://themes.pixelstrap.com/sheltos/assets/js/color/single-property.js"></script>
+     <script src="{{ asset('themes/classic/client/assets/js/color/layout3.js') }}" defer></script>
 
 </body>
-
-
-<!-- Mirrored from themes.pixelstrap.com/sheltos/main/agent-profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 25 Jun 2025 13:52:25 GMT -->
 
 </html>

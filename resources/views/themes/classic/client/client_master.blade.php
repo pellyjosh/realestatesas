@@ -16,7 +16,7 @@
     {{-- Open Graph / Facebook / LinkedIn / WhatsApp --}}
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url()->current() }}"> {{-- Canonical URL of the page --}}
-    <meta property="og:title" content="@yield('title', 'Premium Refined Luxury Homes')"> {{-- Title for social sharing --}}
+    <meta property="og:title" content="@yield('title')"> {{-- Title for social sharing --}}
     <meta property="og:description"
         content="Discover exquisite luxury homes and premium refined properties for sale. Explore high-end real estate listings with advanced search, stunning visuals, and detailed information.">
     {{-- Description for social sharing --}}
@@ -28,7 +28,7 @@
     {{-- Twitter --}}
     <meta name="twitter:card" content="summary_large_image"> {{-- Type of Twitter card --}}
     <meta name="twitter:url" content="{{ url()->current() }}"> {{-- Canonical URL of the page --}}
-    <meta name="twitter:title" content="@yield('title', 'Premium Refined Luxury Homes')"> {{-- Title for Twitter sharing --}}
+    <meta name="twitter:title" content="@yield('title')"> {{-- Title for Twitter sharing --}}
     <meta name="twitter:description"
         content="Discover exquisite luxury homes and premium refined properties for sale. Explore high-end real estate listings with advanced search, stunning visuals, and detailed information.">
     {{-- Description for Twitter sharing --}}
