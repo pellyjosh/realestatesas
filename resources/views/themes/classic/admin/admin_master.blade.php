@@ -44,7 +44,7 @@
     <div class="loader-wrapper">
         <div class="row loader-text">
             <div class="col-12">
-                <img src="{{ asset("themes/classic/client/assets/images/loader/gear.gif") }}" class="img-fluid"
+                <img src="{{ asset('themes/classic/client/assets/images/loader/gear.gif') }}" class="img-fluid"
                     alt="">
             </div>
             <div class="col-12">
@@ -85,7 +85,7 @@
                         <div class="notification-dropdown onhover-show-div">
                             <div class="dropdown-title">
                                 <h6>Recent Attachments</h6>
-                                <a href="{{ route('admin.reports') }}">Show all</a>
+                                <a href="{{ route('tenant.admin.reports') }}">Show all</a>
                             </div>
                             <ul>
                                 <li>
@@ -94,7 +94,7 @@
                                             <i class="fas fa-file-word"></i>
                                         </div>
                                         <div class="media-body">
-                                            <a href="{{ route('admin.reports') }}">
+                                            <a href="{{ route('tenant.admin.reports') }}">
                                                 <h6>Doc_file.doc</h6>
                                             </a>
                                             <span>800MB</span>
@@ -107,7 +107,7 @@
                                             <i class="fas fa-file-image"></i>
                                         </div>
                                         <div class="media-body">
-                                            <a href="{{ route('admin.reports') }}">
+                                            <a href="{{ route('tenant.admin.reports') }}">
                                                 <h6>Apartment.jpg</h6>
                                             </a>
                                             <span>500kb</span>
@@ -120,7 +120,7 @@
                                             <i class="fas fa-file-pdf"></i>
                                         </div>
                                         <div class="media-body">
-                                            <a href="{{ route('admin.reports') }}">
+                                            <a href="{{ route('tenant.admin.reports') }}">
                                                 <h6>villa_report.pdf</h6>
                                             </a>
                                             <span>26MB</span>
@@ -138,7 +138,7 @@
                         <div class="notification-dropdown onhover-show-div">
                             <div class="dropdown-title">
                                 <h6>Notifications</h6>
-                                <a href="{{ route('admin.favourites') }}">Show all</a>
+                                <a href="{{ route('tenant.admin.favourites') }}">Show all</a>
                             </div>
                             <ul>
                                 <li>
@@ -177,19 +177,19 @@
                                             <ul class="user-group">
                                                 <li>
                                                     <a href="javascript:void(0)">
-                                                        <img src="{{ asset('admin/assets/images/about/1.jpg') }}"
+                                                        <img src="{{ asset('themes/classic/admin/assets/images/about/1.jpg') }}"
                                                             class="img-fluid" alt="">
                                                     </a>
                                                 </li>
                                                 <li>
                                                     <a href="javascript:void(0)">
-                                                        <img src="{{ asset('admin/assets/images/about/2.jpg') }}"
+                                                        <img src="{{ asset('themes/classic/admin/assets/images/about/2.jpg') }}"
                                                             class="img-fluid" alt="">
                                                     </a>
                                                 </li>
                                                 <li>
                                                     <a href="javascript:void(0)">
-                                                        <img src="{{ asset('admin/assets/images/about/3.jpg') }}"
+                                                        <img src="{{ asset('themes/classic/admin/assets/images/about/3.jpg') }}"
                                                             class="img-fluid" alt="">
                                                     </a>
                                                 </li>
@@ -209,13 +209,13 @@
                                             <ul class="user-group">
                                                 <li>
                                                     <a href="javascript:void(0)">
-                                                        <img src="{{ asset('admin/assets/images/about/2.jpg') }}"
+                                                        <img src="{{ asset('themes/classic/admin/assets/images/about/2.jpg') }}"
                                                             class="img-fluid" alt="">
                                                     </a>
                                                 </li>
                                                 <li>
                                                     <a href="javascript:void(0)">
-                                                        <img src="{{ asset('admin/assets/images/about/3.jpg') }}"
+                                                        <img src="{{ asset('themes/classic/admin/assets/images/about/3.jpg') }}"
                                                             class="img-fluid" alt="">
                                                     </a>
                                                 </li>
@@ -238,17 +238,17 @@
                         <div class="notification-dropdown chat-dropdown onhover-show-div">
                             <div class="dropdown-title">
                                 <h6>Messages</h6>
-                                <a href="{{ route('user-profile') }}">View all</a>
+                                <a href="{{ route('tenant.user.profile') }}">View all</a>
                             </div>
                             <ul>
                                 <li>
                                     <div class="media">
                                         <div class="chat-user">
-                                            <img src="{{ asset('admin/assets/images/avatar/1.jpg') }}"
+                                            <img src="{{ asset('themes/classic/admin/assets/images/avatar/1.jpg') }}"
                                                 class="img-fluid" alt="">
                                         </div>
                                         <div class="media-body">
-                                            <a href="{{ route('user-profile') }}">
+                                            <a href="{{ route('tenant.user.profile') }}">
                                                 <h6>Bob Frapples</h6>
                                             </a>
                                             <span>Template Represents simply...</span>
@@ -259,11 +259,11 @@
                                 <li>
                                     <div class="media">
                                         <div class="chat-user">
-                                            <img src="{{ asset('admin/assets/images/avatar/3.jpg') }}"
+                                            <img src="{{ asset('themes/classic/admin/assets/images/avatar/3.jpg') }}"
                                                 class="img-fluid" alt="">
                                         </div>
                                         <div class="media-body">
-                                            <a href="{{ route('user-profile') }}">
+                                            <a href="{{ route('tenant.user.profile') }}">
                                                 <h6>Greta Life</h6>
                                             </a>
                                             <span>Template Represents simply...</span>
@@ -274,11 +274,11 @@
                                 <li>
                                     <div class="media">
                                         <div class="chat-user">
-                                            <img src="{{ asset('admin/assets/images/avatar/4.jpg') }}"
+                                            <img src="{{ asset('themes/classic/admin/assets/images/avatar/4.jpg') }}"
                                                 class="img-fluid" alt="">
                                         </div>
                                         <div class="media-body">
-                                            <a href="{{ route('user-profile') }}">
+                                            <a href="{{ route('tenant.user.profile') }}">
                                                 <h6>Greta Life</h6>
                                             </a>
                                             <span>Template Represents simply...</span>
@@ -289,11 +289,11 @@
                                 <li>
                                     <div class="media">
                                         <div class="chat-user">
-                                            <img src="{{ asset('admin/assets/images/avatar/7.jpg') }}"
+                                            <img src="{{ asset('themes/classic/admin/assets/images/avatar/7.jpg') }}"
                                                 class="img-fluid" alt="">
                                         </div>
                                         <div class="media-body">
-                                            <a href="{{ route('user-profile') }}">
+                                            <a href="{{ route('tenant.user.profile') }}">
                                                 <h6>Greta Life</h6>
                                             </a>
                                             <span>Template Represents simply...</span>
@@ -306,14 +306,14 @@
                     </li>
                     <li class="profile-avatar onhover-dropdown">
                         <div>
-                            <img src="{{ asset('admin/assets/images/avatar/3.jpg') }}" class="img-fluid"
+                            <img src="{{ asset('themes/classic/admin/assets/images/avatar/3.jpg') }}" class="img-fluid"
                                 alt="">
                         </div>
                         <ul class="profile-dropdown onhover-show-div">
-                            <li><a href="{{ route('user-profile') }}"><span>Account </span><i
+                            <li><a href="{{ route('tenant.user.profile') }}"><span>Account </span><i
                                         data-feather="user"></i></a></li>
-                           
-                            <li><a href="{{ route("admin.login") }}"><span>Log Out</span><i
+
+                            <li><a href="{{ route('tenant.login') }}"><span>Log Out</span><i
                                         data-feather="log-in"></i></a></li>
                         </ul>
                     </li>
@@ -327,11 +327,11 @@
             <!-- page sidebar start -->
             <div class="page-sidebar">
                 <div class="logo-wrap">
-                    <a href="{{ route('admin.dashboard') }}">
-                        <img src="{{ asset('themes/classic/client/assets/images/logo2.png') }}" class="img-fluid for-light"
-                            alt="">
-                        <img src="{{ asset('client/assets/images/logo2.png') }}" class="img-fluid for-dark"
-                            alt="">
+                    <a href="{{ route('tenant.admin.dashboard') }}">
+                        <img src="{{ asset('themes/classic/client/assets/images/logo2.png') }}"
+                            class="img-fluid for-light" alt="">
+                        <img src="{{ asset('themes/classic/client/assets/images/logo2.png') }}"
+                            class="img-fluid for-dark" alt="">
                     </a>
                     <div class="back-btn d-lg-none d-inline-block">
                         <i data-feather="chevrons-left"></i>
@@ -341,10 +341,11 @@
                     <div class="user-profile">
                         <div class="media">
                             <div class="change-pic">
-                                <img src="{{ asset('admin/assets/images/avatar/3.jpg') }}" class="img-fluid" alt="">
+                                <img src="{{ asset('themes/classic/admin/assets/images/avatar/3.jpg') }}"
+                                    class="img-fluid" alt="">
                             </div>
                             <div class="media-body">
-                                <a href="{{ route('user-profile') }}">
+                                <a href="{{ route('tenant.user.profile') }}">
                                     <h6>Zack Lee</h6>
                                 </a>
                                 <span class="font-roboto">zackle@gmail.com</span>
@@ -354,7 +355,7 @@
                     <div id="mainsidebar">
                         <ul class="sidebar-menu custom-scrollbar">
                             <li class="sidebar-item">
-                                <a href="{{ route('admin.dashboard') }}" class="sidebar-link only-link">
+                                <a href="{{ route('tenant.admin.dashboard') }}" class="sidebar-link only-link">
                                     <i data-feather="airplay"></i>
                                     <span>Dashboard</span>
                                 </a>
@@ -366,25 +367,25 @@
                                 </a>
                                 <ul class="nav-submenu menu-content">
                                     <li>
-                                        <a href="{{ route('admin.add-property') }}">
+                                        <a href="{{ route('tenant.admin.add.property') }}">
                                             <i data-feather="chevrons-right"></i>
                                             add property
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('admin.edit-property') }}">
+                                        <a href="{{ route('tenant.admin.edit.property') }}">
                                             <i data-feather="chevrons-right"></i>
                                             edit property
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('admin.listing') }}">
+                                        <a href="{{ route('tenant.admin.listing') }}">
                                             <i data-feather="chevrons-right"></i>
                                             property list
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('admin.favourites') }}">
+                                        <a href="{{ route('tenant.admin.favourites') }}">
                                             <i data-feather="chevrons-right"></i>
                                             Favourites
                                         </a>
@@ -398,32 +399,26 @@
                                     <span>Manage users</span>
                                 </a>
                                 <ul class="nav-submenu menu-content">
-                                    {{-- <li>
-                                        <a href="{{ route('user-profile') }}">
-                                            <i data-feather="chevrons-right"></i>
-                                            Profile
-                                        </a>
-                                    </li> --}}
                                     <li>
-                                        <a href="{{ route('admin.add-user') }}">
+                                        <a href="{{ route('tenant.admin.add.user') }}">
                                             <i data-feather="chevrons-right"></i>
                                             Add user
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('admin.add-user-wizard') }}">
+                                        <a href="{{ route('tenant.admin.add.user.wizard') }}">
                                             <i data-feather="chevrons-right"></i>
                                             Add user wizard <span class="label label-shadow ms-1">new</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('edit-user') }}">
+                                        <a href="{{ route('tenant.edit.user') }}">
                                             <i data-feather="chevrons-right"></i>
                                             Edit user
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('all-users') }}">
+                                        <a href="{{ route('tenant.all.users') }}">
                                             <i data-feather="chevrons-right"></i>
                                             All users
                                         </a>
@@ -436,38 +431,32 @@
                                     <span>Manage Admins</span>
                                 </a>
                                 <ul class="nav-submenu menu-content">
-                                    {{-- <li>
-                                        <a href="{{ route('admin.realtor-profile') }}">
-                                            <i data-feather="chevrons-right"></i>
-                                            Profile
-                                        </a>
-                                    </li> --}}
                                     <li>
-                                        <a href="{{ route('add-admin') }}">
+                                        <a href="{{ route('tenant.admin.add') }}">
                                             <i data-feather="chevrons-right"></i>
                                             Add Admin
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('add-admin-wizard') }}">
+                                        <a href="{{ route('tenant.admin.add.wizard') }}">
                                             <i data-feather="chevrons-right"></i>
                                             Add Admin wizard <span class="label label-shadow ms-1">new</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('edit-admin') }}">
+                                        <a href="{{ route('tenant.admin.edit') }}">
                                             <i data-feather="chevrons-right"></i>
                                             Edit Admin
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('all-admins') }}">
+                                        <a href="{{ route('tenant.admin.all') }}">
                                             <i data-feather="chevrons-right"></i>
                                             All Admins
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('admin-invoice') }}">
+                                        <a href="{{ route('tenant.admin.invoice') }}">
                                             <i data-feather="chevrons-right"></i>
                                             Invoice
                                         </a>
@@ -480,41 +469,35 @@
                                     <span>Manage Realtors</span>
                                 </a>
                                 <ul class="nav-submenu menu-content">
-                                    {{-- <li>
-                                        <a href="{{ route('admin.realtor-profile') }}">
-                                            <i data-feather="chevrons-right"></i>
-                                            Profile
-                                        </a>
-                                    </li> --}}
                                     <li>
-                                        <a href="{{ route('add-realtor') }}">
+                                        <a href="{{ route('tenant.admin.add.realtor') }}">
                                             <i data-feather="chevrons-right"></i>
                                             Add Realtor
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('add-realtor-wizard') }}">
+                                        <a href="{{ route('tenant.admin.add.realtor.wizard') }}">
                                             <i data-feather="chevrons-right"></i>
                                             Add Realtor wizard <span class="label label-shadow ms-1">new</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('edit-realtor') }}">
+                                        <a href="{{ route('tenant.admin.edit.realtor') }}">
                                             <i data-feather="chevrons-right"></i>
                                             Edit Realtor
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('all-realtors') }}">
+                                        <a href="{{ route('tenant.admin.all.realtors') }}">
                                             <i data-feather="chevrons-right"></i>
                                             All Realtors
                                         </a>
                                     </li>
-                                   
+
                                 </ul>
                             </li>
                             <li class="sidebar-item">
-                                <a href="{{ route('admin.events') }}" class="sidebar-link only-link">
+                                <a href="{{ route('tenant.admin.events') }}" class="sidebar-link only-link">
                                     <i data-feather="calendar"></i>
                                     <span>Events</span>
                                 </a>
@@ -526,54 +509,36 @@
                                 </a>
                                 <ul class="nav-submenu menu-content">
                                     <li>
-                                        <a href="{{ route('admin.family-house') }}">
+                                        <a href="{{ route('tenant.admin.family.house') }}">
                                             <i data-feather="chevrons-right"></i>
                                             Family House
                                         </a>
                                     </li>
-                                    {{-- <li>
-                                        <a href="cottage.html">
-                                            <i data-feather="chevrons-right"></i>
-                                            Cottage
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="apartment.html">
-                                            <i data-feather="chevrons-right"></i>
-                                            Apartment
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="condominium.html">
-                                            <i data-feather="chevrons-right"></i>
-                                            Condominium
-                                        </a>
-                                    </li> --}}
                                 </ul>
                             </li>
                             <li class="sidebar-item">
-                                <a href="{{ route('admin.reports') }}" class="sidebar-link only-link">
+                                <a href="{{ route('tenant.admin.reports') }}" class="sidebar-link only-link">
                                     <i data-feather="bar-chart-2"></i>
                                     <span>Reports</span>
                                 </a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="{{ route('admin.transactions') }}" class="sidebar-link only-link">
+                                <a href="{{ route('tenant.admin.transactions') }}" class="sidebar-link only-link">
                                     <i class="fas fa-atm"></i>
                                     <span>Transactions</span>
                                 </a>
                             <li class="sidebar-item">
-                                <a href="{{ route('admin.withdrawal') }}" class="sidebar-link only-link">
+                                <a href="{{ route('tenant.admin.withdrawal') }}" class="sidebar-link only-link">
                                     <i data-feather="bar-chart-2"></i>
                                     <span>Withdrawal</span>
                                 </a>
                             <li class="sidebar-item">
-                                <a href="{{ route("admin.payments") }}" class="sidebar-link only-link">
+                                <a href="{{ route('tenant.admin.payments') }}" class="sidebar-link only-link">
                                     <i data-feather="credit-card"></i>
                                     <span>Payments</span>
                                 </a>
                             </li>
-                            
+
                         </ul>
                     </div>
                 </div>
@@ -669,20 +634,20 @@
             $('#myTable').DataTable();
         });
     </script> --}}
-    
+
     <!-- latest jquery-->
     <script src="{{ asset('themes/classic/admin/assets/js/jquery-3.6.0.min.js') }}"></script>
 
-     <!-- DataTables JS -->
-     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 
-     <script>
+    <script>
         $(document).ready(function() {
             $('#myTable').DataTable();
         });
     </script>
 
-    <script src="{{ asset("themes/classic/admin/assets/js/check.js") }}"></script>
+    <script src="{{ asset('themes/classic/admin/assets/js/check.js') }}"></script>
 
 
     <!-- Bootstrap js-->
@@ -693,31 +658,31 @@
     <script src="{{ asset('themes/classic/client/assets/js/feather-icon/feather-icon.js') }}"></script>
 
     <!-- magnific js -->
-    <script src="{{ asset("themes/classic/admin/assets/js/zoom-gallery.js") }}"></script>
-    <script src="{{ asset("themes/classic/admin/assets/js/jquery.magnific-popup.js") }}"></script>
+    <script src="{{ asset('themes/classic/admin/assets/js/zoom-gallery.js') }}"></script>
+    <script src="{{ asset('themes/classic/admin/assets/js/jquery.magnific-popup.js') }}"></script>
 
-     <!-- slick js -->
-    <script src="{{ asset("themes/classic/admin/assets/js/slick.js") }}"></script>
-    <script src="{{ asset("themes/classic/admin/assets/js/property-slider.js") }}"></script>
+    <!-- slick js -->
+    <script src="{{ asset('themes/classic/admin/assets/js/slick.js') }}"></script>
+    <script src="{{ asset('themes/classic/admin/assets/js/property-slider.js') }}"></script>
     <script>
-    $(document).ready(function(){
-        console.log('Initializing property slider from master');
-        $('.property-slider').each(function(){
-            $(this).slick({
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                arrows: true,
-                prevArrow: $(this).find('.prev-arrow'),
-                nextArrow: $(this).find('.next-arrow'),
-                dots: false,
-                autoplay: false,
-                infinite: true
+        $(document).ready(function() {
+            console.log('Initializing property slider from master');
+            $('.property-slider').each(function() {
+                $(this).slick({
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    arrows: true,
+                    prevArrow: $(this).find('.prev-arrow'),
+                    nextArrow: $(this).find('.next-arrow'),
+                    dots: false,
+                    autoplay: false,
+                    infinite: true
+                });
             });
         });
-    });
     </script>
 
-      {{-- <!-- chartist chart js-->
+    {{-- <!-- chartist chart js-->
       <script src="{{ asset("admin/assets/js/chart/chartist/chartist.js") }}"></script>
       <script src="{{ asset("admin/assets/js/chart/chartist/chartist-plugin-tooltip.js") }}"></script> --}}
 
@@ -728,11 +693,10 @@
     <script src="{{ asset('themes/classic/admin/assets/js/chart/apex-chart/apex-chart.js') }}"></script>
     <script src="{{ asset('themes/classic/admin/assets/js/chart/apex-chart/stock-prices.js') }}"></script>
     <script src="{{ asset('themes/classic/admin/assets/js/admin-dashboard.js') }}"></script>
-    {{-- <script src="{{ asset("admin/assets/js/user-profile.js") }}"></script> --}}
 
-      <!-- vector map js-->
-      <script src="{{ asset('themes/classic/admin/assets/js/vector-map/jquery-jvectormap-2.0.2.min.js') }}"></script>
-      <script src="{{ asset('themes/classic/admin/assets/js/vector-map/jquery-jvectormap-asia-mill.js') }}"></script>
+    <!-- vector map js-->
+    <script src="{{ asset('themes/classic/admin/assets/js/vector-map/jquery-jvectormap-2.0.2.min.js') }}"></script>
+    <script src="{{ asset('themes/classic/admin/assets/js/vector-map/jquery-jvectormap-asia-mill.js') }}"></script>
 
 
     <!--admin js -->

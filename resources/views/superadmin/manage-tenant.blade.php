@@ -8,7 +8,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
-            <livewire:superadmin.dashboard.create-tenant />
+            <livewire:supertenant.admin.dashboard.create-tenant />
 
         </div>
     </div>

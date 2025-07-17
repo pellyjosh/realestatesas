@@ -27,7 +27,7 @@ Route::middleware(['web']) // or whatever middleware you want
     ->domain(config('tenancy.central_domains')[0])
     ->group(function () {
         Route::get('/billings', [\App\Http\Controllers\BillingController::class, 'index'])->name('billings.index');
-        Route::get('/dashboard', [AdminController::class, 'onboarding'])->name('superadmin.dashboard');
+        Route::get('/dashboard', [AdminController::class, 'onboarding'])->name('supertenant.admin.dashboard');
 
         Route::middleware(['auth:web', 'verified'])->group(function () {
             Route::post('/billings/subscribe', [\App\Http\Controllers\BillingController::class, 'subscribe'])->name('billings.subscribe');

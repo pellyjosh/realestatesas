@@ -1,4 +1,4 @@
-@extends('admin.admin_master')
+@extends('themes.classic.admin.admin_master')
 @section('title', 'Events | Premium Refined Luxury Homes')
 @section('content')
 
@@ -70,7 +70,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb pull-right">
                         <li class="breadcrumb-item">
-                            <a href="{{ route('admin.dashboard') }}">
+                            <a href="{{ route('tenant.admin.dashboard') }}">
                                 <i class="fas fa-home"></i>
                             </a>
                         </li>
@@ -91,7 +91,8 @@
                     <input type="date" class="form-control" placeholder="End Date">
                     <button class="btn btn-sm" style="background-color: #91d20a; color: #fff;"></i> Filter</button>
                 </div>
-                <a href="#" class="btn btn-sm" style="background-color: #91d20a; color: #fff;"><i class="fas fa-plus"></i> Add Event</a>
+                <a href="#" class="btn btn-sm" style="background-color: #91d20a; color: #fff;"><i
+                        class="fas fa-plus"></i> Add Event</a>
             </div>
         </div>
         <table class="table table-striped table-bordered text-sm align-middle mb-0 w-100" id="myTable"

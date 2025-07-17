@@ -1,4 +1,4 @@
-@extends('admin.admin_master')
+@extends('themes.classic.admin.admin_master')
 @section('title', 'Payments | Premium Refined Luxury Homes')
 @section('content')
     <div class="container-fluid">
@@ -14,7 +14,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb pull-right">
                         <li class="breadcrumb-item">
-                            <a href="{{ route('admin.dashboard') }}">
+                            <a href="{{ route('tenant.admin.dashboard') }}">
                                 <i class="fas fa-home"></i>
                             </a>
                         </li>
@@ -26,7 +26,7 @@
 
         <div class="row">
             <div class="col-lg-12">
-                <div class="card"> 
+                <div class="card">
                     <div class="card-header pb-0">
                         <h5>Payment Lists</h5>
                     </div>
@@ -38,6 +38,7 @@
                                     color: #fff !important;
                                     border: 1px solid #91d20a !important;
                                 }
+
                                 .dataTables_paginate .paginate_button {
                                     background-color: #f6faeb !important;
                                     color: #333 !important;
@@ -45,10 +46,12 @@
                                     border-radius: 20px !important;
                                     margin: 0 2px;
                                 }
+
                                 .dataTables_paginate .paginate_button:hover:not(.current) {
                                     background-color: #e5f5c7 !important;
                                     color: #333 !important;
                                 }
+
                                 .filter-panel {
                                     margin-bottom: 1rem;
                                     display: flex;
@@ -57,52 +60,63 @@
                                     gap: 0.75rem;
                                     flex-wrap: wrap;
                                 }
+
                                 .table thead th {
                                     background: #e5f5c7;
                                     color: #333;
                                     font-weight: 600;
                                     padding: 0.5rem;
                                 }
+
                                 .custom-table-container {
                                     border-radius: 10px;
                                     padding: 0.5rem;
                                     width: 100%;
                                     overflow-x: auto;
                                 }
+
                                 .table td {
                                     padding: 0.5rem 0.75rem;
                                     vertical-align: middle;
                                 }
+
                                 .table th {
                                     padding: 0.5rem 0.75rem;
                                     vertical-align: middle;
                                 }
+
                                 .action-btns {
                                     display: flex;
                                     gap: 0.25rem;
                                     flex-wrap: wrap;
                                 }
+
                                 .page-body {
                                     min-height: calc(100vh - 200px);
                                 }
+
                                 @media (max-width: 576px) {
                                     .table {
                                         font-size: 0.85rem;
                                     }
+
                                     .action-btns {
                                         flex-wrap: nowrap;
                                         gap: 0.15rem;
                                     }
+
                                     .filter-panel {
                                         flex-direction: column;
                                         align-items: center;
                                     }
+
                                     .button-group {
                                         margin-top: 1rem;
                                         width: 100%;
                                         display: flex;
                                         justify-content: center;
                                     }
+
                                     .button-group .btn {
                                         padding: 0.5rem 1.5rem;
                                         font-size: 1rem;
@@ -114,25 +128,29 @@
                                 <div class="d-flex align-items-center gap-3 flex-wrap">
                                     <div class="form-group">
                                         <label for="fromDate" class="small text-secondary fw-bold">From Date</label>
-                                        <input type="date" id="fromDate" class="form-control form-control-sm" style="background-color: #f6faeb; border-color: #91d20a; color: #333;">
+                                        <input type="date" id="fromDate" class="form-control form-control-sm"
+                                            style="background-color: #f6faeb; border-color: #91d20a; color: #333;">
                                     </div>
                                     <div class="form-group">
                                         <label for="toDate" class="small text-secondary fw-bold">To Date</label>
-                                        <input type="date" id="toDate" class="form-control form-control-sm" style="background-color: #f6faeb; border-color: #91d20a; color: #333;">
+                                        <input type="date" id="toDate" class="form-control form-control-sm"
+                                            style="background-color: #f6faeb; border-color: #91d20a; color: #333;">
                                     </div>
                                 </div>
                                 <div class="d-flex align-items-end gap-2 button-group">
-                                    <button class="btn btn-sm" type="button" style="background-color: #91d20a; color: #fff; border-color: #91d20a;">Filter</button>
+                                    <button class="btn btn-sm" type="button"
+                                        style="background-color: #91d20a; color: #fff; border-color: #91d20a;">Filter</button>
                                 </div>
                             </div>
                             <div class="table-responsive" style="overflow-x: auto; width: 100%;">
-                                <table class="table table-striped table-bordered text-sm align-middle mb-0 w-100" id="myTable"
-                                    style="border-color: #91d20a; min-width: 600px;">
+                                <table class="table table-striped table-bordered text-sm align-middle mb-0 w-100"
+                                    id="myTable" style="border-color: #91d20a; min-width: 600px;">
                                     <thead>
                                         <tr>
                                             <th class="text-uppercase small text-secondary fw-bold py-3">Payment ID</th>
                                             <th class="text-uppercase small text-secondary fw-bold py-3">User</th>
-                                            <th class="text-uppercase small text-secondary fw-bold py-3">Property/Service</th>
+                                            <th class="text-uppercase small text-secondary fw-bold py-3">Property/Service
+                                            </th>
                                             <th class="text-uppercase small text-secondary fw-bold py-3">Realtor</th>
                                             <th class="text-uppercase small text-secondary fw-bold py-3">Amount</th>
                                             <th class="text-uppercase small text-secondary fw-bold py-3">Date</th>
@@ -155,7 +173,8 @@
                                             <td class="fw-semibold text-success">Completed</td>
                                             <td>
                                                 <div class="action-btns">
-                                                    <a href="#" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>
+                                                    <a href="#" class="btn btn-sm btn-info"><i
+                                                            class="fas fa-eye"></i></a>
                                                 </div>
                                             </td>
                                         </tr>
@@ -173,8 +192,10 @@
                                             <td class="fw-semibold text-warning">Pending</td>
                                             <td>
                                                 <div class="action-btns">
-                                                    <a href="#" class="btn btn-sm btn-success"><i class="fas fa-check"></i></a>
-                                                    <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-times"></i></a>
+                                                    <a href="#" class="btn btn-sm btn-success"><i
+                                                            class="fas fa-check"></i></a>
+                                                    <a href="#" class="btn btn-sm btn-danger"><i
+                                                            class="fas fa-times"></i></a>
                                                 </div>
                                             </td>
                                         </tr>
@@ -192,7 +213,8 @@
                                             <td class="fw-semibold text-success">Completed</td>
                                             <td>
                                                 <div class="action-btns">
-                                                    <a href="#" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>
+                                                    <a href="#" class="btn btn-sm btn-info"><i
+                                                            class="fas fa-eye"></i></a>
                                                 </div>
                                             </td>
                                         </tr>
@@ -210,7 +232,8 @@
                                             <td class="fw-semibold text-danger">Failed</td>
                                             <td>
                                                 <div class="action-btns">
-                                                    <a href="#" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>
+                                                    <a href="#" class="btn btn-sm btn-info"><i
+                                                            class="fas fa-eye"></i></a>
                                                 </div>
                                             </td>
                                         </tr>

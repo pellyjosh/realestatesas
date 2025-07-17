@@ -1,4 +1,4 @@
-@extends('admin.admin_master')
+@extends('themes.classic.admin.admin_master')
 @section('title, Add User | Premium Refined Luxury Homes')
 @section('content')
         <!-- Container-fluid start -->

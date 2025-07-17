@@ -176,6 +176,8 @@
     <!-- Color-picker js-->
     <script src="{{ asset('themes/classic/client/assets/js/color/layout3.js') }}" defer></script>
 
+    @stack('scripts')
+
 </body>
 
 </html>

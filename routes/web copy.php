@@ -203,10 +203,10 @@ Route::middleware('auth')->group(function () {
 
 Route::prefix('management')->middleware(['auth', 'user.type:admin'])->group(function () {
     Route::controller(AdminController::class)->group(function () {
-        Route::get('/dashboard', 'index')->name('admin.dashboard');
+        Route::get('/dashboard', 'index')->name('tenant.admin.dashboard');
 
         Route::get('/', function () {
-            return redirect()->route('admin.dashboard');
+            return redirect()->route('tenant.admin.dashboard');
         });
 
         Route::get('/add-admin', 'addAdmin')->name('add-admin');
@@ -217,10 +217,10 @@ Route::prefix('management')->middleware(['auth', 'user.type:admin'])->group(func
     });
 
     Route::controller(PropertyController::class)->group(function () {
-        Route::get('/my-properties/add-property', 'addPropertyIndex')->name('admin.add-property');
-        Route::get('/my-properties/edit-property', 'editPropertyIndex')->name('admin.edit-property');
-        Route::get('/my-properties/listing', 'listingIndex')->name('admin.listing');
-        Route::get('/my-properties/favourites', 'favouritesIndex')->name('admin.favourites');
+        Route::get('/my-properties/add-property', 'addPropertyIndex')->name('tenant.admin.add.property');
+        Route::get('/my-properties/edit-property', 'editPropertyIndex')->name('tenant.admin.edit.property');
+        Route::get('/my-properties/listing', 'listingIndex')->name('tenant.admin.listing');
+        Route::get('/my-properties/favourites', 'favouritesIndex')->name('tenant.admin.favourites');
     });
 
     Route::controller(UserController::class)->group(function () {
@@ -248,7 +248,7 @@ Route::prefix('management')->middleware(['auth', 'user.type:admin'])->group(func
     });
 
     Route::controller(ReportController::class)->group(function () {
-        Route::get('/reports', 'index')->name('admin.reports');
+        Route::get('/reports', 'index')->name('tenant.admin.reports');
     });
 
     Route::controller(PaymentController::class)->group(function () {
