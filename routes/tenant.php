@@ -2,9 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Tenant\Client\EventController;
+use App\Http\Controllers\Tenant\Client\PropertyInspectionController;
 
 // Realtor Import
 use App\Http\Controllers\Tenant\Realtor\LandingPageController;
+use App\Http\Controllers\Tenant\Realtor\EventController as RealtorEventController;
 
 // Tenant Import
 use Stancl\Tenancy\Middleware\PreventAccessFromCentralDomains;
@@ -24,6 +26,9 @@ use App\Http\Controllers\Tenant\Auth\VerifyEmailController;
 use App\Http\Controllers\Tenant\Client\DashboardController;
 use App\Http\Controllers\Tenant\Realtor\ReferralsController;
 use App\Http\Controllers\Tenant\Realtor\SalesController;
+use App\Http\Controllers\Tenant\Realtor\WalletController;
+use App\Http\Controllers\Tenant\Realtor\ProfileController as RealtorProfileController;
+use App\Http\Controllers\Tenant\Realtor\ReportController as RealtorReportController;
 use Stancl\Tenancy\Middleware\ScopeSessions;
 
 /*
@@ -62,6 +67,14 @@ Route::middleware([
         Route::get('/events', 'index')->name('tenant.client.events');
         Route::post('/book-event', 'bookEvent');
         Route::post('/retrieve-referral', 'retrieveReferral');
+    });
+
+    // Property Inspection Routes
+    Route::controller(PropertyInspectionController::class)->prefix('property-inspections')->group(function () {
+        Route::post('/', 'store')->name('tenant.property-inspections.store');
+        Route::get('/property-details', 'getPropertyDetails')->name('tenant.property-inspections.property-details');
+        Route::get('/', 'index')->name('tenant.property-inspections.index');
+        Route::patch('/{inspection}/status', 'updateStatus')->name('tenant.property-inspections.update-status');
     });
 
     Route::get("/contact", function () {
@@ -185,9 +198,22 @@ Route::middleware([
             })->name('tenant.realtor.family-house');
 
             // Reports
-            Route::get('/reports', function () {
-                return tenant_view('realtor.pages.reports');
-            })->name('tenant.realtor.reports');
+            Route::controller(RealtorReportController::class)->group(function () {
+                Route::get('/reports', 'index')->name('tenant.realtor.reports');
+
+                // API endpoints for reports data
+                Route::get('/reports/api/sales-summary', 'getSalesSummary')->name('tenant.realtor.reports.api.sales-summary');
+                Route::get('/reports/api/chart-data', 'getChartData')->name('tenant.realtor.reports.api.chart-data');
+                Route::get('/reports/api/revenue-data', 'getRevenueData')->name('tenant.realtor.reports.api.revenue-data');
+                Route::get('/reports/api/property-sales', 'getPropertySales')->name('tenant.realtor.reports.api.property-sales');
+                Route::get('/reports/api/income-analysis', 'getIncomeAnalysis')->name('tenant.realtor.reports.api.income-analysis');
+                Route::get('/reports/api/recent-transactions', 'getRecentTransactions')->name('tenant.realtor.reports.api.recent-transactions');
+                Route::get('/reports/api/management-reports', 'getManagementReports')->name('tenant.realtor.reports.api.management-reports');
+
+                // Report generation and download
+                Route::post('/reports/generate', 'generateReport')->name('tenant.realtor.reports.generate');
+                Route::get('/reports/download/{reportId}', 'downloadReport')->name('tenant.realtor.reports.download');
+            });
 
             // Payments
             Route::get('/payments', function () {
@@ -195,15 +221,20 @@ Route::middleware([
             })->name('tenant.realtor.payments');
 
             // Profile
-            Route::get('/profile', function () {
-                return tenant_view('realtor.pages.profile');
-            })->name('tenant.realtor.profile');
+            Route::controller(RealtorProfileController::class)->group(function () {
+                Route::get('/profile', 'show')->name('tenant.realtor.profile');
+                Route::get('/profile/data', 'profileData')->name('tenant.realtor.profile.data');
+                Route::patch('/profile', 'update')->name('tenant.realtor.profile.update');
+                Route::patch('/profile/password', 'updatePassword')->name('tenant.realtor.profile.password');
+                Route::delete('/profile', 'destroy')->name('tenant.realtor.profile.destroy');
+            });
 
             // Landing Page
             Route::controller(LandingPageController::class)->group(function () {
                 Route::get('/landing-page-list', 'index')->name('tenant.realtor.landing-page-list');
-                Route::get('/landing-page/{userId}/{propertyId}', 'show')->name('tenant.realtor.landing-page');
+                Route::get('/property/{propertySlug}', 'show')->name('tenant.realtor.landing-page');
                 Route::post('/landing-pages/create', 'create')->name('landing-pages.create');
+                Route::post('/landing-pages/activate/{id}', 'activate')->name('landing-pages.activate');
                 Route::post('/landing-pages/deactivate/{id}', 'deactivate')->name('landing-pages.deactivate');
                 Route::delete('/landing-pages/delete/{id}', 'delete')->name('landing-pages.delete');
             });
@@ -220,7 +251,25 @@ Route::middleware([
             // Sales
             Route::controller(SalesController::class)->group(function () {
                 Route::get('/sales', 'index')->name('tenant.realtor.sales');
-                Route::post('/sales/create', 'index')->name('tenant.realtor.sales.create');
+                Route::post('/sales', 'store')->name('tenant.realtor.sales.store');
+                Route::get('/sales/{id}', 'show')->name('tenant.realtor.sales.show');
+                Route::patch('/sales/{id}/status', 'updateStatus')->name('tenant.realtor.sales.updateStatus');
+
+                // Client search
+                Route::get('/clients/search', 'searchClients')->name('tenant.realtor.clients.search');
+
+                // Templates
+                Route::get('/sales/templates', 'getTemplates')->name('tenant.realtor.sales.templates');
+                Route::post('/sales/templates', 'saveTemplate')->name('tenant.realtor.sales.templates.store');
+                Route::delete('/sales/templates/{id}', 'deleteTemplate')->name('tenant.realtor.sales.templates.delete');
+            });
+
+            // Wallet
+            Route::controller(WalletController::class)->group(function () {
+                Route::get('/wallet', 'index')->name('tenant.realtor.wallet');
+                Route::post('/wallet/withdraw', 'withdraw')->name('tenant.realtor.wallet.withdraw');
+                Route::get('/wallet/transactions', 'transactions')->name('tenant.realtor.wallet.transactions');
+                Route::get('/wallet/stats', 'getWalletStats')->name('tenant.realtor.wallet.stats');
             });
 
             // Sales Request
@@ -229,9 +278,12 @@ Route::middleware([
             })->name('tenant.realtor.sales-request');
 
             // Events
-            Route::get('/events', function () {
-                return tenant_view('realtor.pages.events');
-            })->name('tenant.realtor.events');
+            Route::controller(RealtorEventController::class)->group(function () {
+                Route::get('/events', 'index')->name('tenant.realtor.events');
+                Route::get('/events/{eventId}/bookings', 'getEventBookings')->name('tenant.realtor.events.bookings');
+                Route::get('/events/{eventId}/stats', 'getReferralStats')->name('tenant.realtor.events.stats');
+                Route::get('/events/{eventId}/export', 'exportBookings')->name('tenant.realtor.events.export');
+            });
         });
     });
 

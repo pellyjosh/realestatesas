@@ -24463,7 +24463,7 @@ label {
     border-color: var(--theme-default6);
     color: var(--bs-dark);
 }
-    
+
 .btn.btn-dashed.color-2:hover::after {
     background: var(--theme-default5);
 }
@@ -33291,9 +33291,9 @@ body.rtl.dark-layout .property-details ul li+li {
     margin-left: 10px;
     /* -webkit-animation: fadeInLeft 2s ease-in-out infinite;
     animation: fadeInLeft 2s ease-in-out infinite; */
-} */
+}
 
-.agent-section .agent-content h3 a,
+*/ .agent-section .agent-content h3 a,
 .agent-section .agent-content .h3 a {
     text-align: unset;
     color: inherit;
@@ -35824,4 +35824,160 @@ input[type="date"] {
 
 /**=====================
      responsive css end
+==========================**/
+
+/**=====================
+     Alpine Pagination Styles
+==========================**/
+/* Custom Pagination Color Variables - Can be customized per theme */
+:root {
+    --pagination-primary: #91d20a;
+    --pagination-primary-light: #f6faeb;
+    --pagination-primary-hover: #e5f5c7;
+    --pagination-text: #333;
+    --pagination-white: #fff;
+    --pagination-spinner-bg: #f3f3f3;
+}
+
+/* Alternative green theme */
+[data-theme="green"] {
+    --pagination-primary: #91d20a;
+    --pagination-primary-light: #f6faeb;
+    --pagination-primary-hover: #e5f5c7;
+}
+
+/* Alternative blue theme */
+[data-theme="blue"] {
+    --pagination-primary: #0d6efd;
+    --pagination-primary-light: #e7f1ff;
+    --pagination-primary-hover: #cce7ff;
+}
+
+/* Alternative purple theme */
+[data-theme="purple"] {
+    --pagination-primary: #6432b8;
+    --pagination-primary-light: #f0ebff;
+    --pagination-primary-hover: #e1d3ff;
+}
+
+/* Alpine Pagination Styles */
+.alpine-pagination .page-btn {
+    background-color: var(--pagination-primary-light) !important;
+    color: var(--pagination-text) !important;
+    border: 1px solid var(--pagination-primary-light) !important;
+    border-radius: 20px !important;
+    margin: 0 2px;
+    padding: 6px 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    height: 32px;
+    font-size: 14px;
+    font-weight: 500;
+    border: none;
+    outline: none;
+}
+
+.alpine-pagination .page-btn:hover:not(.active):not(:disabled) {
+    background-color: var(--pagination-primary-hover) !important;
+    color: var(--pagination-text) !important;
+    border-color: var(--pagination-primary-hover) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.alpine-pagination .page-btn.active {
+    background-color: var(--pagination-primary) !important;
+    color: var(--pagination-white) !important;
+    border: 1px solid var(--pagination-primary) !important;
+    font-weight: 600;
+    box-shadow: 0 3px 8px rgba(145, 210, 10, 0.3);
+    transform: translateY(-1px);
+}
+
+.alpine-pagination .page-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: var(--pagination-primary-light) !important;
+    color: var(--pagination-text) !important;
+    border-color: var(--pagination-primary-light) !important;
+}
+
+.alpine-pagination .page-btn:disabled:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.alpine-pagination .page-btn i {
+    font-size: 12px;
+}
+
+/* Loading Spinner with theme colors */
+.loading-spinner {
+    border: 2px solid var(--pagination-spinner-bg);
+    border-top: 2px solid var(--pagination-primary);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 2s linear infinite;
+    display: inline-block;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive Pagination */
+@media (max-width: 768px) {
+    .alpine-pagination .page-btn {
+        padding: 4px 8px;
+        margin: 0 1px;
+        min-width: 28px;
+        height: 28px;
+        font-size: 12px;
+    }
+
+    .alpine-pagination {
+        gap: 1px !important;
+    }
+
+    /* Hide text, show only icons on mobile for prev/next */
+    .alpine-pagination .page-btn:first-child i,
+    .alpine-pagination .page-btn:last-child i {
+        margin: 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .alpine-pagination .page-btn {
+        padding: 3px 6px;
+        margin: 0 1px;
+        min-width: 24px;
+        height: 24px;
+        font-size: 11px;
+    }
+}
+
+/* Enhanced hover effects for better UX */
+.alpine-pagination .page-btn:focus {
+    outline: 2px solid var(--pagination-primary);
+    outline-offset: 2px;
+}
+
+.alpine-pagination .page-btn:active {
+    transform: translateY(0);
+}
+
+/**=====================
+     Alpine Pagination Styles End
 ==========================**/

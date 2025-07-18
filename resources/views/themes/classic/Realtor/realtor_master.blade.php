@@ -18,14 +18,14 @@
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Rubik:400,400i,500,500i,700,700i" rel="stylesheet">
 
-   
+
     <link href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.css" rel="stylesheet">
-    
-    
+
+
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
-   
+
     <!-- Font Awesome 6 Free CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
@@ -45,7 +45,56 @@
             border-left: 3px solid #91d20a !important;
             font-weight: 600 !important;
         }
+
+        /* Theme utility for dynamic color changes */
+        .theme-selector {
+            position: fixed;
+            top: 50%;
+            right: -200px;
+            width: 220px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px 0 0 8px;
+            padding: 15px;
+            transition: right 0.3s ease;
+            z-index: 9999;
+            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .theme-selector.open {
+            right: 0;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 50%;
+            right: 0;
+            background: var(--pagination-primary, #91d20a);
+            color: white;
+            border: none;
+            padding: 10px 8px;
+            border-radius: 8px 0 0 8px;
+            cursor: pointer;
+            z-index: 10000;
+            transform: translateY(-50%);
+        }
     </style>
+
+    <script>
+        // Theme switching utility
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('preferred-theme', theme);
+        }
+
+        function initTheme() {
+            const savedTheme = localStorage.getItem('preferred-theme') || 'green';
+            setTheme(savedTheme);
+        }
+
+        // Initialize theme on load
+        document.addEventListener('DOMContentLoaded', initTheme);
+    </script>
     @stack('styles')
 
 </head>
@@ -289,101 +338,7 @@
         <!-- page header end -->
 
         <div class="page-body-wrapper">
-            <!-- page sidebar start -->
-            <div class="page-sidebar">
-                <div class="logo-wrap">
-                    <a href="{{ route('tenant.realtor.dashboard') }}">
-                        <img src="{{ asset('themes/classic/client/assets/images/logo2.png') }}"
-                            class="img-fluid for-light" alt="">
-                        <img src="{{ asset('themes/classic/client/assets/images/logo2.png') }}"
-                            class="img-fluid for-dark" alt="">
-                    </a>
-                    <div class="back-btn d-lg-none d-inline-block">
-                        <i data-feather="chevrons-left"></i>
-                    </div>
-                </div>
-                <div class="main-sidebar">
-                    <div class="user-profile">
-                        <div class="media">
-                            <div class="change-pic">
-                                <img src="{{ asset('themes/classic/admin/assets/images/avatar/3.jpg') }}"
-                                    class="img-fluid" alt="">
-                            </div>
-                            <div class="media-body">
-                                {{-- <a href="{{ route('tenant.user-profile') }}"> --}}
-                                <h6>{{ Auth::guard('tenant')->user()->name }}</h6>
-                                {{-- </a> --}}
-                                <span class="font-roboto">{{ Auth::guard('tenant')->user()->email }}</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    {{-- Main sidebar start --}}
-                    <div id="mainsidebar">
-                        <ul class="sidebar-menu custom-scrollbar">
-                            <li class="sidebar-item active">
-                                <a href="{{ route('tenant.realtor.dashboard') }}"
-                                    class="sidebar-link only-link active">
-                                    <i data-feather="airplay"></i>
-                                    <span class="">Dashboard</span>
-                                </a>
-                            </li>
-
-                            <li class="sidebar-item">
-                                <a href="{{ route('tenant.realtor.landing-page-list') }}"
-                                    class="sidebar-link only-link {{ request()->is('realtor/landing-page*') ? 'active' : '' }}">
-                                    <i data-feather="user"></i>
-                                    <span>Landing Page</span>
-                                </a>
-                            </li>
-
-                            <li class="sidebar-item">
-                                <a href="{{ route('tenant.realtor.referrals') }}"
-                                    class="sidebar-link only-link {{ request()->is('realtor/referrals*') ? 'active' : '' }}">
-                                    <i data-feather="users"></i>
-                                    <span>Referrals</span>
-                                </a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="{{ route('tenant.realtor.events') }}"
-                                    class="sidebar-link only-link {{ request()->is('realtor/events*') ? 'active' : '' }}">
-                                    <i data-feather="calendar"></i>
-                                    <span>Events</span>
-                                </a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="{{ route('tenant.realtor.sales') }}"
-                                    class="sidebar-link only-link {{ request()->is('realtor/sales*') ? 'active' : '' }}">
-                                    <i data-feather="dollar-sign"></i>
-                                    <span>Sales</span>
-                                </a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="{{ route('tenant.realtor.payments') }}"
-                                    class="sidebar-link only-link {{ request()->is('realtor/payments*') ? 'active' : '' }}">
-                                    <i data-feather="credit-card"></i>
-                                    <span>Payments</span>
-                                </a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="{{ route('tenant.realtor.reports') }}"
-                                    class="sidebar-link only-link {{ request()->is('realtor/reports*') ? 'active' : '' }}">
-                                    <i data-feather="bar-chart-2"></i>
-                                    <span>Reports</span>
-                                </a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="{{ route('tenant.realtor.profile') }}"
-                                    class="sidebar-link only-link {{ request()->is('realtor/profile*') ? 'active' : '' }}">
-                                    <i data-feather="user"></i>
-                                    <span>Profile</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <!-- page sidebar end -->
+            @include('themes.classic.realtor.partials.sidebar')
 
 
             <div class="page-body">
@@ -393,18 +348,8 @@
 
             </div>
 
-            <!-- footer start -->
-            <footer class="footer">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-6 footer-copyright">
-                            <p class="mb-0">Copyright 2025 Premium Refined By 💚 Hubolux Technologies.</p>
-                        </div>
+            @include('themes.classic.realtor.partials.footers')
 
-                    </div>
-                </div>
-            </footer>
-            <!-- footer end -->
         </div>
     </div>
 
@@ -497,7 +442,7 @@
 
     <!-- sidebar js -->
     <script src="{{ asset('themes/classic/admin/assets/js/sidebar.js') }}"></script>
-    
+
     <!--admin js -->
     <script src="{{ asset('themes/classic/realtor/assets/js/report.js') }}"></script>
     <script src="{{ asset('themes/classic/admin/assets/js/admin-script.js') }}"></script>
@@ -518,6 +463,46 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
     <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+    <!-- Theme Selector Widget -->
+    <button class="theme-toggle" onclick="toggleThemeSelector()">
+        <i class="fas fa-palette"></i>
+    </button>
+
+    <div id="themeSelector" class="theme-selector">
+        <h6 style="margin-bottom: 15px; color: #333;">Choose Theme</h6>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+            <button onclick="setTheme('green')" class="btn btn-sm"
+                style="background: #91d20a; color: white; border: none; padding: 8px 12px; border-radius: 4px; text-align: left;">
+                <i class="fas fa-circle" style="color: #91d20a; margin-right: 8px;"></i> Green Theme
+            </button>
+            <button onclick="setTheme('blue')" class="btn btn-sm"
+                style="background: #0d6efd; color: white; border: none; padding: 8px 12px; border-radius: 4px; text-align: left;">
+                <i class="fas fa-circle" style="color: #0d6efd; margin-right: 8px;"></i> Blue Theme
+            </button>
+            <button onclick="setTheme('purple')" class="btn btn-sm"
+                style="background: #6432b8; color: white; border: none; padding: 8px 12px; border-radius: 4px; text-align: left;">
+                <i class="fas fa-circle" style="color: #6432b8; margin-right: 8px;"></i> Purple Theme
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function toggleThemeSelector() {
+            const selector = document.getElementById('themeSelector');
+            selector.classList.toggle('open');
+        }
+
+        // Close theme selector when clicking outside
+        document.addEventListener('click', function(event) {
+            const selector = document.getElementById('themeSelector');
+            const toggle = document.querySelector('.theme-toggle');
+
+            if (!selector.contains(event.target) && !toggle.contains(event.target)) {
+                selector.classList.remove('open');
+            }
+        });
+    </script>
 
 </body>
 

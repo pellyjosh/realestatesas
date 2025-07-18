@@ -22,5 +22,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Schema::defaultStringLength(191);
+
+        // Register observers
+        \App\Models\User::observe(\App\Observers\UserObserver::class);
     }
 }

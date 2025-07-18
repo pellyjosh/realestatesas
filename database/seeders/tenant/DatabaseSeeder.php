@@ -14,5 +14,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call(PropertySeeder::class);
+        // $this->call(PaymentPlansSeeder::class);
+        // $this->call(EventSeeder::class);
     }
 }

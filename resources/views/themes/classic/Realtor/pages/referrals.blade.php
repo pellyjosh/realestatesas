@@ -37,25 +37,6 @@
                 gap: 0.15rem;
             }
         }
-
-        .dataTables_paginate .paginate_button.current {
-            background-color: #91d20a !important;
-            color: #fff !important;
-            border: 1px solid #91d20a !important;
-        }
-
-        .dataTables_paginate .paginate_button {
-            background-color: #f6faeb !important;
-            color: #333 !important;
-            border-color: #f6faeb !important;
-            border-radius: 20px !important;
-            margin: 0 2px;
-        }
-
-        .dataTables_paginate .paginate_button:hover:not(.current Zimmerman) {
-            background-color: #e5f5c7 !important;
-            color: #333 !important;
-        }
     </style>
 @endpush
 
@@ -148,7 +129,8 @@
             <!-- Search and Table -->
             <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
                 <h5 class="mb-0 fw-semibold">My Referrals</h5>
-                <input type="text" x-model="search" class="form-control w-25" placeholder="Search by name or phone...">
+                <input type="text" x-model="search" @input="currentPage = 1" class="form-control w-25"
+                    placeholder="Search by name or phone...">
             </div>
             <div class="table-responsive">
                 <table class="table table-striped table-bordered text-sm align-middle mb-0 w-100"
@@ -163,7 +145,10 @@
                     </thead>
                     <tbody>
                         <tr x-show="!filteredReferrals.length">
-                            <td colspan="5" class="text-center text-muted">No referrals found</td>
+                            <td colspan="4" class="text-center text-muted">
+                                <span x-show="!search">No referrals found</span>
+                                <span x-show="search">No referrals match your search</span>
+                            </td>
                         </tr>
                         <template x-for="referral in paginatedReferrals" :key="referral.id">
                             <tr class="border-bottom">
@@ -183,20 +168,38 @@
                 </table>
 
                 <!-- Pagination -->
-                <div class="d-flex justify-content-between align-items-center mt-3"
-                    x-show="filteredReferrals.length > perPage">
-                    <div>
-                        Showing <span x-text="startIndex + 1"></span> to <span x-text="endIndex"></span> of <span
-                            x-text="filteredReferrals.length"></span>
+                <div class="d-flex justify-content-between align-items-center mt-4" x-show="totalPages > 1">
+                    <div class="text-muted">
+                        Showing <span x-text="startIndex + 1"></span> to <span x-text="endIndex"></span>
+                        of <span x-text="filteredReferrals.length"></span> referrals
                     </div>
-                    <div class="dataTables_paginate">
-                        <button class="paginate_button" :disabled="currentPage === 1" @click="currentPage--">
-                            Previous
+
+                    <div class="alpine-pagination d-flex align-items-center gap-2">
+                        <button class="page-btn" @click="goToPage(currentPage - 1)" :disabled="currentPage === 1">
+                            <i class="fas fa-chevron-left"></i>
                         </button>
-                        <button class="paginate_button" :disabled="endIndex >= filteredReferrals.length"
-                            @click="currentPage++">
-                            Next
+
+                        <template x-for="page in visiblePages" :key="page">
+                            <button class="page-btn" :class="{ 'active': page === currentPage }" @click="goToPage(page)"
+                                x-text="page">
+                            </button>
+                        </template>
+
+                        <button class="page-btn" @click="goToPage(currentPage + 1)"
+                            :disabled="currentPage === totalPages">
+                            <i class="fas fa-chevron-right"></i>
                         </button>
+                    </div>
+
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="text-muted">Show:</span>
+                        <select class="form-select form-select-sm" style="width: auto;" x-model="perPage"
+                            @change="currentPage = 1">
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="25">25</option>
+                            <option value="50">50</option>
+                        </select>
                     </div>
                 </div>
             </div>
@@ -254,6 +257,46 @@
 
                 get paginatedReferrals() {
                     return this.filteredReferrals.slice(this.startIndex, this.endIndex);
+                },
+
+                get totalPages() {
+                    return Math.ceil(this.filteredReferrals.length / this.perPage);
+                },
+
+                get visiblePages() {
+                    const totalPages = this.totalPages;
+                    const currentPage = this.currentPage;
+                    const delta = 2;
+                    const range = [];
+                    const rangeWithDots = [];
+
+                    for (let i = Math.max(2, currentPage - delta); i <= Math.min(totalPages - 1,
+                            currentPage + delta); i++) {
+                        range.push(i);
+                    }
+
+                    if (currentPage - delta > 2) {
+                        rangeWithDots.push(1, '...');
+                    } else {
+                        rangeWithDots.push(1);
+                    }
+
+                    rangeWithDots.push(...range);
+
+                    if (currentPage + delta < totalPages - 1) {
+                        rangeWithDots.push('...', totalPages);
+                    } else if (totalPages > 1) {
+                        rangeWithDots.push(totalPages);
+                    }
+
+                    return rangeWithDots.filter(page => page !== 1 || totalPages > 1);
+                },
+
+                // Pagination methods
+                goToPage(page) {
+                    if (page >= 1 && page <= this.totalPages) {
+                        this.currentPage = page;
+                    }
                 },
 
                 notify(msg, type = 'success') {

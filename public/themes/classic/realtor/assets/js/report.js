@@ -1,4 +1,5 @@
-var options = {
+// Revenue chart configuration
+var revenueChartOptions = {
     chart: {
         width: 470,
         type: 'donut',
@@ -19,7 +20,7 @@ var options = {
         },
     },
     series: [50, 30, 41],
-    labels: ["Channai", "Ahemdabad", "Banglore"],
+    labels: ["Commissions", "Bonuses", "Other"],
     legend: {
         formatter: function (val, opts) {
             return val + " - " + opts.w.globals.series[opts.seriesIndex] + "%"
@@ -64,27 +65,36 @@ var options = {
             }
         }
     }]
-
 }
 
-var chart = new ApexCharts(
+// Create revenue chart
+var revenueChart = new ApexCharts(
     document.querySelector("#revenuechart"),
-    options
+    revenueChartOptions
 );
 
-chart.render();
+revenueChart.render();
 
-const paper = chart.paper()
+// Function to update revenue chart with dynamic data
+function updateRevenueChart(data) {
+    if (revenueChart && data) {
+        revenueChart.updateSeries([
+            data.commissions || 0,
+            data.bonuses || 0,
+            data.other || 0
+        ]);
+    }
+}
 
 
-// income chart
-var options1 = {
+// Income chart configuration
+var incomeChartOptions = {
     series: [{
-        name: "Rent income",
+        name: "Commission Income",
         data: [20, 25, 20, 30, 20, 50, 30, 35, 25, 60, 0]
     },
     {
-        name: "Sale income",
+        name: "Bonus Income",
         data: [10, 20, 10, 15, 10, 20, 15, 10, 15, 20, 0]
     }
     ],
@@ -219,8 +229,25 @@ var options1 = {
     },
 };
 
-var chart = new ApexCharts(document.querySelector("#incomechart"), options1);
-chart.render();
+// Create income chart
+var incomeChart = new ApexCharts(document.querySelector("#incomechart"), incomeChartOptions);
+incomeChart.render();
+
+// Function to update income chart with dynamic data
+function updateIncomeChart(data) {
+    if (incomeChart && data) {
+        incomeChart.updateSeries([
+            {
+                name: "Commission Income",
+                data: data.commissions || [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            },
+            {
+                name: "Bonus Income", 
+                data: data.bonuses || [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            }
+        ]);
+    }
+}
 
 // vector map 
 'use strict';

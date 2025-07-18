@@ -25,6 +25,9 @@ class TenantServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        // Register tenant user observer
+        \App\Models\Tenant\TenantUser::observe(\App\Observers\TenantUserObserver::class);
+
         view()->composer('*', function ($view) {
             if (tenant()) {
                 $data = tenant()->data ?? [];

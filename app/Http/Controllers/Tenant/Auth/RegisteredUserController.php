@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\Validation\Rule;
-use Illuminate\Support\Str;
 use Illuminate\Http\UploadedFile;
 
 
@@ -53,9 +52,7 @@ class RegisteredUserController extends Controller
         ]);
 
         // Generate unique referral code
-        do {
-            $referralCode = Str::random(10);
-        } while (User::where('referral_code', $referralCode)->exists());
+
 
         // Store image in a per-tenant folder
         $imagePath = null;
@@ -69,7 +66,6 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'phone' => $request->phone,
             'password' => Hash::make($request->password),
-            'referral_code' => $referralCode,
             'referred_by_code' => $request->referred_by_code,
             'image_url' => $imagePath,
         ]);

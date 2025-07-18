@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
 
-    
+
     protected $fillable = [
         'name',
         'email',
@@ -52,5 +52,32 @@ class User extends Authenticatable
     public function tenant()
     {
         return $this->belongsTo(Tenant::class);
+    }
+
+    /**
+     * Get the user's wallet
+     */
+    public function wallet()
+    {
+        return $this->hasOne(\App\Models\Tenant\Wallet::class);
+    }
+
+    /**
+     * Get the user's transactions
+     */
+    public function transactions()
+    {
+        return $this->hasMany(\App\Models\Tenant\Transaction::class);
+    }
+
+    /**
+     * Get or create user wallet
+     */
+    public function getOrCreateWallet()
+    {
+        return $this->wallet ?: $this->wallet()->create([
+            'currency' => 'NGN',
+            'is_active' => true,
+        ]);
     }
 }
