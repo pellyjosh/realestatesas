@@ -43,7 +43,7 @@ class AuthenticatedSessionController extends Controller
 
         // Redirect based on user type
         $routeName = match ($user->type) {
-            'admin' => 'tenant.tenant.admin.dashboard',
+            'admin' => 'tenant.admin.dashboard',
             'realtor' => 'tenant.realtor.dashboard',
             default => 'tenant.user.dashboard',
         };

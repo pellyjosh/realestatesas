@@ -10,7 +10,9 @@ use App\Http\Controllers\Tenant\Realtor\LandingPageController;
 use Stancl\Tenancy\Middleware\PreventAccessFromCentralDomains;
 use Stancl\Tenancy\Middleware\InitializeTenancyByDomain;
 
-
+// Admin Import
+use App\Http\Controllers\Tenant\Admin\AdminEventController;
+use App\Http\Controllers\Tenant\Admin\SectionController;
 // Auth imports
 use App\Http\Controllers\Tenant\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Tenant\Auth\ConfirmablePasswordController;
@@ -24,6 +26,7 @@ use App\Http\Controllers\Tenant\Auth\VerifyEmailController;
 use App\Http\Controllers\Tenant\Client\DashboardController;
 use App\Http\Controllers\Tenant\Realtor\ReferralsController;
 use App\Http\Controllers\Tenant\Realtor\SalesController;
+use App\Models\Event;
 use Stancl\Tenancy\Middleware\ScopeSessions;
 
 /*
@@ -352,10 +355,6 @@ Route::middleware([
                 return tenant_view('admin.pages.payments');
             })->name('tenant.admin.payments');
 
-            Route::get('/events', function () {
-                return tenant_view('admin.pages.events');
-            })->name('tenant.admin.events');
-
             Route::get('/withdrawal', function () {
                 return tenant_view('admin.pages.withdrawal');
             })->name('tenant.admin.withdrawal');
@@ -367,6 +366,15 @@ Route::middleware([
             Route::get('/invoice', function () {
                 return tenant_view('admin.pages.invoice');
             })->name('tenant.admin.invoice');
+
+            Route::get('/home/section', [SectionController::class, 'index'])->name('tenant.admin.section');
+
+            Route::controller(AdminEventController::class)->group(function () {
+                Route::get('/events', 'index')->name('tenant.admin.events');
+                Route::post('/events', 'store')->name('tenant.admin.events.store');
+                Route::put('/events/{event}', 'update')->name('tenant.admin.events.update');
+                Route::delete('/events/{event}', 'destroy')->name('tenant.admin.events.destroy');
+            });
         });
     });
 

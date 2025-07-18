@@ -1,6 +1,8 @@
 @extends('themes.classic.client.client_master')
 @section('title', 'Home | {{ tenant()->name }}')
 @section('main')
+
+
     <!-- home section start -->
     <section class="home-section layout-1 layout-6">
         <div class="home-main">
@@ -452,7 +454,7 @@
     </section>
     <!-- feature section end -->
 
-    <!-- property section start -->
+    <!-- Latest property section start -->
     <section class="property-section property-color-6">
         <div class="container">
             <div class="row ratio_55">
