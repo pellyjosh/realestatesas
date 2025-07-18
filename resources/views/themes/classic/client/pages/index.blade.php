@@ -1,6 +1,8 @@
 @extends('themes.classic.client.client_master')
 @section('title', 'Home | {{ tenant()->name }}')
 @section('main')
+
+
     <!-- home section start -->
     <section class="home-section layout-1 layout-6">
         <div class="home-main">
@@ -36,43 +38,6 @@
                                             </div>
                                         </div>
                                     </div>
-
-                                    {{-- <div class="looking-icons">
-                                        <h5>What are you looking for?</h5>
-                                        <ul>
-                                            <li>
-                                                <a href="#" class="looking-icon">
-                                                    <svg class="property-svg">
-                                                        <use
-                                                            xlink:href="https://themes.pixelstrap.com/Premium Refined Luxury Homes/assets/svg/icons.svg#home-lock">
-                                                        </use>
-                                                    </svg>
-                                                    <h6>House</h6>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="looking-icon">
-                                                    <svg class="property-svg">
-                                                        <use
-                                                            xlink:href="https://themes.pixelstrap.com/Premium Refined Luxury Homes/assets/svg/icons.svg#home-heart">
-                                                        </use>
-                                                    </svg>
-                                                    <h6>Booking</h6>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="looking-icon">
-                                                    <svg class="property-svg">
-                                                        <use
-                                                            xlink:href="https://themes.pixelstrap.com/Premium Refined Luxury Homes/assets/svg/icons.svg#key">
-                                                        </use>
-                                                    </svg>
-                                                    <h6>Garage</h6>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div> --}}
-
                                 </div>
                             </div>
                         </div>
@@ -239,8 +204,8 @@
                             <div class="property-box">
                                 <div class="property-image">
                                     <a href="javascript:void(0)">
-                                        <img src="{{ asset('themes/classic/client/assets/images/uploads/upload-2.png') }}" class="bg-img"
-                                            alt="" loading="lazy">
+                                        <img src="{{ asset('themes/classic/client/assets/images/uploads/upload-2.png') }}"
+                                            class="bg-img" alt="" loading="lazy">
                                         <div class="labels-left">
                                             <span class="label label-shadow">Sale</span>
                                         </div>
@@ -282,8 +247,8 @@
                             <div class="property-box">
                                 <div class="property-image">
                                     <a href="javascript:void(0)">
-                                        <img src="{{ asset('themes/classic/client/assets/images/uploads/upload-9.png') }}" class="bg-img"
-                                            alt="" loading="lazy">
+                                        <img src="{{ asset('themes/classic/client/assets/images/uploads/upload-9.png') }}"
+                                            class="bg-img" alt="" loading="lazy">
                                         <div class="labels-left">
                                             <div>
                                                 <span class="label label-dark">no fees</span>
@@ -328,8 +293,8 @@
                             <div class="property-box">
                                 <div class="property-image">
                                     <a href="javascript:void(0)">
-                                        <img src="{{ asset('themes/classic/client/assets/images/uploads/upload-7.jpg') }}" class="bg-img"
-                                            alt="" loading="lazy">
+                                        <img src="{{ asset('themes/classic/client/assets/images/uploads/upload-7.jpg') }}"
+                                            class="bg-img" alt="" loading="lazy">
                                         <div class="labels-left">
                                             <span class="label label-shadow">Sold</span>
                                         </div>
@@ -468,8 +433,8 @@
                                     </div>
                                     <div class="col-xl-8 col-lg-9 order-md">
                                         <div class="feature-image">
-                                            <img src="{{ asset('themes/classic/client/assets/images/property/2.jpg') }}" alt=""
-                                                class="bg-img" loading="lazy">
+                                            <img src="{{ asset('themes/classic/client/assets/images/property/2.jpg') }}"
+                                                alt="" class="bg-img" loading="lazy">
                                             <h4>FAMILY HOME</h4>
                                             <span class="box-color"></span>
                                             <span class="signature">
@@ -489,7 +454,7 @@
     </section>
     <!-- feature section end -->
 
-    <!-- property section start -->
+    <!-- Latest property section start -->
     <section class="property-section property-color-6">
         <div class="container">
             <div class="row ratio_55">
@@ -578,8 +543,8 @@
                                                 class="bg-img" alt="" loading="lazy">
                                         </a>
                                         <a href="javascript:void(0)">
-                                            <img src="{{ asset('themes/classic/client/assets/images/property/22.jpg') }}" class="bg-img"
-                                                alt="" loading="lazy">
+                                            <img src="{{ asset('themes/classic/client/assets/images/property/22.jpg') }}"
+                                                class="bg-img" alt="" loading="lazy">
                                         </a>
                                     </div>
                                     <div class="labels-left">
@@ -884,8 +849,8 @@
                             <div class="offer-wrapper">
                                 <div class="media">
                                     <div class="offer-icon">
-                                        <img src="{{ asset('themes/classic/client/assets/images/others/icon-1.png') }}" alt=""
-                                            loading="lazy">
+                                        <img src="{{ asset('themes/classic/client/assets/images/others/icon-1.png') }}"
+                                            alt="" loading="lazy">
                                     </div>
                                     <div class="media-body">
                                         <h6>Premium Refined Luxury Homes</h6>
@@ -900,8 +865,8 @@
                             <div class="offer-wrapper">
                                 <div class="media">
                                     <div class="offer-icon">
-                                        <img src="{{ asset('themes/classic/client/assets/images/others/icon-2.png') }}" alt=""
-                                            loading="lazy">
+                                        <img src="{{ asset('themes/classic/client/assets/images/others/icon-2.png') }}"
+                                            alt="" loading="lazy">
                                     </div>
                                     <div class="media-body">
                                         <h6>Premium Refined Luxury Homes</h6>
@@ -916,8 +881,8 @@
                             <div class="offer-wrapper">
                                 <div class="media">
                                     <div class="offer-icon">
-                                        <img src="{{ asset('themes/classic/client/assets/images/others/icon-1.png') }}" alt=""
-                                            loading="lazy">
+                                        <img src="{{ asset('themes/classic/client/assets/images/others/icon-1.png') }}"
+                                            alt="" loading="lazy">
                                     </div>
                                     <div class="media-body">
                                         <h6>Premium Refined Luxury Homes</h6>
@@ -948,8 +913,8 @@
                     <div class="row">
                         <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 wow fadeInUp">
                             <div class="find-cities bg-size">
-                                <img src="{{ asset('themes/classic/client/assets/images/uploads/upload-2.png') }}" class="bg-img"
-                                    alt="" loading="lazy">
+                                <img src="{{ asset('themes/classic/client/assets/images/uploads/upload-2.png') }}"
+                                    class="bg-img" alt="" loading="lazy">
                                 <div class="citi-overlay">
                                     <div>
                                         <h4>12+ Property</h4>
@@ -961,8 +926,8 @@
                         </div>
                         <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 wow fadeInUp">
                             <div class="find-cities bg-size">
-                                <img src="{{ asset('themes/classic/client/assets/images/uploads/upload-9.png') }}" class="bg-img"
-                                    alt="" loading="lazy">
+                                <img src="{{ asset('themes/classic/client/assets/images/uploads/upload-9.png') }}"
+                                    class="bg-img" alt="" loading="lazy">
                                 <div class="citi-overlay">
                                     <div>
                                         <h4>5+ Property</h4>
@@ -974,8 +939,8 @@
                         </div>
                         <div class="col-xl-6 col-lg-8 col-md-7 wow fadeInUp">
                             <div class="find-cities bg-size">
-                                <img src="{{ asset('themes/classic/client/assets/images/uploads/upload-7.jpg') }}" class="bg-img"
-                                    alt="" loading="lazy">
+                                <img src="{{ asset('themes/classic/client/assets/images/uploads/upload-7.jpg') }}"
+                                    class="bg-img" alt="" loading="lazy">
                                 <div class="citi-overlay">
                                     <div>
                                         <h4>6+ Property</h4>
@@ -987,8 +952,8 @@
                         </div>
                         <div class="col-xl-6 col-lg-8 col-md-7 wow fadeInUp">
                             <div class="find-cities bg-size">
-                                <img src="{{ asset('themes/classic/client/assets/images/uploads/upload-2.png') }}" class="bg-img"
-                                    alt="" loading="lazy">
+                                <img src="{{ asset('themes/classic/client/assets/images/uploads/upload-2.png') }}"
+                                    class="bg-img" alt="" loading="lazy">
                                 <div class="citi-overlay">
                                     <div>
                                         <h4>8+ Property</h4>
@@ -1000,8 +965,8 @@
                         </div>
                         <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 wow fadeInUp">
                             <div class="find-cities bg-size">
-                                <img src="{{ asset('themes/classic/client/assets/images/uploads/upload-9.png') }}" class="bg-img"
-                                    alt="" loading="lazy">
+                                <img src="{{ asset('themes/classic/client/assets/images/uploads/upload-9.png') }}"
+                                    class="bg-img" alt="" loading="lazy">
                                 <div class="citi-overlay">
                                     <div>
                                         <h4>10+ Property</h4>
@@ -1013,8 +978,8 @@
                         </div>
                         <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 wow fadeInUp">
                             <div class="find-cities bg-size">
-                                <img src="{{ asset('themes/classic/client/assets/images/uploads/upload-7.jpg') }}" class="bg-img"
-                                    alt="" loading="lazy">
+                                <img src="{{ asset('themes/classic/client/assets/images/uploads/upload-7.jpg') }}"
+                                    class="bg-img" alt="" loading="lazy">
                                 <div class="citi-overlay">
                                     <div>
                                         <h4>12+ Property</h4>
@@ -1070,8 +1035,8 @@
                             <div class="about-content row">
                                 <div class="col-xl-6">
                                     <div class="about-image">
-                                        <img src="{{ asset('themes/classic/client/assets/images/about/1.jpg') }}" class="img-fluid"
-                                            alt="" loading="lazy" style="max-width: 100%;">
+                                        <img src="{{ asset('themes/classic/client/assets/images/about/1.jpg') }}"
+                                            class="img-fluid" alt="" loading="lazy" style="max-width: 100%;">
                                         <div class="about-overlay"></div>
                                         <div class="overlay-content">
                                             <ul>
@@ -1113,8 +1078,8 @@
                             <div class="about-content row">
                                 <div class="col-xl-6">
                                     <div class="about-image">
-                                        <img src="{{ asset('themes/classic/client/assets/images/about/2.jpg') }}" class="img-fluid"
-                                            alt="" loading="lazy" style="max-width: 100%;">
+                                        <img src="{{ asset('themes/classic/client/assets/images/about/2.jpg') }}"
+                                            class="img-fluid" alt="" loading="lazy" style="max-width: 100%;">
                                         <div class="about-overlay"></div>
                                         <div class="overlay-content">
                                             <ul>
@@ -1158,8 +1123,8 @@
                             <div class="about-content row">
                                 <div class="col-xl-6">
                                     <div class="about-image">
-                                        <img src="{{ asset('themes/classic/client/assets/images/about/2.jpg') }}" class="img-fluid"
-                                            alt="" loading="lazy" style="max-width: 100%;">
+                                        <img src="{{ asset('themes/classic/client/assets/images/about/2.jpg') }}"
+                                            class="img-fluid" alt="" loading="lazy" style="max-width: 100%;">
                                         <div class="about-overlay"></div>
                                         <div class="overlay-content">
                                             <ul>
@@ -1220,18 +1185,19 @@
                         <div>
                             <div class="client-slider light-bg">
                                 <ul class="user-list">
-                                    <li><img src="{{ asset('themes/classic/client/assets/images/testimonial/2.png') }}" alt=""
-                                            loading="lazy">
+                                    <li><img src="{{ asset('themes/classic/client/assets/images/testimonial/2.png') }}"
+                                            alt="" loading="lazy">
                                     </li>
                                     <li>
-                                        <img src="{{ asset('themes/classic/client/assets/images/testimonial/1.png') }}" alt=""
-                                            loading="lazy">
+                                        <img src="{{ asset('themes/classic/client/assets/images/testimonial/1.png') }}"
+                                            alt="" loading="lazy">
                                         <div class="heart-bg">
                                         </div>
                                         <img src="{{ asset('themes/classic/client/assets/images/testimonial/heart.png') }}"
                                             alt="" class="heart-icon" loading="lazy">
                                     </li>
-                                    <li><img src="{{ asset('themes/classic/client/assets/images/testimonial/3.png') }}" alt="">
+                                    <li><img src="{{ asset('themes/classic/client/assets/images/testimonial/3.png') }}"
+                                            alt="">
                                     </li>
                                 </ul>
                                 <p>Professional, transparent, and truly invested in my goals. I felt confident every step of
@@ -1250,18 +1216,18 @@
                         <div>
                             <div class="client-slider light-bg">
                                 <ul class="user-list">
-                                    <li><img src="{{ asset('themes/classic/client/assets/images/testimonial/1.png') }}" alt=""
-                                            loading="lazy"></li>
+                                    <li><img src="{{ asset('themes/classic/client/assets/images/testimonial/1.png') }}"
+                                            alt="" loading="lazy"></li>
                                     <li>
-                                        <img src="{{ asset('themes/classic/client/assets/images/testimonial/2.png') }}" alt=""
-                                            loading="lazy">
+                                        <img src="{{ asset('themes/classic/client/assets/images/testimonial/2.png') }}"
+                                            alt="" loading="lazy">
                                         <div class="heart-bg">
                                         </div>
                                         <img src="{{ asset('themes/classic/client/assets/images/testimonial/heart.png') }}"
                                             alt="" class="heart-icon" loading="lazy">
                                     </li>
-                                    <li><img src="{{ asset('themes/classic/client/assets/images/testimonial/3.png') }}" alt=""
-                                            loading="lazy"></li>
+                                    <li><img src="{{ asset('themes/classic/client/assets/images/testimonial/3.png') }}"
+                                            alt="" loading="lazy"></li>
                                 </ul>
                                 <p>Working with this team was seamless from start to finish. They helped me find the perfect
                                     land with zero stress hihgly recommended!</p>

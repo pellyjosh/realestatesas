@@ -29,7 +29,7 @@ class CheckUserType
         if ($user->type !== $type) {
             // Redirect based on user type
             return match ($user->type) {
-                'admin' => redirect()->route('tenant.admin.dashboard'),
+                'admin' => redirect()->route('tenant.tenant.admin.dashboard'),
                 'realtor' => redirect()->route('tenant.realtor.dashboard'),
                 default => redirect()->route('tenant.client.home'),
             };

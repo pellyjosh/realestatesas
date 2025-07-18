@@ -1,4 +1,4 @@
-@extends('admin.admin_master')
+@extends('themes.classic.admin.admin_master')
 @section('title', 'Edit Property | Premium Refined Luxury Homes')
 @section('content')
     <!-- Container-fluid start -->
@@ -13,11 +13,6 @@
                         </div>
                     </div>
                     <div class="col-sm-6">
-
-                        <!-- Breadcrumb start -->
-                       
-                        <!-- Breadcrumb end -->
-                        
                     </div>
                 </div>
             </div>

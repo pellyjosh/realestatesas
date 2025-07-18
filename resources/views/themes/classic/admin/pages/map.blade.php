@@ -1,4 +1,4 @@
-@extends('admin.admin_master')
+@extends('themes.classic.admin.admin_master')
 @section('title', 'Map | Premium Refined Luxury Homes')
 @section('content')
 

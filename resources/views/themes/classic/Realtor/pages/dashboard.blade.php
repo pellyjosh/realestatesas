@@ -348,7 +348,7 @@
                     <div class="card-header pb-0">
                         <div class="d-flex">
                             <h5>My properties</h5>
-                            <a href="{{ route('admin.add-property') }}">+ New</a>
+                            <a href="{{ route('tenant.admin.add.property') }}">+ New</a>
                         </div>
                     </div>
                     <div class="card-body properties-list">

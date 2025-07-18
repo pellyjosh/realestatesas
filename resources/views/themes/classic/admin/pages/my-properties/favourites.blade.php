@@ -1,4 +1,4 @@
-@extends('admin.admin_master')
+@extends('themes.classic.admin.admin_master')
 @section('title, Favorites Property | Premium Refined Luxury Homes')
 @section('content')
     <!-- Container-fluid start -->
@@ -55,17 +55,17 @@
                                             <div class="property-image">
                                                 <div class="property-slider">
                                                     <a href="javascript:void(0)">
-                                                        <img src="{{ asset('client/assets/images/property/2.jpg') }}"
+                                                        <img src="{{ asset('themes/classic/client/assets/images/property/2.jpg') }}"
                                                             class="bg-img" alt="">
 
                                                     </a>
                                                     <a href="javascript:void(0)">
-                                                        <img src="{{ asset('client/assets/images/property/2.jpg') }}"
+                                                        <img src="{{ asset('themes/classic/client/assets/images/property/2.jpg') }}"
                                                             class="bg-img" alt="">
 
                                                     </a>
                                                     <a href="javascript:void(0)">
-                                                        <img src="{{ asset('client/assets/images/property/3.jpg') }}"
+                                                        <img src="{{ asset('themes/classic/client/assets/images/property/3.jpg') }}"
                                                             class="bg-img" alt="">
 
                                                     </a>
@@ -125,12 +125,12 @@
                                             <div class="property-image">
                                                 <div class="property-slider">
                                                     <a href="javascript:void(0)">
-                                                        <img src="{{ asset('client/assets/images/property/3.jpg') }}"
+                                                        <img src="{{ asset('themes/classic/client/assets/images/property/3.jpg') }}"
                                                             class="bg-img" alt="">
 
                                                     </a>
                                                     <a href="javascript:void(0)">
-                                                        <img src="{{ asset('client/assets/images/property/25.jpg') }}"
+                                                        <img src="{{ asset('themes/classic/client/assets/images/property/25.jpg') }}"
                                                             class="bg-img" alt="">
 
                                                     </a>
@@ -140,7 +140,7 @@
 
                                                     </a>
                                                     <a href="javascript:void(0)">
-                                                        <img src="{{ asset('client/assets/images/property/2.jpg') }}"
+                                                        <img src="{{ asset('themes/classic/client/assets/images/property/2.jpg') }}"
                                                             class="bg-img" alt="">
 
                                                     </a>
@@ -198,7 +198,7 @@
                                             <div class="property-image">
                                                 <div class="property-slider">
                                                     <a href="javascript:void(0)">
-                                                        <img src="{{ asset('client/assets/images/property/2.jpg') }}"
+                                                        <img src="{{ asset('themes/classic/client/assets/images/property/2.jpg') }}"
                                                             class="bg-img" alt="">
 
                                                     </a>
@@ -208,12 +208,12 @@
 
                                                     </a>
                                                     <a href="javascript:void(0)">
-                                                        <img src="{{ asset('client/assets/images/property/3.jpg') }}"
+                                                        <img src="{{ asset('themes/classic/client/assets/images/property/3.jpg') }}"
                                                             class="bg-img" alt="">
 
                                                     </a>
                                                     <a href="javascript:void(0)">
-                                                        <img src="{{ asset('client/assets/images/property/25.jpg') }}"
+                                                        <img src="{{ asset('themes/classic/client/assets/images/property/25.jpg') }}"
                                                             class="bg-img" alt="">
 
                                                     </a>
@@ -280,12 +280,12 @@
 
                                                     </a>
                                                     <a href="javascript:void(0)">
-                                                        <img src="{{ asset('client/assets/images/property/3.jpg') }}"
+                                                        <img src="{{ asset('themes/classic/client/assets/images/property/3.jpg') }}"
                                                             class="bg-img" alt="">
 
                                                     </a>
                                                     <a href="javascript:void(0)">
-                                                        <img src="{{ asset('client/assets/images/property/2.jpg') }}"
+                                                        <img src="{{ asset('themes/classic/client/assets/images/property/2.jpg') }}"
                                                             class="bg-img" alt="">
 
                                                     </a>
@@ -349,7 +349,7 @@
 
                                                     </a>
                                                     <a href="javascript:void(0)">
-                                                        <img src="{{ asset('client/assets/images/property/2.jpg') }}"
+                                                        <img src="{{ asset('themes/classic/client/assets/images/property/2.jpg') }}"
                                                             class="bg-img" alt="">
 
                                                     </a>
@@ -359,7 +359,7 @@
 
                                                     </a>
                                                     <a href="javascript:void(0)">
-                                                        <img src="{{ asset('client/assets/images/property/25.jpg') }}"
+                                                        <img src="{{ asset('themes/classic/client/assets/images/property/25.jpg') }}"
                                                             class="bg-img" alt="">
 
                                                     </a>
@@ -433,7 +433,7 @@
 
                                                     </a>
                                                     <a href="javascript:void(0)">
-                                                        <img src="{{ asset('client/assets/images/property/2.jpg') }}"
+                                                        <img src="{{ asset('themes/classic/client/assets/images/property/2.jpg') }}"
                                                             class="bg-img" alt="">
 
                                                     </a>

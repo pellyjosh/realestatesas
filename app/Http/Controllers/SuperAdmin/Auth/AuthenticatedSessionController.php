@@ -31,7 +31,7 @@ class AuthenticatedSessionController extends Controller
 
         // Log::alert(['route' => $routeName, 'user' => Auth::user()]);
 
-        return redirect()->intended(route('superadmin.dashboard', [], false));
+        return redirect()->intended(route('supertenant.admin.dashboard', [], false));
     }
 
     /**

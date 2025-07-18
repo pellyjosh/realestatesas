@@ -1,6 +1,6 @@
-@extends('themes.classic.client.client_master')
+@extends('themes.classic.client.pages.dashboard.user_master')
 @section('title', 'Dashboard | Premium Refined Luxury Homes')
-@section('main')
+@section('content')
 
     <!-- page content -->
     <div class="col-lg-9">

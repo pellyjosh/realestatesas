@@ -1,4 +1,4 @@
-@extends('admin.admin_master')
+@extends('themes.classic.admin.admin_master')
 @section('title', 'Edit Agent | Premium Refined Luxury Homes')
 @section('content')
 
@@ -38,22 +38,22 @@
                             <div class="property-box">
                                 <div class="agent-image">
                                     <div>
-                                        <img src="{{ asset('admin/assets/images/avatar/5.jpg') }}" class="bg-img"
+                                        <img src="{{ asset('themes/classic/admin/assets/images/avatar/5.jpg') }}" class="bg-img"
                                             alt="">
                                         <span class="label label-shadow">2 properties</span>
                                         <div class="agent-overlay"></div>
                                         <div class="overlay-content">
                                             <ul>
                                                 <li><a href="https://accounts.google.com/"><img
-                                                            src="{{ asset('admin/assets/images/about/icon-1.png') }}"
+                                                            src="{{ asset('themes/classic/admin/assets/images/about/icon-1.png') }}"
                                                             alt=""></a>
                                                 </li>
                                                 <li><a href="https://twitter.com/"><img
-                                                            src="{{ asset('admin/assets/images/about/icon-2.png') }}"
+                                                            src="{{ asset('themes/classic/admin/assets/images/about/icon-2.png') }}"
                                                             alt=""></a>
                                                 </li>
                                                 <li><a href="https://www.facebook.com/"><img
-                                                            src="{{ asset('admin/assets/images/about/icon-3.png') }}"
+                                                            src="{{ asset('themes/classic/admin/assets/images/about/icon-3.png') }}"
                                                             alt=""></a>
                                                 </li>
                                             </ul>
@@ -79,7 +79,7 @@
                                             <button class="btn btn-warning btn-sm p-1" style="font-size: 0.8em;"><i
                                                     class="fas fa-ban" style="color: white;"></i>
                                             </button>
-                                            <a href="{{ route('edit-realtor') }}" class="btn btn-primary btn-sm mx-1 p-1"
+                                            <a href="{{ route('tenant.admin.edit.realtor') }}" class="btn btn-primary btn-sm mx-1 p-1"
                                                 style="font-size: 0.8em;"><i class="fas fa-edit"
                                                     style="color: white;"></i>
                                             </a>
@@ -91,7 +91,7 @@
                                                         style="color: white;"></i></button>
                                             </form>
                                         </div>
-                                        <a href="{{ route('admin.realtor-profile') }}">View profile <i
+                                        <a href="{{ route('tenant.admin.realtor.profile') }}">View profile <i
                                                 class="fas fa-arrow-right"></i>
                                         </a>
                                     </div>
@@ -109,15 +109,15 @@
                                         <div class="overlay-content">
                                             <ul>
                                                 <li><a href="https://accounts.google.com/"><img
-                                                            src="{{ asset('admin/assets/images/about/icon-1.png') }}"
+                                                            src="{{ asset('themes/classic/admin/assets/images/about/icon-1.png') }}"
                                                             alt=""></a>
                                                 </li>
                                                 <li><a href="https://twitter.com/"><img
-                                                            src="{{ asset('admin/assets/images/about/icon-2.png') }}"
+                                                            src="{{ asset('themes/classic/admin/assets/images/about/icon-2.png') }}"
                                                             alt=""></a>
                                                 </li>
                                                 <li><a href="https://www.facebook.com/"><img
-                                                            src="{{ asset('admin/assets/images/about/icon-3.png') }}"
+                                                            src="{{ asset('themes/classic/admin/assets/images/about/icon-3.png') }}"
                                                             alt=""></a>
                                                 </li>
                                             </ul>
@@ -143,7 +143,7 @@
                                             <button class="btn btn-warning btn-sm p-1" style="font-size: 0.8em;"><i
                                                     class="fas fa-ban" style="color: white;"></i>
                                             </button>
-                                            <a href="{{ route('edit-realtor') }}" class="btn btn-primary btn-sm mx-1 p-1"
+                                            <a href="{{ route('tenant.admin.edit.realtor') }}" class="btn btn-primary btn-sm mx-1 p-1"
                                                 style="font-size: 0.8em;"><i class="fas fa-edit"
                                                     style="color: white;"></i>
                                             </a>
@@ -155,7 +155,7 @@
                                                         style="color: white;"></i></button>
                                             </form>
                                         </div>
-                                        <a href="{{ route('admin.realtor-profile') }}">View profile <i
+                                        <a href="{{ route('tenant.admin.realtor.profile') }}">View profile <i
                                                 class="fas fa-arrow-right"></i>
                                         </a>
                                     </div>
@@ -173,15 +173,15 @@
                                         <div class="overlay-content">
                                             <ul>
                                                 <li><a href="https://accounts.google.com/"><img
-                                                            src="{{ asset('admin/assets/images/about/icon-1.png') }}"
+                                                            src="{{ asset('themes/classic/admin/assets/images/about/icon-1.png') }}"
                                                             alt=""></a>
                                                 </li>
                                                 <li><a href="https://twitter.com/"><img
-                                                            src="{{ asset('admin/assets/images/about/icon-2.png') }}"
+                                                            src="{{ asset('themes/classic/admin/assets/images/about/icon-2.png') }}"
                                                             alt=""></a>
                                                 </li>
                                                 <li><a href="https://www.facebook.com/"><img
-                                                            src="{{ asset('admin/assets/images/about/icon-3.png') }}"
+                                                            src="{{ asset('themes/classic/admin/assets/images/about/icon-3.png') }}"
                                                             alt=""></a>
                                                 </li>
                                             </ul>
@@ -207,7 +207,7 @@
                                             <button class="btn btn-warning btn-sm p-1" style="font-size: 0.8em;"><i
                                                     class="fas fa-ban" style="color: white;"></i>
                                             </button>
-                                            <a href="{{ route('edit-realtor') }}" class="btn btn-primary btn-sm mx-1 p-1"
+                                            <a href="{{ route('tenant.admin.edit.realtor') }}" class="btn btn-primary btn-sm mx-1 p-1"
                                                 style="font-size: 0.8em;"><i class="fas fa-edit"
                                                     style="color: white;"></i>
                                             </a>
@@ -219,7 +219,7 @@
                                                         style="color: white;"></i></button>
                                             </form>
                                         </div>
-                                        <a href="{{ route('admin.realtor-profile') }}">View profile <i
+                                        <a href="{{ route('tenant.admin.realtor.profile') }}">View profile <i
                                                 class="fas fa-arrow-right"></i>
                                         </a>
                                     </div>
@@ -237,15 +237,15 @@
                                         <div class="overlay-content">
                                             <ul>
                                                 <li><a href="https://accounts.google.com/"><img
-                                                            src="{{ asset('admin/assets/images/about/icon-1.png') }}"
+                                                            src="{{ asset('themes/classic/admin/assets/images/about/icon-1.png') }}"
                                                             alt=""></a>
                                                 </li>
                                                 <li><a href="https://twitter.com/"><img
-                                                            src="{{ asset('admin/assets/images/about/icon-2.png') }}"
+                                                            src="{{ asset('themes/classic/admin/assets/images/about/icon-2.png') }}"
                                                             alt=""></a>
                                                 </li>
                                                 <li><a href="https://www.facebook.com/"><img
-                                                            src="{{ asset('admin/assets/images/about/icon-3.png') }}"
+                                                            src="{{ asset('themes/classic/admin/assets/images/about/icon-3.png') }}"
                                                             alt=""></a>
                                                 </li>
                                             </ul>
@@ -271,7 +271,7 @@
                                             <button class="btn btn-warning btn-sm p-1" style="font-size: 0.8em;"><i
                                                     class="fas fa-ban" style="color: white;"></i>
                                             </button>
-                                            <a href="{{ route('edit-realtor') }}" class="btn btn-primary btn-sm mx-1 p-1"
+                                            <a href="{{ route('tenant.admin.edit.realtor') }}" class="btn btn-primary btn-sm mx-1 p-1"
                                                 style="font-size: 0.8em;"><i class="fas fa-edit"
                                                     style="color: white;"></i>
                                             </a>
@@ -283,7 +283,7 @@
                                                         style="color: white;"></i></button>
                                             </form>
                                         </div>
-                                        <a href="{{ route('admin.realtor-profile') }}">View profile <i
+                                        <a href="{{ route('tenant.admin.realtor.profile') }}">View profile <i
                                                 class="fas fa-arrow-right"></i>
                                         </a>
                                     </div>
@@ -301,15 +301,15 @@
                                         <div class="overlay-content">
                                             <ul>
                                                 <li><a href="https://accounts.google.com/"><img
-                                                            src="{{ asset('admin/assets/images/about/icon-1.png') }}"
+                                                            src="{{ asset('themes/classic/admin/assets/images/about/icon-1.png') }}"
                                                             alt=""></a>
                                                 </li>
                                                 <li><a href="https://twitter.com/"><img
-                                                            src="{{ asset('admin/assets/images/about/icon-2.png') }}"
+                                                            src="{{ asset('themes/classic/admin/assets/images/about/icon-2.png') }}"
                                                             alt=""></a>
                                                 </li>
                                                 <li><a href="https://www.facebook.com/"><img
-                                                            src="{{ asset('admin/assets/images/about/icon-3.png') }}"
+                                                            src="{{ asset('themes/classic/admin/assets/images/about/icon-3.png') }}"
                                                             alt=""></a>
                                                 </li>
                                             </ul>
@@ -335,7 +335,7 @@
                                             <button class="btn btn-warning btn-sm p-1" style="font-size: 0.8em;"><i
                                                     class="fas fa-ban" style="color: white;"></i>
                                             </button>
-                                            <a href="{{ route('edit-realtor') }}" class="btn btn-primary btn-sm mx-1 p-1"
+                                            <a href="{{ route('tenant.admin.edit.realtor') }}" class="btn btn-primary btn-sm mx-1 p-1"
                                                 style="font-size: 0.8em;"><i class="fas fa-edit"
                                                     style="color: white;"></i>
                                             </a>
@@ -347,7 +347,7 @@
                                                         style="color: white;"></i></button>
                                             </form>
                                         </div>
-                                        <a href="{{ route('admin.realtor-profile') }}">View profile <i
+                                        <a href="{{ route('tenant.admin.realtor.profile') }}">View profile <i
                                                 class="fas fa-arrow-right"></i>
                                         </a>
                                     </div>
@@ -365,15 +365,15 @@
                                         <div class="overlay-content">
                                             <ul>
                                                 <li><a href="https://accounts.google.com/"><img
-                                                            src="{{ asset('admin/assets/images/about/icon-1.png') }}"
+                                                            src="{{ asset('themes/classic/admin/assets/images/about/icon-1.png') }}"
                                                             alt=""></a>
                                                 </li>
                                                 <li><a href="https://twitter.com/"><img
-                                                            src="{{ asset('admin/assets/images/about/icon-2.png') }}"
+                                                            src="{{ asset('themes/classic/admin/assets/images/about/icon-2.png') }}"
                                                             alt=""></a>
                                                 </li>
                                                 <li><a href="https://www.facebook.com/"><img
-                                                            src="{{ asset('admin/assets/images/about/icon-3.png') }}"
+                                                            src="{{ asset('themes/classic/admin/assets/images/about/icon-3.png') }}"
                                                             alt=""></a>
                                                 </li>
                                             </ul>
@@ -399,7 +399,7 @@
                                             <button class="btn btn-warning btn-sm p-1" style="font-size: 0.8em;"><i
                                                     class="fas fa-ban" style="color: white;"></i>
                                             </button>
-                                            <a href="{{ route('edit-realtor') }}" class="btn btn-primary btn-sm mx-1 p-1"
+                                            <a href="{{ route('tenant.admin.edit.realtor') }}" class="btn btn-primary btn-sm mx-1 p-1"
                                                 style="font-size: 0.8em;"><i class="fas fa-edit"
                                                     style="color: white;"></i>
                                             </a>
@@ -411,7 +411,7 @@
                                                         style="color: white;"></i></button>
                                             </form>
                                         </div>
-                                        <a href="{{ route('admin.realtor-profile') }}">View profile <i
+                                        <a href="{{ route('tenant.admin.realtor.profile') }}">View profile <i
                                                 class="fas fa-arrow-right"></i>
                                         </a>
                                     </div>
@@ -429,15 +429,15 @@
                                         <div class="overlay-content">
                                             <ul>
                                                 <li><a href="https://accounts.google.com/"><img
-                                                            src="{{ asset('admin/assets/images/about/icon-1.png') }}"
+                                                            src="{{ asset('themes/classic/admin/assets/images/about/icon-1.png') }}"
                                                             alt=""></a>
                                                 </li>
                                                 <li><a href="https://twitter.com/"><img
-                                                            src="{{ asset('admin/assets/images/about/icon-2.png') }}"
+                                                            src="{{ asset('themes/classic/admin/assets/images/about/icon-2.png') }}"
                                                             alt=""></a>
                                                 </li>
                                                 <li><a href="https://www.facebook.com/"><img
-                                                            src="{{ asset('admin/assets/images/about/icon-3.png') }}"
+                                                            src="{{ asset('themes/classic/admin/assets/images/about/icon-3.png') }}"
                                                             alt=""></a>
                                                 </li>
                                             </ul>
@@ -463,7 +463,7 @@
                                             <button class="btn btn-warning btn-sm p-1" style="font-size: 0.8em;"><i
                                                     class="fas fa-ban" style="color: white;"></i>
                                             </button>
-                                            <a href="{{ route('edit-realtor') }}" class="btn btn-primary btn-sm mx-1 p-1"
+                                            <a href="{{ route('tenant.admin.edit.realtor') }}" class="btn btn-primary btn-sm mx-1 p-1"
                                                 style="font-size: 0.8em;"><i class="fas fa-edit"
                                                     style="color: white;"></i>
                                             </a>
@@ -475,7 +475,7 @@
                                                         style="color: white;"></i></button>
                                             </form>
                                         </div>
-                                        <a href="{{ route('admin.realtor-profile') }}">View profile <i
+                                        <a href="{{ route('tenant.admin.realtor.profile') }}">View profile <i
                                                 class="fas fa-arrow-right"></i>
                                         </a>
                                     </div>
@@ -493,15 +493,15 @@
                                         <div class="overlay-content">
                                             <ul>
                                                 <li><a href="https://accounts.google.com/"><img
-                                                            src="{{ asset('admin/assets/images/about/icon-1.png') }}"
+                                                            src="{{ asset('themes/classic/admin/assets/images/about/icon-1.png') }}"
                                                             alt=""></a>
                                                 </li>
                                                 <li><a href="https://twitter.com/"><img
-                                                            src="{{ asset('admin/assets/images/about/icon-2.png') }}"
+                                                            src="{{ asset('themes/classic/admin/assets/images/about/icon-2.png') }}"
                                                             alt=""></a>
                                                 </li>
                                                 <li><a href="https://www.facebook.com/"><img
-                                                            src="{{ asset('admin/assets/images/about/icon-3.png') }}"
+                                                            src="{{ asset('themes/classic/admin/assets/images/about/icon-3.png') }}"
                                                             alt=""></a>
                                                 </li>
                                             </ul>
@@ -527,7 +527,7 @@
                                             <button class="btn btn-warning btn-sm p-1" style="font-size: 0.8em;"><i
                                                     class="fas fa-ban" style="color: white;"></i>
                                             </button>
-                                            <a href="{{ route('edit-realtor') }}" class="btn btn-primary btn-sm mx-1 p-1"
+                                            <a href="{{ route('tenant.admin.edit.realtor') }}" class="btn btn-primary btn-sm mx-1 p-1"
                                                 style="font-size: 0.8em;"><i class="fas fa-edit"
                                                     style="color: white;"></i>
                                             </a>
@@ -539,7 +539,7 @@
                                                         style="color: white;"></i></button>
                                             </form>
                                         </div>
-                                        <a href="{{ route('admin.realtor-profile') }}">View profile <i
+                                        <a href="{{ route('tenant.admin.realtor.profile') }}">View profile <i
                                                 class="fas fa-arrow-right"></i>
                                         </a>
                                     </div>
@@ -557,15 +557,15 @@
                                         <div class="overlay-content">
                                             <ul>
                                                 <li><a href="https://accounts.google.com/"><img
-                                                            src="{{ asset('admin/assets/images/about/icon-1.png') }}"
+                                                            src="{{ asset('themes/classic/admin/assets/images/about/icon-1.png') }}"
                                                             alt=""></a>
                                                 </li>
                                                 <li><a href="https://twitter.com/"><img
-                                                            src="{{ asset('admin/assets/images/about/icon-2.png') }}"
+                                                            src="{{ asset('themes/classic/admin/assets/images/about/icon-2.png') }}"
                                                             alt=""></a>
                                                 </li>
                                                 <li><a href="https://www.facebook.com/"><img
-                                                            src="{{ asset('admin/assets/images/about/icon-3.png') }}"
+                                                            src="{{ asset('themes/classic/admin/assets/images/about/icon-3.png') }}"
                                                             alt=""></a>
                                                 </li>
                                             </ul>
@@ -591,7 +591,7 @@
                                             <button class="btn btn-warning btn-sm p-1" style="font-size: 0.8em;"><i
                                                     class="fas fa-ban" style="color: white;"></i>
                                             </button>
-                                            <a href="{{ route('edit-realtor') }}" class="btn btn-primary btn-sm mx-1 p-1"
+                                            <a href="{{ route('tenant.admin.edit.realtor') }}" class="btn btn-primary btn-sm mx-1 p-1"
                                                 style="font-size: 0.8em;"><i class="fas fa-edit"
                                                     style="color: white;"></i>
                                             </a>
@@ -603,7 +603,7 @@
                                                         style="color: white;"></i></button>
                                             </form>
                                         </div>
-                                        <a href="{{ route('admin.realtor-profile') }}">View profile <i
+                                        <a href="{{ route('tenant.admin.realtor.profile') }}">View profile <i
                                                 class="fas fa-arrow-right"></i>
                                         </a>
                                     </div>

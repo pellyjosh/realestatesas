@@ -5,6 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description" content="Premium Refined Luxury Homes- Admin dashboard page">
     <meta name="keywords" content="Premium Refined Luxury Homes, Admin Dashboard, Real Estate, Property Management">
     <meta name="author" content="Premium Refined Luxury Homes">
@@ -36,6 +37,11 @@
     <!-- Property Slider CSS -->
     <link rel="stylesheet" type="text/css" href="{{ asset('themes/classic/admin/assets/css/property-slider.css') }}">
 
+    <link href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.css" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 </head>
 
 <body>
@@ -44,7 +50,7 @@
     <div class="loader-wrapper">
         <div class="row loader-text">
             <div class="col-12">
-                <img src="{{ asset("themes/classic/client/assets/images/loader/gear.gif") }}" class="img-fluid"
+                <img src="{{ asset('themes/classic/client/assets/images/loader/gear.gif') }}" class="img-fluid"
                     alt="">
             </div>
             <div class="col-12">
@@ -58,528 +64,11 @@
 
     <div class="page-wrapper">
 
-        <!-- page header start -->
-        <div class="page-main-header row">
-            <div id="sidebar-toggle" class="toggle-sidebar col-auto">
-                <i data-feather="chevrons-left"></i>
-            </div>
-            <div class="nav-right col p-0">
-                <ul class="header-menu">
-                    <li>
-                        <div class="d-md-none mobile-search">
-                            <i data-feather="search"></i>
-                        </div>
-                        <div class="form-group search-form">
-                            <input type="text" class="form-control" placeholder="Search here...">
-                        </div>
-                    </li>
-                    <li>
-                        <a href="#!" onclick="javascript:toggleFullScreen()">
-                            <i data-feather="maximize"></i>
-                        </a>
-                    </li>
-                    <li class="onhover-dropdown">
-                        <a href="javascript:void(0)">
-                            <i data-feather="save"></i>
-                        </a>
-                        <div class="notification-dropdown onhover-show-div">
-                            <div class="dropdown-title">
-                                <h6>Recent Attachments</h6>
-                                <a href="{{ route('admin.reports') }}">Show all</a>
-                            </div>
-                            <ul>
-                                <li>
-                                    <div class="media">
-                                        <div class="icon-notification bg-success-light">
-                                            <i class="fas fa-file-word"></i>
-                                        </div>
-                                        <div class="media-body">
-                                            <a href="{{ route('admin.reports') }}">
-                                                <h6>Doc_file.doc</h6>
-                                            </a>
-                                            <span>800MB</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="media">
-                                        <div class="icon-notification bg-primary-light">
-                                            <i class="fas fa-file-image"></i>
-                                        </div>
-                                        <div class="media-body">
-                                            <a href="{{ route('admin.reports') }}">
-                                                <h6>Apartment.jpg</h6>
-                                            </a>
-                                            <span>500kb</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="media">
-                                        <div class="icon-notification bg-warning-light">
-                                            <i class="fas fa-file-pdf"></i>
-                                        </div>
-                                        <div class="media-body">
-                                            <a href="{{ route('admin.reports') }}">
-                                                <h6>villa_report.pdf</h6>
-                                            </a>
-                                            <span>26MB</span>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="onhover-dropdown notification-box">
-                        <a href="javascript:void(0)">
-                            <i data-feather="bell"></i>
-                            <span class="label label-shadow label-pill notification-badge">3</span>
-                        </a>
-                        <div class="notification-dropdown onhover-show-div">
-                            <div class="dropdown-title">
-                                <h6>Notifications</h6>
-                                <a href="{{ route('admin.favourites') }}">Show all</a>
-                            </div>
-                            <ul>
-                                <li>
-                                    <div class="media">
-                                        <div class="icon-notification bg-primary-light">
-                                            <i class="fab fa-xbox"></i>
-                                        </div>
-                                        <div class="media-body">
-                                            <h6>Item damaged</h6>
-                                            <span>8 hours ago, Tadawis 24</span>
-                                            <p class="mb-0">"the table is broken:("</p>
-                                            <ul class="user-group">
-                                                <li>
-                                                    <a href="javascript:void(0)">
-                                                        <img src="{{ asset('themes/classic/admin/assets/images/about/4.jpg') }}"
-                                                            class="img-fluid" alt="">
-                                                    </a>
-                                                </li>
-                                                <li class="reply">
-                                                    <a href="javascript:void(0)">
-                                                        Reply
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="media">
-                                        <div class="icon-notification bg-success-light">
-                                            <i class="fas fa-file-invoice-dollar"></i>
-                                        </div>
-                                        <div class="media-body">
-                                            <h6>Payment received</h6>
-                                            <span>2 hours ago, Bracka 15</span>
-                                            <ul class="user-group">
-                                                <li>
-                                                    <a href="javascript:void(0)">
-                                                        <img src="{{ asset('admin/assets/images/about/1.jpg') }}"
-                                                            class="img-fluid" alt="">
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:void(0)">
-                                                        <img src="{{ asset('admin/assets/images/about/2.jpg') }}"
-                                                            class="img-fluid" alt="">
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:void(0)">
-                                                        <img src="{{ asset('admin/assets/images/about/3.jpg') }}"
-                                                            class="img-fluid" alt="">
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="media">
-                                        <div class="icon-notification bg-warning-light">
-                                            <i class="fas fa-comment-dots"></i>
-                                        </div>
-                                        <div class="media-body">
-                                            <h6>New inquiry</h6>
-                                            <span>1 Days ago, Krowada 7</span>
-                                            <p class="mb-0">"is the villa still available?"</p>
-                                            <ul class="user-group">
-                                                <li>
-                                                    <a href="javascript:void(0)">
-                                                        <img src="{{ asset('admin/assets/images/about/2.jpg') }}"
-                                                            class="img-fluid" alt="">
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:void(0)">
-                                                        <img src="{{ asset('admin/assets/images/about/3.jpg') }}"
-                                                            class="img-fluid" alt="">
-                                                    </a>
-                                                </li>
-                                                <li class="reply">
-                                                    <a href="javascript:void(0)">
-                                                        Reply
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="onhover-dropdown">
-                        <a href="javascript:void(0)">
-                            <i data-feather="mail"></i>
-                        </a>
-                        <div class="notification-dropdown chat-dropdown onhover-show-div">
-                            <div class="dropdown-title">
-                                <h6>Messages</h6>
-                                <a href="{{ route('user-profile') }}">View all</a>
-                            </div>
-                            <ul>
-                                <li>
-                                    <div class="media">
-                                        <div class="chat-user">
-                                            <img src="{{ asset('admin/assets/images/avatar/1.jpg') }}"
-                                                class="img-fluid" alt="">
-                                        </div>
-                                        <div class="media-body">
-                                            <a href="{{ route('user-profile') }}">
-                                                <h6>Bob Frapples</h6>
-                                            </a>
-                                            <span>Template Represents simply...</span>
-                                        </div>
-                                        <div class="status online">online</div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="media">
-                                        <div class="chat-user">
-                                            <img src="{{ asset('admin/assets/images/avatar/3.jpg') }}"
-                                                class="img-fluid" alt="">
-                                        </div>
-                                        <div class="media-body">
-                                            <a href="{{ route('user-profile') }}">
-                                                <h6>Greta Life</h6>
-                                            </a>
-                                            <span>Template Represents simply...</span>
-                                        </div>
-                                        <div class="status away">Away</div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="media">
-                                        <div class="chat-user">
-                                            <img src="{{ asset('admin/assets/images/avatar/4.jpg') }}"
-                                                class="img-fluid" alt="">
-                                        </div>
-                                        <div class="media-body">
-                                            <a href="{{ route('user-profile') }}">
-                                                <h6>Greta Life</h6>
-                                            </a>
-                                            <span>Template Represents simply...</span>
-                                        </div>
-                                        <div class="status online">online</div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="media">
-                                        <div class="chat-user">
-                                            <img src="{{ asset('admin/assets/images/avatar/7.jpg') }}"
-                                                class="img-fluid" alt="">
-                                        </div>
-                                        <div class="media-body">
-                                            <a href="{{ route('user-profile') }}">
-                                                <h6>Greta Life</h6>
-                                            </a>
-                                            <span>Template Represents simply...</span>
-                                        </div>
-                                        <div class="status busy">Busy</div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="profile-avatar onhover-dropdown">
-                        <div>
-                            <img src="{{ asset('admin/assets/images/avatar/3.jpg') }}" class="img-fluid"
-                                alt="">
-                        </div>
-                        <ul class="profile-dropdown onhover-show-div">
-                            <li><a href="{{ route('user-profile') }}"><span>Account </span><i
-                                        data-feather="user"></i></a></li>
-                           
-                            <li><a href="{{ route("admin.login") }}"><span>Log Out</span><i
-                                        data-feather="log-in"></i></a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- page header end -->
+        @include('themes.classic.admin.partials.header')
         <div class="page-body-wrapper">
 
-            <!-- page sidebar start -->
-            <div class="page-sidebar">
-                <div class="logo-wrap">
-                    <a href="{{ route('admin.dashboard') }}">
-                        <img src="{{ asset('themes/classic/client/assets/images/logo2.png') }}" class="img-fluid for-light"
-                            alt="">
-                        <img src="{{ asset('client/assets/images/logo2.png') }}" class="img-fluid for-dark"
-                            alt="">
-                    </a>
-                    <div class="back-btn d-lg-none d-inline-block">
-                        <i data-feather="chevrons-left"></i>
-                    </div>
-                </div>
-                <div class="main-sidebar">
-                    <div class="user-profile">
-                        <div class="media">
-                            <div class="change-pic">
-                                <img src="{{ asset('admin/assets/images/avatar/3.jpg') }}" class="img-fluid" alt="">
-                            </div>
-                            <div class="media-body">
-                                <a href="{{ route('user-profile') }}">
-                                    <h6>Zack Lee</h6>
-                                </a>
-                                <span class="font-roboto">zackle@gmail.com</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="mainsidebar">
-                        <ul class="sidebar-menu custom-scrollbar">
-                            <li class="sidebar-item">
-                                <a href="{{ route('admin.dashboard') }}" class="sidebar-link only-link">
-                                    <i data-feather="airplay"></i>
-                                    <span>Dashboard</span>
-                                </a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="javascript:void(0)" class="sidebar-link">
-                                    <i data-feather="grid"></i>
-                                    <span>My properties</span>
-                                </a>
-                                <ul class="nav-submenu menu-content">
-                                    <li>
-                                        <a href="{{ route('admin.add-property') }}">
-                                            <i data-feather="chevrons-right"></i>
-                                            add property
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('admin.edit-property') }}">
-                                            <i data-feather="chevrons-right"></i>
-                                            edit property
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('admin.listing') }}">
-                                            <i data-feather="chevrons-right"></i>
-                                            property list
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('admin.favourites') }}">
-                                            <i data-feather="chevrons-right"></i>
-                                            Favourites
-                                        </a>
-                                    </li>
 
-                                </ul>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="javascript:void(0)" class="sidebar-link">
-                                    <i data-feather="users"></i>
-                                    <span>Manage users</span>
-                                </a>
-                                <ul class="nav-submenu menu-content">
-                                    {{-- <li>
-                                        <a href="{{ route('user-profile') }}">
-                                            <i data-feather="chevrons-right"></i>
-                                            Profile
-                                        </a>
-                                    </li> --}}
-                                    <li>
-                                        <a href="{{ route('admin.add-user') }}">
-                                            <i data-feather="chevrons-right"></i>
-                                            Add user
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('admin.add-user-wizard') }}">
-                                            <i data-feather="chevrons-right"></i>
-                                            Add user wizard <span class="label label-shadow ms-1">new</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('edit-user') }}">
-                                            <i data-feather="chevrons-right"></i>
-                                            Edit user
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('all-users') }}">
-                                            <i data-feather="chevrons-right"></i>
-                                            All users
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="javascript:void(0)" class="sidebar-link">
-                                    <i data-feather="user-plus"></i>
-                                    <span>Manage Admins</span>
-                                </a>
-                                <ul class="nav-submenu menu-content">
-                                    {{-- <li>
-                                        <a href="{{ route('admin.realtor-profile') }}">
-                                            <i data-feather="chevrons-right"></i>
-                                            Profile
-                                        </a>
-                                    </li> --}}
-                                    <li>
-                                        <a href="{{ route('add-admin') }}">
-                                            <i data-feather="chevrons-right"></i>
-                                            Add Admin
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('add-admin-wizard') }}">
-                                            <i data-feather="chevrons-right"></i>
-                                            Add Admin wizard <span class="label label-shadow ms-1">new</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('edit-admin') }}">
-                                            <i data-feather="chevrons-right"></i>
-                                            Edit Admin
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('all-admins') }}">
-                                            <i data-feather="chevrons-right"></i>
-                                            All Admins
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('admin-invoice') }}">
-                                            <i data-feather="chevrons-right"></i>
-                                            Invoice
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="javascript:void(0)" class="sidebar-link">
-                                    <i data-feather="user-plus"></i>
-                                    <span>Manage Realtors</span>
-                                </a>
-                                <ul class="nav-submenu menu-content">
-                                    {{-- <li>
-                                        <a href="{{ route('admin.realtor-profile') }}">
-                                            <i data-feather="chevrons-right"></i>
-                                            Profile
-                                        </a>
-                                    </li> --}}
-                                    <li>
-                                        <a href="{{ route('add-realtor') }}">
-                                            <i data-feather="chevrons-right"></i>
-                                            Add Realtor
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('add-realtor-wizard') }}">
-                                            <i data-feather="chevrons-right"></i>
-                                            Add Realtor wizard <span class="label label-shadow ms-1">new</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('edit-realtor') }}">
-                                            <i data-feather="chevrons-right"></i>
-                                            Edit Realtor
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('all-realtors') }}">
-                                            <i data-feather="chevrons-right"></i>
-                                            All Realtors
-                                        </a>
-                                    </li>
-                                   
-                                </ul>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="{{ route('admin.events') }}" class="sidebar-link only-link">
-                                    <i data-feather="calendar"></i>
-                                    <span>Events</span>
-                                </a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="javascript:void(0)" class="sidebar-link">
-                                    <i data-feather="layout"></i>
-                                    <span>Types</span>
-                                </a>
-                                <ul class="nav-submenu menu-content">
-                                    <li>
-                                        <a href="{{ route('admin.family-house') }}">
-                                            <i data-feather="chevrons-right"></i>
-                                            Family House
-                                        </a>
-                                    </li>
-                                    {{-- <li>
-                                        <a href="cottage.html">
-                                            <i data-feather="chevrons-right"></i>
-                                            Cottage
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="apartment.html">
-                                            <i data-feather="chevrons-right"></i>
-                                            Apartment
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="condominium.html">
-                                            <i data-feather="chevrons-right"></i>
-                                            Condominium
-                                        </a>
-                                    </li> --}}
-                                </ul>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="{{ route('admin.reports') }}" class="sidebar-link only-link">
-                                    <i data-feather="bar-chart-2"></i>
-                                    <span>Reports</span>
-                                </a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="{{ route('admin.transactions') }}" class="sidebar-link only-link">
-                                    <i class="fas fa-atm"></i>
-                                    <span>Transactions</span>
-                                </a>
-                            <li class="sidebar-item">
-                                <a href="{{ route('admin.withdrawal') }}" class="sidebar-link only-link">
-                                    <i data-feather="bar-chart-2"></i>
-                                    <span>Withdrawal</span>
-                                </a>
-                            <li class="sidebar-item">
-                                <a href="{{ route("admin.payments") }}" class="sidebar-link only-link">
-                                    <i data-feather="credit-card"></i>
-                                    <span>Payments</span>
-                                </a>
-                            </li>
-                            
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <!-- page sidebar end -->
-
+            @include('themes.classic.admin.partials.sidebar')
 
             <div class="page-body">
 
@@ -664,25 +153,19 @@
     </div>
     <!-- customizer end -->
 
-    {{-- <script>
-        $(document).ready(function() {
-            $('#myTable').DataTable();
-        });
-    </script> --}}
-    
     <!-- latest jquery-->
     <script src="{{ asset('themes/classic/admin/assets/js/jquery-3.6.0.min.js') }}"></script>
 
-     <!-- DataTables JS -->
-     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 
-     <script>
+    <script>
         $(document).ready(function() {
             $('#myTable').DataTable();
         });
     </script>
 
-    <script src="{{ asset("themes/classic/admin/assets/js/check.js") }}"></script>
+    <script src="{{ asset('themes/classic/admin/assets/js/check.js') }}"></script>
 
 
     <!-- Bootstrap js-->
@@ -693,33 +176,29 @@
     <script src="{{ asset('themes/classic/client/assets/js/feather-icon/feather-icon.js') }}"></script>
 
     <!-- magnific js -->
-    <script src="{{ asset("themes/classic/admin/assets/js/zoom-gallery.js") }}"></script>
-    <script src="{{ asset("themes/classic/admin/assets/js/jquery.magnific-popup.js") }}"></script>
+    <script src="{{ asset('themes/classic/admin/assets/js/zoom-gallery.js') }}"></script>
+    <script src="{{ asset('themes/classic/admin/assets/js/jquery.magnific-popup.js') }}"></script>
 
-     <!-- slick js -->
-    <script src="{{ asset("themes/classic/admin/assets/js/slick.js") }}"></script>
-    <script src="{{ asset("themes/classic/admin/assets/js/property-slider.js") }}"></script>
+    <!-- slick js -->
+    <script src="{{ asset('themes/classic/admin/assets/js/slick.js') }}"></script>
+    <script src="{{ asset('themes/classic/admin/assets/js/property-slider.js') }}"></script>
     <script>
-    $(document).ready(function(){
-        console.log('Initializing property slider from master');
-        $('.property-slider').each(function(){
-            $(this).slick({
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                arrows: true,
-                prevArrow: $(this).find('.prev-arrow'),
-                nextArrow: $(this).find('.next-arrow'),
-                dots: false,
-                autoplay: false,
-                infinite: true
+        $(document).ready(function() {
+            console.log('Initializing property slider from master');
+            $('.property-slider').each(function() {
+                $(this).slick({
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    arrows: true,
+                    prevArrow: $(this).find('.prev-arrow'),
+                    nextArrow: $(this).find('.next-arrow'),
+                    dots: false,
+                    autoplay: false,
+                    infinite: true
+                });
             });
         });
-    });
     </script>
-
-      {{-- <!-- chartist chart js-->
-      <script src="{{ asset("admin/assets/js/chart/chartist/chartist.js") }}"></script>
-      <script src="{{ asset("admin/assets/js/chart/chartist/chartist-plugin-tooltip.js") }}"></script> --}}
 
     <!-- sidebar js -->
     <script src="{{ asset('themes/classic/admin/assets/js/sidebar.js') }}"></script>
@@ -728,11 +207,10 @@
     <script src="{{ asset('themes/classic/admin/assets/js/chart/apex-chart/apex-chart.js') }}"></script>
     <script src="{{ asset('themes/classic/admin/assets/js/chart/apex-chart/stock-prices.js') }}"></script>
     <script src="{{ asset('themes/classic/admin/assets/js/admin-dashboard.js') }}"></script>
-    {{-- <script src="{{ asset("admin/assets/js/user-profile.js") }}"></script> --}}
 
-      <!-- vector map js-->
-      <script src="{{ asset('themes/classic/admin/assets/js/vector-map/jquery-jvectormap-2.0.2.min.js') }}"></script>
-      <script src="{{ asset('themes/classic/admin/assets/js/vector-map/jquery-jvectormap-asia-mill.js') }}"></script>
+    <!-- vector map js-->
+    <script src="{{ asset('themes/classic/admin/assets/js/vector-map/jquery-jvectormap-2.0.2.min.js') }}"></script>
+    <script src="{{ asset('themes/classic/admin/assets/js/vector-map/jquery-jvectormap-asia-mill.js') }}"></script>
 
 
     <!--admin js -->
@@ -745,6 +223,8 @@
     <!-- Color-picker js-->
     <script src="{{ asset('themes/classic/admin/assets/js/color/custom-colorpicker.js') }}"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
 </body>
 

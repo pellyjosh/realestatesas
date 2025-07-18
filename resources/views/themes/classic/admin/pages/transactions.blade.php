@@ -1,4 +1,4 @@
-@extends('admin.admin_master')
+@extends('themes.classic.admin.admin_master')
 @section('title', 'Transactions | Premium Refined Luxury Homes')
 @section('content')
     <div class="container-fluid">
@@ -11,7 +11,7 @@
                         </h3>
                     </div>
                 </div>
-                
+
             </div>
         </div>
 
@@ -29,6 +29,7 @@
                                     color: #fff !important;
                                     border: 1px solid #91d20a !important;
                                 }
+
                                 .dataTables_paginate .paginate_button {
                                     background-color: #f6faeb !important;
                                     color: #333 !important;
@@ -36,10 +37,12 @@
                                     border-radius: 20px !important;
                                     margin: 0 2px;
                                 }
+
                                 .dataTables_paginate .paginate_button:hover:not(.current) {
                                     background-color: #e5f5c7 !important;
                                     color: #333 !important;
                                 }
+
                                 .filter-panel {
                                     margin-bottom: 1rem;
                                     display: flex;
@@ -48,52 +51,63 @@
                                     gap: 0.75rem;
                                     flex-wrap: wrap;
                                 }
+
                                 .table thead th {
                                     background: #e5f5c7;
                                     color: #333;
                                     font-weight: 600;
                                     padding: 0.5rem;
                                 }
+
                                 .custom-table-container {
                                     border-radius: 10px;
                                     padding: 0.5rem;
                                     width: 100%;
                                     overflow-x: auto;
                                 }
+
                                 .table td {
                                     padding: 0.5rem 0.75rem;
                                     vertical-align: middle;
                                 }
+
                                 .table th {
                                     padding: 0.5rem 0.75rem;
                                     vertical-align: middle;
                                 }
+
                                 .action-btns {
                                     display: flex;
                                     gap: 0.25rem;
                                     flex-wrap: wrap;
                                 }
+
                                 .page-body {
                                     min-height: calc(100vh - 200px);
                                 }
+
                                 @media (max-width: 576px) {
                                     .table {
                                         font-size: 0.85rem;
                                     }
+
                                     .action-btns {
                                         flex-wrap: nowrap;
                                         gap: 0.15rem;
                                     }
+
                                     .filter-panel {
                                         flex-direction: column;
                                         align-items: center;
                                     }
+
                                     .button-group {
                                         margin-top: 1rem;
                                         width: 100%;
                                         display: flex;
                                         justify-content: center;
                                     }
+
                                     .button-group .btn {
                                         padding: 0.5rem 1.5rem;
                                         font-size: 1rem;
@@ -149,8 +163,8 @@
                                             <td class="text-muted">John Doe</td>
                                             <td>
                                                 <div class="action-btns">
-                                                    <a href="{{ route('admin-invoice') }}" class="btn btn-sm btn-info"><i
-                                                            class="fas fa-eye"></i></a>
+                                                    <a href="{{ route('tenant.admin.invoice') }}"
+                                                        class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>
                                                 </div>
                                             </td>
                                         </tr>
@@ -189,8 +203,8 @@
                                             <td class="text-muted">John Doe</td>
                                             <td>
                                                 <div class="action-btns">
-                                                    <a href="{{ route('admin-invoice') }}" class="btn btn-sm btn-info"><i
-                                                            class="fas fa-eye"></i></a>
+                                                    <a href="{{ route('tenant.admin.invoice') }}"
+                                                        class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>
                                                 </div>
                                             </td>
                                         </tr>
@@ -208,8 +222,8 @@
                                             <td class="text-muted">John Doe</td>
                                             <td>
                                                 <div class="action-btns">
-                                                    <a href="{{ route('admin-invoice') }}" class="btn btn-sm btn-info"><i
-                                                            class="fas fa-eye"></i></a>
+                                                    <a href="{{ route('tenant.admin.invoice') }}"
+                                                        class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>
                                                 </div>
                                             </td>
                                         </tr>
