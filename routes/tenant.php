@@ -301,7 +301,7 @@ Route::middleware([
             })->name('tenant.admin.dashboard');
 
 
-            // admin add, edit... routes
+            // admin add, edit... admin routes
             Route::get('/add-admin', function () {
                 return tenant_view('admin.pages.manage-admins.add-admin');
             })->name('tenant.admin.add');
@@ -418,7 +418,31 @@ Route::middleware([
                 return tenant_view('admin.pages.invoice');
             })->name('tenant.admin.invoice');
 
-            Route::get('/home/section', [SectionController::class, 'index'])->name('tenant.admin.section');
+            Route::get('/sales', function () {
+                return tenant_view('admin.pages.sales');
+            })->name('tenant.admin.sales');
+
+            Route::get('/sales', function () {
+                return tenant_view('admin.pages.sales');
+            })->name('tenant.admin.sales');
+
+        //    admin settings route 
+            Route::get('/section', [SectionController::class, 'index'])->name('tenant.admin.section');
+            Route::post('/sections/{sectionName}', [SectionController::class, 'store'])->name('tenant.admin.sections.store');
+
+            Route::get('/payment-plans', function () {
+                return tenant_view('admin.pages.settings.payment-plans');
+            })->name('tenant.admin.payment.plans');
+
+            Route::get('/leads', function () {
+                return tenant_view('admin.pages.marketing-tools.leads');
+            })->name('tenant.admin.leads');
+
+            Route::get('/ai.ad.generator', function () {
+                return tenant_view('admin.pages.marketing-tools.ai-ad-generator');
+            })->name('tenant.admin.ai.ad.generator');
+
+
 
             Route::controller(AdminEventController::class)->group(function () {
                 Route::get('/events', 'index')->name('tenant.admin.events');

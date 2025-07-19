@@ -2,7 +2,8 @@
 @section('title', 'Homepage Content Management | Premium Refined Luxury Homes')
 @section('content')
 
-    <div x-data="homepageManager()" x-init="init()" class="container-fluid">
+    <div x-data='homepageManager(@json($sections ?? []), @json($properties ?? []))' x-init="init()"
+        class="container-fluid">
         <!-- Page Header -->
         <div class="page-header">
             <div class="page-header-content">
@@ -105,8 +106,7 @@
                                                 <i data-feather="type" class="me-1"></i>Hero Title
                                             </label>
                                             <div class="mt-2" x-show="!showForm.includes('hero_title')">
-                                                <h6 class="mb-0"
-                                                    x-text="heroSection.data.hero_title || 'Premium Refined Luxury Homes'">
+                                                <h6 class="mb-0" x-text="heroSection.data.hero_title || 'Not Set'">
                                                 </h6>
                                             </div>
                                         </div>
@@ -142,7 +142,7 @@
                                             </label>
                                             <div class="mt-2" x-show="!showForm.includes('hero_subtitle')">
                                                 <p class="mb-0 text-muted"
-                                                    x-text="heroSection.data.hero_subtitle || 'Find your perfect property today'">
+                                                    x-text="heroSection.data.hero_subtitle || 'Not Set'">
                                                 </p>
                                             </div>
                                         </div>
@@ -177,7 +177,7 @@
                                             </label>
                                             <div class="mt-2" x-show="!showForm.includes('cta_button')">
                                                 <span class="btn btn-primary btn-xs"
-                                                    x-text="heroSection.data.cta_button || 'Get Started'"></span>
+                                                    x-text="heroSection.data.cta_button || 'Not Set'"></span>
                                             </div>
                                         </div>
                                         <button class="btn btn-primary btn-xs" @click="toggleEditForm('cta_button')"
@@ -232,7 +232,7 @@
                                 <div class="flex-grow-1">
                                     <label class="form-label">Section Title</label>
                                     <div class="mt-2" x-show="!showForm.includes('properties_title')">
-                                        <h6 class="mb-0" x-text="propertiesSection.data.title || 'Latest For Sale'">
+                                        <h6 class="mb-0" x-text="propertiesSection.data.title || 'Not Set'">
                                         </h6>
                                     </div>
                                 </div>
@@ -263,7 +263,7 @@
                                     <label class="form-label">Section Label</label>
                                     <div class="mt-2" x-show="!showForm.includes('properties_label')">
                                         <span class="badge badge-primary"
-                                            x-text="propertiesSection.data.label || 'Sale'"></span>
+                                            x-text="propertiesSection.data.label || 'Not Set'"></span>
                                     </div>
                                 </div>
                                 <button class="btn btn-primary btn-xs" @click="toggleEditForm('properties_label')"
@@ -290,10 +290,10 @@
                         <div class="section-item mb-3">
                             <div class="d-flex justify-content-between align-items-start">
                                 <div class="flex-grow-1">
-                                    <label class="form-label">Properties to Display</label>
+                                    <label class="form-label">Number of Properties to Display (Max 6)</label>
                                     <div class="mt-2" x-show="!showForm.includes('properties_limit')">
                                         <span class="text-primary fw-bold"
-                                            x-text="(propertiesSection.data.limit || '6') + ' properties'"></span>
+                                            x-text="(propertiesSection.data.limit || 'Not Set') + ' properties'"></span>
                                     </div>
                                 </div>
                                 <button class="btn btn-primary btn-xs" @click="toggleEditForm('properties_limit')"
@@ -306,12 +306,56 @@
                                 @submit.prevent="saveProperty('properties_limit')" class="mt-3">
                                 <div class="form-group">
                                     <input type="number" class="form-control" x-model="formValues.properties_limit"
-                                        placeholder="Number of properties to show" min="1" max="20">
+                                        placeholder="Number of properties to show" min="1" max="6">
                                 </div>
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-primary me-2">Save</button>
                                     <button type="button" class="btn btn-light"
                                         @click="toggleEditForm('properties_limit')">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Select Properties -->
+                        <div class="section-item mb-3">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div class="flex-grow-1">
+                                    <label class="form-label">Select Properties</label>
+                                    <div class="mt-2" x-show="!showForm.includes('properties_selected_properties')">
+                                        <template
+                                            x-if="propertiesSection.data.selected_properties && propertiesSection.data.selected_properties.length > 0">
+                                            <ul class="list-group">
+                                                <template x-for="propId in propertiesSection.data.selected_properties"
+                                                    :key="propId">
+                                                    <li class="list-group-item" x-text="getPropertyName(propId)"></li>
+                                                </template>
+                                            </ul>
+                                        </template>
+                                        <span x-else class="text-muted">No properties selected</span>
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary btn-xs"
+                                    @click="toggleEditForm('properties_selected_properties')" type="button">
+                                    <span x-show="!showForm.includes('properties_selected_properties')">Edit</span>
+                                    <span x-show="showForm.includes('properties_selected_properties')">Cancel</span>
+                                </button>
+                            </div>
+                            <form x-show="showForm.includes('properties_selected_properties')"
+                                @submit.prevent="saveProperty('properties_selected_properties')" class="mt-3">
+                                <div class="form-group">
+                                    <select class="form-control" x-model="formValues.properties_selected_properties"
+                                        multiple size="6">
+                                        <template x-for="property in allProperties" :key="property.id">
+                                            <option :value="property.id" x-text="property.name"></option>
+                                        </template>
+                                    </select>
+                                    <small class="form-text text-muted">Hold Ctrl/Cmd to select multiple properties (Max
+                                        6)</small>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary me-2">Save</button>
+                                    <button type="button" class="btn btn-light"
+                                        @click="toggleEditForm('properties_selected_properties')">Cancel</button>
                                 </div>
                             </form>
                         </div>
@@ -323,7 +367,7 @@
                                     <label class="form-label">Section Description</label>
                                     <div class="mt-2" x-show="!showForm.includes('properties_description')">
                                         <p class="mb-0 text-muted"
-                                            x-text="propertiesSection.data.description || 'Discover premium properties available for purchase'">
+                                            x-text="propertiesSection.data.description || 'Not Set'">
                                         </p>
                                     </div>
                                 </div>
@@ -343,6 +387,132 @@
                                     <button type="submit" class="btn btn-primary me-2">Save</button>
                                     <button type="button" class="btn btn-light"
                                         @click="toggleEditForm('properties_description')">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Properties Section -->
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <div class="d-flex align-items-center">
+                            <i data-feather="star" class="me-2"></i>
+                            <div>
+                                <h5 class="mb-0">Featured Properties Section</h5>
+                                <small class="text-muted">Showcase special properties</small>
+                            </div>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" x-model="featuredSection.is_enabled"
+                                @change="toggleSection('featured')">
+                            <span class="switch-state"></span>
+                        </label>
+                    </div>
+                    <div class="card-body" x-show="featuredSection.is_enabled">
+                        <!-- Section Title -->
+                        <div class="section-item mb-3">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div class="flex-grow-1">
+                                    <label class="form-label">Section Title</label>
+                                    <div class="mt-2" x-show="!showForm.includes('featured_title')">
+                                        <h6 class="mb-0" x-text="featuredSection.data.title || 'Not Set'">
+                                        </h6>
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary btn-xs" @click="toggleEditForm('featured_title')"
+                                    type="button">
+                                    <span x-show="!showForm.includes('featured_title')">Edit</span>
+                                    <span x-show="showForm.includes('featured_title')">Cancel</span>
+                                </button>
+                            </div>
+                            <form x-show="showForm.includes('featured_title')"
+                                @submit.prevent="saveProperty('featured_title')" class="mt-3">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" x-model="formValues.featured_title"
+                                        placeholder="Enter section title">
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary me-2">Save</button>
+                                    <button type="button" class="btn btn-light"
+                                        @click="toggleEditForm('featured_title')">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Number of Featured Properties -->
+                        <div class="section-item mb-3">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div class="flex-grow-1">
+                                    <label class="form-label">Number of Featured Properties to Display (Max 6)</label>
+                                    <div class="mt-2" x-show="!showForm.includes('featured_limit')">
+                                        <span class="text-primary fw-bold"
+                                            x-text="(featuredSection.data.limit || 'Not Set') + ' properties'"></span>
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary btn-xs" @click="toggleEditForm('featured_limit')"
+                                    type="button">
+                                    <span x-show="!showForm.includes('featured_limit')">Edit</span>
+                                    <span x-show="showForm.includes('featured_limit')">Cancel</span>
+                                </button>
+                            </div>
+                            <form x-show="showForm.includes('featured_limit')"
+                                @submit.prevent="saveProperty('featured_limit')" class="mt-3">
+                                <div class="form-group">
+                                    <input type="number" class="form-control" x-model="formValues.featured_limit"
+                                        placeholder="Number of featured properties to show" min="1"
+                                        max="6">
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary me-2">Save</button>
+                                    <button type="button" class="btn btn-light"
+                                        @click="toggleEditForm('featured_limit')">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Select Featured Properties -->
+                        <div class="section-item mb-3">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div class="flex-grow-1">
+                                    <label class="form-label">Select Featured Properties (Max 6)</label>
+                                    <div class="mt-2" x-show="!showForm.includes('featured_selected_properties')">
+                                        <template
+                                            x-if="featuredSection.data.selected_properties && featuredSection.data.selected_properties.length > 0">
+                                            <ul class="list-group">
+                                                <template x-for="propId in featuredSection.data.selected_properties"
+                                                    :key="propId">
+                                                    <li class="list-group-item" x-text="getPropertyName(propId)"></li>
+                                                </template>
+                                            </ul>
+                                        </template>
+                                        <span x-else class="text-muted">No featured properties selected</span>
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary btn-xs"
+                                    @click="toggleEditForm('featured_selected_properties')" type="button">
+                                    <span x-show="!showForm.includes('featured_selected_properties')">Edit</span>
+                                    <span x-show="showForm.includes('featured_selected_properties')">Cancel</span>
+                                </button>
+                            </div>
+                            <form x-show="showForm.includes('featured_selected_properties')"
+                                @submit.prevent="saveProperty('featured_selected_properties')" class="mt-3">
+                                <div class="form-group">
+                                    <select class="form-control" x-model="formValues.featured_selected_properties"
+                                        multiple size="6">
+                                        <template x-for="property in allProperties" :key="property.id">
+                                            <option :value="property.id" x-text="property.name"></option>
+                                        </template>
+                                    </select>
+                                    <small class="form-text text-muted">Hold Ctrl/Cmd to select multiple properties (Max
+                                        6)</small>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary me-2">Save</button>
+                                    <button type="button" class="btn btn-light"
+                                        @click="toggleEditForm('featured_selected_properties')">Cancel</button>
                                 </div>
                             </form>
                         </div>
@@ -374,7 +544,7 @@
                                 <div class="flex-grow-1">
                                     <label class="form-label">Section Title</label>
                                     <div class="mt-2" x-show="!showForm.includes('testimonials_title')">
-                                        <h6 class="mb-0" x-text="testimonialsSection.data.title || 'Happy Clients'">
+                                        <h6 class="mb-0" x-text="testimonialsSection.data.title || 'Not Set'">
                                         </h6>
                                     </div>
                                 </div>
@@ -405,7 +575,7 @@
                                     <label class="form-label">Section Label</label>
                                     <div class="mt-2" x-show="!showForm.includes('testimonials_label')">
                                         <span class="badge badge-primary"
-                                            x-text="testimonialsSection.data.label || 'Our'"></span>
+                                            x-text="testimonialsSection.data.label || 'Not Set'"></span>
                                     </div>
                                 </div>
                                 <button class="btn btn-primary btn-xs" @click="toggleEditForm('testimonials_label')"
@@ -435,7 +605,7 @@
                                     <label class="form-label">Section Description</label>
                                     <div class="mt-2" x-show="!showForm.includes('testimonials_description')">
                                         <p class="mb-0 text-muted"
-                                            x-text="testimonialsSection.data.description || 'What our satisfied clients say about our services'">
+                                            x-text="testimonialsSection.data.description || 'Not Set'">
                                         </p>
                                     </div>
                                 </div>
@@ -488,7 +658,7 @@
                                 <div class="flex-grow-1">
                                     <label class="form-label">Section Title</label>
                                     <div class="mt-2" x-show="!showForm.includes('about_title')">
-                                        <h6 class="mb-0" x-text="aboutSection.data.title || 'Meet our Realtor'"></h6>
+                                        <h6 class="mb-0" x-text="aboutSection.data.title || 'Not Set'"></h6>
                                     </div>
                                 </div>
                                 <button class="btn btn-primary btn-xs" @click="toggleEditForm('about_title')"
@@ -517,8 +687,7 @@
                                 <div class="flex-grow-1">
                                     <label class="form-label">Company Description</label>
                                     <div class="mt-2" x-show="!showForm.includes('about_description')">
-                                        <p class="mb-0 text-muted"
-                                            x-text="aboutSection.data.description || 'We don\'t just sell land we curate legacy worthy properties...'">
+                                        <p class="mb-0 text-muted" x-text="aboutSection.data.description || 'Not Set'">
                                         </p>
                                     </div>
                                 </div>
@@ -568,8 +737,7 @@
                                 <div class="flex-grow-1">
                                     <label class="form-label">Section Title</label>
                                     <div class="mt-2" x-show="!showForm.includes('cities_title')">
-                                        <h6 class="mb-0"
-                                            x-text="citiesSection.data.title || 'Find Properties in These Cities'"></h6>
+                                        <h6 class="mb-0" x-text="citiesSection.data.title || 'Not Set'"></h6>
                                     </div>
                                 </div>
                                 <button class="btn btn-primary btn-xs" @click="toggleEditForm('cities_title')"
@@ -598,8 +766,7 @@
                                 <div class="flex-grow-1">
                                     <label class="form-label">Section Description</label>
                                     <div class="mt-2" x-show="!showForm.includes('cities_description')">
-                                        <p class="mb-0 text-muted"
-                                            x-text="citiesSection.data.description || 'Explore properties available in various cities'">
+                                        <p class="mb-0 text-muted" x-text="citiesSection.data.description || 'Not Set'">
                                         </p>
                                     </div>
                                 </div>
@@ -641,93 +808,43 @@
 
             // Wait for Alpine.js to be ready
             document.addEventListener('alpine:init', () => {
-                Alpine.data('homepageManager', () => ({
+                Alpine.data('homepageManager', (sections = [], properties = []) => ({
                     showForm: [],
                     formValues: {},
 
-                    // Section data with default values
-                    heroSection: {
-                        is_enabled: true,
-                        data: {
-                            hero_banner: '/assets/hero-bg.jpg',
-                            hero_title: 'Find Your Dream Property',
-                            hero_subtitle: 'Discover the perfect investment opportunity',
-                            cta_button: 'Browse Properties'
-                        }
+                    // Dynamically initialize section data from backend
+                    heroSection: sections.find(s => s.name === 'hero') || {
+                        is_enabled: false,
+                        data: {}
                     },
-
-                    propertiesSection: {
-                        is_enabled: true,
+                    propertiesSection: sections.find(s => s.name === 'properties') || {
+                        is_enabled: false,
                         data: {
-                            title: 'Plots of Land',
-                            label: 'Properties',
                             limit: 6,
-                            description: 'Discover premium properties available for purchase'
+                            selected_properties: []
                         }
                     },
-
-                    testimonialsSection: {
-                        is_enabled: true,
+                    featuredSection: sections.find(s => s.name === 'featured') || {
+                        is_enabled: false,
                         data: {
-                            title: 'Happy Clients',
-                            label: 'Our',
-                            description: 'What our satisfied clients say about our services'
+                            limit: 6,
+                            selected_properties: []
                         }
                     },
-
-                    aboutSection: {
-                        is_enabled: true,
-                        data: {
-                            title: 'Meet our Realtor',
-                            description: 'We don\'t just sell land we curate legacy worthy properties...'
-                        }
+                    testimonialsSection: sections.find(s => s.name === 'testimonials') || {
+                        is_enabled: false,
+                        data: {}
                     },
-
-                    citiesSection: {
-                        is_enabled: true,
-                        data: {
-                            title: 'Find Properties in These Cities',
-                            description: 'Explore properties available in various cities'
-                        }
+                    aboutSection: sections.find(s => s.name === 'about') || {
+                        is_enabled: false,
+                        data: {}
+                    },
+                    citiesSection: sections.find(s => s.name === 'cities') || {
+                        is_enabled: false,
+                        data: {}
                     },
 
                     init() {
-                        // Initialize sections from Laravel data if available
-                        @if (isset($sections))
-                            @foreach ($sections as $section)
-                                @if ($section->name === 'hero')
-                                    this.heroSection = {
-                                        is_enabled: {{ $section->is_enabled ? 'true' : 'false' }},
-                                        data: {!! json_encode($section->data ?? []) !!}
-                                    };
-                                @endif
-                                @if ($section->name === 'properties')
-                                    this.propertiesSection = {
-                                        is_enabled: {{ $section->is_enabled ? 'true' : 'false' }},
-                                        data: {!! json_encode($section->data ?? []) !!}
-                                    };
-                                @endif
-                                @if ($section->name === 'testimonials')
-                                    this.testimonialsSection = {
-                                        is_enabled: {{ $section->is_enabled ? 'true' : 'false' }},
-                                        data: {!! json_encode($section->data ?? []) !!}
-                                    };
-                                @endif
-                                @if ($section->name === 'about')
-                                    this.aboutSection = {
-                                        is_enabled: {{ $section->is_enabled ? 'true' : 'false' }},
-                                        data: {!! json_encode($section->data ?? []) !!}
-                                    };
-                                @endif
-                                @if ($section->name === 'cities')
-                                    this.citiesSection = {
-                                        is_enabled: {{ $section->is_enabled ? 'true' : 'false' }},
-                                        data: {!! json_encode($section->data ?? []) !!}
-                                    };
-                                @endif
-                            @endforeach
-                        @endif
-
                         // Initialize Feather icons after component loads
                         this.$nextTick(() => {
                             if (typeof feather !== 'undefined') {
@@ -745,6 +862,8 @@
                         }
                     },
 
+                    allProperties: properties, // Store all properties for dropdowns
+
                     setFormValue(formKey) {
                         const [section, property] = formKey.split('_');
                         const sectionData = this[`${section}Section`];
@@ -752,8 +871,18 @@
                         if (sectionData && sectionData.data && sectionData.data[property]) {
                             this.formValues[formKey] = sectionData.data[property];
                         } else {
-                            this.formValues[formKey] = '';
+                            // Special handling for multi-select dropdowns
+                            if (formKey.includes('selected_properties')) {
+                                this.formValues[formKey] = [];
+                            } else {
+                                this.formValues[formKey] = '';
+                            }
                         }
+                    },
+
+                    getPropertyName(propertyId) {
+                        const property = this.allProperties.find(p => p.id === propertyId);
+                        return property ? property.name : `Property ID: ${propertyId} (Not Found)`;
                     },
 
                     saveProperty(formKey) {
@@ -774,49 +903,69 @@
                     toggleSection(sectionName) {
                         const sectionData = this[`${sectionName}Section`];
                         if (sectionData) {
-                            sectionData.is_enabled = !sectionData.is_enabled;
+                            // The x-model on the checkbox already toggles the is_enabled property,
+                            // so we just need to call the save function.
                             this.saveSectionData(sectionName, sectionData);
                         }
                     },
 
                     saveSectionData(sectionName, sectionData) {
                         console.log('Saving section:', sectionName, sectionData);
-
-                        if (typeof toastr !== 'undefined') {
-                            toastr.success('Section updated successfully!');
-                        } else {
-                            alert('Section updated successfully!');
-                        }
-
-                        // TODO: Implement backend save when ready
-                        /*
-                        fetch(`/admin/sections/${sectionName}`, {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-                            },
-                            body: JSON.stringify({
-                                name: sectionName,
-                                is_enabled: sectionData.is_enabled,
-                                data: sectionData.data
+                        fetch(`/management/sections/${sectionName}`, {
+                                method: 'POST',
+                                headers: { // Correct headers object
+                                    'Content-Type': 'application/json',
+                                    'X-CSRF-TOKEN': document.querySelector(
+                                        'meta[name="csrf-token"]').getAttribute(
+                                        'content'),
+                                    'Accept': 'application/json',
+                                    'X-Requested-With': 'XMLHttpRequest' // Add this for Laravel AJAX detection
+                                },
+                                body: JSON.stringify({ // 'body' is a sibling of 'headers'
+                                    name: sectionName,
+                                    is_enabled: sectionData.is_enabled,
+                                    data: sectionData.data
+                                })
                             })
-                        })
-                        .then(response => response.json())
-                        .then(data => {
-                            if (data.success) {
-                                toastr.success('Section updated successfully!');
-                            } else {
-                                throw new Error('Save failed');
-                            }
-                        })
-                        .catch(error => {
-                            console.error('Error:', error);
-                            toastr.error('Failed to save section');
-                        });
-                        */
-                    }
-                }));
+                            .then(response => {
+                                // If response is not OK (e.g., 401, 403, 422), try to parse JSON anyway
+                                // Laravel often sends JSON error responses for AJAX requests
+                                if (!response.ok) {
+                                    // Attempt to parse as JSON, but catch if it's not
+                                    return response.json().catch(() => {
+                                        // If it's not JSON (e.g., HTML from 302 redirect),
+                                        // throw a more informative error
+                                        throw new Error(
+                                            `Server responded with status ${response.status}. Expected JSON response but got non-JSON.`
+                                        );
+                                    });
+                                }
+                                // If response is OK, parse as JSON
+                                return response.json();
+                            })
+                            .then(data => {
+                                if (data.success) {
+                                    toastr.success('Section updated successfully!');
+                                } else {
+                                    // Display specific error message from backend if available
+                                    toastr.error(data.message || 'Failed to save section');
+                                    throw new Error(data.message || 'Save failed');
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Error:', error);
+                                // Display a user-friendly error message, potentially from the caught error
+                                toastr.error('Failed to save section: ' + (error.message ||
+                                    'An unknown error occurred.'));
+
+                                // Optional: If it's an authentication error (e.g., 401 caught by the fetch block),
+                                // you might want to redirect to login
+                                // if (error.message.includes('401')) {
+                                //     window.location.href = '/login'; // Or your login route
+                                // }
+                            });
+                    } // Removed extra closing brace here
+                })); // Removed extra closing brace here
             });
         </script>
     @endpush

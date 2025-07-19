@@ -2,8 +2,7 @@
 @section('title', 'Events | Premium Refined Luxury Homes')
 @section('content')
 
-    <!-- Add CSRF token to page head -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+
 
     <style>
         /* Table background and responsive font */
