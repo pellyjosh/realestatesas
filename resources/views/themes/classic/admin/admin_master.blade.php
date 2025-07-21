@@ -73,7 +73,6 @@
 
                 @yield('content')
 
-
             </div>
 
             <!-- footer start -->

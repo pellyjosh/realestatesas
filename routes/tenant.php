@@ -12,9 +12,13 @@ use App\Http\Controllers\Tenant\Realtor\EventController as RealtorEventControlle
 use Stancl\Tenancy\Middleware\PreventAccessFromCentralDomains;
 use Stancl\Tenancy\Middleware\InitializeTenancyByDomain;
 
+// client import
+use App\Http\Controllers\Tenant\Client\ClientSectionController;
+
 // Admin Import
 use App\Http\Controllers\Tenant\Admin\AdminEventController;
 use App\Http\Controllers\Tenant\Admin\SectionController;
+
 // Auth imports
 use App\Http\Controllers\Tenant\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Tenant\Auth\ConfirmablePasswordController;
@@ -49,9 +53,11 @@ Route::middleware([
     PreventAccessFromCentralDomains::class,
     ScopeSessions::class,
 ])->group(function () {
-    Route::get('/', function () {
-        return tenant_view('client.pages.index');
-    })->name('tenant.client.home');
+    // Route::get('/', function () {
+    //     return tenant_view('client.pages.index');
+    // })->name('tenant.client.home');
+
+    Route::get('/', [ClientSectionController::class, 'index'])->name('tenant.client.home');
 
     Route::get('/realtor-profile', function () {
         return tenant_view('client.pages.realtor-profile');
@@ -64,6 +70,8 @@ Route::middleware([
     Route::get('/property-details', function () {
         return tenant_view('client.pages.property-details');
     })->name('client.property-details');
+
+
 
     Route::controller(EventController::class)->group(function () {
         Route::get('/events', 'index')->name('tenant.client.events');
@@ -83,7 +91,7 @@ Route::middleware([
         return tenant_view('client.pages.contact');
     })->name('tenant.client.contact');
 
-    // user routes
+    // user  dashboard routes 
     Route::middleware('auth:tenant')->group(function () {
         Route::controller(DashboardController::class)->group(function () {
             Route::get('/dashboard', 'index')->name('tenant.user.dashboard');
@@ -289,6 +297,7 @@ Route::middleware([
         });
     });
 
+    // management routes
     Route::prefix('management')->group(function () {
         Route::middleware(['auth:tenant', 'user.type:admin'])->group(function () {
 
@@ -422,10 +431,6 @@ Route::middleware([
                 return tenant_view('admin.pages.sales');
             })->name('tenant.admin.sales');
 
-            Route::get('/sales', function () {
-                return tenant_view('admin.pages.sales');
-            })->name('tenant.admin.sales');
-
         //    admin settings route 
             Route::get('/section', [SectionController::class, 'index'])->name('tenant.admin.section');
             Route::post('/sections/{sectionName}', [SectionController::class, 'store'])->name('tenant.admin.sections.store');
@@ -452,7 +457,6 @@ Route::middleware([
             });
         });
     });
-
 
 
     // Auth Routes

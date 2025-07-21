@@ -4,14 +4,7 @@
 
 
     <!-- home section start -->
-    @php
-        $hero = $sections['hero'] ?? null;
-        $heroBannerPath = asset('themes/classic/client/assets/images/uploads/upload-8.jpg');
-        if ($hero && !empty($hero->data['hero_banner'])) {
-            $heroBannerPath = asset('storage/tenantclient1/hero_banners/' . basename($hero->data['hero_banner']));
-        }
-    @endphp
-    <section class="home-section layout-1 layout-6" style="background-image: url('{{ $heroBannerPath }}');">
+    <section class="home-section layout-1 layout-6">
         <div class="home-main">
             <div class="container">
                 <div class="row">
