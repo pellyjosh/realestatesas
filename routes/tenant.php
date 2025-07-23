@@ -72,7 +72,6 @@ Route::middleware([
     })->name('client.property-details');
 
 
-
     Route::controller(EventController::class)->group(function () {
         Route::get('/events', 'index')->name('tenant.client.events');
         Route::post('/book-event', 'bookEvent');
@@ -398,7 +397,6 @@ Route::middleware([
             })->name('tenant.admin.realtor.invoice');
 
 
-
             Route::get('/map', function () {
                 return tenant_view('admin.pages.map');
             })->name('tenant.admin.map');
@@ -447,8 +445,6 @@ Route::middleware([
                 return tenant_view('admin.pages.marketing-tools.ai-ad-generator');
             })->name('tenant.admin.ai.ad.generator');
 
-
-
             Route::controller(AdminEventController::class)->group(function () {
                 Route::get('/events', 'index')->name('tenant.admin.events');
                 Route::post('/events', 'store')->name('tenant.admin.events.store');
@@ -457,7 +453,6 @@ Route::middleware([
             });
         });
     });
-
 
     // Auth Routes
     Route::middleware('guest')->group(function () {

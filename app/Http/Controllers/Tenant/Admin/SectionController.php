@@ -42,8 +42,15 @@ class SectionController extends Controller
                 foreach ($carousel_items as $idx => $item) {
                     // If the id is sent, use it; otherwise, fallback to $idx+1
                     $carousel_items[$idx]['id'] = isset($item['id']) ? $item['id'] : ($idx + 1);
+                    // Only accept real file uploads or existing file paths, never base64
                     if ($request->hasFile("carousel_img_{$idx}")) {
                         $carousel_items[$idx]['signature_img'] = $request->file("carousel_img_{$idx}")->store('public/carousel_images');
+                    } elseif (isset($item['signature_img']) && is_string($item['signature_img']) && strpos($item['signature_img'], 'public/carousel_images/') === 0) {
+                        // Accept existing file path
+                        $carousel_items[$idx]['signature_img'] = $item['signature_img'];
+                    } else {
+                        // Ignore base64 or invalid data
+                        $carousel_items[$idx]['signature_img'] = null;
                     }
                 }
                 $newData['carousel_items'] = $carousel_items;
@@ -92,6 +99,21 @@ class SectionController extends Controller
         // For hero, data is already merged above; for others, just use input
         $section->data = $request->input('data', []);
         $section->save();
+
+        // If hero section, return carousel_paths for frontend to update signature_img
+        if ($sectionName === 'hero') {
+            $carousel_paths = [];
+            if (isset($section->data['carousel_items']) && is_array($section->data['carousel_items'])) {
+                foreach ($section->data['carousel_items'] as $item) {
+                    $carousel_paths[] = $item['signature_img'] ?? null;
+                }
+            }
+            return response()->json([
+                'success' => true,
+                'message' => 'Section updated successfully.',
+                'carousel_paths' => $carousel_paths
+            ]);
+        }
 
         return response()->json(['success' => true, 'message' => 'Section updated successfully.']);
     }

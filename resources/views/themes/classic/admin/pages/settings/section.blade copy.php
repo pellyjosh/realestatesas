@@ -482,161 +482,50 @@
                                 </form>
                             </div>
 
-                            <!-- Select Featured Property -->
+                            <!-- Select Featured Properties -->
                             <div class="section-item mb-3">
                                 <div class="d-flex justify-content-between align-items-start">
                                     <div class="flex-grow-1">
-                                        <label class="form-label">Select Featured Property</label>
-                                        <div class="mt-2">
-                                            <select class="form-control" x-model="selectedFeaturedPropertyId"
-                                                style="max-width: 250px; display: inline-block;">
-                                                <option value="" disabled>Select a property</option>
-                                                <option value="1">Test Property 1</option>
-                                                <option value="2">Test Property 2</option>
-                                            </select>
+                                        <label class="form-label">Select Featured Properties (Max 6)</label>
+                                        <div class="mt-2" x-show="!showForm.includes('featured_selected_properties')">
+                                            <template
+                                                x-if="featuredSection.data.selected_properties && featuredSection.data.selected_properties.length > 0">
+                                                <ul class="list-group">
+                                                    <template x-for="propId in featuredSection.data.selected_properties"
+                                                        :key="propId">
+                                                        <li class="list-group-item" x-text="getPropertyName(propId)"></li>
+                                                    </template>
+                                                </ul>
+                                            </template>
+                                            <span x-else class="text-muted">No featured properties selected</span>
                                         </div>
                                     </div>
-                                    <div class="d-flex flex-column gap-1">
-                                        <button class="btn btn-success btn-xs mb-1" @click="openAddFeaturedModal"
-                                            type="button">
-                                            Add
-                                        </button>
-                                        <button class="btn btn-primary btn-xs"
-                                            @click="openFeaturedTable(selectedFeaturedPropertyId)" type="button"
-                                            :disabled="!selectedFeaturedPropertyId">
-                                            Edit
-                                        </button>
-                                    </div>
+                                    <button class="btn btn-primary btn-xs"
+                                        @click="toggleEditForm('featured_selected_properties')" type="button">
+                                        <span x-show="!showForm.includes('featured_selected_properties')">Edit</span>
+                                        <span x-show="showForm.includes('featured_selected_properties')">Cancel</span>
+                                    </button>
                                 </div>
+                                <form x-show="showForm.includes('featured_selected_properties')"
+                                    @submit.prevent="saveProperty('featured_selected_properties')" class="mt-3">
+                                    <div class="form-group">
+                                        <select class="form-control" x-model="formValues.featured_selected_properties"
+                                            multiple size="6">
+                                            <template x-for="property in allProperties" :key="property.id">
+                                                <option :value="property.id" x-text="property.name"></option>
+                                            </template>
+                                        </select>
+                                        <small class="form-text text-muted">Hold Ctrl/Cmd to select multiple properties
+                                            (Max
+                                            6)</small>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-primary me-2">Save</button>
+                                        <button type="button" class="btn btn-light"
+                                            @click="toggleEditForm('featured_selected_properties')">Cancel</button>
+                                    </div>
+                                </form>
                             </div>
-
-                            <!-- Add Featured Property Modal -->
-                            <template x-if="showAddFeaturedModal">
-                                <div class="modal fade show d-block" tabindex="-1" style="background:rgba(0,0,0,0.3);"
-                                    @click.self="closeAddFeaturedModal">
-                                    <div class="modal-dialog modal-lg">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title">Add Featured Property</h5>
-                                                <button type="button" class="btn-close"
-                                                    @click="closeAddFeaturedModal"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form @submit.prevent="saveNewFeaturedProperty()">
-                                                    <div class="row g-2">
-                                                        <!-- ID is generated automatically in code -->
-                                                        <div class="col-md-6">
-                                                            <label>Type</label>
-                                                            <input type="text" class="form-control"
-                                                                x-model="newFeaturedProperty.type">
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <label>Street</label>
-                                                            <input type="text" class="form-control"
-                                                                x-model="newFeaturedProperty.street">
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <label>City</label>
-                                                            <input type="text" class="form-control"
-                                                                x-model="newFeaturedProperty.city">
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <label>County</label>
-                                                            <input type="text" class="form-control"
-                                                                x-model="newFeaturedProperty.county">
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <label>Price</label>
-                                                            <input type="text" class="form-control"
-                                                                x-model="newFeaturedProperty.price">
-                                                        </div>
-                                                        <div class="col-12">
-                                                            <label>Writeup</label>
-                                                            <textarea class="form-control" x-model="newFeaturedProperty.writeup"></textarea>
-                                                        </div>
-                                                        <div class="col-12">
-                                                            <label>Image</label>
-                                                            <input type="file" class="form-control"
-                                                                @change="handleAddFeaturedImage($event)">
-                                                        </div>
-                                                    </div>
-                                                    <div class="text-end mt-3">
-                                                        <button type="submit" class="btn btn-success">Add</button>
-                                                        <button type="button" class="btn btn-light ms-2"
-                                                            @click="closeAddFeaturedModal">Cancel</button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </template>
-
-                            <!-- Modal with table for selected featured property (always available) -->
-                            <template x-if="showFeaturedTable !== null">
-                                <div class="modal fade show d-block" tabindex="-1" style="background:rgba(0,0,0,0.3);"
-                                    @click.self="closeFeaturedTable">
-                                    <div class="modal-dialog modal-lg">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title">Featured Property Details</h5>
-                                                <button type="button" class="btn-close"
-                                                    @click="closeFeaturedTable"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="table-responsive">
-                                                    <table class="table table-bordered">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>ID</th>
-                                                                <th>Image</th>
-                                                                <th>Type</th>
-                                                                <th>Street</th>
-                                                                <th>City</th>
-                                                                <th>County</th>
-                                                                <th>Price</th>
-                                                                <th>Writeup</th>
-                                                                <th>Actions</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td x-text="featuredTableItem.id"></td>
-                                                                <td>
-                                                                    <template x-if="featuredTableItem.img">
-                                                                        <img :src="featuredTableItem.img"
-                                                                            style="max-width:80px;max-height:50px;object-fit:cover;">
-                                                                    </template>
-                                                                </td>
-                                                                <td x-text="featuredTableItem.type"></td>
-                                                                <td x-text="featuredTableItem.street"></td>
-                                                                <td x-text="featuredTableItem.city"></td>
-                                                                <td x-text="featuredTableItem.county"></td>
-                                                                <td x-text="featuredTableItem.price"></td>
-                                                                <td x-text="featuredTableItem.writeup"></td>
-                                                                <td>
-                                                                    <button class="btn btn-primary btn-xs me-1"
-                                                                        @click="editFeaturedProperty(featuredTableItem.id)"><i
-                                                                            class="fa fa-edit"></i>
-                                                                    </button>
-                                                                    <button class="btn btn-danger btn-xs"
-                                                                        @click="deleteFeaturedProperty(featuredTableItem.id)"><i
-                                                                            class="fa fa-trash"></i>
-                                                                    </button>
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    @click="closeFeaturedTable">Close</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </template>
                         </div>
                     </div>
                 </div>
@@ -720,7 +609,7 @@
                             </div>
 
                             <!-- Testimonials Description -->
-                            <div class="section-item">
+                            <div class="section-item mt-3">
                                 <div class="d-flex justify-content-between align-items-start">
                                     <div class="flex-grow-1">
                                         <label class="form-label">Section Description</label>
@@ -802,6 +691,7 @@
                                     </div>
                                 </form>
                             </div>
+
                             <!-- Company Description -->
                             <div class="section-item">
                                 <div class="d-flex justify-content-between align-items-start">
@@ -809,7 +699,8 @@
                                         <label class="form-label">Company Description</label>
                                         <div class="mt-2" x-show="!showForm.includes('about_description')">
                                             <p class="mb-0 text-muted"
-                                                x-text="aboutSection.data.description || 'Not Set'"></p>
+                                                x-text="aboutSection.data.description || 'Not Set'">
+                                            </p>
                                         </div>
                                     </div>
                                     <button class="btn btn-primary btn-xs" @click="toggleEditForm('about_description')"
@@ -822,7 +713,7 @@
                                     @submit.prevent="saveProperty('about_description')" class="mt-3">
                                     <div class="form-group">
                                         <textarea class="form-control" x-model="formValues.about_description" placeholder="Enter company description"
-                                            rows="3"></textarea>
+                                            rows="4"></textarea>
                                     </div>
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary me-2">Save</button>
@@ -932,83 +823,6 @@
                 // Wait for Alpine.js to be ready
                 document.addEventListener('alpine:init', () => {
                     Alpine.data('homepageManager', (sections = [], properties = []) => ({
-                        // --- Featured Property Table Modal ---
-                        showFeaturedTable: null, // property id
-                        featuredTableItem: {
-                            id: '',
-                            img: '',
-                            type: '',
-                            street: '',
-                            city: '',
-                            county: '',
-                            price: '',
-                            writeup: ''
-                        },
-                        selectedFeaturedPropertyId: '',
-                        showAddFeaturedModal: false,
-                        newFeaturedProperty: {
-                            id: '',
-                            img: '',
-                            type: '',
-                            street: '',
-                            city: '',
-                            county: '',
-                            price: '',
-                            writeup: ''
-                        },
-                        openAddFeaturedModal() {
-                            this.newFeaturedProperty = {
-                                // id will be generated on save
-                                img: '',
-                                type: '',
-                                street: '',
-                                city: '',
-                                county: '',
-                                price: '',
-                                writeup: ''
-                            };
-                            this.showAddFeaturedModal = true;
-                        },
-                        closeAddFeaturedModal() {
-                            this.showAddFeaturedModal = false;
-                        },
-                        openFeaturedTable(propId) {
-                            if (!propId) return;
-                            // Hardcoded test data for modal
-                            let prop = {};
-                            if (propId == '1') {
-                                prop = {
-                                    id: '1',
-                                    img: 'https://via.placeholder.com/80x50?text=Img1',
-                                    type: 'Apartment',
-                                    street: '123 Main St',
-                                    city: 'Lagos',
-                                    county: 'Ikeja',
-                                    price: '₦10,000,000',
-                                    writeup: 'A beautiful apartment in Lagos.'
-                                };
-                            } else if (propId == '2') {
-                                prop = {
-                                    id: '2',
-                                    img: 'https://via.placeholder.com/80x50?text=Img2',
-                                    type: 'Duplex',
-                                    street: '456 Side Rd',
-                                    city: 'Abuja',
-                                    county: 'Gwarinpa',
-                                    price: '₦25,000,000',
-                                    writeup: 'Spacious duplex in Abuja.'
-                                };
-                            } else {
-                                prop = {
-                                    id: propId
-                                };
-                            }
-                            this.featuredTableItem = prop;
-                            this.showFeaturedTable = propId;
-                        },
-                        closeFeaturedTable() {
-                            this.showFeaturedTable = null;
-                        },
                         heroBannerFile: null,
                         showForm: [],
                         formValues: {},
@@ -1099,19 +913,6 @@
                                         .then(response => response.json())
                                         .then(result => {
                                             if (result.success) {
-                                                // Update signature_img for all items with the returned paths (if provided)
-                                                if (result.carousel_paths && Array.isArray(result
-                                                        .carousel_paths)) {
-                                                    result.carousel_paths.forEach((path, i) => {
-                                                        if (path) {
-                                                            this.heroSection.data.carousel_items[i]
-                                                                .signature_img = path;
-                                                            // Remove _file after save
-                                                            delete this.heroSection.data
-                                                                .carousel_items[i]._file;
-                                                        }
-                                                    });
-                                                }
                                                 toastr.success('Carousel item saved successfully!');
                                             } else {
                                                 toastr.error(result.message ||
