@@ -841,8 +841,9 @@
                                 toastr.warning('Maximum of 4 carousel items allowed.');
                                 return;
                             }
-                            // Add a placeholder for the new item, but do NOT persist to backend yet
+                            // Add a placeholder for the new item with a unique id
                             this.heroSection.data.carousel_items.push({
+                                id: Date.now() + Math.floor(Math.random() * 10000),
                                 signature_img: '',
                                 signature_writeup: '',
                                 hero_title: '',
@@ -879,31 +880,121 @@
                                     // Always update carousel_count to match the array length
                                     this.heroSection.data.carousel_count = this.heroSection.data.carousel_items
                                         .length;
-                                    // Persist all carousel items and count to backend
-                                    this.saveSectionData('hero', this.heroSection);
+                                    // Always send the full, up-to-date carousel_items array
+                                    const formData = new FormData();
+                                    formData.append('name', 'hero');
+                                    formData.append('is_enabled', this.heroSection.is_enabled === true ?
+                                        'true' : 'false');
+                                    this.heroSection.data.carousel_items.forEach((item, i) => {
+                                        if (item._file && typeof item._file === 'object' && item
+                                            ._file instanceof File) {
+                                            formData.append(`carousel_img_${i}`, item._file);
+                                        } else {
+                                            formData.append(`carousel_img_path_${i}`, item
+                                                .signature_img || '');
+                                        }
+                                        formData.append(`carousel_id_${i}`, item.id);
+                                        formData.append(`carousel_writeup_${i}`, item
+                                            .signature_writeup || '');
+                                        formData.append(`carousel_title_${i}`, item.hero_title || '');
+                                        formData.append(`carousel_cta_${i}`, item.cta_button || '');
+                                    });
+                                    formData.append('carousel_count', this.heroSection.data.carousel_count);
+                                    formData.append('_token', document.querySelector('meta[name="csrf-token"]')
+                                        .getAttribute('content'));
+                                    fetch('/management/sections/hero', {
+                                            method: 'POST',
+                                            headers: {
+                                                'Accept': 'application/json',
+                                                'X-Requested-With': 'XMLHttpRequest'
+                                            },
+                                            body: formData
+                                        })
+                                        .then(response => response.json())
+                                        .then(result => {
+                                            if (result.success) {
+                                                toastr.success('Carousel item saved successfully!');
+                                            } else {
+                                                toastr.error(result.message ||
+                                                    'Failed to save carousel item.');
+                                            }
+                                            this.closeCarouselEdit();
+                                        })
+                                        .catch(() => {
+                                            toastr.error('An error occurred while saving carousel item.');
+                                            this.closeCarouselEdit();
+                                        });
                                 } else {
                                     // If user closes without saving any data, remove the placeholder
                                     this.heroSection.data.carousel_items.splice(this.showCarouselEdit, 1);
                                     this.heroSection.data.carousel_count = this.heroSection.data.carousel_items
                                         .length;
+                                    this.closeCarouselEdit();
                                 }
-                                this.closeCarouselEdit();
                             }
                         },
                         deleteCarouselItem(idx) {
-                            if (Array.isArray(this.heroSection.data.carousel_items) && idx >= 0 && idx < this
-                                .heroSection.data.carousel_items.length) {
-                                this.heroSection.data.carousel_items.splice(idx, 1);
-                                // Always update carousel_count to match the array length
+                            if (Array.isArray(this.heroSection.data.carousel_items)) {
+                                // Find the item by id
+                                const itemToDelete = this.heroSection.data.carousel_items[idx];
+                                if (!itemToDelete || itemToDelete.id === undefined) return;
+                                if (this.deletingCarouselIdx !== undefined && this.deletingCarouselIdx !== null)
+                                    return;
+                                this.deletingCarouselIdx = idx;
+                                // Remove the item by id
+                                this.heroSection.data.carousel_items = this.heroSection.data.carousel_items
+                                    .filter(item => item.id !== itemToDelete.id);
                                 this.heroSection.data.carousel_count = this.heroSection.data.carousel_items
                                     .length;
-                                // Persist all carousel items and count to backend
-                                this.saveSectionData('hero', this.heroSection);
-                                toastr.success('Carousel item deleted.');
+                                // Always send the full, up-to-date carousel_items array
+                                const formData = new FormData();
+                                formData.append('name', 'hero');
+                                formData.append('is_enabled', this.heroSection.is_enabled === true ? 'true' :
+                                    'false');
+                                this.heroSection.data.carousel_items.forEach((item, i) => {
+                                    if (item._file && typeof item._file === 'object' && item
+                                        ._file instanceof File) {
+                                        formData.append(`carousel_img_${i}`, item._file);
+                                    } else {
+                                        formData.append(`carousel_img_path_${i}`, item.signature_img ||
+                                            '');
+                                    }
+                                    formData.append(`carousel_id_${i}`, item.id);
+                                    formData.append(`carousel_writeup_${i}`, item.signature_writeup ||
+                                        '');
+                                    formData.append(`carousel_title_${i}`, item.hero_title || '');
+                                    formData.append(`carousel_cta_${i}`, item.cta_button || '');
+                                });
+                                formData.append('carousel_count', this.heroSection.data.carousel_count);
+                                formData.append('_token', document.querySelector('meta[name="csrf-token"]')
+                                    .getAttribute('content'));
+                                fetch('/management/sections/hero', {
+                                        method: 'POST',
+                                        headers: {
+                                            'Accept': 'application/json',
+                                            'X-Requested-With': 'XMLHttpRequest'
+                                        },
+                                        body: formData
+                                    })
+                                    .then(response => response.json())
+                                    .then(result => {
+                                        this.deletingCarouselIdx = null;
+                                        if (result.success) {
+                                            toastr.success('Carousel item deleted.');
+                                        } else {
+                                            toastr.error(result.message ||
+                                                'Failed to delete carousel item.');
+                                        }
+                                    })
+                                    .catch(() => {
+                                        this.deletingCarouselIdx = null;
+                                        toastr.error('An error occurred while deleting carousel item.');
+                                    });
                             }
                         },
                         handleEditCarouselImage(event) {
                             if (event.target.files && event.target.files[0]) {
+                                // Only assign a real File object
                                 this.carouselEditItem._file = event.target.files[0];
                                 // For preview, still show base64
                                 const reader = new FileReader();
@@ -911,6 +1002,9 @@
                                     this.carouselEditItem.signature_img = e.target.result;
                                 };
                                 reader.readAsDataURL(event.target.files[0]);
+                            } else {
+                                // If cleared, set to null
+                                this.carouselEditItem._file = null;
                             }
                         },
                         handleHeroBannerImageUpload(event) {
@@ -1170,19 +1264,31 @@
                                 toastr.error('Please select an image for the carousel item.');
                                 return;
                             }
+                            // Update the item in the main array
+                            this.heroSection.data.carousel_items[idx] = JSON.parse(JSON.stringify(item));
+                            // Always update carousel_count to match the array length
+                            this.heroSection.data.carousel_count = this.heroSection.data.carousel_items
+                                .length;
+                            // Always send the full, up-to-date carousel_items array
                             const formData = new FormData();
                             formData.append('name', 'hero');
                             formData.append('is_enabled', this.heroSection.is_enabled === true ? 'true' :
                                 'false');
-                            // Only append file if a new one is selected
-                            if (item._file) {
-                                formData.append(`carousel_img_${idx}`, item._file);
-                            }
-                            formData.append(`carousel_writeup_${idx}`, item.signature_writeup || '');
-                            formData.append(`carousel_title_${idx}`, item.hero_title || '');
-                            formData.append(`carousel_cta_${idx}`, item.cta_button || '');
+                            this.heroSection.data.carousel_items.forEach((item, i) => {
+                                if (item._file && typeof item._file === 'object' && item
+                                    ._file instanceof File) {
+                                    formData.append(`carousel_img_${i}`, item._file);
+                                } else {
+                                    formData.append(`carousel_img_path_${i}`, item.signature_img ||
+                                        '');
+                                }
+                                formData.append(`carousel_id_${i}`, item.id);
+                                formData.append(`carousel_writeup_${i}`, item.signature_writeup ||
+                                    '');
+                                formData.append(`carousel_title_${i}`, item.hero_title || '');
+                                formData.append(`carousel_cta_${i}`, item.cta_button || '');
+                            });
                             formData.append('carousel_count', this.heroSection.data.carousel_count);
-                            // CSRF token
                             formData.append('_token', document.querySelector('meta[name="csrf-token"]')
                                 .getAttribute('content'));
                             try {
@@ -1196,21 +1302,15 @@
                                 });
                                 const result = await response.json();
                                 if (result.success) {
-                                    // Update the carousel item in the main array
-                                    const savedItem = JSON.parse(JSON.stringify(item));
-                                    delete savedItem._file;
-                                    // If backend returns a path for the image, update it
-                                    if (result.path) {
-                                        savedItem.signature_img = result.path;
-                                    }
-                                    this.heroSection.data.carousel_items[idx] = savedItem;
                                     toastr.success('Carousel item saved successfully!');
                                     this.closeCarouselEdit();
                                 } else {
                                     toastr.error(result.message || 'Failed to save carousel item.');
+                                    this.closeCarouselEdit();
                                 }
                             } catch (error) {
                                 toastr.error('An error occurred while saving carousel item.');
+                                this.closeCarouselEdit();
                             }
                         },
                         async saveHeroBanner() {
@@ -1223,18 +1323,22 @@
                                 if (this.heroBannerFile) {
                                     formData.append('hero_banner', this.heroBannerFile);
                                 }
-                                // Carousel images and details
+                                // Always send the full, up-to-date carousel_items array
                                 this.heroSection.data.carousel_items.forEach((item, idx) => {
-                                    if (item._file) {
+                                    if (item._file && typeof item._file === 'object' && item
+                                        ._file instanceof File) {
                                         formData.append(`carousel_img_${idx}`, item._file);
+                                    } else {
+                                        formData.append(`carousel_img_path_${idx}`, item
+                                            .signature_img || '');
                                     }
+                                    formData.append(`carousel_id_${idx}`, item.id);
                                     formData.append(`carousel_writeup_${idx}`, item
                                         .signature_writeup || '');
                                     formData.append(`carousel_title_${idx}`, item.hero_title || '');
                                     formData.append(`carousel_cta_${idx}`, item.cta_button || '');
                                 });
                                 formData.append('carousel_count', this.heroSection.data.carousel_count);
-                                // CSRF token
                                 formData.append('_token', document.querySelector('meta[name="csrf-token"]')
                                     .getAttribute('content'));
                                 const response = await fetch('/management/sections/hero', {

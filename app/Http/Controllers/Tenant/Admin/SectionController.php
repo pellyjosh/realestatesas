@@ -38,8 +38,10 @@ class SectionController extends Controller
             // Accept carousel_items array directly from the request (API/JSON)
             if ($request->has('carousel_items')) {
                 $carousel_items = $request->input('carousel_items', []);
-                // Handle file uploads for any new/updated images
+                // Use the id sent from the frontend and preserve all item data
                 foreach ($carousel_items as $idx => $item) {
+                    // If the id is sent, use it; otherwise, fallback to $idx+1
+                    $carousel_items[$idx]['id'] = isset($item['id']) ? $item['id'] : ($idx + 1);
                     if ($request->hasFile("carousel_img_{$idx}")) {
                         $carousel_items[$idx]['signature_img'] = $request->file("carousel_img_{$idx}")->store('public/carousel_images');
                     }
@@ -47,34 +49,27 @@ class SectionController extends Controller
                 $newData['carousel_items'] = $carousel_items;
                 $newData['carousel_count'] = count($carousel_items);
             } else {
-                // If not present, reconstruct carousel_items from indexed FormData fields
+                // Reconstruct carousel_items ONLY from the request fields, using ids sent from frontend
                 $carousel_count = (int) $request->input('carousel_count', 0);
-                if ($carousel_count > 0) {
-                    $carousel_items = $existingData['carousel_items'] ?? [];
-                    for ($idx = 0; $idx < $carousel_count; $idx++) {
-                        // Start with the existing item if present
-                        $item = $carousel_items[$idx] ?? [];
-                        // Only update fields if present in the request
-                        if ($request->has("carousel_writeup_{$idx}")) {
-                            $item['signature_writeup'] = $request->input("carousel_writeup_{$idx}");
-                        }
-                        if ($request->has("carousel_title_{$idx}")) {
-                            $item['hero_title'] = $request->input("carousel_title_{$idx}");
-                        }
-                        if ($request->has("carousel_cta_{$idx}")) {
-                            $item['cta_button'] = $request->input("carousel_cta_{$idx}");
-                        }
-                        if ($request->hasFile("carousel_img_{$idx}")) {
-                            $item['signature_img'] = $request->file("carousel_img_{$idx}")->store('public/carousel_images');
-                        } else if (!isset($item['signature_img'])) {
-                            // If no image in request or existing, set to null
-                            $item['signature_img'] = null;
-                        }
-                        $carousel_items[$idx] = $item;
+                $carousel_items = [];
+                for ($idx = 0; $idx < $carousel_count; $idx++) {
+                    $item = [];
+                    // Use the id sent from the frontend if present
+                    $item['id'] = $request->input("carousel_id_{$idx}", $idx + 1);
+                    $item['signature_writeup'] = $request->input("carousel_writeup_{$idx}", '');
+                    $item['hero_title'] = $request->input("carousel_title_{$idx}", '');
+                    $item['cta_button'] = $request->input("carousel_cta_{$idx}", '');
+                    if ($request->hasFile("carousel_img_{$idx}")) {
+                        $item['signature_img'] = $request->file("carousel_img_{$idx}")->store('public/carousel_images');
+                    } elseif ($request->has("carousel_img_path_{$idx}")) {
+                        $item['signature_img'] = $request->input("carousel_img_path_{$idx}");
+                    } else {
+                        $item['signature_img'] = null;
                     }
-                    $newData['carousel_items'] = $carousel_items;
-                    $newData['carousel_count'] = count($carousel_items);
+                    $carousel_items[] = $item;
                 }
+                $newData['carousel_items'] = $carousel_items;
+                $newData['carousel_count'] = count($carousel_items);
             }
 
             $request->merge(['data' => $newData]);
