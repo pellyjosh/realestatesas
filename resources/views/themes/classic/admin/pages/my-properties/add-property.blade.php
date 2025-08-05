@@ -1,7 +1,7 @@
 @extends('themes.classic.admin.admin_master')
 @section('title', 'Add Property | Premium Refined Luxury Homes')
 @section('content')
-        <!-- Container-fluid start -->
+    <!-- Container-fluid start -->
     <div class="container-fluid">
         <div class="page-header">
             <div class="row">
@@ -15,9 +15,9 @@
                 <div class="col-sm-6">
 
                     <!-- Breadcrumb start -->
-                   
+
                     <!-- Breadcrumb end -->
-                    
+
                 </div>
             </div>
         </div>
@@ -28,184 +28,184 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <div class="card"> 
+                <div class="card">
                     <div class="card-header pb-0">
                         <h5>Add property details</h5>
                     </div>
                     <div class="card-body admin-form">
-                        <form class="row gx-3">
+                        <form class="row gx-3" x-data="propertyForm()" @submit.prevent="submitProperty">
+                            <!-- id (auto-generated, hidden) -->
+                            <input type="hidden" x-model="form.id">
+                            <div class="form-group col-sm-4">
+                                <label>Name</label>
+                                <input type="text" class="form-control" x-model="form.name" placeholder="Property Name"
+                                    required>
+                            </div>
                             <div class="form-group col-sm-4">
                                 <label>Property Type</label>
-                                <input type="text" class="form-control" placeholder="office,villa,apartment" required="">
+                                <input type="text" class="form-control" x-model="form.property_type"
+                                    placeholder="office,villa,apartment" required>
                             </div>
                             <div class="form-group col-sm-4">
-                                <label>Property Status</label>
-                                <div class="dropdown">
-                                    <span class="dropdown-toggle font-rubik" data-bs-toggle="dropdown"><span>For Sale</span> <i class="fas fa-angle-down"></i></span>
-                                    <div class="dropdown-menu text-start">
-                                        <a class="dropdown-item" href="javascript:void(0)">For Rent</a>
-                                        <a class="dropdown-item" href="javascript:void(0)">For Sale</a>
-                                    </div>
-                                </div>
+                                <label>Listing Type</label>
+                                <input type="text" class="form-control" x-model="form.listing_type"
+                                    placeholder="sale,rent,lease" required>
                             </div>
                             <div class="form-group col-sm-4">
-                                <label>Property Price</label>
-                                <input type="text" class="form-control" placeholder="$2800" required="">
-                            </div>
-                            <div class="form-group col-sm-4">
-                                <label>Max Rooms</label>
-                                <div class="dropdown">
-                                    <span class="dropdown-toggle font-rubik" data-bs-toggle="dropdown"><span>1</span> <i class="fas fa-angle-down"></i></span>
-                                    <div class="dropdown-menu text-start">
-                                        <a class="dropdown-item" href="javascript:void(0)">2</a>
-                                        <a class="dropdown-item" href="javascript:void(0)">3</a>
-                                        <a class="dropdown-item" href="javascript:void(0)">4</a>
-                                        <a class="dropdown-item" href="javascript:void(0)">5</a>
-                                        <a class="dropdown-item" href="javascript:void(0)">6</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group col-sm-4">
-                                <label>Beds</label>
-                                <div class="dropdown">
-                                    <span class="dropdown-toggle font-rubik" data-bs-toggle="dropdown"><span>1</span> <i class="fas fa-angle-down"></i></span>
-                                    <div class="dropdown-menu text-start">
-                                        <a class="dropdown-item" href="javascript:void(0)">2</a>
-                                        <a class="dropdown-item" href="javascript:void(0)">3</a>
-                                        <a class="dropdown-item" href="javascript:void(0)">4</a>
-                                        <a class="dropdown-item" href="javascript:void(0)">5</a>
-                                        <a class="dropdown-item" href="javascript:void(0)">6</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group col-sm-4">
-                                <label>Baths</label>
-                                <div class="dropdown">
-                                    <span class="dropdown-toggle font-rubik" data-bs-toggle="dropdown"><span>1</span> <i class="fas fa-angle-down"></i></span>
-                                    <div class="dropdown-menu text-start">
-                                        <a class="dropdown-item" href="javascript:void(0)">2</a>
-                                        <a class="dropdown-item" href="javascript:void(0)">3</a>
-                                        <a class="dropdown-item" href="javascript:void(0)">4</a>
-                                        <a class="dropdown-item" href="javascript:void(0)">5</a>
-                                        <a class="dropdown-item" href="javascript:void(0)">6</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group col-sm-4">
-                                <label>Area</label>
-                                <input type="text" class="form-control" placeholder="85 sq ft">
-                            </div>
-                            <div class="form-group col-sm-4">
-                                <label>Price</label>
-                                <input type="text" class="form-control" placeholder="$3000">
-                            </div>
-                            <div class="form-group col-sm-4">
-                                <label>Agencies</label>
-                                <div class="dropdown">
-                                    <span class="dropdown-toggle font-rubik"
-                                        data-bs-toggle="dropdown"><span>Premiere</span> <i
-                                            class="fas fa-angle-down"></i></span>
-                                    <div class="dropdown-menu text-start">
-                                        <a class="dropdown-item" href="javascript:void(0)">Blue Sky</a>
-                                        <a class="dropdown-item" href="javascript:void(0)">Zephyr</a>
-                                        <a class="dropdown-item" href="javascript:void(0)">Premiere</a>
-                                    </div>
-                                </div>
+                                <label>Status</label>
+                                <input type="text" class="form-control" x-model="form.status"
+                                    placeholder="active,inactive" required>
                             </div>
                             <div class="form-group col-sm-12">
                                 <label>Description</label>
-                                <textarea class="form-control" rows="4"></textarea>
+                                <textarea class="form-control" x-model="form.description" rows="4" required></textarea>
                             </div>
-                            <div class="form-group col-sm-6">
+                            <div class="form-group col-sm-4">
+                                <label>Slug</label>
+                                <input type="text" class="form-control" x-model="form.slug" placeholder="property-slug"
+                                    required>
+                            </div>
+                            <div class="form-group col-sm-4">
                                 <label>Address</label>
-                                <input type="text" class="form-control" placeholder="Address of your property">
+                                <input type="text" class="form-control" x-model="form.address"
+                                    placeholder="Address of your property" required>
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label>City</label>
+                                <input type="text" class="form-control" x-model="form.city" placeholder="City" required>
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label>State</label>
+                                <input type="text" class="form-control" x-model="form.state" placeholder="State"
+                                    required>
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label>Postal Code</label>
+                                <input type="text" class="form-control" x-model="form.postal_code"
+                                    placeholder="Postal Code" required>
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label>Country</label>
+                                <input type="text" class="form-control" x-model="form.country" placeholder="Country"
+                                    required>
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label>Latitude</label>
+                                <input type="text" class="form-control" x-model="form.latitude" placeholder="Latitude">
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label>Longitude</label>
+                                <input type="text" class="form-control" x-model="form.longitude" placeholder="Longitude">
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label>Bedrooms</label>
+                                <input type="number" class="form-control" x-model="form.bedrooms" min="0"
+                                    placeholder="Bedrooms">
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label>Bathrooms</label>
+                                <input type="number" class="form-control" x-model="form.bathrooms" min="0"
+                                    placeholder="Bathrooms">
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label>Parking Spaces</label>
+                                <input type="number" class="form-control" x-model="form.parking_spaces" min="0"
+                                    placeholder="Parking Spaces">
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label>Land Size (sqm)</label>
+                                <input type="number" class="form-control" x-model="form.land_size" min="0"
+                                    placeholder="Land Size">
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label>Built Area (sqm)</label>
+                                <input type="number" class="form-control" x-model="form.built_area" min="0"
+                                    placeholder="Built Area">
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label>Year Built</label>
+                                <input type="number" class="form-control" x-model="form.year_built" min="1800"
+                                    max="2100" placeholder="Year Built">
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label>Price</label>
+                                <input type="number" class="form-control" x-model="form.price" min="0"
+                                    placeholder="Price">
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label>Price per sqm</label>
+                                <input type="number" class="form-control" x-model="form.price_per_sqm" min="0"
+                                    placeholder="Price per sqm">
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label>Price per plot</label>
+                                <input type="number" class="form-control" x-model="form.price_per_plot" min="0"
+                                    placeholder="Price per plot">
+                            </div>
+                            <div class="form-group col-sm-12">
+                                <label>Features (comma separated)</label>
+                                <input type="text" class="form-control" x-model="form.features"
+                                    placeholder="e.g. Pool,Gym,Security">
+                            </div>
+                            <div class="form-group col-sm-12">
+                                <label>Amenities (comma separated)</label>
+                                <input type="text" class="form-control" x-model="form.amenities"
+                                    placeholder="e.g. WiFi,Parking,Elevator">
+                            </div>
+                            <div class="form-group col-sm-12">
+                                <label>Meta Description</label>
+                                <input type="text" class="form-control" x-model="form.meta_description"
+                                    placeholder="Meta Description">
+                            </div>
+                            <div class="form-group col-sm-12">
+                                <label>Meta Keywords</label>
+                                <input type="text" class="form-control" x-model="form.meta_keywords"
+                                    placeholder="Meta Keywords">
                             </div>
                             <div class="form-group col-sm-6">
-                                <label>Zip code</label>
-                                <input type="text" class="form-control" placeholder="39702">
+                                <label>Listed At</label>
+                                <input type="date" class="form-control" x-model="form.listed_at">
                             </div>
-                            <div class="form-group col-sm-4">
-                                <label>Any Country</label>
-                                <div class="dropdown">
-                                    <span class="dropdown-toggle font-rubik" data-bs-toggle="dropdown"><span>Austria</span> <i class="fas fa-angle-down"></i></span>
-                                    <div class="dropdown-menu text-start">
-                                        <a class="dropdown-item" href="javascript:void(0)">Austria</a>
-                                        <a class="dropdown-item" href="javascript:void(0)">Brazil</a>
-                                        <a class="dropdown-item" href="javascript:void(0)">New york</a>
-                                        <a class="dropdown-item" href="javascript:void(0)">USA</a>
-                                    </div>
-                                </div>
+                            <div class="form-group col-sm-6">
+                                <label>Expires At</label>
+                                <input type="date" class="form-control" x-model="form.expires_at">
                             </div>
-                            <div class="form-group col-sm-4">
-                                <label>Any City</label>
-                                <div class="dropdown">
-                                    <span class="dropdown-toggle font-rubik" data-bs-toggle="dropdown"><span>Amreli</span> <i class="fas fa-angle-down"></i></span>
-                                    <div class="dropdown-menu text-start">
-                                        <a class="dropdown-item" href="javascript:void(0)">Gandhinagar</a>
-                                        <a class="dropdown-item" href="javascript:void(0)">Bharuch</a>
-                                        <a class="dropdown-item" href="javascript:void(0)">Amreli</a>
-                                        <a class="dropdown-item" href="javascript:void(0)">Ahmadabad</a>
-                                    </div>
-                                </div>
+                            <div class="form-group col-sm-6">
+                                <label>Deleted At</label>
+                                <input type="date" class="form-control" x-model="form.deleted_at">
                             </div>
-                            <div class="form-group col-sm-4">
-                                <label>Landmark</label>
-                                <input type="text" class="form-control" placeholder="landmark place name">
-                            </div>
-                        </form>
-                        <div class="dropzone-admin">
-                            <label>Media</label>
-                            <form class="dropzone" id="multiFileUpload" action="">
-                                <div class="dz-message needsclick"><i class="fas fa-cloud-upload-alt"></i>
-                                <h6>Drop files here or click to upload.</h6>
-                                </div>
-                            </form>
-                        </div>
-                        <form class="row gx-3">
+                            <!-- Removed created_at and updated_at fields, handled by DB -->
                             <div class="form-group col-sm-12">
-                                <label>video (mp4)</label>
-                                <input type="text" class="form-control" placeholder="mp4 video link">
+                                <label>Virtual Tour URL</label>
+                                <input type="url" class="form-control" x-model="form.virtual_tour_url"
+                                    placeholder="https://...">
                             </div>
-                            <div class="form-group col-sm-12 mb-0">
-                                <label>Additional features</label>
-                                <div class="additional-checkbox">
-                                    <label for="chk-ani">
-                                        <input class="checkbox_animated color-4" id="chk-ani" type="checkbox"> Emergency Exit
-                                    </label>
-                                    <label for="chk-ani1">
-                                        <input class="checkbox_animated color-4" id="chk-ani1" type="checkbox"> CCTV
-                                    </label>
-                                    <label for="chk-ani2">
-                                        <input class="checkbox_animated color-4" id="chk-ani2" type="checkbox" checked> Free Wi-Fi
-                                    </label>
-                                    <label for="chk-ani3">
-                                        <input class="checkbox_animated color-4" id="chk-ani3" type="checkbox">  Free Parking In The Area
-                                    </label>
-                                    <label for="chk-ani4">
-                                        <input class="checkbox_animated color-4" id="chk-ani4" type="checkbox">  Air Conditioning
-                                    </label>
-                                    <label for="chk-ani5">
-                                        <input class="checkbox_animated color-4" id="chk-ani5" type="checkbox">  Security Guard
-                                    </label>
-                                    <label for="chk-ani6">
-                                        <input class="checkbox_animated color-4" id="chk-ani6" type="checkbox" checked>  Terrace
-                                    </label>
-                                    <label for="chk-ani7">
-                                        <input class="checkbox_animated color-4" id="chk-ani7" type="checkbox">  Laundry Service
-                                    </label>
-                                    <label for="chk-ani8">
-                                        <input class="checkbox_animated color-4" id="chk-ani8" type="checkbox">  Elevator Lift
-                                    </label>
-                                    <label for="chk-ani9">
-                                        <input class="checkbox_animated color-4" id="chk-ani9" type="checkbox" checked>  Balcony
-                                    </label>
-                                </div>
+                            <div class="form-group col-sm-12">
+                                <label>Landmark</label>
+                                <input type="text" class="form-control" x-model="form.landmark"
+                                    placeholder="Landmark place name">
+                            </div>
+                            <div class="form-group col-sm-12">
+                                <label>Images</label>
+                                <input type="file" class="form-control" multiple @change="handleImages">
+                            </div>
+                            <div class="form-group col-sm-12">
+                                <label>Videos</label>
+                                <input type="file" class="form-control" multiple accept="video/*"
+                                    @change="handleVideos">
+                            </div>
+                            <div class="form-group col-sm-12">
+                                <label>Floor Plan</label>
+                                <input type="file" class="form-control" accept="image/*,.pdf"
+                                    @change="handleFloorPlan">
                             </div>
                             <div class="form-btn col-sm-12">
-                                <button type="button" class="btn btn-pill btn-gradient color-4">Submit</button>
-                                <button type="button" class="btn btn-pill btn-dashed color-4">Cancel</button>
+                                <button type="submit" class="btn btn-pill btn-gradient color-4">Submit</button>
+                                <button type="button" class="btn btn-pill btn-dashed color-4"
+                                    @click="resetForm">Cancel</button>
                             </div>
                         </form>
+                        <!-- ...existing code... -->
                     </div>
                 </div>
             </div>
@@ -213,3 +213,167 @@
     </div>
     <!-- Container-fluid end -->
 @endsection
+
+@push('scripts')
+    <script>
+        function propertyForm() {
+            return {
+                form: {
+                    id: Date.now(),
+                    name: '',
+                    property_type: '',
+                    listing_type: '',
+                    status: '',
+                    description: '',
+                    slug: '',
+                    address: '',
+                    city: '',
+                    state: '',
+                    postal_code: '',
+                    country: '',
+                    latitude: '',
+                    longitude: '',
+                    bedrooms: '',
+                    bathrooms: '',
+                    parking_spaces: '',
+                    land_size: '',
+                    built_area: '',
+                    year_built: '',
+                    price: '',
+                    price_per_sqm: '',
+                    price_per_plot: '',
+                    features: '',
+                    amenities: '',
+                    images: [],
+                    videos: [],
+                    virtual_tour_url: '',
+                    floor_plan: null,
+                    meta_description: '',
+                    meta_keywords: '',
+                    listed_at: '',
+                    expires_at: '',
+                    deleted_at: '',
+                    landmark: '',
+                    // removed created_at and updated_at, handled by DB
+                },
+                handleImages(e) {
+                    this.form.images = Array.from(e.target.files);
+                },
+                handleVideos(e) {
+                    this.form.videos = Array.from(e.target.files);
+                },
+                handleFloorPlan(e) {
+                    this.form.floor_plan = e.target.files[0];
+                },
+                resetForm() {
+                    this.form = {
+                        id: Date.now(),
+                        name: '',
+                        property_type: '',
+                        listing_type: '',
+                        status: '',
+                        description: '',
+                        slug: '',
+                        address: '',
+                        city: '',
+                        state: '',
+                        postal_code: '',
+                        country: '',
+                        latitude: '',
+                        longitude: '',
+                        bedrooms: '',
+                        bathrooms: '',
+                        parking_spaces: '',
+                        land_size: '',
+                        built_area: '',
+                        year_built: '',
+                        price: '',
+                        price_per_sqm: '',
+                        price_per_plot: '',
+                        features: '',
+                        amenities: '',
+                        images: [],
+                        videos: [],
+                        virtual_tour_url: '',
+                        floor_plan: null,
+                        meta_description: '',
+                        meta_keywords: '',
+                        listed_at: '',
+                        expires_at: '',
+                        deleted_at: '',
+                        landmark: '',
+                    };
+                },
+                async submitProperty() {
+                    // Debug: log floor_plan before submission
+                    console.log('floor_plan:', this.form.floor_plan, 'type:', typeof this.form.floor_plan,
+                        'instanceof File:', this.form.floor_plan instanceof File);
+                    let fd = new FormData();
+                    // Convert features and amenities to arrays
+                    let featuresArr = (typeof this.form.features === 'string') ? this.form.features.split(',').map(f =>
+                        f.trim()).filter(f => f) : [];
+                    let amenitiesArr = (typeof this.form.amenities === 'string') ? this.form.amenities.split(',').map(
+                        a => a.trim()).filter(a => a) : [];
+                    // Prepare FormData
+                    Object.keys(this.form).forEach(key => {
+                        if (key === 'features') {
+                            featuresArr.forEach((f, i) => fd.append('features[' + i + ']', f));
+                        } else if (key === 'amenities') {
+                            amenitiesArr.forEach((a, i) => fd.append('amenities[' + i + ']', a));
+                        } else if (key === 'images' && Array.isArray(this.form.images)) {
+                            this.form.images.forEach((img, i) => fd.append('images[' + i + ']', img));
+                        } else if (key === 'videos' && Array.isArray(this.form.videos)) {
+                            this.form.videos.forEach((vid, i) => fd.append('videos[' + i + ']', vid));
+                        } else if (key === 'floor_plan' && this.form.floor_plan) {
+                            fd.append('floor_plan', this.form.floor_plan);
+                        } else {
+                            fd.append(key, this.form[key]);
+                        }
+                    });
+
+                    try {
+                        let resp = await fetch('/management/my-properties/store', {
+                            method: 'POST',
+                            headers: {
+                                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute(
+                                    'content')
+                            },
+                            body: fd
+                        });
+
+                        const responseData = await resp.json();
+                        console.log('Response:', responseData); // Debug log
+
+                        if (resp.ok && responseData.success) {
+                            toastr.success(responseData.message || 'Property added successfully!');
+                            this.resetForm();
+
+                            // Redirect if provided
+                            if (responseData.redirect) {
+                                window.location.href = responseData.redirect;
+                            }
+                        } else {
+                            // Handle validation errors
+                            if (responseData.errors) {
+                                let errorMessage = 'Validation errors:\n';
+                                if (Array.isArray(responseData.errors)) {
+                                    errorMessage += responseData.errors.join('\n');
+                                } else if (typeof responseData.errors === 'object') {
+                                    Object.keys(responseData.errors).forEach(field => {
+                                        errorMessage += `${field}: ${responseData.errors[field].join(', ')}\n`;
+                                    });
+                                }
+                                toastr.error(errorMessage);
+                            } else {
+                                toastr.error(responseData.message || 'Failed to add property.');
+                            }
+                        }
+                    } catch (err) {
+                        console.error('Error submitting property:', err);
+                        toastr.error('Error submitting property: ' + err.message);
+                    }
+                }
+            }
+        }
+    </script>
+@endpush

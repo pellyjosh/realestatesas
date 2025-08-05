@@ -11,9 +11,35 @@ class SectionController extends Controller
 {
     public function index()
     {
+        // Get all sections
+        $sections = HomeSection::all();
+        
+        // Get all properties for dropdowns 
+        $properties = Property::select('id', 'name')->get();
+        
+        // Get featured properties from the database
+        // This gets properties from featured section data
+        $featuredSection = HomeSection::where('name', 'featured')->first();
+        $featuredProperties = collect();
+        
+        if ($featuredSection && isset($featuredSection->data['selected'])) {
+            // Extract property_id values from the selected array
+            $featuredPropertyIds = collect($featuredSection->data['selected'])
+                ->pluck('property_id')
+                ->filter()
+                ->toArray();
+            
+            if (!empty($featuredPropertyIds)) {
+                $featuredProperties = Property::whereIn('id', $featuredPropertyIds)
+                    ->select('id', 'name', 'price', 'city', 'state', 'address', 'property_type', 'images', 'image', 'description')
+                    ->get();
+            }
+        }
+        
         return tenant_view('admin.pages.settings.section', [
-            'sections' => HomeSection::all(),
-            'properties' => Property::select('id', 'name')->get(), // Fetch all properties for dropdowns
+            'sections' => $sections,
+            'properties' => $properties,
+            'featuredProperties' => $featuredProperties,
         ]);
     }
 

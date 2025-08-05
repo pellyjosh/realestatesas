@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 
 class TenantUser extends Authenticatable
 {
+    protected $connection = 'tenant';
     protected $table = 'users';
 
     protected $fillable = [
@@ -116,5 +117,13 @@ class TenantUser extends Authenticatable
             'currency' => 'NGN',
             'is_active' => true,
         ]);
+    }
+
+    /**
+     * Get the realtor profile for this user
+     */
+    public function realtor()
+    {
+        return $this->hasOne(Realtor::class, 'user_id');
     }
 }

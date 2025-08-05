@@ -160,6 +160,11 @@
     <script>
         $(document).ready(function() {
             $('#myTable').DataTable();
+            
+            // Fallback loader hide after 3 seconds if window load doesn't fire
+            setTimeout(function() {
+                $('.loader-wrapper').fadeOut('slow');
+            }, 3000);
         });
     </script>
 

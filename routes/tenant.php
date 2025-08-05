@@ -17,8 +17,9 @@ use App\Http\Controllers\Tenant\Client\ClientSectionController;
 
 // Admin Import
 use App\Http\Controllers\Tenant\Admin\AdminEventController;
+use App\Http\Controllers\Tenant\Admin\PropertyController;
+use App\Http\Controllers\Tenant\Admin\RealtorController;
 use App\Http\Controllers\Tenant\Admin\SectionController;
-
 // Auth imports
 use App\Http\Controllers\Tenant\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Tenant\Auth\ConfirmablePasswordController;
@@ -67,9 +68,7 @@ Route::middleware([
         return tenant_view('client.pages.compare');
     })->name('client.compare');
 
-    Route::get('/property-details', function () {
-        return tenant_view('client.pages.property-details');
-    })->name('client.property-details');
+
 
 
     Route::controller(EventController::class)->group(function () {
@@ -81,7 +80,7 @@ Route::middleware([
     // Property Inspection Routes
     Route::controller(PropertyInspectionController::class)->prefix('property-inspections')->group(function () {
         Route::post('/', 'store')->name('tenant.property-inspections.store');
-        Route::get('/property-details', 'getPropertyDetails')->name('tenant.property-inspections.property-details');
+        Route::get('/property', 'getPropertyDetails')->name('tenant.property-inspections.property-details');
         Route::get('/', 'index')->name('tenant.property-inspections.index');
         Route::patch('/{inspection}/status', 'updateStatus')->name('tenant.property-inspections.update-status');
     });
@@ -332,21 +331,35 @@ Route::middleware([
 
 
             // admin add, edit ... properties routes
-            Route::get('/my-properties/add-property', function () {
-                return tenant_view('admin.pages.my-properties.add-property');
-            })->name('tenant.admin.add.property');
+            Route::controller(PropertyController::class)->group(function () {
+                Route::get('/my-properties/listing', 'listing')
+                    ->name('tenant.admin.listing');
+                Route::get('/my-properties/add-property', 'create')
+                    ->name('tenant.admin.add.property');
+                Route::post('/my-properties/store', 'store')
+                    ->name('tenant.admin.properties.store');
+                Route::get('/my-properties', 'index')
+                    ->name('tenant.admin.properties.index');
+                Route::get('/my-properties/{property}/edit', 'edit')
+                    ->name('tenant.admin.edit.property');
+                Route::put('/my-properties/{property}', 'update')
+                    ->name('tenant.admin.properties.update');
+                Route::delete('/my-properties/{property}', 'destroy')
+                    ->name('tenant.admin.properties.destroy');
 
-            Route::get('/my-properties/edit-property', function () {
-                return tenant_view('admin.pages.my-properties.edit-property');
-            })->name('tenant.admin.edit.property');
+                // Toggle featured and latest properties
+                Route::post('/my-properties/{property}/toggle-featured', 'toggleFeatured')
+                    ->name('tenant.admin.properties.toggle-featured');
+                Route::post('/my-properties/{property}/toggle-latest', 'toggleLatest')
+                    ->name('tenant.admin.properties.toggle-latest');
+            });
 
-            Route::get('/my-properties/listing', function () {
-                return tenant_view('admin.pages.my-properties.listing');
-            })->name('tenant.admin.listing');
 
             Route::get('/my-properties/favourites', function () {
                 return tenant_view('admin.pages.my-properties.favourites');
             })->name('tenant.admin.favourites');
+
+
 
             // admin add, edit ... user routes
             Route::prefix('manage-users')->group(function () {
@@ -372,25 +385,23 @@ Route::middleware([
             });
 
             // admin add, edit ... realtor routes
+            Route::controller(RealtorController::class)->group(function () {
+                Route::get('/all-realtors', 'index')->name('tenant.admin.all.realtors');
+                Route::get('/add-realtor', 'create')->name('tenant.admin.add.realtor');
+                Route::post('/add-realtor', 'store')->name('tenant.admin.store.realtor');
+                Route::get('/realtor/{realtor}', 'show')->name('tenant.admin.realtor.show');
+                Route::get('/realtor/{realtor}/edit', 'edit')->name('tenant.admin.edit.realtor');
+                Route::put('/realtor/{realtor}', 'update')->name('tenant.admin.update.realtor');
+                Route::delete('/realtor/{realtor}', 'destroy')->name('tenant.admin.destroy.realtor');
+            });
+
             Route::get('/realtor-profile', function () {
                 return tenant_view('admin.pages.realtor.realtor-profile');
             })->name('tenant.admin.realtor.profile');
 
-            Route::get('/add-realtor', function () {
-                return tenant_view('admin.pages.realtor.add-realtor');
-            })->name('tenant.admin.add.realtor');
-
             Route::get('/add-realtor-wizard', function () {
                 return tenant_view('admin.pages.realtor.add-realtor-wizard');
             })->name('tenant.admin.add.realtor.wizard');
-
-            Route::get('/edit-realtor', function () {
-                return tenant_view('admin.pages.realtor.edit-realtor');
-            })->name('tenant.admin.edit.realtor');
-
-            Route::get('/all-realtors', function () {
-                return tenant_view('admin.pages.realtor.all-realtor');
-            })->name('tenant.admin.all.realtors');
 
             Route::get('/realtor-invoice', function () {
                 return tenant_view('admin.pages.realtor.realtor-invoice');
@@ -429,7 +440,7 @@ Route::middleware([
                 return tenant_view('admin.pages.sales');
             })->name('tenant.admin.sales');
 
-        //    admin settings route 
+            //    admin settings route 
             Route::get('/section', [SectionController::class, 'index'])->name('tenant.admin.section');
             Route::post('/sections/{sectionName}', [SectionController::class, 'store'])->name('tenant.admin.sections.store');
 
@@ -451,6 +462,11 @@ Route::middleware([
                 Route::put('/events/{event}', 'update')->name('tenant.admin.events.update');
                 Route::delete('/events/{event}', 'destroy')->name('tenant.admin.events.destroy');
             });
+
+            Route::get('/property/{id}', function ($id) {
+                $property = App\Models\Property::findOrFail($id);
+                return tenant_view('admin.pages.property-details', compact('property'));
+            })->name('client.property-details');
         });
     });
 

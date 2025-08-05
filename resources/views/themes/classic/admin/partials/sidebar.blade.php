@@ -47,12 +47,6 @@
                              </a>
                          </li>
                          <li>
-                             <a href="{{ route('tenant.admin.edit.property') }}">
-                                 <i data-feather="chevrons-right"></i>
-                                 edit property
-                             </a>
-                         </li>
-                         <li>
                              <a href="{{ route('tenant.admin.listing') }}">
                                  <i data-feather="chevrons-right"></i>
                                  property list
@@ -154,12 +148,12 @@
                                  Add Realtor wizard <span class="label label-shadow ms-1">new</span>
                              </a>
                          </li>
-                         <li>
-                             <a href="{{ route('tenant.admin.edit.realtor') }}">
-                                 <i data-feather="chevrons-right"></i>
-                                 Edit Realtor
-                             </a>
-                         </li>
+                        <li>
+                            <a href="{{ route('tenant.admin.all.realtors') }}">
+                                <i data-feather="chevrons-right"></i>
+                                Edit Realtor
+                            </a>
+                        </li>
                          <li>
                              <a href="{{ route('tenant.admin.all.realtors') }}">
                                  <i data-feather="chevrons-right"></i>

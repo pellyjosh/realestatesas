@@ -83,7 +83,7 @@
                                                 class="nav-link menu-title">Home</a>
                                         </li>
                                         <li class="mega-menu">
-                                            <a href="{{ route('client.events') }}" class="nav-link menu-title">
+                                            <a href="#" class="nav-link menu-title">
                                                 Events
                                             </a>
                                         </li>

@@ -12,9 +12,10 @@ use Illuminate\Support\Str;
 
 class Property extends Model
 {
-    use SoftDeletes;
+    // use SoftDeletes; // Temporarily disabled until deleted_at column is added
 
     protected $fillable = [
+        'user_id',
         'name',
         'property_type',
         'listing_type',
@@ -68,8 +69,7 @@ class Property extends Model
 
     protected $dates = [
         'listed_at',
-        'expires_at',
-        'deleted_at'
+        'expires_at'
     ];
 
     // Boot method to generate slug

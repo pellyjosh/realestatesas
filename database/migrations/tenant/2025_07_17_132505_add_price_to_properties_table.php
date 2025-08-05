@@ -12,8 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('properties', function (Blueprint $table) {
-            $table->decimal('price_per_plot', 15, 2)->default(100000.00)->after('image');
-            $table->text('description')->nullable()->after('price_per_plot');
+            if (!Schema::hasColumn('properties', 'price_per_plot')) {
+                $table->decimal('price_per_plot', 15, 2)->default(100000.00)->after('image');
+            }
+            if (!Schema::hasColumn('properties', 'description')) {
+                $table->text('description')->nullable()->after('price_per_plot');
+            }
         });
     }
 
