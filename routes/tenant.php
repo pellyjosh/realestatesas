@@ -347,11 +347,11 @@ Route::middleware([
                 Route::delete('/my-properties/{property}', 'destroy')
                     ->name('tenant.admin.properties.destroy');
 
-                // Toggle featured and latest properties
+                // Toggle featured and latest-for-sale properties
                 Route::post('/my-properties/{property}/toggle-featured', 'toggleFeatured')
                     ->name('tenant.admin.properties.toggle-featured');
-                Route::post('/my-properties/{property}/toggle-latest', 'toggleLatest')
-                    ->name('tenant.admin.properties.toggle-latest');
+                Route::post('/my-properties/{property}/toggle-latest-for-sale', 'toggleLatest')
+                    ->name('tenant.admin.properties.toggle-latest-for-sale');
             });
 
 
