@@ -8,7 +8,7 @@ use App\Models\Property;
 class HomeSection extends Model
 {
     protected $table = 'home_section';
-    
+
     protected $fillable = ['name', 'data', 'is_enabled'];
 
     protected $casts = [
@@ -25,8 +25,18 @@ class HomeSection extends Model
             return collect();
         }
 
-        $propertyIds = collect($this->data['selected'])->pluck('property_id')->filter();
-        
+        // Support both array/object and int/string formats
+        $propertyIds = collect($this->data['selected'])
+            ->map(function ($item) {
+                if (is_array($item)) {
+                    return $item['property_id'] ?? null;
+                }
+                return is_numeric($item) ? (int)$item : null;
+            })
+            ->filter()
+            ->unique()
+            ->values();
+
         if ($propertyIds->isEmpty()) {
             return collect();
         }
@@ -41,22 +51,28 @@ class HomeSection extends Model
     {
         $data = $this->data ?? [];
         $selected = $data['selected'] ?? [];
-        
-        // Check if property is already in the section
-        $exists = collect($selected)->contains(function ($item) use ($propertyId) {
-            return isset($item['property_id']) && $item['property_id'] == $propertyId;
-        });
-        
-        if (!$exists) {
+
+        // Normalize all IDs for duplicate check
+        $ids = collect($selected)
+            ->map(function ($item) {
+                if (is_array($item)) {
+                    return $item['property_id'] ?? null;
+                }
+                return is_numeric($item) ? (int)$item : null;
+            })
+            ->filter()
+            ->unique()
+            ->values();
+
+        if (!$ids->contains((int)$propertyId)) {
             $selected[] = [
                 'property_id' => (int) $propertyId,
                 'added_at' => now()->toDateTimeString()
             ];
-            
             $data['selected'] = $selected;
             $this->update(['data' => $data]);
         }
-        
+
         return $this;
     }
 
@@ -67,14 +83,20 @@ class HomeSection extends Model
     {
         $data = $this->data ?? [];
         $selected = $data['selected'] ?? [];
-        
-        $selected = collect($selected)->reject(function ($item) use ($propertyId) {
-            return isset($item['property_id']) && $item['property_id'] == $propertyId;
-        })->values()->toArray();
-        
+
+        $selected = collect($selected)
+            ->reject(function ($item) use ($propertyId) {
+                if (is_array($item)) {
+                    return isset($item['property_id']) && $item['property_id'] == $propertyId;
+                }
+                return is_numeric($item) && (int)$item === (int)$propertyId;
+            })
+            ->values()
+            ->toArray();
+
         $data['selected'] = $selected;
         $this->update(['data' => $data]);
-        
+
         return $this;
     }
 
@@ -84,9 +106,12 @@ class HomeSection extends Model
     public function hasProperty($propertyId)
     {
         $selected = $this->data['selected'] ?? [];
-        
+        $propertyId = (int)$propertyId;
         return collect($selected)->contains(function ($item) use ($propertyId) {
-            return isset($item['property_id']) && $item['property_id'] == $propertyId;
+            if (is_array($item)) {
+                return isset($item['property_id']) && (int)$item['property_id'] === $propertyId;
+            }
+            return is_numeric($item) && (int)$item === $propertyId;
         });
     }
 
@@ -104,6 +129,16 @@ class HomeSection extends Model
     public function isAtLimit()
     {
         $selected = $this->data['selected'] ?? [];
-        return count($selected) >= $this->getLimit();
+        $ids = collect($selected)
+            ->map(function ($item) {
+                if (is_array($item)) {
+                    return $item['property_id'] ?? null;
+                }
+                return is_numeric($item) ? (int)$item : null;
+            })
+            ->filter()
+            ->unique()
+            ->values();
+        return $ids->count() >= $this->getLimit();
     }
 }

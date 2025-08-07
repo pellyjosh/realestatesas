@@ -207,142 +207,53 @@
                         <hr>
                     </div>
                     <div class="listing-hover-property row">
-                        <div class="col-xl-4 col-md-6 wow fadeInUp">
-                            <div class="property-box">
-                                <div class="property-image">
-                                    <a href="javascript:void(0)">
-                                        <img src="{{ asset('themes/classic/client/assets/images/uploads/upload-2.png') }}"
-                                            class="bg-img" alt="" loading="lazy">
-                                        <div class="labels-left">
-                                            <span class="label label-shadow">Sale</span>
-                                        </div>
-                                    </a>
-                                    <div class="bottom-property">
-                                        <div class="d-flex">
-                                            <div>
-                                                <h5>Neverland</h5>
-                                                <h6>#13,000 <small>/ start from</small></h6>
+                        @foreach ($properties as $property)
+                            <div class="col-xl-4 col-md-6 wow fadeInUp">
+                                <div class="property-box">
+                                    <div class="property-image">
+                                        <a href="javascript:void(0)">
+                                            <img src="{{ $property->image_url ?? asset('themes/classic/client/assets/images/uploads/upload-2.png') }}"
+                                                class="bg-img" alt="" loading="lazy">
+                                            <div class="labels-left">
+                                                <span class="label label-shadow">{{ $property->status ?? 'Sale' }}</span>
                                             </div>
-                                            <a href="{{ route('client.property-details') }}"
-                                                class="btn btn-gradient color-6 mt-3">Details</a>
-                                        </div>
-                                        <div class="overlay-option">
-                                            <ul>
-                                                <li>
-                                                    <span>Plot Size</span>
-                                                    <h6>2</h6>
-                                                </li>
-                                                <li>
-                                                    <span>Location</span>
-                                                    <h6>Ibeju-Lekki</h6>
-                                                </li>
-                                                <li>
-                                                    <span>Title</span>
-                                                    <h6>Registered Survey</h6>
-                                                </li>
-                                                <li>
-                                                    <span>Status</span>
-                                                    <h6>Dry Land</h6>
-                                                </li>
-                                            </ul>
+                                        </a>
+                                        <div class="bottom-property">
+                                            <div class="d-flex">
+                                                <div>
+                                                    <h5>{{ $property->name ?? 'Property' }}</h5>
+                                                    <h6>#{{ number_format($property->price ?? 0) }} <small>/ start
+                                                            from</small></h6>
+                                                </div>
+                                                <a href="{{ route('client.property-details', $property->id) }}"
+                                                    class="btn btn-gradient color-6 mt-3">Details</a>
+                                            </div>
+                                            <div class="overlay-option">
+                                                <ul>
+                                                    <li>
+                                                        <span>Plot Size</span>
+                                                        <h6>{{ $property->plot_size ?? '-' }}</h6>
+                                                    </li>
+                                                    <li>
+                                                        <span>Location</span>
+                                                        <h6>{{ $property->location ?? '-' }}</h6>
+                                                    </li>
+                                                    <li>
+                                                        <span>Title</span>
+                                                        <h6>{{ $property->title ?? '-' }}</h6>
+                                                    </li>
+                                                    <li>
+                                                        <span>Status</span>
+                                                        <h6>{{ $property->land_status ?? '-' }}</h6>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-xl-4 col-md-6 wow fadeInUp" data-wow-delay="200ms">
-                            <div class="property-box">
-                                <div class="property-image">
-                                    <a href="javascript:void(0)">
-                                        <img src="{{ asset('themes/classic/client/assets/images/uploads/upload-9.png') }}"
-                                            class="bg-img" alt="" loading="lazy">
-                                        <div class="labels-left">
-                                            <div>
-                                                <span class="label label-dark">no fees</span>
-                                            </div>
-                                            <span class="label label-success">open house</span>
-                                        </div>
-                                    </a>
-                                    <div class="bottom-property">
-                                        <div class="d-flex">
-                                            <div>
-                                                <h5><a href="#">Orchard House</a></h5>
-                                                <h6>#14,520 <small>/ start from</small></h6>
-                                            </div>
-                                            <a href="{{ route('client.property-details') }}"
-                                                class="btn btn-gradient color-6 mt-3">Details</a>
-                                        </div>
-                                        <div class="overlay-option">
-                                            <ul>
-                                                <li>
-                                                    <span>Plot Size</span>
-                                                    <h6>2</h6>
-                                                </li>
-                                                <li>
-                                                    <span>Location</span>
-                                                    <h6>Ibeju-Lekki</h6>
-                                                </li>
-                                                <li>
-                                                    <span>Title</span>
-                                                    <h6>Registered Survey</h6>
-                                                </li>
-                                                <li>
-                                                    <span>Status</span>
-                                                    <h6>Dry Land</h6>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-md-6 wow fadeInUp" data-wow-delay="300ms">
-                            <div class="property-box">
-                                <div class="property-image">
-                                    <a href="javascript:void(0)">
-                                        <img src="{{ asset('themes/classic/client/assets/images/uploads/upload-7.jpg') }}"
-                                            class="bg-img" alt="" loading="lazy">
-                                        <div class="labels-left">
-                                            <span class="label label-shadow">Sold</span>
-                                        </div>
-                                    </a>
-                                    <div class="bottom-property">
-                                        <div class="d-flex">
-                                            <div>
-                                                <h5><a href="#">Sea Breezes</a></h5>
-                                                <h6>#12,200 <small>/ start from</small></h6>
-                                            </div>
-                                            <a href="{{ route('client.property-details') }}"
-                                                class="btn btn-gradient color-6 mt-3">Details</a>
-                                        </div>
-                                        <div class="overlay-option">
-                                            <ul>
-                                                <li>
-                                                    <span>Plot Size</span>
-                                                    <h6>2</h6>
-                                                </li>
-                                                <li>
-                                                    <span>Location</span>
-                                                    <h6>Ibeju-Lekki</h6>
-                                                </li>
-                                                <li>
-                                                    <span>Title</span>
-                                                    <h6>Registered Survey</h6>
-                                                </li>
-                                                <li>
-                                                    <span>Status</span>
-                                                    <h6>Dry Land</h6>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                        @endforeach
+                        <!-- End dynamic property cards -->
     </section>
     <!-- property section end -->
 
@@ -380,8 +291,7 @@
                                                     </span>
                                                 </a>
                                                 <div class="property-btn">
-                                                    <a href="{{ route('client.property-details') }}"
-                                                        class="btn btn-gradient color-6 mt-3">Details</a>
+                                                    <!-- Removed static Details button with missing property ID -->
                                                 </div>
                                             </div>
                                         </div>

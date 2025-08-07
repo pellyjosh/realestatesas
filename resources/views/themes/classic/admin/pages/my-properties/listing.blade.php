@@ -13,7 +13,7 @@
                 properties: [],
                 homeSections: {
                     featured: null,
-                    properties: null
+                    'latest for sale': null
                 },
                 form: {
                     id: '',
@@ -109,10 +109,13 @@
                     await this.toggleSection('featured', propertyId);
                 },
                 async toggleLatest(propertyId) {
-                    await this.toggleSection('latest', propertyId);
+                    await this.toggleSection('latest for sale', propertyId, 'latest-for-sale');
                 },
-                async toggleSection(sectionName, propertyId) {
-                    const url = `/management/my-properties/${propertyId}/toggle-${sectionName}`;
+                async toggleSection(sectionName, propertyId, urlSectionName = null) {
+                    // Use urlSectionName for the route if provided, else use sectionName
+                    const sectionForUrl = urlSectionName || sectionName;
+                    const encodedSection = encodeURIComponent(sectionForUrl);
+                    const url = `/management/my-properties/${propertyId}/toggle-${encodedSection}`;
                     this.isSubmitting = true;
                     try {
                         const response = await fetch(url, {
@@ -123,12 +126,20 @@
                             },
                             body: JSON.stringify({})
                         });
-                        const result = await response.json();
+                        let result = {};
+                        let raw = '';
+                        try {
+                            result = await response.json();
+                        } catch (e) {
+                            raw = await response.text();
+                            console.error('Non-JSON response:', raw, 'Status:', response.status);
+                        }
                         if (response.ok && result.success) {
                             this.updateSectionData(sectionName, propertyId);
                             alert(result.message);
                         } else {
-                            alert(result.message || 'An error occurred while toggling the property.');
+                            let msg = result.message || raw || 'An error occurred while toggling the property.';
+                            alert(msg);
                         }
                     } catch (error) {
                         console.error('Error toggling property:', error);
@@ -256,6 +267,25 @@
             };
         }
     </script>
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('propertyModal', () => ({
+                ...propertyModal(),
+                selectedFilter: 'all',
+                filteredProperties() {
+                    if (this.selectedFilter === 'all') return this.properties;
+                    if (this.selectedFilter === 'featured') {
+                        return this.properties.filter(p => this.isPropertyInSection(p.id, 'featured'));
+                    }
+                    if (this.selectedFilter === 'latest') {
+                        return this.properties.filter(p => this.isPropertyInSection(p.id,
+                            'latest for sale'));
+                    }
+                    return this.properties;
+                }
+            }));
+        });
+    </script>
 
     {{-- Expose properties as JSON for Alpine.js --}}
     <script id="properties-json" type="application/json">
@@ -266,7 +296,7 @@
     <script id="home-sections-json" type="application/json">
         {
             "featured": {!! json_encode($featuredSection ? $featuredSection->toArray() : null) !!},
-            "properties": {!! json_encode($latestSection ? $latestSection->toArray() : null) !!}
+            "latest for sale": {!! json_encode($latestSection ? $latestSection->toArray() : null) !!}
         }
     </script>
 
@@ -300,7 +330,7 @@
 
     {{-- Main Container with Alpine.js --}}
     <div class="container-fluid" x-data="propertyModal()" x-init="init()">
-        <div class="col-lg-12">
+        <div class="col-lg-12" x-data="{ viewType: 'grid' }">
             <div class="property-admin">
                 <div class="property-section section-sm">
                     <div class="row ratio_55 property-grid-2 property-map map-with-back">
@@ -309,129 +339,213 @@
                                 <div class="listing-option">
                                     <h5 class="mb-0">Showing <span>1-15 of 69</span> Listings</h5>
                                     <div>
-                                        <div class="d-flex">
-                                            <span class="m-r-10">Map view</span>
-                                            <label class="switch">
-                                                <input type="checkbox" class="option-list" name="step_1" value="ani1"
-                                                    checked="">
-                                                <span class="switch-state"></span>
-                                            </label>
-                                            <span class="m-l-10">List view</span>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <button type="button" class="btn btn-sm"
+                                                :class="viewType === 'grid' ? 'btn-primary' : 'btn-outline-primary'"
+                                                @click="viewType = 'grid'" style="min-width: 90px;">Grid View</button>
+                                            <button type="button" class="btn btn-sm"
+                                                :class="viewType === 'list' ? 'btn-primary' : 'btn-outline-primary'"
+                                                @click="viewType = 'list'" style="min-width: 90px;">List View</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-xl-12">
-                            <div class="property-2 row column-sm property-label property-grid">
-                                <template x-for="property in properties" :key="property.id">
-                                    <div class="col-xl-4 col-md-6 xl-6">
-                                        <div class="property-box">
-                                            <div class="property-image">
-                                                <div class="property-slider"
-                                                    style="position: relative; height: 250px; overflow: hidden;">
-                                                    {{-- Display property images from database --}}
-                                                    <template x-if="property.images && property.images.length > 0">
-                                                        <div
-                                                            style="position: relative; width: 100%; height: 250px; background: #f8f9fa; display: flex; align-items: center; justify-content: center;">
-                                                            {{-- Display only the first image for now --}}
-                                                            <img :src="'/storage/tenantclient1/' + property.images[0]"
-                                                                class="bg-img" alt="Property Image"
-                                                                onerror="console.error('Image failed to load:', this.src); this.style.display='none'; this.nextElementSibling.style.display='block';"
-                                                                onload="console.log('Image loaded successfully:', this.src);"
-                                                                style="width: 100%; height: 250px; object-fit: cover; display: block;">
-                                                            {{-- Fallback text if image fails --}}
+                            <template x-if="viewType === 'grid'">
+                                <div class="property-2 row column-sm property-label property-grid">
+                                    <div class="mb-3 d-flex gap-2">
+                                        <template x-for="filter in ['all', 'featured', 'latest']" :key="filter">
+                                            <button type="button" class="btn btn-pill color-1"
+                                                :class="selectedFilter === filter ? 'active-filter-btn' : 'btn-outline-primary'"
+                                                x-text="filter === 'all' ? 'All' : (filter === 'featured' ? 'Featured' : 'Latest For Sale')"
+                                                @click="selectedFilter = filter"
+                                                style="transition: box-shadow 0.2s, background 0.2s; min-width: 120px;"></button>
+                                        </template>
+                                    </div>
+                                    <template x-for="property in filteredProperties()" :key="property.id">
+                                        <div class="col-xl-4 col-md-6 xl-6">
+                                            <div class="property-box">
+                                                <div class="property-image">
+                                                    <div class="property-slider"
+                                                        style="position: relative; height: 250px; overflow: hidden;">
+                                                        {{-- Display property images from database --}}
+                                                        <template x-if="property.images && property.images.length > 0">
                                                             <div
-                                                                style="display: none; color: #6c757d; text-align: center; font-size: 14px;">
-                                                                Image failed to load<br>
-                                                                <small
-                                                                    x-text="'/storage/tenantclient1/' + property.images[0]"></small>
+                                                                style="position: relative; width: 100%; height: 250px; background: #f8f9fa; display: flex; align-items: center; justify-content: center;">
+                                                                {{-- Display only the first image for now --}}
+                                                                <img :src="'/storage/tenantclient1/' + property.images[0]"
+                                                                    class="bg-img" alt="Property Image"
+                                                                    onerror="console.error('Image failed to load:', this.src); this.style.display='none'; this.nextElementSibling.style.display='block';"
+                                                                    onload="console.log('Image loaded successfully:', this.src);"
+                                                                    style="width: 100%; height: 250px; object-fit: cover; display: block;">
+                                                                {{-- Fallback text if image fails --}}
+                                                                <div
+                                                                    style="display: none; color: #6c757d; text-align: center; font-size: 14px;">
+                                                                    Image failed to load<br>
+                                                                    <small
+                                                                        x-text="'/storage/tenantclient1/' + property.images[0]"></small>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </template>
-                                                    {{-- Fallback if no images --}}
-                                                    <template x-if="!property.images || property.images.length === 0">
-                                                        <div
-                                                            style="position: relative; width: 100%; height: 250px; background: #f8f9fa; display: flex; align-items: center; justify-content: center; color: #6c757d; font-size: 14px; text-align: center;">
-                                                            <div>
-                                                                <div>No Images Available</div>
-                                                                <small>Property ID: <span
-                                                                        x-text="property.id"></span></small>
+                                                        </template>
+                                                        {{-- Fallback if no images --}}
+                                                        <template x-if="!property.images || property.images.length === 0">
+                                                            <div
+                                                                style="position: relative; width: 100%; height: 250px; background: #f8f9fa; display: flex; align-items: center; justify-content: center; color: #6c757d; font-size: 14px; text-align: center;">
+                                                                <div>
+                                                                    <div>No Images Available</div>
+                                                                    <small>Property ID: <span
+                                                                            x-text="property.id"></span></small>
+                                                                </div>
                                                             </div>
+                                                        </template>
+                                                    </div>
+                                                    <div class="labels-left">
+                                                        <div><span class="label label-shadow">sale</span></div>
+                                                    </div>
+                                                    <div class="seen-data">
+                                                        <i data-feather="camera"></i>
+                                                        <span x-text="getPropertyImages(property).length"></span>
+                                                    </div>
+                                                    {{-- 3-dot menu for actions --}}
+                                                    <div style="position:absolute;bottom:0;right:0;margin:8px;z-index:10;"
+                                                        x-data="{ open: false }">
+                                                        <button type="button" @@click="open = !open"
+                                                            class="btn btn-light p-1 rounded-circle border"
+                                                            style="width:32px;height:32px;display:flex;align-items:center;justify-content:center;">
+                                                            <span
+                                                                style="display:flex;flex-direction:column;align-items:center;justify-content:center;">
+                                                                <span
+                                                                    style="width:4px;height:4px;background:black;border-radius:50%;margin:1px;"></span>
+                                                                <span
+                                                                    style="width:4px;height:4px;background:black;border-radius:50%;margin:1px;"></span>
+                                                                <span
+                                                                    style="width:4px;height:4px;background:black;border-radius:50%;margin:1px;"></span>
+                                                            </span>
+                                                        </button>
+                                                        <div x-show="open" @@click.outside="open = false"
+                                                            x-transition class="shadow rounded py-2 px-3 bg-white"
+                                                            style="position:absolute;right:0;bottom:36px;min-width:160px;z-index:100;">
+                                                            <button type="button" class="dropdown-item w-100 text-start"
+                                                                style="background:white;color:black;border:none;padding:8px 0;"
+                                                                @@click="toggleFeatured(property.id)"
+                                                                x-text="isPropertyInSection(property.id, 'featured') ? 'Remove from Featured' : 'Add to Featured'"></button>
+                                                            <button type="button" class="dropdown-item w-100 text-start"
+                                                                style="background:white;color:black;border:none;padding:8px 0;"
+                                                                @@click="toggleLatest(property.id)"
+                                                                x-text="isPropertyInSection(property.id, 'latest for sale') ? 'Remove from Latest' : 'Add to Latest for Sale'"></button>
                                                         </div>
-                                                    </template>
+                                                    </div>
                                                 </div>
-                                                <div class="labels-left">
-                                                    <div><span class="label label-shadow">sale</span></div>
-                                                </div>
-                                                <div class="seen-data">
-                                                    <i data-feather="camera"></i>
-                                                    <span x-text="getPropertyImages(property).length"></span>
-                                                </div>
-                                                {{-- 3-dot menu for actions --}}
-                                                <div style="position:absolute;bottom:0;right:0;margin:8px;z-index:10;"
-                                                    x-data="{ open: false }">
-                                                    <button type="button" @@click="open = !open"
-                                                        class="btn btn-light p-1 rounded-circle border"
-                                                        style="width:32px;height:32px;display:flex;align-items:center;justify-content:center;">
+                                                <div class="property-details">
+                                                    <span class="font-roboto" x-text="property.city"></span>
+                                                    <a
+                                                        href="https://themes.pixelstrap.com/sheltos/main/single-property-8.html">
+                                                        <h3 x-text="property.name"></h3>
+                                                    </a>
+                                                    <h6 x-text="'₦' + property.price"></h6>
+                                                    <p class="font-roboto light-font" x-text="property.description"></p>
+                                                    <ul>
+                                                        <li><img src="https://themes.pixelstrap.com/sheltos/assets/images/svg/icon/double-bed.svg"
+                                                                class="img-fluid" alt="">Bed : <span
+                                                                x-text="property.bedrooms"></span></li>
+                                                        <li><img src="https://themes.pixelstrap.com/sheltos/assets/images/svg/icon/bathroom.svg"
+                                                                class="img-fluid" alt="">Baths : <span
+                                                                x-text="property.bathrooms"></span></li>
+                                                        <li><img src="https://themes.pixelstrap.com/sheltos/assets/images/svg/icon/square-ruler-tool.svg"
+                                                                class="img-fluid ruler-tool" alt="">Sq Ft : <span
+                                                                x-text="property.built_area"></span></li>
+                                                    </ul>
+                                                    <div class="property-btn d-flex">
                                                         <span
-                                                            style="display:flex;flex-direction:column;align-items:center;justify-content:center;">
-                                                            <span
-                                                                style="width:4px;height:4px;background:black;border-radius:50%;margin:1px;"></span>
-                                                            <span
-                                                                style="width:4px;height:4px;background:black;border-radius:50%;margin:1px;"></span>
-                                                            <span
-                                                                style="width:4px;height:4px;background:black;border-radius:50%;margin:1px;"></span>
-                                                        </span>
-                                                    </button>
-                                                    <div x-show="open" @@click.outside="open = false"
-                                                        x-transition class="shadow rounded py-2 px-3 bg-white"
-                                                        style="position:absolute;right:0;bottom:36px;min-width:160px;z-index:100;">
-                                                        <button type="button" class="dropdown-item w-100 text-start"
-                                                            style="background:white;color:black;border:none;padding:8px 0;"
-                                                            @@click="toggleFeatured(property.id)"
-                                                            x-text="isPropertyInSection(property.id, 'featured') ? 'Remove from Featured' : 'Add to Featured'"></button>
-                                                        <button type="button" class="dropdown-item w-100 text-start"
-                                                            style="background:white;color:black;border:none;padding:8px 0;"
-                                                            @@click="toggleLatest(property.id)"
-                                                            x-text="isPropertyInSection(property.id, 'properties') ? 'Remove from Latest' : 'Add to Latest for Sale'"></button>
+                                                            x-text="property.listed_at ? new Date(property.listed_at).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) : ''"></span>
+                                                        <button type="button" class="btn btn-dashed btn-pill color-1"
+                                                            @@click="openEditModal(property)">Edit</button>
+                                                        <button type="button" class="btn btn-dashed btn-pill color-3"
+                                                            onclick="alert('Are you sure you want to delete this property?')">Delete</button>
+                                                        <button type="button"
+                                                            onclick="document.location='https://themes.pixelstrap.com/sheltos/main/single-property-8.html'"
+                                                            class="btn btn-dashed btn-pill color-2">Details</button>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="property-details">
-                                                <span class="font-roboto" x-text="property.city"></span>
-                                                <a href="https://themes.pixelstrap.com/sheltos/main/single-property-8.html">
-                                                    <h3 x-text="property.name"></h3>
-                                                </a>
-                                                <h6 x-text="'₦' + property.price"></h6>
-                                                <p class="font-roboto light-font" x-text="property.description"></p>
-                                                <ul>
-                                                    <li><img src="https://themes.pixelstrap.com/sheltos/assets/images/svg/icon/double-bed.svg"
-                                                            class="img-fluid" alt="">Bed : <span
-                                                            x-text="property.bedrooms"></span></li>
-                                                    <li><img src="https://themes.pixelstrap.com/sheltos/assets/images/svg/icon/bathroom.svg"
-                                                            class="img-fluid" alt="">Baths : <span
-                                                            x-text="property.bathrooms"></span></li>
-                                                    <li><img src="https://themes.pixelstrap.com/sheltos/assets/images/svg/icon/square-ruler-tool.svg"
-                                                            class="img-fluid ruler-tool" alt="">Sq Ft : <span
-                                                            x-text="property.built_area"></span></li>
-                                                </ul>
-                                                <div class="property-btn d-flex">
-                                                    <span
+                                        </div>
+                                    </template>
+                                </div>
+                            </template>
+                            <template x-if="viewType === 'list'">
+                                <div class="property-list-view">
+                                    <div class="mb-3 d-flex gap-2">
+                                        <template x-for="filter in ['all', 'featured', 'latest']" :key="filter">
+                                            <button type="button" class="btn btn-pill color-1"
+                                                :class="selectedFilter === filter ? 'active-filter-btn' : 'btn-outline-primary'"
+                                                x-text="filter === 'all' ? 'All' : (filter === 'featured' ? 'Featured' : 'Latest For Sale')"
+                                                @click="selectedFilter = filter"
+                                                style="transition: box-shadow 0.2s, background 0.2s; min-width: 120px;"></button>
+                                        </template>
+                                    </div>
+                                    <template x-for="property in filteredProperties()" :key="property.id">
+                                        <div class="property-list-item d-flex align-items-center justify-content-between mb-3 p-3 bg-white shadow-sm rounded"
+                                            style="width: 100%;">
+                                            <div class="d-flex flex-column flex-grow-1">
+                                                <div class="d-flex align-items-center mb-2">
+                                                    <h5 class="mb-0 me-3" x-text="property.name"></h5>
+                                                    <span class="badge bg-success ms-2"
+                                                        x-text="'₦' + property.price"></span>
+                                                </div>
+                                                <div class="mb-1 text-muted" style="font-size: 0.95rem;"
+                                                    x-text="property.description"></div>
+                                                <div class="mb-2 text-muted" style="font-size: 0.9rem;">
+                                                    Listed: <span
                                                         x-text="property.listed_at ? new Date(property.listed_at).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) : ''"></span>
+                                                </div>
+                                                <div class="d-flex gap-2 mt-2">
                                                     <button type="button" class="btn btn-dashed btn-pill color-1"
                                                         @@click="openEditModal(property)">Edit</button>
                                                     <button type="button" class="btn btn-dashed btn-pill color-3"
                                                         onclick="alert('Are you sure you want to delete this property?')">Delete</button>
-                                                    <button type="button"
-                                                        onclick="document.location='https://themes.pixelstrap.com/sheltos/main/single-property-8.html'"
-                                                        class="btn btn-dashed btn-pill color-2">Details</button>
+                                                    <button type="button" class="btn btn-dashed btn-pill color-2"
+                                                        onclick="document.location='https://themes.pixelstrap.com/sheltos/main/single-property-8.html'">Details</button>
+                                                </div>
+                                            </div>
+                                            <div class="ms-3" x-data="{ open: false }" style="position: relative;">
+                                                <button type="button" @@click="open = !open"
+                                                    class="btn btn-light p-1 rounded-circle border"
+                                                    style="width:32px;height:32px;display:flex;align-items:center;justify-content:center;">
+                                                    <span
+                                                        style="display:flex;flex-direction:column;align-items:center;justify-content:center;">
+                                                        <span
+                                                            style="width:4px;height:4px;background:black;border-radius:50%;margin:1px;"></span>
+                                                        <span
+                                                            style="width:4px;height:4px;background:black;border-radius:50%;margin:1px;"></span>
+                                                        <span
+                                                            style="width:4px;height:4px;background:black;border-radius:50%;margin:1px;"></span>
+                                                    </span>
+                                                </button>
+                                                <div x-show="open" @@click.outside="open = false"
+                                                    x-transition class="shadow rounded py-2 px-3 bg-white"
+                                                    style="position:absolute;right:0;top:36px;min-width:160px;z-index:100;">
+                                                    <button type="button" class="dropdown-item w-100 text-start"
+                                                        style="background:white;color:black;border:none;padding:8px 0;"
+                                                        @@click="toggleFeatured(property.id)"
+                                                        x-text="isPropertyInSection(property.id, 'featured') ? 'Remove from Featured' : 'Add to Featured'"></button>
+                                                    <button type="button" class="dropdown-item w-100 text-start"
+                                                        style="background:white;color:black;border:none;padding:8px 0;"
+                                                        @@click="toggleLatest(property.id)"
+                                                        x-text="isPropertyInSection(property.id, 'latest for sale') ? 'Remove from Latest' : 'Add to Latest for Sale'"></button>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </template>
-                            </div>
+                                    </template>
+                                </div>
+                            </template>
+                            </template>
+                            <template x-if="viewType === 'map'">
+                                <div class="d-flex align-items-center justify-content-center"
+                                    style="min-height: 400px; background: #f8f9fa; border-radius: 12px;">
+                                    <span style="color: #6c757d; font-size: 1.2rem;">Map view coming soon...</span>
+                                </div>
+                            </template>
                             <nav class="theme-pagination">
                                 <ul class="pagination">
                                     <li class="page-item"><a class="page-link" href="javascript:void(0)"
@@ -626,6 +740,35 @@
     {{-- Container-fluid end --}}
 
     @push('scripts')
+        <style>
+            .active-filter-btn {
+                background: #91d30a !important;
+                /* matches color-1 */
+                color: #fff !important;
+                border: none !important;
+                box-shadow: 0 2px 8px rgba(145, 211, 10, 0.15);
+            }
+
+            .btn.btn-pill.color-1 {
+                border-radius: 50px;
+                background: #fff;
+                color: #91d30a;
+                border: 1px solid #91d30a;
+            }
+
+            .btn.btn-pill.color-1.btn-outline-primary {
+                background: #fff;
+                color: #91d30a;
+                border: 1px solid #91d30a;
+            }
+
+            .btn.btn-pill.color-1:hover,
+            .btn.btn-pill.color-1:focus {
+                background: #91d30a;
+                color: #fff;
+                border: 1px solid #91d30a;
+            }
+        </style>
         <style>
             [x-cloak] {
                 display: none !important;

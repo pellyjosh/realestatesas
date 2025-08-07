@@ -223,8 +223,7 @@
                             <div class="d-flex align-items-center">
                                 <i data-feather="building" class="me-2"></i>
                                 <div>
-                                    <h5 class="mb-0">Properties Section</h5>
-                                    <small class="text-muted">Latest properties display</small>
+                                    <h5 class="mb-0"> LatestProperties Section</h5>
                                 </div>
                             </div>
                             <label class="switch">
@@ -264,36 +263,6 @@
                                 </form>
                             </div>
 
-                            <!-- Section Label -->
-                            <div class="section-item mb-3">
-                                <div class="d-flex justify-content-between align-items-start">
-                                    <div class="flex-grow-1">
-                                        <label class="form-label">Section Label</label>
-                                        <div class="mt-2" x-show="!showForm.includes('properties_label')">
-                                            <span class="badge badge-primary"
-                                                x-text="propertiesSection.data.label || 'Not Set'"></span>
-                                        </div>
-                                    </div>
-                                    <button class="btn btn-primary btn-xs" @click="toggleEditForm('properties_label')"
-                                        type="button">
-                                        <span x-show="!showForm.includes('properties_label')">Edit</span>
-                                        <span x-show="showForm.includes('properties_label')">Cancel</span>
-                                    </button>
-                                </div>
-                                <form x-show="showForm.includes('properties_label')"
-                                    @submit.prevent="saveProperty('properties_label')" class="mt-3">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" x-model="formValues.properties_label"
-                                            placeholder="Enter section label">
-                                    </div>
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-primary me-2">Save</button>
-                                        <button type="button" class="btn btn-light"
-                                            @click="toggleEditForm('properties_label')">Cancel</button>
-                                    </div>
-                                </form>
-                            </div>
-
                             <!-- Properties Display Limit -->
                             <div class="section-item mb-3">
                                 <div class="d-flex justify-content-between align-items-start">
@@ -324,80 +293,104 @@
                                 </form>
                             </div>
 
-                            <!-- Select Properties -->
+                            <!-- Select Latest for sale Property (Dropdown like Featured) -->
                             <div class="section-item mb-3">
                                 <div class="d-flex justify-content-between align-items-start">
                                     <div class="flex-grow-1">
-                                        <label class="form-label">Select Properties</label>
-                                        <div class="mt-2" x-show="!showForm.includes('properties_selected_properties')">
-                                            <template
-                                                x-if="propertiesSection.data.selected_properties && propertiesSection.data.selected_properties.length > 0">
-                                                <ul class="list-group">
-                                                    <template x-for="propId in propertiesSection.data.selected_properties"
-                                                        :key="propId">
-                                                        <li class="list-group-item" x-text="getPropertyName(propId)"></li>
-                                                    </template>
-                                                </ul>
-                                            </template>
-                                            <span x-else class="text-muted">No properties selected</span>
+                                        <label class="form-label">Select Latest for sale Property</label>
+                                        <div class="mt-2">
+                                            <select class="form-control" x-model="selectedLatestPropertyId"
+                                                style="max-width: 250px; display: inline-block;">
+                                                <option value="" disabled>Select a property</option>
+                                                <template x-for="propId in propertiesSection.data.selected"
+                                                    :key="typeof propId === 'object' ? propId.property_id : propId">
+                                                    <option
+                                                        :value="typeof propId === 'object' ? propId.property_id : propId"
+                                                        x-text="getPropertyName(typeof propId === 'object' ? propId.property_id : propId)">
+                                                    </option>
+                                                </template>
+                                            </select>
                                         </div>
                                     </div>
-                                    <button class="btn btn-primary btn-xs"
-                                        @click="toggleEditForm('properties_selected_properties')" type="button">
-                                        <span x-show="!showForm.includes('properties_selected_properties')">Edit</span>
-                                        <span x-show="showForm.includes('properties_selected_properties')">Cancel</span>
-                                    </button>
+                                    <div class="d-flex flex-column gap-1">
+                                        <button class="btn btn-primary btn-xs"
+                                            @click="window.open('/management/property/' + selectedLatestPropertyId, '_blank')"
+                                            type="button" :disabled="!selectedLatestPropertyId">
+                                            <i class="fa fa-eye"></i> View Property
+                                        </button>
+                                    </div>
                                 </div>
-                                <form x-show="showForm.includes('properties_selected_properties')"
-                                    @submit.prevent="saveProperty('properties_selected_properties')" class="mt-3">
-                                    <div class="form-group">
-                                        <select class="form-control" x-model="formValues.properties_selected_properties"
-                                            multiple size="6">
-                                            <template x-for="property in allProperties" :key="property.id">
-                                                <option :value="property.id" x-text="property.name"></option>
-                                            </template>
-                                        </select>
-                                        <small class="form-text text-muted">Hold Ctrl/Cmd to select multiple properties
-                                            (Max
-                                            6)</small>
-                                    </div>
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-primary me-2">Save</button>
-                                        <button type="button" class="btn btn-light"
-                                            @click="toggleEditForm('properties_selected_properties')">Cancel</button>
-                                    </div>
-                                </form>
                             </div>
 
-                            <!-- Properties Description -->
-                            <div class="section-item">
-                                <div class="d-flex justify-content-between align-items-start">
-                                    <div class="flex-grow-1">
-                                        <label class="form-label">Section Description</label>
-                                        <div class="mt-2" x-show="!showForm.includes('properties_description')">
-                                            <p class="mb-0 text-muted"
-                                                x-text="propertiesSection.data.description || 'Not Set'">
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <button class="btn btn-primary btn-xs"
-                                        @click="toggleEditForm('properties_description')" type="button">
-                                        <span x-show="!showForm.includes('properties_description')">Edit</span>
-                                        <span x-show="showForm.includes('properties_description')">Cancel</span>
-                                    </button>
+                            <!-- Property Actions Table (with three-dot menu) -->
+                            <div class="section-item mt-4">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-sm align-middle">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Name</th>
+                                                <th>Status</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <template x-for="(property, idx) in allProperties" :key="property.id">
+                                                <tr>
+                                                    <td x-text="idx + 1"></td>
+                                                    <td x-text="property.name"></td>
+                                                    <td>
+                                                        <span class="badge bg-success"
+                                                            x-show="propertiesSection.data.selected && propertiesSection.data.selected.includes(property.id)">In
+                                                            Latest for Sale</span>
+                                                        <span class="badge bg-secondary"
+                                                            x-show="!propertiesSection.data.selected || !propertiesSection.data.selected.includes(property.id)">Not
+                                                            in Latest for Sale</span>
+                                                    </td>
+                                                    <td>
+                                                        <div class="dropdown">
+                                                            <button class="btn btn-light btn-xs dropdown-toggle"
+                                                                type="button" data-bs-toggle="dropdown"
+                                                                aria-expanded="false">
+                                                                <i class="fa fa-ellipsis-h"></i>
+                                                            </button>
+                                                            <ul class="dropdown-menu">
+                                                                <li>
+                                                                    <a class="dropdown-item" href="#"
+                                                                        @click.prevent="/* Add to Featured logic here */">
+                                                                        Add to Featured
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a class="dropdown-item" href="#"
+                                                                        @click.prevent="
+                                                                        if (propertiesSection.data.selected && propertiesSection.data.selected.includes(property.id)) {
+                                                                            // Remove from Sale
+                                                                            propertiesSection.data.selected = propertiesSection.data.selected.filter(id => id !== property.id);
+                                                                        } else {
+                                                                            // Add to Latest for Sale
+                                                                            if (!propertiesSection.data.selected) propertiesSection.data.selected = [];
+                                                                            propertiesSection.data.selected.push(property.id);
+                                                                        }
+                                                                    ">
+                                                                        <template
+                                                                            x-if="propertiesSection.data.selected && propertiesSection.data.selected.includes(property.id)">
+                                                                            <span>Remove from Sale</span>
+                                                                        </template>
+                                                                        <template
+                                                                            x-if="!propertiesSection.data.selected || !propertiesSection.data.selected.includes(property.id)">
+                                                                            <span>Add to Latest for Sale</span>
+                                                                        </template>
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </template>
+                                        </tbody>
+                                    </table>
                                 </div>
-                                <form x-show="showForm.includes('properties_description')"
-                                    @submit.prevent="saveProperty('properties_description')" class="mt-3">
-                                    <div class="form-group">
-                                        <textarea class="form-control" x-model="formValues.properties_description" placeholder="Enter section description"
-                                            rows="3"></textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-primary me-2">Save</button>
-                                        <button type="button" class="btn btn-light"
-                                            @click="toggleEditForm('properties_description')">Cancel</button>
-                                    </div>
-                                </form>
                             </div>
                         </div>
                     </div>
@@ -486,7 +479,7 @@
                             <div class="section-item mb-3">
                                 <div class="d-flex justify-content-between align-items-start">
                                     <div class="flex-grow-1">
-                                        <label class="form-label">Select Featured Property to View</label>
+                                        <label class="form-label">Select Featured Property</label>
                                         <div class="mt-2">
                                             <select class="form-control" x-model="selectedFeaturedPropertyId"
                                                 style="max-width: 250px; display: inline-block;">
@@ -1241,7 +1234,8 @@
 
                         getPropertyName(propertyId) {
                             const property = this.allProperties.find(p => p.id === propertyId);
-                            return property ? property.name : `Property ID: ${propertyId} (Not Found)`;
+                            // If not found, return blank (or you can use 'Unknown Property' or '-')
+                            return property ? property.name : '';
                         },
 
                         saveProperty(formKey) {

@@ -200,15 +200,24 @@
                     <div class="left-single">
                         <div x-data="{
                             isFeatured: @json(isset($property) && $property->is_featured),
+                            isLatestForSale: @json(isset($property) && $property->is_latest_for_sale),
                             toggleFeatured() {
                                 this.isFeatured = !this.isFeatured;
                                 // TODO: Add AJAX call to update featured status in backend
+                            },
+                            toggleLatestForSale() {
+                                this.isLatestForSale = !this.isLatestForSale;
+                                // TODO: Add AJAX call to update latest for sale status in backend
                             }
                         }">
                             <div class="d-flex">
                                 <h2 class="mb-0">Orchard House </h2>
-                                <span><span class="label ms-2" style="background-color: #91d30a">For
-                                        Sale</span></span>
+                                <template x-if="isFeatured">
+                                    <span class="label ms-2" style="background-color: #91d30a">Featured</span>
+                                </template>
+                                <template x-if="!isFeatured && isLatestForSale">
+                                    <span class="label ms-2" style="background-color: #91d30a">Latest for Sale</span>
+                                </template>
                             </div>
                             <p class="mt-1">Mina Road, Bur Dubai, Dubai, United
                                 Arab
@@ -261,6 +270,10 @@
                                     style="background:white;color:black;border:none;padding:8px 0;"
                                     @click="toggleFeatured()"
                                     x-text="isFeatured ? 'Remove from Featured' : 'Add to Featured'"></button>
+                                <button type="button" class="dropdown-item w-100 text-start mt-2"
+                                    style="background:white;color:black;border:none;padding:8px 0;"
+                                    @click="toggleLatestForSale()"
+                                    x-text="isLatestForSale ? 'Remove from Latest for Sale' : 'Add to Latest for Sale'"></button>
                                 <a href="javascript:void(0)" class="btn btn-dashed btn-pill color-2 ms-md-2 ms-1"
                                     onclick="myFunction()"><i data-feather="printer"></i>
                                     Print</a>

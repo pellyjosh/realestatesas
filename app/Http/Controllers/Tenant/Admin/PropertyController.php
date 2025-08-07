@@ -22,6 +22,22 @@ class PropertyController extends Controller
             'is_enabled' => true,
         ]);
 
+        // Clean up selected property IDs before checking limit
+        $propertyIds = Property::pluck('id')->toArray();
+        if (isset($homeSection->data['selected']) && is_array($homeSection->data['selected'])) {
+            $filtered = collect($homeSection->data['selected'])
+                ->filter(function ($item) use ($propertyIds) {
+                    $id = is_array($item) ? ($item['property_id'] ?? null) : $item;
+                    return $id && in_array($id, $propertyIds);
+                })
+                ->values()
+                ->all();
+            if (count($filtered) !== count($homeSection->data['selected'])) {
+                $homeSection->data = array_merge($homeSection->data, ['selected' => $filtered]);
+                $homeSection->save();
+            }
+        }
+
         if ($homeSection->hasProperty($propertyId)) {
             $homeSection->removeProperty($propertyId);
             $action = 'removed from';
@@ -50,6 +66,22 @@ class PropertyController extends Controller
             'is_enabled' => true,
         ]);
 
+        // Clean up selected property IDs before checking limit
+        $propertyIds = Property::pluck('id')->toArray();
+        if (isset($homeSection->data['selected']) && is_array($homeSection->data['selected'])) {
+            $filtered = collect($homeSection->data['selected'])
+                ->filter(function ($item) use ($propertyIds) {
+                    $id = is_array($item) ? ($item['property_id'] ?? null) : $item;
+                    return $id && in_array($id, $propertyIds);
+                })
+                ->values()
+                ->all();
+            if (count($filtered) !== count($homeSection->data['selected'])) {
+                $homeSection->data = array_merge($homeSection->data, ['selected' => $filtered]);
+                $homeSection->save();
+            }
+        }
+
         if ($homeSection->hasProperty($propertyId)) {
             $homeSection->removeProperty($propertyId);
             $action = 'removed from';
@@ -71,20 +103,77 @@ class PropertyController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+
+    /**
+     * Settings page for homepage sections (guarantee HomeSection cleanup for dropdowns)
+     */
+    public function settings()
     {
-        $properties = Property::with('user')->latest()->paginate(10);
-        return response()->json($properties);
+        $sections = HomeSection::all();
+        $properties = Property::all();
+        $featuredProperties = Property::whereIn('id', HomeSection::where('name', 'featured')->first()?->data['selected'] ?? [])->get();
+
+        $propertyIds = $properties->pluck('id')->toArray();
+        // Clean up selected property IDs in all HomeSections
+        foreach ($sections as $section) {
+            if (isset($section->data['selected']) && is_array($section->data['selected'])) {
+                $filtered = collect($section->data['selected'])
+                    ->filter(function ($item) use ($propertyIds) {
+                        $id = is_array($item) ? ($item['property_id'] ?? null) : $item;
+                        return $id && in_array($id, $propertyIds);
+                    })
+                    ->values()
+                    ->all();
+                if (count($filtered) !== count($section->data['selected'])) {
+                    $section->data = array_merge($section->data, ['selected' => $filtered]);
+                    $section->save();
+                }
+            }
+        }
+
+        return view('themes.classic.admin.pages.settings.section', compact('sections', 'properties', 'featuredProperties'));
     }
 
     public function listing()
     {
         $properties = Property::all();
-        
+        $propertyIds = $properties->pluck('id')->toArray();
+
         // Get home sections to check which properties are featured/latest
         $featuredSection = HomeSection::where('name', 'featured')->first();
         $latestSection = HomeSection::where('name', 'properties')->first();
-        
+
+        // Clean up selected property IDs in featured section
+        if ($featuredSection && isset($featuredSection->data['selected']) && is_array($featuredSection->data['selected'])) {
+            $filtered = collect($featuredSection->data['selected'])
+                ->filter(function ($item) use ($propertyIds) {
+                    // Support both array and int for property_id
+                    $id = is_array($item) ? ($item['property_id'] ?? null) : $item;
+                    return $id && in_array($id, $propertyIds);
+                })
+                ->values()
+                ->all();
+            if (count($filtered) !== count($featuredSection->data['selected'])) {
+                $featuredSection->data = array_merge($featuredSection->data, ['selected' => $filtered]);
+                $featuredSection->save();
+            }
+        }
+
+        // Clean up selected property IDs in latest section
+        if ($latestSection && isset($latestSection->data['selected']) && is_array($latestSection->data['selected'])) {
+            $filtered = collect($latestSection->data['selected'])
+                ->filter(function ($item) use ($propertyIds) {
+                    $id = is_array($item) ? ($item['property_id'] ?? null) : $item;
+                    return $id && in_array($id, $propertyIds);
+                })
+                ->values()
+                ->all();
+            if (count($filtered) !== count($latestSection->data['selected'])) {
+                $latestSection->data = array_merge($latestSection->data, ['selected' => $filtered]);
+                $latestSection->save();
+            }
+        }
+
         return tenant_view('admin.pages.my-properties.listing', compact('properties', 'featuredSection', 'latestSection'));
     }
 
