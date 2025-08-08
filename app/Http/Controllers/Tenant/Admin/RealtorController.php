@@ -13,9 +13,37 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Schema;
 
 class RealtorController extends Controller
 {
+    /**
+     * Suspend or unsuspend a realtor (AJAX).
+     */
+    public function suspend(Request $request, $id)
+    {
+        $realtor = Realtor::where('user_id', $id)->first();
+        $user = TenantUser::find($id);
+        if (!$realtor || !$user) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Realtor not found.'
+            ], 404);
+        }
+
+        $suspend = $request->input('suspend', false);
+
+        // Update status column on Realtor table
+        if (Schema::hasColumn('realtors', 'status')) {
+            $realtor->status = $suspend ? 'suspended' : 'active';
+            $realtor->save();
+        }
+
+        return response()->json([
+            'success' => true,
+            'message' => $suspend ? 'Realtor suspended!' : 'Realtor unsuspended!'
+        ]);
+    }
     /**
      * Display a listing of realtors.
      */

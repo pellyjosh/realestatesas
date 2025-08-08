@@ -81,8 +81,15 @@
                                         <div class="d-flex justify-content-between align-items-center mt-2 flex-wrap"
                                             x-data="editRealtorModal({{ json_encode(array_merge($realtor->toArray(), ['user' => $realtor->user ? $realtor->user->toArray() : null])) }}, {{ $realtor->id }}, '{{ route('tenant.admin.destroy.realtor', $realtor->id) }}')">
                                             <div class="d-flex align-items-center">
-                                                <button class="btn btn-warning btn-sm p-1" style="font-size: 0.8em;"><i
-                                                        class="fas fa-ban" style="color: white;"></i></button>
+                                                <button class="btn btn-warning btn-sm p-1" style="font-size: 0.8em;"
+                                                    @click="toggleSuspendRealtor" :disabled="isSuspending">
+                                                    <template x-if="form.status === 'suspended'">
+                                                        <i class="fas fa-play" style="color: white;"></i>
+                                                    </template>
+                                                    <template x-if="form.status !== 'suspended'">
+                                                        <i class="fas fa-ban" style="color: white;"></i>
+                                                    </template>
+                                                </button>
                                                 <button @click="openEditModal()" class="btn btn-primary btn-sm mx-1 p-1"
                                                     style="font-size: 0.8em;"><i class="fas fa-edit"
                                                         style="color: white;"></i></button>
@@ -292,6 +299,7 @@
 <script>
     function editRealtorModal(realtor, realtorId, deleteUrl) {
         return {
+            isSuspending: false,
             showEditModal: false,
             isSubmitting: false,
             isDeleting: false,
@@ -305,11 +313,9 @@
                 email: realtor.user?.email || '',
                 phone: realtor.phone || realtor.user?.phone || '',
                 gender: realtor.gender || '',
-                date_of_birth: (realtor.date_of_birth && realtor.date_of_birth.length >= 10) ?
-                    realtor.date_of_birth.substring(0, 10) :
-                    (realtor.user?.date_of_birth && realtor.user.date_of_birth.length >= 10) ?
-                    realtor.user.date_of_birth.substring(0, 10) :
-                    '',
+                date_of_birth: (realtor.date_of_birth && realtor.date_of_birth.length >= 10) ? realtor.date_of_birth
+                    .substring(0, 10) : (realtor.user?.date_of_birth && realtor.user.date_of_birth.length >= 10) ?
+                    realtor.user.date_of_birth.substring(0, 10) : '',
                 title: realtor.title || '',
                 title_other: realtor.title_other || '',
                 marital_status: realtor.marital_status || '',
@@ -321,6 +327,7 @@
                 description: realtor.description || '',
                 address: realtor.residential_address || realtor.address || realtor.user?.residential_address || '',
                 zip_code: realtor.zip_code || '',
+                status: realtor.status || 'active',
                 password: '',
                 password_confirmation: ''
             },
@@ -338,11 +345,9 @@
                     email: realtor.user?.email || '',
                     phone: realtor.phone || realtor.user?.phone || '',
                     gender: realtor.gender || '',
-                    date_of_birth: (realtor.date_of_birth && realtor.date_of_birth.length >= 10) ?
-                        realtor.date_of_birth.substring(0, 10) :
-                        (realtor.user?.date_of_birth && realtor.user.date_of_birth.length >= 10) ?
-                        realtor.user.date_of_birth.substring(0, 10) :
-                        '',
+                    date_of_birth: (realtor.date_of_birth && realtor.date_of_birth.length >= 10) ? realtor
+                        .date_of_birth.substring(0, 10) : (realtor.user?.date_of_birth && realtor.user.date_of_birth
+                            .length >= 10) ? realtor.user.date_of_birth.substring(0, 10) : '',
                     title: realtor.title || '',
                     title_other: realtor.title_other || '',
                     marital_status: realtor.marital_status || '',
@@ -355,16 +360,17 @@
                     address: realtor.residential_address || realtor.address || realtor.user?.residential_address ||
                         '',
                     zip_code: realtor.zip_code || '',
+                    status: realtor.status || 'active',
                     password: '', // always empty for security
                     password_confirmation: '' // always empty for security
                 };
                 // Profile image
                 if (realtor.image_url && realtor.tenant_id) {
-                    this.imagePreview = `/storage/tenant${realtor.tenant_id}/${realtor.image_url}`;
+                    this.imagePreview = `/storage/tenant/${realtor.tenant_id}/${realtor.image_url}`;
                 } else if (realtor.user?.image_url && realtor.tenant_id) {
-                    this.imagePreview = `/storage/tenant${realtor.tenant_id}/${realtor.user.image_url}`;
+                    this.imagePreview = `/storage/tenant/${realtor.tenant_id}/${realtor.user.image_url}`;
                 } else {
-                    this.imagePreview = null;
+                    this.imagePreview = '/themes/classic/admin/assets/images/avatar/5.jpg';
                 }
                 this.imageFile = null;
                 this.showEditModal = true;
@@ -415,6 +421,39 @@
                     toastr.error('An unexpected error occurred. Please try again.');
                 } finally {
                     this.isSubmitting = false;
+                }
+            },
+            async toggleSuspendRealtor() {
+                const isCurrentlySuspended = this.form.status === 'suspended';
+                if (!confirm(isCurrentlySuspended ? 'Unsuspend this realtor?' : 'Suspend this realtor?')) return;
+                this.isSuspending = true;
+                try {
+                    const response = await fetch(
+                        `/management/realtor/${realtor.user_id || realtor.user?.id}/suspend`, {
+                            method: 'POST',
+                            headers: {
+                                'Accept': 'application/json',
+                                'X-Requested-With': 'XMLHttpRequest',
+                                'X-CSRF-TOKEN': this.csrfToken
+                            },
+                            body: JSON.stringify({
+                                status: isCurrentlySuspended ? 'active' : 'suspended'
+                            })
+                        });
+                    const result = await response.json();
+                    if (response.ok && result.success) {
+                        toastr.success(result.message || (isCurrentlySuspended ? 'Realtor unsuspended!' :
+                            'Realtor suspended!'));
+                        // Update local state for instant feedback
+                        this.form.status = isCurrentlySuspended ? 'active' : 'suspended';
+                        setTimeout(() => window.location.reload(), 1000);
+                    } else {
+                        toastr.error(result.message || 'An error occurred while suspending the realtor.');
+                    }
+                } catch (error) {
+                    toastr.error('An unexpected error occurred. Please try again.');
+                } finally {
+                    this.isSuspending = false;
                 }
             },
             async deleteRealtor() {

@@ -35,7 +35,8 @@ class TenantUser extends Authenticatable
         'lga',
         'hometown',
         // Contact Information
-        'residential_address'
+        'residential_address',
+        'is_suspended',
     ];
 
     protected static function booted(): void

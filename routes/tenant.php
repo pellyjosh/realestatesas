@@ -393,6 +393,7 @@ Route::middleware([
                 Route::get('/realtor/{realtor}/edit', 'edit')->name('tenant.admin.edit.realtor');
                 Route::put('/realtor/{realtor}', 'update')->name('tenant.admin.update.realtor');
                 Route::delete('/realtor/{realtor}', 'destroy')->name('tenant.admin.destroy.realtor');
+                Route::post('/realtor/{realtor}/suspend', 'suspend')->name('tenant.admin.suspend.realtor');
             });
 
             Route::get('/realtor-profile', function () {
