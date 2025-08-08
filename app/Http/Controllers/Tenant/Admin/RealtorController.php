@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Log;
 
 class RealtorController extends Controller
 {
@@ -20,7 +21,8 @@ class RealtorController extends Controller
      */
     public function index()
     {
-        $realtors = TenantUser::where('type', 'realtor')
+        // Fetch directly from the Realtor table, eager load the related user
+        $realtors = Realtor::with('user')
             ->orderBy('created_at', 'desc')
             ->paginate(10);
 
@@ -77,6 +79,16 @@ class RealtorController extends Controller
 
         try {
             return DB::transaction(function () use ($request) {
+                // Handle image upload first
+                $imageUrl = null;
+                if ($request->hasFile('image')) {
+                    $image = $request->file('image');
+                    $imageName = 'realtor_' . time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+                    // Store in tenant-specific directory
+                    $imagePath = $image->storeAs('realtors/images', $imageName, 'tenant_public');
+                    $imageUrl = $imagePath;
+                }
+
                 // Create user record for login
                 $userData = [
                     'name' => $request->first_name . ' ' . $request->last_name,
@@ -84,7 +96,7 @@ class RealtorController extends Controller
                     'phone' => $request->phone,
                     'password' => Hash::make($request->password),
                     'type' => 'realtor',
-                    'image_url' => '', // Set default empty string instead of null
+                    'image_url' => $imageUrl, // null if no image
                     'referral_code' => null,
                     'gender' => $request->gender,
                     'date_of_birth' => $request->date_of_birth,
@@ -123,17 +135,8 @@ class RealtorController extends Controller
                     'residential_address' => $request->address,
                     'zip_code' => $request->zip_code,
                     'description' => $request->description,
+                    'image_url' => $imageUrl, // also set on realtor for consistency
                 ];
-
-                // Handle image upload
-                if ($request->hasFile('image')) {
-                    $image = $request->file('image');
-                    $imageName = 'realtor_' . time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
-                    
-                    // Store in tenant-specific directory
-                    $imagePath = $image->storeAs('realtors/images', $imageName, 'tenant_public');
-                    $realtorData['image_url'] = $imagePath;
-                }
 
                 // Create realtor record
                 $realtor = Realtor::create($realtorData);
@@ -145,14 +148,13 @@ class RealtorController extends Controller
                     'redirect' => route('tenant.admin.all.realtors')
                 ]);
             });
-
         } catch (\Exception $e) {
             \Log::error('Realtor creation failed', [
                 'error' => $e->getMessage(),
                 'trace' => $e->getTraceAsString(),
                 'request_data' => $request->except(['password', 'password_confirmation'])
             ]);
-            
+
             return response()->json([
                 'success' => false,
                 'message' => 'An error occurred while creating the realtor: ' . $e->getMessage()
@@ -244,7 +246,7 @@ class RealtorController extends Controller
 
                 $image = $request->file('image');
                 $imageName = 'realtor_' . time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
-                
+
                 $imagePath = $image->storeAs('realtors/images', $imageName, 'tenant_public');
                 $realtorData['image_url'] = $imagePath;
             }
@@ -257,7 +259,6 @@ class RealtorController extends Controller
                 'realtor' => $realtor,
                 'redirect' => route('tenant.admin.all.realtors')
             ]);
-
         } catch (\Exception $e) {
             return response()->json([
                 'success' => false,
@@ -287,7 +288,6 @@ class RealtorController extends Controller
                 'success' => true,
                 'message' => 'Realtor deleted successfully!'
             ]);
-
         } catch (\Exception $e) {
             return response()->json([
                 'success' => false,
@@ -304,7 +304,7 @@ class RealtorController extends Controller
         if ($realtor->image_url) {
             return asset('storage/tenant' . tenant('id') . '/' . $realtor->image_url);
         }
-        
+
         return asset('assets/images/avatar/default-avatar.png'); // Default avatar
     }
 }

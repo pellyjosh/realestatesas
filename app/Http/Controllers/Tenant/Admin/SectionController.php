@@ -13,33 +13,40 @@ class SectionController extends Controller
     {
         // Get all sections
         $sections = HomeSection::all();
-        
+
         // Get all properties for dropdowns 
         $properties = Property::select('id', 'name')->get();
-        
+
         // Get featured properties from the database
-        // This gets properties from featured section data
         $featuredSection = HomeSection::where('name', 'featured')->first();
         $featuredProperties = collect();
-        
+
         if ($featuredSection && isset($featuredSection->data['selected'])) {
-            // Extract property_id values from the selected array
             $featuredPropertyIds = collect($featuredSection->data['selected'])
                 ->pluck('property_id')
                 ->filter()
                 ->toArray();
-            
+
             if (!empty($featuredPropertyIds)) {
                 $featuredProperties = Property::whereIn('id', $featuredPropertyIds)
                     ->select('id', 'name', 'price', 'city', 'state', 'address', 'property_type', 'images', 'image', 'description')
                     ->get();
             }
         }
-        
+
+        // Get all realtors for the Realtor section
+        $realtors = \App\Models\Tenant\Realtor::select('id', 'first_name', 'last_name')->get();
+        // Add a 'name' attribute for dropdown display
+        $realtors->map(function ($r) {
+            $r->name = trim($r->first_name . ' ' . $r->last_name);
+            return $r;
+        });
+
         return tenant_view('admin.pages.settings.section', [
             'sections' => $sections,
             'properties' => $properties,
             'featuredProperties' => $featuredProperties,
+            'realtors' => $realtors,
         ]);
     }
 

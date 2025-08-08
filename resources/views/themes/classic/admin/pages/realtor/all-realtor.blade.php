@@ -14,15 +14,7 @@
                     </div>
                 </div>
                 <div class="col-sm-6">
-
-                    <!-- Breadcrumb start -->
-
-
-                    <!-- Breadcrumb start -->
-
-                    <!-- Breadcrumb end -->
-
-                </div>
+                    </div>
             </div>
         </div>
     </div>
@@ -39,8 +31,9 @@
                                 <div class="property-box">
                                     <div class="agent-image">
                                         <div>
-                                            <img src="{{ $realtor->image_url ? asset('storage/tenant/' . tenant('id') . '/' . $realtor->image_url) : asset('themes/classic/admin/assets/images/avatar/5.jpg') }}"
-                                                class="bg-img" alt="{{ $realtor->name }}">
+                                            <img src="{{ $realtor->image_url ? asset('storage/tenant/' . tenant('id') . '/' . $realtor->image_url) : ($realtor->user && $realtor->user->image_url ? asset('storage/tenant/' . tenant('id') . '/' . $realtor->user->image_url) : asset('themes/classic/admin/assets/images/avatar/5.jpg')) }}"
+                                                class="bg-img"
+                                                alt="{{ $realtor->user ? $realtor->user->name : $realtor->first_name . ' ' . $realtor->last_name }}">
                                             <span class="label label-shadow">0 properties</span>
                                             <div class="agent-overlay"></div>
                                             <div class="overlay-content">
@@ -61,30 +54,26 @@
                                     </div>
                                     <div class="agent-content">
                                         <h3><a
-                                                href="{{ route('tenant.admin.realtor.profile', $realtor->id) }}">{{ $realtor->name }}</a>
+                                                href="{{ route('tenant.admin.realtor.profile', $realtor->id) }}">{{ $realtor->user ? $realtor->user->name : $realtor->first_name . ' ' . $realtor->last_name }}</a>
                                         </h3>
                                         <p class="font-roboto">Real estate Agent</p>
                                         <ul class="agent-contact">
-                                            <li><i class="fas fa-envelope"></i> {{ $realtor->email }}</li>
+                                            <li><i class="fas fa-envelope"></i>
+                                                {{ $realtor->user ? $realtor->user->email : '' }}</li>
                                             <li><i class="fas fa-phone-alt"></i> {{ $realtor->phone }}</li>
                                         </ul>
                                         <div class="d-flex justify-content-between align-items-center mt-2 flex-wrap"
-                                            x-data="editRealtorModal({{ json_encode($realtor) }})">
+                                            x-data="editRealtorModal({{ json_encode(array_merge($realtor->toArray(), ['user' => $realtor->user ? $realtor->user->toArray() : null])) }}, {{ $realtor->id }}, '{{ route('tenant.admin.destroy.realtor', $realtor->id) }}')">
                                             <div class="d-flex align-items-center">
                                                 <button class="btn btn-warning btn-sm p-1" style="font-size: 0.8em;"><i
                                                         class="fas fa-ban" style="color: white;"></i></button>
                                                 <button @click="openEditModal()" class="btn btn-primary btn-sm mx-1 p-1"
                                                     style="font-size: 0.8em;"><i class="fas fa-edit"
                                                         style="color: white;"></i></button>
-                                                <form action="{{ route('tenant.admin.destroy.realtor', $realtor->id) }}"
-                                                    method="POST" style="display:inline;">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm p-1"
-                                                        style="font-size: 0.8em;"
-                                                        onclick="return confirm('Are you sure you want to delete this realtor?')"><i
-                                                            class="fas fa-trash-alt" style="color: white;"></i></button>
-                                                </form>
+                                                <button class="btn btn-danger btn-sm p-1" style="font-size: 0.8em;"
+                                                    @click="deleteRealtor" :disabled="isDeleting">
+                                                    <i class="fas fa-trash-alt" style="color: white;"></i>
+                                                </button>
                                             </div>
                                             <a href="{{ route('tenant.admin.realtor.profile', $realtor->id) }}">View
                                                 profile <i class="fas fa-arrow-right"></i></a>
@@ -297,18 +286,20 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
 <script>
-    function editRealtorModal(realtor) {
+    function editRealtorModal(realtor, realtorId, deleteUrl) {
         return {
             showEditModal: false,
             isSubmitting: false,
+            isDeleting: false,
             imagePreview: realtor.image_url ? `/storage/tenant${realtor.tenant_id ?? ''}/${realtor.image_url}` : null,
             imageFile: null,
             csrfToken: document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '',
             form: {
-                first_name: realtor.first_name || '',
-                last_name: realtor.last_name || '',
-                email: realtor.email || '',
-                phone: realtor.phone || '',
+                first_name: realtor.first_name || (realtor.user?.name ? realtor.user.name.split(' ')[0] : ''),
+                last_name: realtor.last_name || (realtor.user?.name ? realtor.user.name.split(' ').slice(1).join(' ') :
+                    ''),
+                email: realtor.user?.email || '',
+                phone: realtor.phone || realtor.user?.phone || '',
                 gender: realtor.gender || '',
                 date_of_birth: realtor.date_of_birth || '',
                 title: realtor.title || '',
@@ -320,12 +311,50 @@
                 lga: realtor.lga || '',
                 hometown: realtor.hometown || '',
                 description: realtor.description || '',
-                address: realtor.address || '',
+                address: realtor.residential_address || realtor.address || realtor.user?.residential_address || '',
                 zip_code: realtor.zip_code || '',
                 password: '',
                 password_confirmation: ''
             },
             openEditModal() {
+                // Debug: log the realtor object to inspect available fields
+                console.log('Realtor data for edit:', realtor);
+                // Use first_name/last_name from realtor, else split user.name
+                let firstName = realtor.first_name || (realtor.user?.name ? realtor.user.name.split(' ')[0] : '');
+                let lastName = realtor.last_name || (realtor.user?.name ? realtor.user.name.split(' ').slice(1).join(
+                    ' ') : '');
+
+                this.form = {
+                    first_name: firstName,
+                    last_name: lastName,
+                    email: realtor.user?.email || '',
+                    phone: realtor.phone || realtor.user?.phone || '',
+                    gender: realtor.gender || '',
+                    date_of_birth: realtor.date_of_birth || '',
+                    title: realtor.title || '',
+                    title_other: realtor.title_other || '',
+                    marital_status: realtor.marital_status || '',
+                    marital_status_other: realtor.marital_status_other || '',
+                    nationality: realtor.nationality || '',
+                    state_of_origin: realtor.state_of_origin || '',
+                    lga: realtor.lga || '',
+                    hometown: realtor.hometown || '',
+                    description: realtor.description || '',
+                    address: realtor.residential_address || realtor.address || realtor.user?.residential_address ||
+                        '',
+                    zip_code: realtor.zip_code || '',
+                    password: '', // always empty for security
+                    password_confirmation: '' // always empty for security
+                };
+                // Profile image
+                if (realtor.image_url && realtor.tenant_id) {
+                    this.imagePreview = `/storage/tenant${realtor.tenant_id}/${realtor.image_url}`;
+                } else if (realtor.user?.image_url && realtor.tenant_id) {
+                    this.imagePreview = `/storage/tenant${realtor.tenant_id}/${realtor.user.image_url}`;
+                } else {
+                    this.imagePreview = null;
+                }
+                this.imageFile = null;
                 this.showEditModal = true;
             },
             closeEditModal() {
@@ -373,6 +402,33 @@
                     toastr.error('An unexpected error occurred. Please try again.');
                 } finally {
                     this.isSubmitting = false;
+                }
+            },
+            async deleteRealtor() {
+                if (!confirm('Are you sure you want to delete this realtor?')) return;
+                this.isDeleting = true;
+                try {
+                    const response = await fetch(deleteUrl, {
+                        method: 'DELETE',
+                        headers: {
+                            'Accept': 'application/json',
+                            'X-Requested-With': 'XMLHttpRequest',
+                            'X-CSRF-TOKEN': this.csrfToken
+                        }
+                    });
+                    const result = await response.json();
+                    if (response.ok && result.success) {
+                        toastr.success(result.message || 'Realtor deleted successfully!');
+                        setTimeout(() => {
+                            window.location.reload();
+                        }, 1000);
+                    } else {
+                        toastr.error(result.message || 'An error occurred while deleting the realtor.');
+                    }
+                } catch (error) {
+                    toastr.error('An unexpected error occurred. Please try again.');
+                } finally {
+                    this.isDeleting = false;
                 }
             }
         }
