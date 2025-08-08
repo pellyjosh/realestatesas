@@ -7,8 +7,23 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Realtor extends Model
 {
-    protected $connection = 'tenant';
-    
+    /**
+     * Check if this realtor is featured on the homepage (in HomeSection 'homepage_realtors').
+     */
+    public function getIsHomepageRealtorAttribute()
+    {
+        $section = \App\Models\Tenant\Admin\HomeSection::where('name', 'realtor')->first();
+        if (!$section || !isset($section->data['selected']) || !is_array($section->data['selected'])) {
+            return false;
+        }
+        foreach ($section->data['selected'] as $item) {
+            if (is_array($item) && isset($item['realtor_id']) && $item['realtor_id'] == $this->id) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     protected $fillable = [
         'user_id',
         'first_name',
@@ -28,12 +43,11 @@ class Realtor extends Model
         'residential_address',
         'zip_code',
         'description',
-        'is_active'
+        'status',
     ];
 
     protected $casts = [
         'date_of_birth' => 'date',
-        'is_active' => 'boolean',
     ];
 
     /**

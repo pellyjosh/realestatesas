@@ -1,3 +1,4 @@
+
 <?php
 
 use Illuminate\Support\Facades\Route;
@@ -48,12 +49,19 @@ use Stancl\Tenancy\Middleware\ScopeSessions;
 |
 */
 
+use Illuminate\Support\Facades\DB;
+
 Route::middleware([
     'web',
     InitializeTenancyByDomain::class,
     PreventAccessFromCentralDomains::class,
     ScopeSessions::class,
 ])->group(function () {
+    // DEBUG: Quick route to check realtor status values
+    Route::get('/debug/realtor-status', function () {
+        $realtors = DB::table('realtors')->select('id', 'user_id', 'status')->get();
+        return response()->json($realtors);
+    });
     // Route::get('/', function () {
     //     return tenant_view('client.pages.index');
     // })->name('tenant.client.home');
@@ -394,9 +402,10 @@ Route::middleware([
                 Route::put('/realtor/{realtor}', 'update')->name('tenant.admin.update.realtor');
                 Route::delete('/realtor/{realtor}', 'destroy')->name('tenant.admin.destroy.realtor');
                 Route::post('/realtor/{realtor}/suspend', 'suspend')->name('tenant.admin.suspend.realtor');
+                Route::post('/realtor/{realtor}/toggle-homepage', 'toggleHomepage')->name('tenant.admin.realtor.toggle-homepage');
             });
 
-            Route::get('/realtor-profile', function () {
+            Route::get('/management/pages/realtor/realtor-profile', function () {
                 return tenant_view('admin.pages.realtor.realtor-profile');
             })->name('tenant.admin.realtor.profile');
 

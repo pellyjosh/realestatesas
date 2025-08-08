@@ -2,6 +2,12 @@
 @section('title', 'Homepage Content Management | Premium Refined Luxury Homes')
 
 <meta name="csrf-token" content="{{ csrf_token() }}">
+
+@if (isset($realtors))
+    <script>
+        window.allRealtors = @json($realtors);
+    </script>
+@endif
 @section('content')
 
     <div x-data='homepageManager(@json($sections ?? []), @json($properties ?? []), @json($featuredProperties ?? []))'
@@ -103,7 +109,7 @@
                         <!-- Carousel Settings -->
                         <div class="section-item mt-4">
                             <div class="d-flex justify-content-between align-items-center mb-2">
-                                <h6 class="mb-0">Carousel Items</h6>
+                                <h6 class="mb-0">Carousel Items <small>(Max 4)</small></h6>
                                 <button class="btn btn-success btn-xs" @click="addCarouselItem" type="button">
                                     <i class="fa fa-plus"></i> Add Carousel
                                 </button>
@@ -628,14 +634,16 @@
                             <div class="section-item mb-3">
                                 <div class="d-flex justify-content-between align-items-start">
                                     <div class="flex-grow-1">
-                                        <label class="form-label">Select Realtor</label>
+                                        <label class="form-label">Homepage Realtors</label>
                                         <div class="mt-2">
                                             <select class="form-control" x-model="selectedRealtorId"
                                                 style="max-width: 250px; display: inline-block;">
-                                                <option value="" disabled>Select a realtor</option>
-                                                @foreach ($realtors as $realtor)
-                                                    <option value="{{ $realtor->id }}">{{ $realtor->name }}</option>
-                                                @endforeach
+                                                <option value="" disabled>Select a homepage realtor</option>
+                                                <template x-for="item in (realtorSection.data.selected || [])"
+                                                    :key="item.realtor_id">
+                                                    <option :value="item.realtor_id"
+                                                        x-text="getRealtorName(item.realtor_id)"></option>
+                                                </template>
                                             </select>
                                         </div>
                                     </div>
@@ -749,6 +757,22 @@
             // Wait for Alpine.js to be ready
             document.addEventListener('alpine:init', () => {
                 Alpine.data('homepageManager', (sections = [], properties = [], featuredProperties = []) => ({
+                    // All realtors for dropdown name resolution
+                    allRealtors: (window.allRealtors || []),
+                    // Helper to get realtor name by ID
+                    getRealtorName(realtorId) {
+                        const realtor = this.allRealtors.find(r => r.id == realtorId);
+                        if (!realtor) return '';
+                        if (realtor.full_name) return realtor.full_name;
+                        if (realtor.first_name && realtor.last_name) return realtor.first_name + ' ' +
+                            realtor.last_name;
+                        if (realtor.user && realtor.user.name) return realtor.user.name;
+                        return realtor.name || '';
+                    },
+                    realtorSection: sections.find(s => s.name === 'realtor') || {
+                        is_enabled: false,
+                        data: {}
+                    },
                     // --- Featured Property Table Modal ---
                     showFeaturedTable: null, // property id
                     allFeaturedProperties: featuredProperties, // All featured properties from DB

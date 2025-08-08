@@ -14,6 +14,7 @@ use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Schema;
+use App\Models\Tenant\Admin\HomeSection;
 
 class RealtorController extends Controller
 {
@@ -22,27 +23,28 @@ class RealtorController extends Controller
      */
     public function suspend(Request $request, $id)
     {
-        $realtor = Realtor::where('user_id', $id)->first();
-        $user = TenantUser::find($id);
-        if (!$realtor || !$user) {
+
+        $realtor = Realtor::find($id);
+        if (!$realtor) {
             return response()->json([
                 'success' => false,
                 'message' => 'Realtor not found.'
             ], 404);
         }
 
-        $suspend = $request->input('suspend', false);
-
-        // Update status column on Realtor table
-        if (Schema::hasColumn('realtors', 'status')) {
-            $realtor->status = $suspend ? 'suspended' : 'active';
+        $status = $request->input('status');
+        if (Schema::hasColumn('realtors', 'status') && in_array($status, ['active', 'suspended'])) {
+            $realtor->status = $status;
             $realtor->save();
+            return response()->json([
+                'success' => true,
+                'message' => $status === 'suspended' ? 'Realtor suspended!' : 'Realtor unsuspended!'
+            ]);
         }
-
         return response()->json([
-            'success' => true,
-            'message' => $suspend ? 'Realtor suspended!' : 'Realtor unsuspended!'
-        ]);
+            'success' => false,
+            'message' => 'Invalid status.'
+        ], 400);
     }
     /**
      * Display a listing of realtors.
@@ -358,6 +360,59 @@ class RealtorController extends Controller
                 'message' => 'An error occurred while deleting the realtor: ' . $e->getMessage()
             ], 500);
         }
+    }
+
+    /**
+     * Toggle a realtor's homepage status (AJAX).
+     */
+    public function toggleHomepage(Request $request, $id)
+    {
+        // HomeSection model should have a 'homepage_realtors' section with a 'selected' array of realtor IDs
+        $realtor = Realtor::find($id);
+        if (!$realtor) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Realtor not found.'
+            ], 404);
+        }
+
+        // Use the 'realtor' section for homepage realtors
+        $section = HomeSection::firstOrCreate(
+            ['name' => 'realtor'],
+            ['data' => json_encode(['selected' => []]), 'is_enabled' => true]
+        );
+        $data = is_array($section->data) ? $section->data : (json_decode($section->data, true) ?: []);
+        $selected = isset($data['selected']) && is_array($data['selected']) ? $data['selected'] : [];
+        // Normalize to array of objects {realtor_id: X}
+        $selected = array_map(function ($item) {
+            if (is_array($item) && isset($item['realtor_id'])) return $item;
+            if (is_numeric($item)) return ['realtor_id' => (int)$item];
+            return $item;
+        }, $selected);
+
+        $exists = false;
+        foreach ($selected as $key => $item) {
+            if (is_array($item) && isset($item['realtor_id']) && $item['realtor_id'] == $realtor->id) {
+                $exists = $key;
+                break;
+            }
+        }
+        if ($exists !== false) {
+            // Remove
+            array_splice($selected, $exists, 1);
+            $message = 'Realtor removed from homepage.';
+        } else {
+            $selected[] = ['realtor_id' => $realtor->id];
+            $message = 'Realtor added to homepage.';
+        }
+        $data['selected'] = $selected;
+        $section->data = $data;
+        $section->save();
+        return response()->json([
+            'success' => true,
+            'message' => $message,
+            'selected' => $selected
+        ]);
     }
 
     /**

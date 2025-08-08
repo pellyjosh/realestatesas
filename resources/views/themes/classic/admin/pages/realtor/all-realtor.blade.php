@@ -30,7 +30,7 @@
                             <div class="col-xl-4 col-md-6 wow fadeInUp">
                                 <div class="property-box">
                                     <div class="agent-image">
-                                        <div>
+                                        <div style="position: relative;" x-data="editRealtorModal({{ json_encode(array_merge($realtor->toArray(), ['user' => $realtor->user ? $realtor->user->toArray() : null])) }}, {{ $realtor->id }}, '{{ route('tenant.admin.destroy.realtor', $realtor->id) }}')">
                                             @php
                                                 $tenantId = tenant('id');
                                                 $imagePath = null;
@@ -50,6 +50,41 @@
                                             @endphp
                                             <img src="{{ $imagePath }}" class="bg-img"
                                                 alt="{{ $realtor->user ? $realtor->user->name : $realtor->first_name . ' ' . $realtor->last_name }}">
+                                            <!-- 3-dot menu bottom right -->
+                                            <div style="position: absolute; bottom: 10px; right: 10px; z-index: 2;">
+                                                <button type="button" @click="openHomepageDropdown = !openHomepageDropdown"
+                                                    class="btn btn-light p-1 rounded-circle border"
+                                                    style="width:32px;height:32px;display:flex;align-items:center;justify-content:center;">
+                                                    <span
+                                                        style="display:flex;flex-direction:column;align-items:center;justify-content:center;">
+                                                        <span
+                                                            style="width:4px;height:4px;background:black;border-radius:50%;margin:1px;"></span>
+                                                        <span
+                                                            style="width:4px;height:4px;background:black;border-radius:50%;margin:1px;"></span>
+                                                        <span
+                                                            style="width:4px;height:4px;background:black;border-radius:50%;margin:1px;"></span>
+                                                    </span>
+                                                </button>
+                                                <div x-show="openHomepageDropdown"
+                                                    @click.away="openHomepageDropdown = false"
+                                                    style="position: absolute; bottom: 36px; right: 0; min-width: 180px; background: #fff; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.18); padding: 0.5rem 0; z-index: 10; border: 1px solid #e5e7eb;">
+                                                    <div
+                                                        style="position: absolute; bottom: -8px; right: 18px; width: 0; height: 0; border-left: 8px solid transparent; border-right: 8px solid transparent; border-top: 8px solid #fff; filter: drop-shadow(0 2px 2px rgba(0,0,0,0.08));">
+                                                    </div>
+                                                    <button class="dropdown-item d-flex align-items-center"
+                                                        style="background: transparent; border: none; width: 100%; font-size: 1em; padding: 0.5rem 1rem; cursor: pointer; color: #222; text-align: left;"
+                                                        @click="toggleHomepageRealtor(); openHomepageDropdown = false;"
+                                                        :disabled="isTogglingHomepage">
+                                                        <i class="fas"
+                                                            :class="isRealtorInHomepage ?
+                                                                'fa-minus-circle text-danger' :
+                                                                'fa-plus-circle text-success'"
+                                                            style="margin-right: 8px;"></i>
+                                                        <span style="color: #222; font-weight: 500;"
+                                                            x-text="isRealtorInHomepage ? 'Remove from Homepage' : 'Add to Homepage'"></span>
+                                                    </button>
+                                                </div>
+                                            </div>
                                             <span class="label label-shadow">0 properties</span>
                                             <div class="agent-overlay"></div>
                                             <div class="overlay-content">
@@ -78,8 +113,7 @@
                                                 {{ $realtor->user ? $realtor->user->email : '' }}</li>
                                             <li><i class="fas fa-phone-alt"></i> {{ $realtor->phone }}</li>
                                         </ul>
-                                        <div class="d-flex justify-content-between align-items-center mt-2 flex-wrap"
-                                            x-data="editRealtorModal({{ json_encode(array_merge($realtor->toArray(), ['user' => $realtor->user ? $realtor->user->toArray() : null])) }}, {{ $realtor->id }}, '{{ route('tenant.admin.destroy.realtor', $realtor->id) }}')">
+                                        <div class="d-flex justify-content-between align-items-center mt-2 flex-wrap">
                                             <div class="d-flex align-items-center">
                                                 <button class="btn btn-warning btn-sm p-1" style="font-size: 0.8em;"
                                                     @click="toggleSuspendRealtor" :disabled="isSuspending">
@@ -298,14 +332,52 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
 <script>
     function editRealtorModal(realtor, realtorId, deleteUrl) {
+        // You need to pass selectedHomepageRealtors as a prop to this Alpine component (from controller/blade)
         return {
             isSuspending: false,
+            isTogglingHomepage: false,
             showEditModal: false,
             isSubmitting: false,
             isDeleting: false,
             imagePreview: realtor.image_url ? `/storage/tenant${realtor.tenant_id ?? ''}/${realtor.image_url}` : null,
             imageFile: null,
             csrfToken: document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '',
+            selectedHomepageRealtors: window.selectedHomepageRealtors || [], // set this globally in blade
+            openHomepageDropdown: false,
+            get isRealtorInHomepage() {
+                return this.selectedHomepageRealtors.includes(realtorId);
+            },
+            async toggleHomepageRealtor() {
+                this.isTogglingHomepage = true;
+                try {
+                    const response = await fetch(`/management/realtor/${realtorId}/toggle-homepage`, {
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json',
+                            'X-Requested-With': 'XMLHttpRequest',
+                            'X-CSRF-TOKEN': this.csrfToken
+                        },
+                        body: JSON.stringify({})
+                    });
+                    const result = await response.json();
+                    if (response.ok && result.success) {
+                        if (this.isRealtorInHomepage) {
+                            this.selectedHomepageRealtors = this.selectedHomepageRealtors.filter(id => id !==
+                                realtorId);
+                        } else {
+                            this.selectedHomepageRealtors.push(realtorId);
+                        }
+                        toastr.success(result.message || 'Homepage realtors updated!');
+                    } else {
+                        toastr.error(result.message || 'An error occurred.');
+                    }
+                } catch (error) {
+                    toastr.error('An unexpected error occurred.');
+                } finally {
+                    this.isTogglingHomepage = false;
+                }
+            },
             form: {
                 first_name: realtor.first_name || (realtor.user?.name ? realtor.user.name.split(' ')[0] : ''),
                 last_name: realtor.last_name || (realtor.user?.name ? realtor.user.name.split(' ').slice(1).join(' ') :
@@ -429,10 +501,11 @@
                 this.isSuspending = true;
                 try {
                     const response = await fetch(
-                        `/management/realtor/${realtor.user_id || realtor.user?.id}/suspend`, {
+                        `/management/realtor/${realtorId}/suspend`, {
                             method: 'POST',
                             headers: {
                                 'Accept': 'application/json',
+                                'Content-Type': 'application/json',
                                 'X-Requested-With': 'XMLHttpRequest',
                                 'X-CSRF-TOKEN': this.csrfToken
                             },
@@ -446,7 +519,7 @@
                             'Realtor suspended!'));
                         // Update local state for instant feedback
                         this.form.status = isCurrentlySuspended ? 'active' : 'suspended';
-                        setTimeout(() => window.location.reload(), 1000);
+                        // No reload: Alpine will update the button/icon automatically
                     } else {
                         toastr.error(result.message || 'An error occurred while suspending the realtor.');
                     }

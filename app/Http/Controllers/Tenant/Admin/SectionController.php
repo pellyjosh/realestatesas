@@ -5,10 +5,32 @@ namespace App\Http\Controllers\Tenant\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Tenant\Admin\HomeSection;
-use App\Models\Property; // Import the Property model
+use App\Models\Property;
 
 class SectionController extends Controller
 {
+    /**
+     * Toggle a realtor's presence on the homepage (add/remove realtor ID in HomeSection 'homepage_realtors').
+     */
+    public function toggleHomepage(Request $request, $realtorId)
+    {
+        $section = HomeSection::firstOrCreate(['name' => 'homepage_realtors']);
+        $data = $section->data ?? [];
+        $selected = isset($data['selected']) && is_array($data['selected']) ? $data['selected'] : [];
+        $realtorId = (int) $realtorId;
+        if (in_array($realtorId, $selected)) {
+            // Remove
+            $selected = array_values(array_diff($selected, [$realtorId]));
+            $message = 'Realtor removed from homepage.';
+        } else {
+            $selected[] = $realtorId;
+            $message = 'Realtor added to homepage.';
+        }
+        $data['selected'] = $selected;
+        $section->data = $data;
+        $section->save();
+        return response()->json(['success' => true, 'message' => $message, 'selected' => $selected]);
+    }
     public function index()
     {
         // Get all sections
@@ -34,13 +56,22 @@ class SectionController extends Controller
             }
         }
 
-        // Get all realtors for the Realtor section
-        $realtors = \App\Models\Tenant\Realtor::select('id', 'first_name', 'last_name')->get();
-        // Add a 'name' attribute for dropdown display
-        $realtors->map(function ($r) {
-            $r->name = trim($r->first_name . ' ' . $r->last_name);
-            return $r;
-        });
+        // Only show realtors that are selected for the homepage (in home_section with name 'realtor')
+        $realtorSection = $sections->firstWhere('name', 'realtor');
+        $selectedRealtorIds = collect($realtorSection->data['selected'] ?? [])->map(function ($item) {
+            if (is_array($item) && isset($item['realtor_id'])) return $item['realtor_id'];
+            return is_numeric($item) ? (int)$item : null;
+        })->filter()->unique()->values();
+
+        $realtors = collect();
+        if ($selectedRealtorIds->count()) {
+            $realtors = \App\Models\Tenant\Realtor::whereIn('id', $selectedRealtorIds)->select('id', 'first_name', 'last_name')->get();
+            // Add a 'name' attribute for dropdown display
+            $realtors->map(function ($r) {
+                $r->name = trim($r->first_name . ' ' . $r->last_name);
+                return $r;
+            });
+        }
 
         return tenant_view('admin.pages.settings.section', [
             'sections' => $sections,
