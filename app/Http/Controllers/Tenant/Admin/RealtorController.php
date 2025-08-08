@@ -149,7 +149,7 @@ class RealtorController extends Controller
                 ]);
             });
         } catch (\Exception $e) {
-            \Log::error('Realtor creation failed', [
+            Log::error('Realtor creation failed', [
                 'error' => $e->getMessage(),
                 'trace' => $e->getTraceAsString(),
                 'request_data' => $request->except(['password', 'password_confirmation'])
@@ -205,7 +205,7 @@ class RealtorController extends Controller
                 Rule::unique('users', 'email')->ignore($realtor->id)
             ],
             'phone' => 'required|string|max:20',
-            'password' => 'nullable|string|min:8|confirmed',
+            // Password fields removed from validation
             'gender' => 'required|in:male,female',
             'date_of_birth' => 'nullable|date|before:today',
             'description' => 'nullable|string|max:1000',
@@ -223,40 +223,76 @@ class RealtorController extends Controller
         }
 
         try {
-            $realtorData = [
+            // Fix date_of_birth format
+            $dateOfBirth = $request->date_of_birth;
+            if ($dateOfBirth) {
+                try {
+                    $dateOfBirth = \Carbon\Carbon::parse($dateOfBirth)->format('Y-m-d');
+                } catch (\Exception $e) {
+                    $dateOfBirth = null;
+                }
+            }
+
+            // Update TenantUser fields
+            $userData = [
                 'name' => $request->first_name . ' ' . $request->last_name,
                 'email' => $request->email,
                 'phone' => $request->phone,
                 'gender' => $request->gender,
-                'date_of_birth' => $request->date_of_birth,
+                'date_of_birth' => $dateOfBirth,
+                'title' => $request->title,
+                'marital_status' => $request->marital_status,
+                'nationality' => $request->nationality,
+                'state_of_origin' => $request->state_of_origin,
+                'lga' => $request->lga,
+                'hometown' => $request->hometown,
                 'residential_address' => $request->address,
             ];
 
-            // Update password if provided
-            if ($request->filled('password')) {
-                $realtorData['password'] = Hash::make($request->password);
-            }
-
-            // Handle image upload
+            // Handle image upload for user
             if ($request->hasFile('image')) {
-                // Delete old image if exists
                 if ($realtor->image_url) {
                     Storage::disk('tenant_public')->delete($realtor->image_url);
                 }
-
                 $image = $request->file('image');
                 $imageName = 'realtor_' . time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
-
                 $imagePath = $image->storeAs('realtors/images', $imageName, 'tenant_public');
-                $realtorData['image_url'] = $imagePath;
+                $userData['image_url'] = $imagePath;
             }
 
-            $realtor->update($realtorData);
+            $realtor->update($userData);
+
+            // Update related Realtor record
+            $realtorProfile = $realtor->realtor;
+            if ($realtorProfile) {
+                $realtorProfileData = [
+                    'first_name' => $request->first_name,
+                    'last_name' => $request->last_name,
+                    'phone' => $request->phone,
+                    'gender' => $request->gender,
+                    'date_of_birth' => $dateOfBirth,
+                    'title' => $request->title,
+                    'title_other' => $request->title_other,
+                    'marital_status' => $request->marital_status,
+                    'marital_status_other' => $request->marital_status_other,
+                    'nationality' => $request->nationality,
+                    'state_of_origin' => $request->state_of_origin,
+                    'lga' => $request->lga,
+                    'hometown' => $request->hometown,
+                    'residential_address' => $request->address,
+                    'zip_code' => $request->zip_code,
+                    'description' => $request->description,
+                ];
+                if ($request->hasFile('image')) {
+                    $realtorProfileData['image_url'] = $userData['image_url'] ?? null;
+                }
+                $realtorProfile->update($realtorProfileData);
+            }
 
             return response()->json([
                 'success' => true,
                 'message' => 'Realtor updated successfully!',
-                'realtor' => $realtor,
+                'realtor' => $realtor->load('realtor'),
                 'redirect' => route('tenant.admin.all.realtors')
             ]);
         } catch (\Exception $e) {

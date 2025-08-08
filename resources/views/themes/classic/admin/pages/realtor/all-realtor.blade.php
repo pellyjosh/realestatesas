@@ -14,7 +14,7 @@
                     </div>
                 </div>
                 <div class="col-sm-6">
-                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -31,8 +31,24 @@
                                 <div class="property-box">
                                     <div class="agent-image">
                                         <div>
-                                            <img src="{{ $realtor->image_url ? asset('storage/tenant/' . tenant('id') . '/' . $realtor->image_url) : ($realtor->user && $realtor->user->image_url ? asset('storage/tenant/' . tenant('id') . '/' . $realtor->user->image_url) : asset('themes/classic/admin/assets/images/avatar/5.jpg')) }}"
-                                                class="bg-img"
+                                            @php
+                                                $tenantId = tenant('id');
+                                                $imagePath = null;
+                                                if ($realtor->image_url) {
+                                                    $imagePath = asset(
+                                                        'storage/tenant/' . $tenantId . '/' . $realtor->image_url,
+                                                    );
+                                                } elseif ($realtor->user && $realtor->user->image_url) {
+                                                    $imagePath = asset(
+                                                        'storage/tenant/' . $tenantId . '/' . $realtor->user->image_url,
+                                                    );
+                                                } else {
+                                                    $imagePath = asset(
+                                                        'themes/classic/admin/assets/images/avatar/5.jpg',
+                                                    );
+                                                }
+                                            @endphp
+                                            <img src="{{ $imagePath }}" class="bg-img"
                                                 alt="{{ $realtor->user ? $realtor->user->name : $realtor->first_name . ' ' . $realtor->last_name }}">
                                             <span class="label label-shadow">0 properties</span>
                                             <div class="agent-overlay"></div>
@@ -189,18 +205,6 @@
                                                                         <input type="email" class="form-control"
                                                                             x-model="form.email" required>
                                                                     </div>
-                                                                    <div class="form-group col-sm-6">
-                                                                        <label>Password <span class="font-danger">*</span>
-                                                                        </label>
-                                                                        <input type="password" class="form-control"
-                                                                            x-model="form.password">
-                                                                    </div>
-                                                                    <div class="form-group col-sm-6">
-                                                                        <label>Confirm Password <span
-                                                                                class="font-danger">*</span></label>
-                                                                        <input type="password" class="form-control"
-                                                                            x-model="form.password_confirmation">
-                                                                    </div>
                                                                     <div class="form-group col-sm-12">
                                                                         <label>Description</label>
                                                                         <textarea class="form-control" rows="4" x-model="form.description"></textarea>
@@ -301,7 +305,11 @@
                 email: realtor.user?.email || '',
                 phone: realtor.phone || realtor.user?.phone || '',
                 gender: realtor.gender || '',
-                date_of_birth: realtor.date_of_birth || '',
+                date_of_birth: (realtor.date_of_birth && realtor.date_of_birth.length >= 10) ?
+                    realtor.date_of_birth.substring(0, 10) :
+                    (realtor.user?.date_of_birth && realtor.user.date_of_birth.length >= 10) ?
+                    realtor.user.date_of_birth.substring(0, 10) :
+                    '',
                 title: realtor.title || '',
                 title_other: realtor.title_other || '',
                 marital_status: realtor.marital_status || '',
@@ -330,7 +338,11 @@
                     email: realtor.user?.email || '',
                     phone: realtor.phone || realtor.user?.phone || '',
                     gender: realtor.gender || '',
-                    date_of_birth: realtor.date_of_birth || '',
+                    date_of_birth: (realtor.date_of_birth && realtor.date_of_birth.length >= 10) ?
+                        realtor.date_of_birth.substring(0, 10) :
+                        (realtor.user?.date_of_birth && realtor.user.date_of_birth.length >= 10) ?
+                        realtor.user.date_of_birth.substring(0, 10) :
+                        '',
                     title: realtor.title || '',
                     title_other: realtor.title_other || '',
                     marital_status: realtor.marital_status || '',
@@ -382,8 +394,9 @@
                         formData.append('image', this.imageFile);
                     }
                     formData.append('_token', this.csrfToken);
-                    const response = await fetch(`/tenant/admin/realtor/${realtor.id}/update`, {
-                        method: 'POST',
+                    formData.append('_method', 'PUT'); // Laravel expects this for PUT via FormData
+                    const response = await fetch(`/management/realtor/${realtor.user_id || realtor.user?.id}`, {
+                        method: 'POST', // Use POST with _method override for PUT
                         headers: {
                             'Accept': 'application/json',
                             'X-Requested-With': 'XMLHttpRequest'
