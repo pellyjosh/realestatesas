@@ -21,6 +21,8 @@ use App\Http\Controllers\Tenant\Admin\AdminEventController;
 use App\Http\Controllers\Tenant\Admin\PropertyController;
 use App\Http\Controllers\Tenant\Admin\RealtorController;
 use App\Http\Controllers\Tenant\Admin\SectionController;
+use App\Http\Controllers\Tenant\Admin\TestimonialController;
+
 // Auth imports
 use App\Http\Controllers\Tenant\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Tenant\Auth\ConfirmablePasswordController;
@@ -477,7 +479,16 @@ Route::middleware([
                 $property = App\Models\Property::findOrFail($id);
                 return tenant_view('admin.pages.property-details', compact('property'));
             })->name('client.property-details');
+
+
         });
+            Route::controller(TestimonialController::class)->group(function () {
+                Route::get('/testimonials', 'index');
+                Route::post('/testimonials', 'store');
+                Route::put('/testimonials/{id}', 'update');
+                Route::delete('/testimonials/{id}', 'destroy');
+                Route::post('/testimonials/limit', 'setLimit');
+            });
     });
 
     // Auth Routes

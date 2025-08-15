@@ -37,7 +37,16 @@ class SectionController extends Controller
         $sections = HomeSection::all();
 
         // Get all properties for dropdowns 
-        $properties = Property::select('id', 'name')->get();
+        $properties = Property::select('id', 'name', 'city')->get();
+
+        // Get unique city names from properties
+        $uniqueCities = Property::whereNotNull('city')
+            ->where('city', '!=', '')
+            ->distinct()
+            ->pluck('city')
+            ->sort()
+            ->values()
+            ->toArray();
 
         // Get featured properties from the database
         $featuredSection = HomeSection::where('name', 'featured')->first();
@@ -78,6 +87,7 @@ class SectionController extends Controller
             'properties' => $properties,
             'featuredProperties' => $featuredProperties,
             'realtors' => $realtors,
+            'uniqueCities' => $uniqueCities,
         ]);
     }
 
@@ -149,18 +159,17 @@ class SectionController extends Controller
         $request->validate([
             'is_enabled' => 'required|boolean',
             'data' => 'nullable|array',
-            'data.limit' => 'nullable|integer|min:1|max:6', // Validate limit for properties
-            'data.selected_properties' => 'nullable|array|max:6', // Validate selected properties
-            'data.selected_properties.*' => 'exists:properties,id', // Ensure selected properties exist
-            'data.featured_limit' => 'nullable|integer|min:1|max:6', // Validate limit for featured properties
-            'data.featured_selected_properties' => 'nullable|array|max:6', // Validate selected featured properties
-            'data.featured_selected_properties.*' => 'exists:properties,id', // Ensure selected featured properties exist
+            'data.limit' => 'nullable|integer|min:1|max:6',
+            'data.selected_properties' => 'nullable|array|max:6', 
+            'data.selected_properties.*' => 'exists:properties,id', 
+            'data.featured_limit' => 'nullable|integer|min:1|max:6', 
+            'data.featured_selected_properties' => 'nullable|array|max:6', 
+            'data.featured_selected_properties.*' => 'exists:properties,id', 
         ]);
 
 
         $section = HomeSection::firstOrNew(['name' => $sectionName]);
         $section->is_enabled = $request->input('is_enabled');
-        // For hero, data is already merged above; for others, just use input
         $section->data = $request->input('data', []);
         $section->save();
 
@@ -175,10 +184,11 @@ class SectionController extends Controller
             return response()->json([
                 'success' => true,
                 'message' => 'Section updated successfully.',
-                'carousel_paths' => $carousel_paths
+                'carousel_paths' => $carousel_paths,
+                'section' => $section->toArray()
             ]);
         }
 
-        return response()->json(['success' => true, 'message' => 'Section updated successfully.']);
+        return response()->json(['success' => true, 'message' => 'Section updated successfully.', 'section' => $section->toArray()]);
     }
 }

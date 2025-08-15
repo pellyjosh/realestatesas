@@ -10,6 +10,9 @@
 @endif
 @section('content')
 
+    <script>
+        window.uniqueCities = @json($uniqueCities);
+    </script>
     <div x-data='homepageManager(@json($sections ?? []), @json($properties ?? []), @json($featuredProperties ?? []))'
         x-init="init()" class="container-fluid">
         <!-- Page Header -->
@@ -439,6 +442,53 @@
                 </div>
 
                 <!-- Testimonials Section -->
+
+
+                <!-- Testimonial Modal UI -->
+                <template x-if="showTestimonialModal">
+                    <div class="modal fade show d-block" tabindex="-1" style="background:rgba(0,0,0,0.3);"
+                        @click.self="closeTestimonialModal">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title"
+                                        x-text="testimonialModalEditIndex !== null ? 'Edit Testimonial' : 'Add Testimonial'">
+                                    </h5>
+                                    <button type="button" class="btn-close" @click="closeTestimonialModal"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form @submit.prevent="saveTestimonial">
+                                        <div class="mb-2">
+                                            <label>Name</label>
+                                            <input type="text" class="form-control"
+                                                x-model="testimonialModalData.name" required>
+                                        </div>
+                                        <div class="mb-2">
+                                            <label>Image</label>
+                                            <input type="file" class="form-control"
+                                                @change="handleTestimonialImage($event)">
+                                            <template x-if="testimonialModalData.image">
+                                                <img :src="testimonialModalData._resolved_image || getImageUrl(testimonialModalData
+                                                    .image)"
+                                                    class="img-fluid rounded mt-2"
+                                                    style="max-width:100px; max-height:60px; object-fit: cover;">
+                                            </template>
+                                        </div>
+                                        <div class="mb-2">
+                                            <label>Description</label>
+                                            <textarea class="form-control" x-model="testimonialModalData.description" required></textarea>
+                                        </div>
+                                        <div class="text-end">
+                                            <button type="submit" class="btn btn-primary">Save</button>
+                                            <button type="button" class="btn btn-light ms-2"
+                                                @click="closeTestimonialModal">Cancel</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </template>
                 <div class="col-lg-6">
                     <div class="card">
                         <div class="card-header d-flex justify-content-between align-items-center">
@@ -455,105 +505,147 @@
                                 <span class="switch-state"></span>
                             </label>
                         </div>
-                        <div class="card-body" x-show="testimonialsSection.is_enabled">
-                            <!-- Section Title -->
-                            <div class="section-item mb-3">
-                                <div class="d-flex justify-content-between align-items-start">
+                        <div x-show="testimonialsSection.is_enabled">
+                            <div class="card-body">
+                                <!-- Section Title -->
+                                <div class="section-item mb-3">
+                                    <div class="d-flex justify-content-between align-items-start">
+                                        <div class="flex-grow-1">
+                                            <label class="form-label">Section Title</label>
+                                            <!-- Section title for testimonials can be handled separately if needed -->
+                                        </div>
+                                        <button class="btn btn-primary btn-xs"
+                                            @click="toggleEditForm('testimonials_title')" type="button">
+                                            <span x-show="!showForm.includes('testimonials_title')">Edit</span>
+                                            <span x-show="showForm.includes('testimonials_title')">Cancel</span>
+                                        </button>
+                                    </div>
+                                    <form x-show="showForm.includes('testimonials_title')"
+                                        @submit.prevent="saveProperty('testimonials_title')" class="mt-3">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control"
+                                                x-model="formValues.testimonials_title" placeholder="Enter section title">
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-primary me-2">Save</button>
+                                            <button type="button" class="btn btn-light"
+                                                @click="toggleEditForm('testimonials_title')">Cancel</button>
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <!-- Testimonials Description -->
+
+                            </div>
+                            <!-- Testimonials Limit Setter -->
+
+                            <div class="section-item mb-4 p-3 bg-light rounded shadow-sm border">
+                                <div class="d-flex flex-wrap justify-content-between align-items-center mb-2 gap-2">
                                     <div class="flex-grow-1">
-                                        <label class="form-label">Section Title</label>
-                                        <div class="mt-2" x-show="!showForm.includes('testimonials_title')">
-                                            <h6 class="mb-0" x-text="testimonialsSection.data.title || 'Not Set'">
-                                            </h6>
+                                        <label class="form-label mb-1">Number of Testimonials to Display <span
+                                                class="text-muted">(Max 6)</span></label>
+                                        <div class="mt-1" x-show="!showForm.includes('testimonials_limit')">
+                                            <span class="text-primary fw-bold fs-6"
+                                                x-text="(testimonialsLimit || 'Not Set') + ' testimonials'"></span>
                                         </div>
                                     </div>
-                                    <button class="btn btn-primary btn-xs" @click="toggleEditForm('testimonials_title')"
-                                        type="button">
-                                        <span x-show="!showForm.includes('testimonials_title')">Edit</span>
-                                        <span x-show="showForm.includes('testimonials_title')">Cancel</span>
+                                    <button class="btn btn-outline-primary btn-sm px-3"
+                                        @click="toggleEditForm('testimonials_limit')" type="button">
+                                        <span x-show="!showForm.includes('testimonials_limit')">Edit</span>
+                                        <span x-show="showForm.includes('testimonials_limit')">Cancel</span>
                                     </button>
                                 </div>
-                                <form x-show="showForm.includes('testimonials_title')"
-                                    @submit.prevent="saveProperty('testimonials_title')" class="mt-3">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control"
-                                            x-model="formValues.testimonials_title" placeholder="Enter section title">
+                                <form x-show="showForm.includes('testimonials_limit')"
+                                    @submit.prevent="saveProperty('testimonials_limit')"
+                                    class="row g-2 align-items-center mt-2">
+                                    <div class="col-auto">
+                                        <input type="number" class="form-control form-control-sm" style="width: 180px;"
+                                            x-model="formValues.testimonials_limit" placeholder="Number to show"
+                                            min="1" max="6">
                                     </div>
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-primary me-2">Save</button>
-                                        <button type="button" class="btn btn-light"
-                                            @click="toggleEditForm('testimonials_title')">Cancel</button>
+                                    <div class="col-auto">
+                                        <button type="submit" class="btn btn-primary btn-sm me-2">Save</button>
+                                        <button type="button" class="btn btn-light btn-sm"
+                                            @click="toggleEditForm('testimonials_limit')">Cancel</button>
                                     </div>
                                 </form>
                             </div>
 
-                            <!-- Section Label -->
-                            <div class="section-item">
-                                <div class="d-flex justify-content-between align-items-start">
-                                    <div class="flex-grow-1">
-                                        <label class="form-label">Section Label</label>
-                                        <div class="mt-2" x-show="!showForm.includes('testimonials_label')">
-                                            <span class="badge badge-primary"
-                                                x-text="testimonialsSection.data.label || 'Not Set'"></span>
-                                        </div>
-                                    </div>
-                                    <button class="btn btn-primary btn-xs" @click="toggleEditForm('testimonials_label')"
-                                        type="button">
-                                        <span x-show="!showForm.includes('testimonials_label')">Edit</span>
-                                        <span x-show="showForm.includes('testimonials_label')">Cancel</span>
+                            <!-- Testimonials Table UI -->
+                            <div class="section-item mt-3 p-3 bg-white rounded shadow-sm border">
+                                <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2">
+                                    <h6 class="mb-0 fw-bold">Testimonials</h6>
+                                    <button class="btn btn-success btn-sm px-3 d-flex align-items-center gap-1"
+                                        @click="openTestimonialModal()" type="button">
+                                        <i class="fa fa-plus"></i> <span>Add Testimonial</span>
                                     </button>
                                 </div>
-                                <form x-show="showForm.includes('testimonials_label')"
-                                    @submit.prevent="saveProperty('testimonials_label')" class="mt-3">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control"
-                                            x-model="formValues.testimonials_label" placeholder="Enter section label">
-                                    </div>
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-primary me-2">Save</button>
-                                        <button type="button" class="btn btn-light"
-                                            @click="toggleEditForm('testimonials_label')">Cancel</button>
-                                    </div>
-                                </form>
-                            </div>
-
-                            <!-- Testimonials Description -->
-                            <div class="section-item">
-                                <div class="d-flex justify-content-between align-items-start">
-                                    <div class="flex-grow-1">
-                                        <label class="form-label">Section Description</label>
-                                        <div class="mt-2" x-show="!showForm.includes('testimonials_description')">
-                                            <p class="mb-0 text-muted"
-                                                x-text="testimonialsSection.data.description || 'Not Set'">
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <button class="btn btn-primary btn-xs"
-                                        @click="toggleEditForm('testimonials_description')" type="button">
-                                        <span x-show="!showForm.includes('testimonials_description')">Edit</span>
-                                        <span x-show="showForm.includes('testimonials_description')">Cancel</span>
-                                    </button>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-hover table-sm align-middle mb-0">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th style="width: 18%">Name</th>
+                                                <th style="width: 18%">Image</th>
+                                                <th>Description</th>
+                                                <th style="width: 20%">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <template
+                                                x-for="(testimonial, idx) in (testimonials || []).slice(0, Number(testimonialsLimit) || (testimonials || []).length)"
+                                                :key="testimonial.id || idx">
+                                                <tr>
+                                                    <td class="align-middle" x-text="testimonial.name"></td>
+                                                    <td class="align-middle text-center">
+                                                        <template x-if="testimonial.image">
+                                                            <img :src="testimonial._resolved_image || getImageUrl(testimonial
+                                                                .image)"
+                                                                alt="Image" class="rounded border"
+                                                                style="max-width: 60px; max-height: 40px; object-fit: cover; background: #f8f9fa;">
+                                                        </template>
+                                                        <template x-if="!testimonial.image">
+                                                            <span class="text-muted small">No image</span>
+                                                        </template>
+                                                    </td>
+                                                    <td class="align-middle"
+                                                        style="max-width: 320px; white-space: pre-line; overflow-wrap: anywhere;">
+                                                        <span x-text="testimonial.description"></span>
+                                                    </td>
+                                                    <td class="align-middle text-center">
+                                                        <div class="btn-group btn-group-sm" role="group">
+                                                            <button class="btn btn-primary"
+                                                                @click="openTestimonialModal(testimonial, idx)"><i
+                                                                    class="fa fa-edit"></i></button>
+                                                            <button class="btn btn-danger"
+                                                                @click="deleteTestimonial(idx)"><i
+                                                                    class="fa fa-trash"></i></button>
+                                                            <button class="btn btn-info"
+                                                                @click="viewTestimonial(testimonial)"><i
+                                                                    class="fa fa-eye"></i></button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </template>
+                                            <template
+                                                x-if="!((testimonials || []).slice(0, Number(testimonialsLimit) || (testimonials || []).length).length)">
+                                                <tr>
+                                                    <td colspan="4" class="text-center text-muted">No testimonials
+                                                        added
+                                                    </td>
+                                                </tr>
+                                            </template>
+                                        </tbody>
+                                    </table>
                                 </div>
-                                <form x-show="showForm.includes('testimonials_description')"
-                                    @submit.prevent="saveProperty('testimonials_description')" class="mt-3">
-                                    <div class="form-group">
-                                        <textarea class="form-control" x-model="formValues.testimonials_description" placeholder="Enter section description"
-                                            rows="3"></textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-primary me-2">Save</button>
-                                        <button type="button" class="btn btn-light"
-                                            @click="toggleEditForm('testimonials_description')">Cancel</button>
-                                    </div>
-                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- About & Cities Sections -->
+
+            <!-- Realtor Section -->
             <div class="row">
-                <!-- Realtor Section -->
                 <div class="col-lg-6">
                     <div class="card">
                         <div class="card-header d-flex justify-content-between align-items-center">
@@ -708,16 +800,52 @@
                         </form>
                     </div>
 
+                    <!-- Cities Limit and Add/Remove UI -->
+                    <div class="section-item mt-3">
+                        <label class="form-label">Add City (Max 20)</label>
+                        <div class="d-flex align-items-center gap-2">
+                            <select class="form-control" x-model="selectedCityToAdd" style="max-width: 250px;">
+                                <option value="" disabled>Select a city</option>
+                                <template x-for="city in uniqueCitiesFromProperties" :key="city">
+                                    <option :value="city" x-text="city"></option>
+                                </template>
+                            </select>
+                            <button class="btn btn-success btn-xs" type="button" @click="addCity()"
+                                :disabled="!selectedCityToAdd || (citiesSection.data.cities && citiesSection.data.cities.length >=
+                                    20)">
+                                Add
+                            </button>
+                        </div>
+                        <small class="text-muted">Select a city from properties and add to the list (max 20).</small>
+                    </div>
+
+                    <div class="section-item mt-2">
+                        <label class="form-label">Cities Added</label>
+                        <div class="mb-2">
+                            <span
+                                x-text="(citiesSection.data.cities && citiesSection.data.cities.length) ? citiesSection.data.cities.join(', ') : 'No cities added.'"></span>
+                        </div>
+                    </div>
+
+                    <div class="section-item mt-2">
+                        <label class="form-label">Remove City</label>
+                        <div class="d-flex align-items-center gap-2">
+                            <select class="form-control" x-model="selectedCityToRemove" style="max-width: 250px;">
+                                <option value="" disabled>Select a city to remove</option>
+                                <template x-for="city in (citiesSection.data.cities || [])" :key="city">
+                                    <option :value="city" x-text="city"></option>
+                                </template>
+                            </select>
+                            <button class="btn btn-danger btn-xs" type="button" @click="removeCity()"
+                                :disabled="!selectedCityToRemove">
+                                Remove
+                            </button>
+                        </div>
+                    </div>
+
                     <!-- Cities Description -->
                     <div class="section-item mt-3">
                         <div class="d-flex justify-content-between align-items-start">
-                            <div class="flex-grow-1">
-                                <label class="form-label">Section Description</label>
-                                <div class="mt-2" x-show="!showForm.includes('cities_description')">
-                                    <p class="mb-0 text-muted" x-text="citiesSection.data.description || 'Not Set'">
-                                    </p>
-                                </div>
-                            </div>
                             <button class="btn btn-primary btn-xs" @click="toggleEditForm('cities_description')"
                                 type="button">
                                 <span x-show="!showForm.includes('cities_description')">Edit</span>
@@ -757,8 +885,233 @@
             // Wait for Alpine.js to be ready
             document.addEventListener('alpine:init', () => {
                 Alpine.data('homepageManager', (sections = [], properties = [], featuredProperties = []) => ({
+                    // expose incoming arrays on `this` so runtime code can access them reliably
+                    sections: sections || [],
+                    properties: properties || [],
+                    featuredProperties: featuredProperties || [],
+                    // --- Testimonials Section Logic (API CRUD) ---
+                    showTestimonialModal: false,
+                    testimonialModalData: {
+                        name: '',
+                        image: '',
+                        description: ''
+                    },
+                    testimonialModalEditIndex: null,
+                    testimonials: [],
+                    testimonialsLimit: 6,
+                    loadingTestimonials: false,
+                    openTestimonialModal(testimonial = null, idx = null) {
+                        if (testimonial) {
+                            this.testimonialModalData = {
+                                ...testimonial
+                            };
+                            this.testimonialModalEditIndex = idx;
+                        } else {
+                            this.testimonialModalData = {
+                                name: '',
+                                image: '',
+                                description: ''
+                            };
+                            this.testimonialModalEditIndex = null;
+                        }
+                        this.showTestimonialModal = true;
+                    },
+                    closeTestimonialModal() {
+                        this.showTestimonialModal = false;
+                        this.testimonialModalData = {
+                            name: '',
+                            image: '',
+                            description: ''
+                        };
+                        this.testimonialModalEditIndex = null;
+                    },
+                    handleTestimonialImage(event) {
+                        if (event.target.files && event.target.files[0]) {
+                            const reader = new FileReader();
+                            reader.onload = (e) => {
+                                this.testimonialModalData.image = e.target.result;
+                            };
+                            reader.readAsDataURL(event.target.files[0]);
+                        }
+                    },
+                    fetchTestimonials() {
+                        this.loadingTestimonials = true;
+                        fetch('/management/testimonials', {
+                                headers: {
+                                    'Accept': 'application/json'
+                                }
+                            })
+                            .then(res => res.json())
+                            .then(data => {
+                                console.log('[DEBUG] fetchTestimonials response:', data);
+                                // Support multiple possible response shapes: { items, limit } or { data: { items, limit } }
+                                const payload = data.items || (data.data && data.data.items) ? data : (
+                                    data.data || data);
+                                const items = payload.items || (payload.data && payload.data.items) ||
+                                [];
+                                this.testimonials = items;
+                                this.testimonialsLimit = payload.limit || (payload.data && payload.data
+                                    .limit) || 6;
+                                // Resolve each testimonial image to a working URL (try tenant prefixed path if needed)
+                                this.resolveTestimonialImages();
+                                // Auto-enable the section if backend returned items so admins can see existing testimonials
+                                try {
+                                    if (this.testimonials && this.testimonials.length > 0) {
+                                        if (!this.testimonialsSection) this.testimonialsSection = {};
+                                        this.testimonialsSection.is_enabled = true;
+                                    }
+                                } catch (err) {
+                                    console.warn('Could not auto-enable testimonials section', err);
+                                }
+                                console.log('[DEBUG] testimonials array after fetch (length):', this
+                                    .testimonials.length);
+                            })
+                            .catch((e) => {
+                                toastr.error('Failed to load testimonials');
+                                console.error(e);
+                            })
+                            .finally(() => {
+                                this.loadingTestimonials = false;
+                            });
+                    },
+                    saveTestimonial() {
+                        const isEdit = this.testimonialModalEditIndex !== null && this.testimonialModalData
+                            .id;
+                        const url = isEdit ? `/management/testimonials/${this.testimonialModalData.id}` :
+                            '/management/testimonials';
+                        const method = isEdit ? 'PUT' : 'POST';
+                        fetch(url, {
+                                method,
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'Accept': 'application/json',
+                                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')
+                                        .getAttribute('content')
+                                },
+                                body: JSON.stringify({
+                                    name: this.testimonialModalData.name,
+                                    image: this.testimonialModalData.image,
+                                    description: this.testimonialModalData.description
+                                })
+                            })
+                            .then(async res => {
+                                const contentType = res.headers.get('content-type');
+                                let data;
+                                if (contentType && contentType.includes('application/json')) {
+                                    data = await res.json();
+                                } else {
+                                    const text = await res.text();
+                                    throw new Error('Server error: ' + text);
+                                }
+                                if (!res.ok) {
+                                    if (data && data.errors) {
+                                        toastr.error('Validation error: ' + Object.values(data
+                                            .errors).join('\n'));
+                                    } else {
+                                        toastr.error('Error: ' + (data && data.message ? data
+                                            .message : 'Unknown error'));
+                                    }
+                                    throw new Error('Save failed');
+                                }
+                                console.log('[DEBUG] saveTestimonial response:', data);
+                                if (isEdit) {
+                                    const idx = this.testimonials.findIndex(t => t.id === this
+                                        .testimonialModalData.id);
+                                    if (idx !== -1) this.testimonials[idx] = {
+                                        ...this.testimonialModalData,
+                                        ...data
+                                    };
+                                    toastr.success('Testimonial updated!');
+                                    // Re-resolve image URL for updated testimonial
+                                    this.resolveTestimonialImages();
+                                } else {
+                                    this.testimonials.push(data);
+                                    toastr.success('Testimonial added!');
+                                    // Resolve image for the newly added testimonial
+                                    this.resolveTestimonialImages();
+                                }
+                                this.closeTestimonialModal();
+                                console.log('[DEBUG] testimonials array after add:', this
+                                    .testimonials);
+                            })
+                            .catch((e) => {
+                                toastr.error('Failed to save testimonial');
+                                console.error(e);
+                            });
+                    },
+                    deleteTestimonial(idx) {
+                        const testimonial = this.testimonials[idx];
+                        if (!testimonial || !testimonial.id) return;
+                        if (!confirm('Are you sure you want to delete this testimonial?')) return;
+                        fetch(`/management/testimonials/${testimonial.id}`, {
+                                method: 'DELETE',
+                                headers: {
+                                    'Accept': 'application/json'
+                                }
+                            })
+                            .then(res => res.json())
+                            .then(() => {
+                                this.testimonials.splice(idx, 1);
+                                toastr.success('Testimonial deleted!');
+                            })
+                            .catch(() => toastr.error('Failed to delete testimonial'));
+                    },
+                    viewTestimonial(testimonial) {
+                        alert(`Name: ${testimonial.name}\nDescription: ${testimonial.description}`);
+                    },
+                    saveTestimonialsLimit() {
+                        // Apply limit immediately on client for instant feedback
+                        const newLimit = Number(this.formValues.testimonials_limit) || 6;
+                        this.testimonialsLimit = newLimit;
+                        if (!this.testimonialsSection) this.testimonialsSection = {
+                            data: {}
+                        };
+                        if (!this.testimonialsSection.data) this.testimonialsSection.data = {};
+                        this.testimonialsSection.data.limit = newLimit;
+
+                        fetch('/management/testimonials/limit', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'Accept': 'application/json',
+                                },
+                                body: JSON.stringify({
+                                    limit: newLimit
+                                })
+                            })
+                            .then(res => res.json())
+                            .then(data => {
+                                this.testimonialsLimit = data.limit || newLimit;
+                                // persist the limit in the section data returned from server if needed
+                                if (this.testimonialsSection && this.testimonialsSection.data) {
+                                    this.testimonialsSection.data.limit = this.testimonialsLimit;
+                                }
+                                toastr.success('Limit updated!');
+                                // Refresh testimonials from server to ensure client uses latest items/ordering
+                                this.fetchTestimonials();
+                                // Also update visible testimonials immediately from section data so UI reflects the new limit
+                                try {
+                                    const items = (this.testimonialsSection && this.testimonialsSection
+                                        .data && (this.testimonialsSection.data.items || [])) || [];
+                                    this.testimonials = items.slice(0, Number(this.testimonialsLimit) ||
+                                        items.length);
+                                } catch (e) {
+                                    // ignore
+                                }
+                                this.toggleEditForm('testimonials_limit');
+                            })
+                            .catch(() => {
+                                // Revert on failure
+                                toastr.error('Failed to update limit');
+                                // Optionally refetch testimonials to restore state
+                                this.fetchTestimonials();
+                            });
+                    },
                     // All realtors for dropdown name resolution
                     allRealtors: (window.allRealtors || []),
+                    // Dropdown selection models used in various sections
+                    selectedLatestPropertyId: '',
+                    selectedRealtorId: '',
                     // Helper to get realtor name by ID
                     getRealtorName(realtorId) {
                         const realtor = this.allRealtors.find(r => r.id == realtorId);
@@ -981,6 +1334,68 @@
                             }
                         }
                     },
+
+                    // Try to find a working URL for testimonial images by probing likely storage paths.
+                    async resolveTestimonialImages() {
+                        if (!this.testimonials || !this.testimonials.length) return;
+                        const origin = window.location.origin;
+                        // For each testimonial, try candidate URLs until one returns ok
+                        await Promise.all(this.testimonials.map(async (t) => {
+                            t._resolved_image = null;
+                            const raw = t.image || '';
+                            if (!raw) return;
+                            // If it's a data URL or already absolute, accept it immediately
+                            if (/^data:/i.test(raw) || /^https?:\/\//i.test(raw)) {
+                                t._resolved_image = raw;
+                                return;
+                            }
+                            // Prepare filename if present
+                            const filename = (raw.split('/').pop() || '').trim();
+                            const candidates = [];
+                            // If raw looks like /storage/..., use that and tenant-prefixed variant
+                            if (raw.startsWith('/storage') || raw.startsWith(
+                                    'storage')) {
+                                const path = raw.startsWith('/') ? raw : '/' + raw;
+                                candidates.push(origin + path);
+                                // tenant prefixed
+                                candidates.push(origin + '/storage/tenantclient1' + path
+                                    .replace(/^\/storage/, ''));
+                            } else if (raw.includes('/storage/')) {
+                                const idx = raw.indexOf('/storage/');
+                                candidates.push(origin + raw.slice(idx));
+                                candidates.push(origin + '/storage/tenantclient1' + raw
+                                    .slice(idx + '/storage'.length));
+                            } else {
+                                // plain filename or relative path
+                                if (filename) {
+                                    candidates.push(origin + '/storage/testimonials/' +
+                                        filename);
+                                    candidates.push(origin +
+                                        '/storage/tenantclient1/testimonials/' +
+                                        filename);
+                                    candidates.push(origin + '/storage/' + filename);
+                                }
+                                // also try raw as relative
+                                candidates.push(origin + '/' + raw.replace(/^\//, ''));
+                            }
+
+                            for (const url of candidates) {
+                                try {
+                                    // Use HEAD to check quickly
+                                    const res = await fetch(url, {
+                                        method: 'HEAD'
+                                    });
+                                    if (res.ok) {
+                                        t._resolved_image = url;
+                                        break;
+                                    }
+                                } catch (err) {
+                                    // ignore and try next
+                                }
+                            }
+                            // if none resolved, leave null (getImageUrl will attempt heuristics)
+                        }));
+                    },
                     deleteCarouselItem(idx) {
                         if (Array.isArray(this.heroSection.data.carousel_items)) {
                             // Find the item by id
@@ -1118,8 +1533,38 @@
                         }
                     },
                     testimonialsSection: sections.find(s => s.name === 'testimonials') || {
-                        is_enabled: false,
-                        data: {}
+                        // Will be initialized in init()
+                    },
+                    // Helper to normalize image URLs for testimonials
+                    getImageUrl(src) {
+                        if (!src) return src;
+                        // If already absolute URL, return it
+                        if (/^https?:\/\//i.test(src)) return src;
+
+                        // Common Laravel Storage::url returns '/storage/<path>' or '/storage/tenantclient1/<path>'
+                        if (src.startsWith('/storage') || src.startsWith('storage')) {
+                            return window.location.origin + (src.startsWith('/') ? '' : '/') + src;
+                        }
+
+                        // If it looks like 'http:\\' encoded or contains storage path somewhere, normalize
+                        if (src.indexOf('/storage/') !== -1) {
+                            const idx = src.indexOf('/storage/');
+                            return window.location.origin + src.slice(idx);
+                        }
+
+                        // If it's just a filename stored under tenantclient1/testimonials, prefix accordingly
+                        if (!src.includes('/') && src.match(/\.(png|jpe?g|webp|gif)$/i)) {
+                            return window.location.origin + '/storage/tenantclient1/testimonials/' + src;
+                        }
+
+                        // If it's a relative path like 'tenantclient1/testimonials/xxx.png' or 'testimonials/xxx.png'
+                        if (src.match(/testimonials\/.+\.(png|jpe?g|webp|gif)$/i)) {
+                            // Ensure leading slash
+                            return window.location.origin + '/' + src.replace(/^\//, '');
+                        }
+
+                        // Last resort: return as-is (browser will attempt to resolve relative)
+                        return src;
                     },
                     aboutSection: sections.find(s => s.name === 'about') || {
                         is_enabled: false,
@@ -1128,6 +1573,42 @@
                     citiesSection: sections.find(s => s.name === 'cities') || {
                         is_enabled: false,
                         data: {}
+                    },
+
+                    // --- Cities Section Logic ---
+                    selectedCityToAdd: '',
+                    selectedCityToRemove: '',
+                    // Use backend-provided uniqueCities array for dropdown
+                    get uniqueCitiesFromProperties() {
+                        const added = (this.citiesSection.data.cities || []);
+                        return (window.uniqueCities || []).filter(city => !added.includes(city));
+                    },
+                    addCity() {
+                        if (!this.selectedCityToAdd) return;
+                        if (!this.citiesSection.data.cities) this.citiesSection.data.cities = [];
+                        if (this.citiesSection.data.cities.length >= 20) {
+                            toastr.warning('Maximum of 20 cities allowed.');
+                            return;
+                        }
+                        if (!this.citiesSection.data.cities.includes(this.selectedCityToAdd)) {
+                            this.citiesSection.data.cities.push(this.selectedCityToAdd);
+                            const addedCity = this.selectedCityToAdd;
+                            this.saveSectionData('cities', this.citiesSection, () => {
+                                toastr.success(`City added: ${addedCity}`);
+                            });
+                            this.selectedCityToAdd = '';
+                        }
+                    },
+                    removeCity() {
+                        if (!this.selectedCityToRemove) return;
+                        if (!this.citiesSection.data.cities) return;
+                        const removedCity = this.selectedCityToRemove;
+                        this.citiesSection.data.cities = this.citiesSection.data.cities.filter(city =>
+                            city !== this.selectedCityToRemove);
+                        this.saveSectionData('cities', this.citiesSection, () => {
+                            toastr.success(`City removed: ${removedCity}`);
+                        });
+                        this.selectedCityToRemove = '';
                     },
 
                     updateCarouselCount() {
@@ -1176,6 +1657,16 @@
                     },
 
                     init() {
+                        this.testimonialsSection = this.sections.find(s => s.name === 'testimonials') || {
+                            is_enabled: false,
+                            data: {
+                                items: [],
+                                limit: 6
+                            }
+                        };
+                        if (!this.testimonialsSection.data.items) this.testimonialsSection.data.items = [];
+                        // Fetch testimonials from backend on page load
+                        this.fetchTestimonials();
                         // Initialize Feather icons after component loads
                         this.$nextTick(() => {
                             if (typeof feather !== 'undefined') {
@@ -1242,59 +1733,75 @@
                     },
 
                     saveSectionData(sectionName, sectionData) {
+                        // Accept an optional callback to run after a successful save
+                        let callback = null;
+                        if (arguments.length > 2 && typeof arguments[2] === 'function') {
+                            callback = arguments[2];
+                        }
                         console.log('Saving section:', sectionName, sectionData);
                         fetch(`/management/sections/${sectionName}`, {
                                 method: 'POST',
-                                headers: { // Correct headers object
+                                headers: {
                                     'Content-Type': 'application/json',
-                                    'X-CSRF-TOKEN': document.querySelector(
-                                        'meta[name="csrf-token"]').getAttribute(
-                                        'content'),
+                                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')
+                                        .getAttribute('content'),
                                     'Accept': 'application/json',
-                                    'X-Requested-With': 'XMLHttpRequest' // Add this for Laravel AJAX detection
+                                    'X-Requested-With': 'XMLHttpRequest'
                                 },
-                                body: JSON.stringify({ // 'body' is a sibling of 'headers'
+                                body: JSON.stringify({
                                     name: sectionName,
                                     is_enabled: sectionData.is_enabled,
                                     data: sectionData.data
                                 })
                             })
                             .then(response => {
-                                // If response is not OK (e.g., 401, 403, 422), try to parse JSON anyway
-                                // Laravel often sends JSON error responses for AJAX requests
                                 if (!response.ok) {
-                                    // Attempt to parse as JSON, but catch if it's not
                                     return response.json().catch(() => {
-                                        // If it's not JSON (e.g., HTML from 302 redirect),
-                                        // throw a more informative error
                                         throw new Error(
                                             `Server responded with status ${response.status}. Expected JSON response but got non-JSON.`
                                         );
                                     });
                                 }
-                                // If response is OK, parse as JSON
                                 return response.json();
                             })
                             .then(data => {
                                 if (data.success) {
                                     toastr.success('Section updated successfully!');
+                                    // If backend returned the saved section object, apply it to local state
+                                    if (data.section) {
+                                        try {
+                                            const s = data.section;
+                                            const key = s.name + 'Section';
+                                            // preserve is_enabled and data
+                                            this[key] = this[key] || {};
+                                            this[key].is_enabled = s.is_enabled;
+                                            this[key].data = s.data || this[key].data || {};
+
+                                            // If testimonials, sync limit and items immediately
+                                            if (s.name === 'testimonials') {
+                                                this.testimonialsLimit = Number(this[key].data.limit) ||
+                                                    this.testimonialsLimit;
+                                                const items = this[key].data.items || [];
+                                                this.testimonials = items.slice(0, Number(this
+                                                    .testimonialsLimit) || items.length);
+                                                // Resolve images for newly synced items
+                                                this.resolveTestimonialImages();
+                                            }
+                                        } catch (err) {
+                                            console.warn('Failed to apply returned section to state',
+                                                err);
+                                        }
+                                    }
+                                    if (callback) callback();
                                 } else {
-                                    // Display specific error message from backend if available
                                     toastr.error(data.message || 'Failed to save section');
                                     throw new Error(data.message || 'Save failed');
                                 }
                             })
                             .catch(error => {
                                 console.error('Error:', error);
-                                // Display a user-friendly error message, potentially from the caught error
                                 toastr.error('Failed to save section: ' + (error.message ||
                                     'An unknown error occurred.'));
-
-                                // Optional: If it's an authentication error (e.g., 401 caught by the fetch block),
-                                // you might want to redirect to login
-                                // if (error.message.includes('401')) {
-                                //     window.location.href = '/login'; // Or your login route
-                                // }
                             });
                     },
 
