@@ -440,11 +440,7 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- Testimonials Section -->
-
-
-                <!-- Testimonial Modal UI -->
                 <template x-if="showTestimonialModal">
                     <div class="modal fade show d-block" tabindex="-1" style="background:rgba(0,0,0,0.3);"
                         @click.self="closeTestimonialModal">
@@ -533,9 +529,6 @@
                                         </div>
                                     </form>
                                 </div>
-
-                                <!-- Testimonials Description -->
-
                             </div>
                             <!-- Testimonials Limit Setter -->
 
@@ -885,11 +878,9 @@
             // Wait for Alpine.js to be ready
             document.addEventListener('alpine:init', () => {
                 Alpine.data('homepageManager', (sections = [], properties = [], featuredProperties = []) => ({
-                    // expose incoming arrays on `this` so runtime code can access them reliably
                     sections: sections || [],
                     properties: properties || [],
                     featuredProperties: featuredProperties || [],
-                    // --- Testimonials Section Logic (API CRUD) ---
                     showTestimonialModal: false,
                     testimonialModalData: {
                         name: '',
@@ -943,8 +934,6 @@
                             })
                             .then(res => res.json())
                             .then(data => {
-                                console.log('[DEBUG] fetchTestimonials response:', data);
-                                // Support multiple possible response shapes: { items, limit } or { data: { items, limit } }
                                 const payload = data.items || (data.data && data.data.items) ? data : (
                                     data.data || data);
                                 const items = payload.items || (payload.data && payload.data.items) ||
@@ -952,9 +941,7 @@
                                 this.testimonials = items;
                                 this.testimonialsLimit = payload.limit || (payload.data && payload.data
                                     .limit) || 6;
-                                // Resolve each testimonial image to a working URL (try tenant prefixed path if needed)
                                 this.resolveTestimonialImages();
-                                // Auto-enable the section if backend returned items so admins can see existing testimonials
                                 try {
                                     if (this.testimonials && this.testimonials.length > 0) {
                                         if (!this.testimonialsSection) this.testimonialsSection = {};
@@ -963,8 +950,6 @@
                                 } catch (err) {
                                     console.warn('Could not auto-enable testimonials section', err);
                                 }
-                                console.log('[DEBUG] testimonials array after fetch (length):', this
-                                    .testimonials.length);
                             })
                             .catch((e) => {
                                 toastr.error('Failed to load testimonials');
@@ -1013,7 +998,6 @@
                                     }
                                     throw new Error('Save failed');
                                 }
-                                console.log('[DEBUG] saveTestimonial response:', data);
                                 if (isEdit) {
                                     const idx = this.testimonials.findIndex(t => t.id === this
                                         .testimonialModalData.id);
@@ -1022,17 +1006,13 @@
                                         ...data
                                     };
                                     toastr.success('Testimonial updated!');
-                                    // Re-resolve image URL for updated testimonial
                                     this.resolveTestimonialImages();
                                 } else {
                                     this.testimonials.push(data);
                                     toastr.success('Testimonial added!');
-                                    // Resolve image for the newly added testimonial
                                     this.resolveTestimonialImages();
                                 }
                                 this.closeTestimonialModal();
-                                console.log('[DEBUG] testimonials array after add:', this
-                                    .testimonials);
                             })
                             .catch((e) => {
                                 toastr.error('Failed to save testimonial');
@@ -1060,7 +1040,6 @@
                         alert(`Name: ${testimonial.name}\nDescription: ${testimonial.description}`);
                     },
                     saveTestimonialsLimit() {
-                        // Apply limit immediately on client for instant feedback
                         const newLimit = Number(this.formValues.testimonials_limit) || 6;
                         this.testimonialsLimit = newLimit;
                         if (!this.testimonialsSection) this.testimonialsSection = {
@@ -1082,14 +1061,11 @@
                             .then(res => res.json())
                             .then(data => {
                                 this.testimonialsLimit = data.limit || newLimit;
-                                // persist the limit in the section data returned from server if needed
                                 if (this.testimonialsSection && this.testimonialsSection.data) {
                                     this.testimonialsSection.data.limit = this.testimonialsLimit;
                                 }
                                 toastr.success('Limit updated!');
-                                // Refresh testimonials from server to ensure client uses latest items/ordering
                                 this.fetchTestimonials();
-                                // Also update visible testimonials immediately from section data so UI reflects the new limit
                                 try {
                                     const items = (this.testimonialsSection && this.testimonialsSection
                                         .data && (this.testimonialsSection.data.items || [])) || [];
@@ -1170,11 +1146,9 @@
                     openFeaturedTable(propId) {
                         if (!propId) return;
 
-                        // Find the property from the full list passed from the backend
                         let prop = this.allFeaturedProperties.find(p => p.id == propId);
 
                         if (prop) {
-                            // If found, populate the table item with its data
                             this.featuredTableItem = {
                                 id: prop.id,
                                 img: prop.images && prop.images.length > 0 ?
@@ -1189,7 +1163,6 @@
                                 writeup: prop.description || 'No description available.'
                             };
                         } else {
-                            // If for some reason the property is not found, show a default/error state
                             this.featuredTableItem = {
                                 id: propId,
                                 img: 'https://via.placeholder.com/80x50?text=Error',
@@ -1208,13 +1181,12 @@
                     },
 
                     viewPropertyDetails(propertyId) {
-                        // Redirect to the property details page using the dynamic route
                         window.open(`/property/${propertyId}`, '_blank');
                     },
                     heroBannerFile: null,
                     showForm: [],
                     formValues: {},
-                    showCarouselEdit: null, // index of carousel being edited or null
+                    showCarouselEdit: null,
                     carouselEditItem: {
                         signature_img: '',
                         signature_writeup: '',
@@ -1229,7 +1201,6 @@
                             toastr.warning('Maximum of 4 carousel items allowed.');
                             return;
                         }
-                        // Add a placeholder for the new item with a unique id
                         this.heroSection.data.carousel_items.push({
                             id: Date.now() + Math.floor(Math.random() * 10000),
                             signature_img: '',
@@ -1237,14 +1208,11 @@
                             hero_title: '',
                             cta_button: ''
                         });
-                        // Always update carousel_count to match the array length
                         this.heroSection.data.carousel_count = this.heroSection.data.carousel_items.length;
-                        // Open the edit modal for the new item (user must save to persist)
                         this.editCarouselItem(this.heroSection.data.carousel_items.length - 1);
                     },
                     editCarouselItem(idx) {
                         this.showCarouselEdit = idx;
-                        // Deep copy to avoid live editing until save
                         this.carouselEditItem = JSON.parse(JSON.stringify(this.heroSection.data
                             .carousel_items[idx]));
                     },
@@ -1259,16 +1227,13 @@
                     },
                     saveCarouselEdit() {
                         if (this.showCarouselEdit !== null) {
-                            // Only persist if the item has at least an image or a title (avoid empty items)
                             const item = this.carouselEditItem;
                             if ((item.signature_img && item.signature_img !== '') || (item.hero_title &&
                                     item.hero_title !== '')) {
                                 this.heroSection.data.carousel_items[this.showCarouselEdit] = JSON.parse(
                                     JSON.stringify(item));
-                                // Always update carousel_count to match the array length
                                 this.heroSection.data.carousel_count = this.heroSection.data.carousel_items
                                     .length;
-                                // Always send the full, up-to-date carousel_items array
                                 const formData = new FormData();
                                 formData.append('name', 'hero');
                                 formData.append('is_enabled', this.heroSection.is_enabled === true ?
@@ -1301,7 +1266,6 @@
                                     .then(response => response.json())
                                     .then(result => {
                                         if (result.success) {
-                                            // Update signature_img for all items with the returned paths (if provided)
                                             if (result.carousel_paths && Array.isArray(result
                                                     .carousel_paths)) {
                                                 result.carousel_paths.forEach((path, i) => {
@@ -1335,16 +1299,13 @@
                         }
                     },
 
-                    // Try to find a working URL for testimonial images by probing likely storage paths.
                     async resolveTestimonialImages() {
                         if (!this.testimonials || !this.testimonials.length) return;
                         const origin = window.location.origin;
-                        // For each testimonial, try candidate URLs until one returns ok
                         await Promise.all(this.testimonials.map(async (t) => {
                             t._resolved_image = null;
                             const raw = t.image || '';
                             if (!raw) return;
-                            // If it's a data URL or already absolute, accept it immediately
                             if (/^data:/i.test(raw) || /^https?:\/\//i.test(raw)) {
                                 t._resolved_image = raw;
                                 return;
@@ -1352,7 +1313,7 @@
                             // Prepare filename if present
                             const filename = (raw.split('/').pop() || '').trim();
                             const candidates = [];
-                            // If raw looks like /storage/..., use that and tenant-prefixed variant
+
                             if (raw.startsWith('/storage') || raw.startsWith(
                                     'storage')) {
                                 const path = raw.startsWith('/') ? raw : '/' + raw;
@@ -1393,7 +1354,6 @@
                                     // ignore and try next
                                 }
                             }
-                            // if none resolved, leave null (getImageUrl will attempt heuristics)
                         }));
                     },
                     deleteCarouselItem(idx) {
@@ -1535,35 +1495,35 @@
                     testimonialsSection: sections.find(s => s.name === 'testimonials') || {
                         // Will be initialized in init()
                     },
-                    // Helper to normalize image URLs for testimonials
+                    
                     getImageUrl(src) {
                         if (!src) return src;
-                        // If already absolute URL, return it
+                        
                         if (/^https?:\/\//i.test(src)) return src;
 
-                        // Common Laravel Storage::url returns '/storage/<path>' or '/storage/tenantclient1/<path>'
+                        
                         if (src.startsWith('/storage') || src.startsWith('storage')) {
                             return window.location.origin + (src.startsWith('/') ? '' : '/') + src;
                         }
 
-                        // If it looks like 'http:\\' encoded or contains storage path somewhere, normalize
+                        
                         if (src.indexOf('/storage/') !== -1) {
                             const idx = src.indexOf('/storage/');
                             return window.location.origin + src.slice(idx);
                         }
 
-                        // If it's just a filename stored under tenantclient1/testimonials, prefix accordingly
+                        
                         if (!src.includes('/') && src.match(/\.(png|jpe?g|webp|gif)$/i)) {
                             return window.location.origin + '/storage/tenantclient1/testimonials/' + src;
                         }
 
-                        // If it's a relative path like 'tenantclient1/testimonials/xxx.png' or 'testimonials/xxx.png'
+                        
                         if (src.match(/testimonials\/.+\.(png|jpe?g|webp|gif)$/i)) {
                             // Ensure leading slash
                             return window.location.origin + '/' + src.replace(/^\//, '');
                         }
 
-                        // Last resort: return as-is (browser will attempt to resolve relative)
+                        
                         return src;
                     },
                     aboutSection: sections.find(s => s.name === 'about') || {
@@ -1704,7 +1664,7 @@
 
                     getPropertyName(propertyId) {
                         const property = this.allProperties.find(p => p.id === propertyId);
-                        // If not found, return blank (or you can use 'Unknown Property' or '-')
+                        
                         return property ? property.name : '';
                     },
 
@@ -1726,8 +1686,7 @@
                     toggleSection(sectionName) {
                         const sectionData = this[`${sectionName}Section`];
                         if (sectionData) {
-                            // The x-model on the checkbox already toggles the is_enabled property,
-                            // so we just need to call the save function.
+                            
                             this.saveSectionData(sectionName, sectionData);
                         }
                     },
@@ -1738,7 +1697,7 @@
                         if (arguments.length > 2 && typeof arguments[2] === 'function') {
                             callback = arguments[2];
                         }
-                        console.log('Saving section:', sectionName, sectionData);
+                        // saving section
                         fetch(`/management/sections/${sectionName}`, {
                                 method: 'POST',
                                 headers: {
@@ -1810,7 +1769,7 @@
                         if (this.showCarouselEdit === null) return;
                         const idx = this.showCarouselEdit;
                         const item = this.carouselEditItem;
-                        // Allow saving if either a new file is selected, or an image path exists (not base64), or a base64 image exists
+                        
                         const hasExistingImage = item.signature_img && typeof item.signature_img ===
                             'string' && item.signature_img !== '' && !item.signature_img.startsWith(
                                 'data:');
@@ -1820,12 +1779,12 @@
                             toastr.error('Please select an image for the carousel item.');
                             return;
                         }
-                        // Update the item in the main array
+                        
                         this.heroSection.data.carousel_items[idx] = JSON.parse(JSON.stringify(item));
-                        // Always update carousel_count to match the array length
+                        
                         this.heroSection.data.carousel_count = this.heroSection.data.carousel_items
                             .length;
-                        // Always send the full, up-to-date carousel_items array
+                        
                         const formData = new FormData();
                         formData.append('name', 'hero');
                         formData.append('is_enabled', this.heroSection.is_enabled === true ? 'true' :
