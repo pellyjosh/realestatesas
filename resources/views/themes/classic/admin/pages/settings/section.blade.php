@@ -803,9 +803,7 @@
                                     <option :value="city" x-text="city"></option>
                                 </template>
                             </select>
-                            <button class="btn btn-success btn-xs" type="button" @click="addCity()"
-                                :disabled="!selectedCityToAdd || (citiesSection.data.cities && citiesSection.data.cities.length >=
-                                    20)">
+                            <button class="btn btn-success btn-xs" type="button" @click="addCity()">
                                 Add
                             </button>
                         </div>
@@ -892,6 +890,14 @@
                     testimonialsLimit: 6,
                     loadingTestimonials: false,
                     openTestimonialModal(testimonial = null, idx = null) {
+                        // Prevent adding more testimonials than the limit
+                        if (!testimonial && (this.testimonials.length >= Number(this.testimonialsLimit ||
+                                6))) {
+                            toastr.warning(
+                                'Testimonial limit reached. Please increase the limit or delete an existing testimonial to add a new one.'
+                            );
+                            return;
+                        }
                         if (testimonial) {
                             this.testimonialModalData = {
                                 ...testimonial
@@ -1495,35 +1501,35 @@
                     testimonialsSection: sections.find(s => s.name === 'testimonials') || {
                         // Will be initialized in init()
                     },
-                    
+
                     getImageUrl(src) {
                         if (!src) return src;
-                        
+
                         if (/^https?:\/\//i.test(src)) return src;
 
-                        
+
                         if (src.startsWith('/storage') || src.startsWith('storage')) {
                             return window.location.origin + (src.startsWith('/') ? '' : '/') + src;
                         }
 
-                        
+
                         if (src.indexOf('/storage/') !== -1) {
                             const idx = src.indexOf('/storage/');
                             return window.location.origin + src.slice(idx);
                         }
 
-                        
+
                         if (!src.includes('/') && src.match(/\.(png|jpe?g|webp|gif)$/i)) {
                             return window.location.origin + '/storage/tenantclient1/testimonials/' + src;
                         }
 
-                        
+
                         if (src.match(/testimonials\/.+\.(png|jpe?g|webp|gif)$/i)) {
                             // Ensure leading slash
                             return window.location.origin + '/' + src.replace(/^\//, '');
                         }
 
-                        
+
                         return src;
                     },
                     aboutSection: sections.find(s => s.name === 'about') || {
@@ -1544,7 +1550,10 @@
                         return (window.uniqueCities || []).filter(city => !added.includes(city));
                     },
                     addCity() {
-                        if (!this.selectedCityToAdd) return;
+                        if (!this.selectedCityToAdd) {
+                            toastr.warning('Please select a city to add.');
+                            return;
+                        }
                         if (!this.citiesSection.data.cities) this.citiesSection.data.cities = [];
                         if (this.citiesSection.data.cities.length >= 20) {
                             toastr.warning('Maximum of 20 cities allowed.');
@@ -1664,7 +1673,7 @@
 
                     getPropertyName(propertyId) {
                         const property = this.allProperties.find(p => p.id === propertyId);
-                        
+
                         return property ? property.name : '';
                     },
 
@@ -1686,18 +1695,16 @@
                     toggleSection(sectionName) {
                         const sectionData = this[`${sectionName}Section`];
                         if (sectionData) {
-                            
+
                             this.saveSectionData(sectionName, sectionData);
                         }
                     },
 
                     saveSectionData(sectionName, sectionData) {
-                        // Accept an optional callback to run after a successful save
                         let callback = null;
                         if (arguments.length > 2 && typeof arguments[2] === 'function') {
                             callback = arguments[2];
                         }
-                        // saving section
                         fetch(`/management/sections/${sectionName}`, {
                                 method: 'POST',
                                 headers: {
@@ -1731,16 +1738,31 @@
                                         try {
                                             const s = data.section;
                                             const key = s.name + 'Section';
-                                            // preserve is_enabled and data
+                                            // ensure object exists
                                             this[key] = this[key] || {};
                                             this[key].is_enabled = s.is_enabled;
-                                            this[key].data = s.data || this[key].data || {};
+
+                                            // Merge server data with existing client data for cities to avoid losing optimistic updates
+                                            if (s.name === 'cities') {
+                                                const existing = this[key].data || {};
+                                                existing.cities = existing.cities || [];
+                                                const server = s.data || {};
+                                                if (Array.isArray(server.cities) && server.cities
+                                                    .length) {
+                                                    existing.cities = server.cities;
+                                                }
+                                                this[key].data = existing;
+                                            } else {
+                                                // For other sections prefer server data but fall back to existing
+                                                this[key].data = s.data || this[key].data || {};
+                                            }
 
                                             // If testimonials, sync limit and items immediately
                                             if (s.name === 'testimonials') {
                                                 this.testimonialsLimit = Number(this[key].data.limit) ||
                                                     this.testimonialsLimit;
-                                                const items = this[key].data.items || [];
+                                                const items = this.key && this[key].data ? this[key]
+                                                    .data.items || [] : (this[key].data.items || []);
                                                 this.testimonials = items.slice(0, Number(this
                                                     .testimonialsLimit) || items.length);
                                                 // Resolve images for newly synced items
@@ -1769,7 +1791,7 @@
                         if (this.showCarouselEdit === null) return;
                         const idx = this.showCarouselEdit;
                         const item = this.carouselEditItem;
-                        
+
                         const hasExistingImage = item.signature_img && typeof item.signature_img ===
                             'string' && item.signature_img !== '' && !item.signature_img.startsWith(
                                 'data:');
@@ -1779,12 +1801,12 @@
                             toastr.error('Please select an image for the carousel item.');
                             return;
                         }
-                        
+
                         this.heroSection.data.carousel_items[idx] = JSON.parse(JSON.stringify(item));
-                        
+
                         this.heroSection.data.carousel_count = this.heroSection.data.carousel_items
                             .length;
-                        
+
                         const formData = new FormData();
                         formData.append('name', 'hero');
                         formData.append('is_enabled', this.heroSection.is_enabled === true ? 'true' :

@@ -156,15 +156,31 @@ class SectionController extends Controller
             $request->merge(['data' => $newData]);
         }
 
+        // If saving cities: when the client provides a `cities` array treat it as the source of truth
+        // (normalize + dedupe). This ensures removes persist. If `cities` is not provided, don't change it.
+        if ($sectionName === 'cities') {
+            $incoming = $request->input('data', []);
+            if (array_key_exists('cities', $incoming)) {
+                $incomingCities = is_array($incoming['cities']) ? $incoming['cities'] : [];
+                // normalize strings and remove empties
+                $incomingCities = array_values(array_filter(array_map(function ($c) {
+                    return is_string($c) ? trim($c) : $c;
+                }, $incomingCities)));
+                // dedupe while preserving order
+                $incoming['cities'] = array_values(array_unique($incomingCities));
+                $request->merge(['data' => $incoming]);
+            }
+        }
+
         $request->validate([
             'is_enabled' => 'required|boolean',
             'data' => 'nullable|array',
             'data.limit' => 'nullable|integer|min:1|max:6',
-            'data.selected_properties' => 'nullable|array|max:6', 
-            'data.selected_properties.*' => 'exists:properties,id', 
-            'data.featured_limit' => 'nullable|integer|min:1|max:6', 
-            'data.featured_selected_properties' => 'nullable|array|max:6', 
-            'data.featured_selected_properties.*' => 'exists:properties,id', 
+            'data.selected_properties' => 'nullable|array|max:6',
+            'data.selected_properties.*' => 'exists:properties,id',
+            'data.featured_limit' => 'nullable|integer|min:1|max:6',
+            'data.featured_selected_properties' => 'nullable|array|max:6',
+            'data.featured_selected_properties.*' => 'exists:properties,id',
         ]);
 
 
