@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Tenant\Admin\HomeSection;
 use App\Models\Property;
+use Illuminate\Support\Facades\Storage;
 
 class SectionController extends Controller
 {
@@ -106,7 +107,18 @@ class SectionController extends Controller
 
             // Update hero_banner if a new file is uploaded
             if ($request->hasFile('hero_banner')) {
-                $newData['hero_banner'] = $request->file('hero_banner')->store('public/hero_banners');
+                $path = $request->file('hero_banner')->store('public/hero_banners');
+                // store() returns a path like "public/hero_banners/xxx.jpg"; convert to public URL
+                $newData['hero_banner'] = Storage::url($path);
+            } elseif ($request->has('hero_banner') && is_string($request->input('hero_banner')) && str_starts_with($request->input('hero_banner'), 'data:image')) {
+                // Accept base64 hero_banner when provided (decode and store)
+                $image = str_replace(' ', '+', $request->input('hero_banner'));
+                $imageData = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $image));
+                if ($imageData !== false) {
+                    $imageName = 'hero_banners/' . uniqid() . '.png';
+                    Storage::disk('public')->put($imageName, $imageData);
+                    $newData['hero_banner'] = Storage::url($imageName);
+                }
             }
 
             // Accept carousel_items array directly from the request (API/JSON)
@@ -118,12 +130,25 @@ class SectionController extends Controller
                     $carousel_items[$idx]['id'] = isset($item['id']) ? $item['id'] : ($idx + 1);
                     // Only accept real file uploads or existing file paths, never base64
                     if ($request->hasFile("carousel_img_{$idx}")) {
-                        $carousel_items[$idx]['signature_img'] = $request->file("carousel_img_{$idx}")->store('public/carousel_images');
-                    } elseif (isset($item['signature_img']) && is_string($item['signature_img']) && strpos($item['signature_img'], 'public/carousel_images/') === 0) {
-                        // Accept existing file path
-                        $carousel_items[$idx]['signature_img'] = $item['signature_img'];
+                        $path = $request->file("carousel_img_{$idx}")->store('public/carousel_images');
+                        $carousel_items[$idx]['signature_img'] = Storage::url($path);
+                    } elseif (isset($item['signature_img']) && is_string($item['signature_img'])) {
+                        // If an existing storage path was provided, accept it
+                        if (strpos($item['signature_img'], 'public/carousel_images/') === 0) {
+                            $carousel_items[$idx]['signature_img'] = Storage::url($item['signature_img']);
+                        } elseif (str_starts_with($item['signature_img'], 'data:image')) {
+                            // Decode base64 data URI and store to public disk
+                            $image = str_replace(' ', '+', $item['signature_img']);
+                            $imageData = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $image));
+                            $imageName = 'carousel_images/' . uniqid() . '.png';
+                            Storage::disk('public')->put($imageName, $imageData);
+                            $carousel_items[$idx]['signature_img'] = Storage::url($imageName);
+                        } else {
+                            // If it's already a URL or other path, keep as-is
+                            $carousel_items[$idx]['signature_img'] = $item['signature_img'];
+                        }
                     } else {
-                        // Ignore base64 or invalid data
+                        // No image provided
                         $carousel_items[$idx]['signature_img'] = null;
                     }
                 }
@@ -141,9 +166,21 @@ class SectionController extends Controller
                     $item['hero_title'] = $request->input("carousel_title_{$idx}", '');
                     $item['cta_button'] = $request->input("carousel_cta_{$idx}", '');
                     if ($request->hasFile("carousel_img_{$idx}")) {
-                        $item['signature_img'] = $request->file("carousel_img_{$idx}")->store('public/carousel_images');
+                        $path = $request->file("carousel_img_{$idx}")->store('public/carousel_images');
+                        $item['signature_img'] = Storage::url($path);
                     } elseif ($request->has("carousel_img_path_{$idx}")) {
-                        $item['signature_img'] = $request->input("carousel_img_path_{$idx}");
+                        $val = $request->input("carousel_img_path_{$idx}");
+                        if (is_string($val) && str_starts_with($val, 'data:image')) {
+                            $image = str_replace(' ', '+', $val);
+                            $imageData = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $image));
+                            $imageName = 'carousel_images/' . uniqid() . '.png';
+                            Storage::disk('public')->put($imageName, $imageData);
+                            $item['signature_img'] = Storage::url($imageName);
+                        } elseif (is_string($val) && strpos($val, 'public/carousel_images/') === 0) {
+                            $item['signature_img'] = Storage::url($val);
+                        } else {
+                            $item['signature_img'] = $val;
+                        }
                     } else {
                         $item['signature_img'] = null;
                     }
@@ -156,7 +193,6 @@ class SectionController extends Controller
             $request->merge(['data' => $newData]);
         }
 
-        // If saving cities: when the client provides a `cities` array treat it as the source of truth
         // (normalize + dedupe). This ensures removes persist. If `cities` is not provided, don't change it.
         if ($sectionName === 'cities') {
             $incoming = $request->input('data', []);
@@ -168,6 +204,26 @@ class SectionController extends Controller
                 }, $incomingCities)));
                 // dedupe while preserving order
                 $incoming['cities'] = array_values(array_unique($incomingCities));
+                $request->merge(['data' => $incoming]);
+            }
+        }
+
+        // If saving testimonials as part of a section payload, accept base64 images and store them
+        if ($sectionName === 'testimonials') {
+            $incoming = $request->input('data', []);
+            $items = $incoming['items'] ?? [];
+            if (is_array($items) && count($items)) {
+                foreach ($items as $i => $it) {
+                    if (isset($it['image']) && is_string($it['image']) && str_starts_with($it['image'], 'data:image')) {
+                        // decode and store the base64 image to public disk and replace with URL
+                        $image = str_replace(' ', '+', $it['image']);
+                        $imageData = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $image));
+                        $imageName = 'testimonials/' . uniqid() . '.png';
+                        Storage::disk('public')->put($imageName, $imageData);
+                        $items[$i]['image'] = Storage::url($imageName);
+                    }
+                }
+                $incoming['items'] = $items;
                 $request->merge(['data' => $incoming]);
             }
         }

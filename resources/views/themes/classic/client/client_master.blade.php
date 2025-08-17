@@ -60,6 +60,7 @@
     <!-- Template css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('themes/classic/client/assets/css/bootstrap.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('themes/classic/client/assets/css/color1.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('themes/classic/client/assets/css/client-overrides.css') }}">
 
     <style>
         /* Sticky WhatsApp Button */

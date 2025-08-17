@@ -1,0 +1,20 @@
+/* Overrides to scope realtor slider arrows inside the realtor/about block */
+.about-1.about-wrap {
+    position: relative;
+    overflow: visible;
+}
+
+.about-1.about-wrap .slick-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 5;
+}
+
+.about-1.about-wrap .slick-prev {
+    left: 10px;
+}
+
+.about-1.about-wrap .slick-next {
+    right: 10px;
+}

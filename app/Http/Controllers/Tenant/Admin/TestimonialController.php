@@ -44,7 +44,11 @@ class TestimonialController extends Controller
             'image' => 'nullable|string',
         ]);
         $testimonial['id'] = uniqid('t_');
-        if ($testimonial['image'] && str_starts_with($testimonial['image'], 'data:image')) {
+        // If a file was uploaded via multipart/form-data, prefer that
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('testimonials', 'public');
+            $testimonial['image'] = Storage::url($path);
+        } elseif (!empty($testimonial['image']) && str_starts_with($testimonial['image'], 'data:image')) {
             $testimonial['image'] = $this->saveBase64Image($testimonial['image']);
         }
         $data['items'][] = $testimonial;
@@ -64,8 +68,14 @@ class TestimonialController extends Controller
         foreach ($data['items'] as &$item) {
             if ($item['id'] == $id) {
                 foreach ($testimonial as $k => $v) {
-                    if ($k === 'image' && $v && str_starts_with($v, 'data:image')) {
-                        $v = $this->saveBase64Image($v);
+                    if ($k === 'image') {
+                        // prefer uploaded file if present
+                        if ($request->hasFile('image')) {
+                            $path = $request->file('image')->store('testimonials', 'public');
+                            $v = Storage::url($path);
+                        } elseif ($v && str_starts_with($v, 'data:image')) {
+                            $v = $this->saveBase64Image($v);
+                        }
                     }
                     $item[$k] = $v;
                 }

@@ -924,11 +924,10 @@
                     },
                     handleTestimonialImage(event) {
                         if (event.target.files && event.target.files[0]) {
-                            const reader = new FileReader();
-                            reader.onload = (e) => {
-                                this.testimonialModalData.image = e.target.result;
-                            };
-                            reader.readAsDataURL(event.target.files[0]);
+                            // store file reference for FormData upload and set a preview URL
+                            this.testimonialImageFile = event.target.files[0];
+                            this.testimonialModalData.image = URL.createObjectURL(this
+                            .testimonialImageFile);
                         }
                     },
                     fetchTestimonials() {
@@ -971,7 +970,26 @@
                         const url = isEdit ? `/management/testimonials/${this.testimonialModalData.id}` :
                             '/management/testimonials';
                         const method = isEdit ? 'PUT' : 'POST';
-                        fetch(url, {
+
+                        // If a File was selected, use FormData to send multipart/form-data
+                        let fetchOptions = {};
+                        if (this.testimonialImageFile) {
+                            const formData = new FormData();
+                            formData.append('name', this.testimonialModalData.name);
+                            formData.append('description', this.testimonialModalData.description);
+                            formData.append('image', this.testimonialImageFile);
+                            // method override for PUT when editing via FormData
+                            if (method === 'PUT') formData.append('_method', 'PUT');
+                            fetchOptions = {
+                                method: 'POST', // Laravel will respect _method when present
+                                headers: {
+                                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')
+                                        .getAttribute('content')
+                                },
+                                body: formData
+                            };
+                        } else {
+                            fetchOptions = {
                                 method,
                                 headers: {
                                     'Content-Type': 'application/json',
@@ -984,7 +1002,10 @@
                                     image: this.testimonialModalData.image,
                                     description: this.testimonialModalData.description
                                 })
-                            })
+                            };
+                        }
+
+                        fetch(url, fetchOptions)
                             .then(async res => {
                                 const contentType = res.headers.get('content-type');
                                 let data;
@@ -1019,6 +1040,8 @@
                                     this.resolveTestimonialImages();
                                 }
                                 this.closeTestimonialModal();
+                                // reset file reference
+                                this.testimonialImageFile = null;
                             })
                             .catch((e) => {
                                 toastr.error('Failed to save testimonial');

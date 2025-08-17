@@ -1,5 +1,16 @@
     <!-- header start -->
-    <header class="header-1 header-6">
+    @php
+        // If the homepage hero section is not present or is disabled,
+        // render the header as an "inner-page" header so it remains visible
+        // (some theme styles position the header over the hero and it can
+        // become visually hidden when no hero is present).
+        $hero = $sections['hero'] ?? null;
+        $headerClasses = 'header-1 header-6';
+        if (!($hero && ($hero->is_enabled ?? false))) {
+            $headerClasses .= ' inner-page light-header shadow-cls';
+        }
+    @endphp
+    <header class="{{ $headerClasses }}">
         <div class="container">
             <div class="row">
                 <div class="col">
@@ -97,7 +108,21 @@
                                                     style="width: 20px; height: 20px; line-height: 30px; text-align: center; font-size: 16px;"></i>
                                             </a>
                                             <ul class="nav-submenu dropdown-menu">
-                                                <li><a href="{{ route('tenant.user.dashboard') }}">Dashboard</a></li>
+                                                @php
+                                                    $dashboardRoute = 'tenant.user.dashboard';
+                                                    if (auth()->guard('tenant')->check()) {
+                                                        $u = auth()->guard('tenant')->user();
+                                                        $t = $u->type ?? null;
+                                                        if ($t === 'admin') {
+                                                            $dashboardRoute = 'tenant.admin.dashboard';
+                                                        } elseif ($t === 'realtor') {
+                                                            $dashboardRoute = 'tenant.realtor.dashboard';
+                                                        } else {
+                                                            $dashboardRoute = 'tenant.user.dashboard';
+                                                        }
+                                                    }
+                                                @endphp
+                                                <li><a href="{{ route($dashboardRoute) }}">Dashboard</a></li>
                                                 <li><a href="{{ route('tenant.user.profile') }}">Profile</a></li>
                                                 <li>
                                                     <form method="POST" action="{{ route('tenant.logout') }}">
