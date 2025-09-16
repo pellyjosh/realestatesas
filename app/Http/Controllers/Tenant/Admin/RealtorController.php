@@ -426,4 +426,17 @@ class RealtorController extends Controller
 
         return asset('assets/images/avatar/default-avatar.png'); // Default avatar
     }
+
+    public function realtorProfile(Realtor $realtor)
+    {
+        // Ensure the realtor has an associated user
+        if (!$realtor->user) {
+            abort(404);
+        }
+
+        // Provide both the Realtor model and its TenantUser to the view
+        $user = $realtor->user;
+
+        return tenant_view('admin.pages.realtor.realtor-profile', compact('realtor', 'user'));
+    }
 }

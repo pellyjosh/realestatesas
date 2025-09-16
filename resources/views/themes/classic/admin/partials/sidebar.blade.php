@@ -37,7 +37,7 @@
                  <li class="sidebar-item">
                      <a href="javascript:void(0)" class="sidebar-link">
                          <i data-feather="grid"></i>
-                         <span>My properties</span>
+                         <span>Properties</span>
                      </a>
                      <ul class="nav-submenu menu-content">
                          <li>
@@ -52,12 +52,6 @@
                                  property list
                              </a>
                          </li>
-                         <li>
-                             <a href="{{ route('tenant.admin.favourites') }}">
-                                 <i data-feather="chevrons-right"></i>
-                                 Favourites
-                             </a>
-                         </li>
                      </ul>
                  </li>
                  <li class="sidebar-item">
@@ -67,25 +61,19 @@
                      </a>
                      <ul class="nav-submenu menu-content">
                          <li>
-                             <a href="{{ route('tenant.admin.add.user') }}">
+                             <a href="{{ route('tenant.admin.add-user') }}">
                                  <i data-feather="chevrons-right"></i>
                                  Add user
                              </a>
                          </li>
                          <li>
-                             <a href="{{ route('tenant.admin.add.user.wizard') }}">
+                             <a href="{{ route('tenant.admin.add-user-wizard') }}">
                                  <i data-feather="chevrons-right"></i>
                                  Add user wizard <span class="label label-shadow ms-1">new</span>
                              </a>
                          </li>
                          <li>
-                             <a href="{{ route('tenant.edit.user') }}">
-                                 <i data-feather="chevrons-right"></i>
-                                 Edit user
-                             </a>
-                         </li>
-                         <li>
-                             <a href="{{ route('tenant.all.users') }}">
+                             <a href="{{ route('tenant.admin.all-users') }}">
                                  <i data-feather="chevrons-right"></i>
                                  All users
                              </a>
@@ -110,12 +98,12 @@
                                  Add Admin wizard <span class="label label-shadow ms-1">new</span>
                              </a>
                          </li>
-                         <li>
+                         {{-- <li>
                              <a href="{{ route('tenant.admin.edit') }}">
                                  <i data-feather="chevrons-right"></i>
                                  Edit Admin
                              </a>
-                         </li>
+                         </li> --}}
                          <li>
                              <a href="{{ route('tenant.admin.all') }}">
                                  <i data-feather="chevrons-right"></i>
@@ -149,10 +137,10 @@
                              </a>
                          </li>
                         <li>
-                            <a href="{{ route('tenant.admin.all.realtors') }}">
+                            {{-- <a href="{{ route('tenant.admin.edit.realtor')}}">
                                 <i data-feather="chevrons-right"></i>
                                 Edit Realtor
-                            </a>
+                            </a> --}}
                         </li>
                          <li>
                              <a href="{{ route('tenant.admin.all.realtors') }}">
@@ -184,7 +172,7 @@
                  <li class="sidebar-item">
                      <a href="{{ route('tenant.admin.withdrawal') }}" class="sidebar-link only-link">
                          <i data-feather="credit-card"></i>
-                         <span>Withdrawal</span>
+                         <span>Withdrawals</span>
                      </a>
                  </li>
                  <li class="sidebar-item">

@@ -31,11 +31,26 @@ return [
 
     'connections' => [
 
-        // 'tenant' => [
-        //     'driver' => 'sqlite',
-        //     'database' => '', // Empty; will be filled dynamically
-        //     'prefix' => '',
-        // ],
+        'tenant' => [
+            'driver' => env('DB_TENANT_DRIVER', 'mysql'),
+            'url' => env('DB_TENANT_URL'),
+            'host' => env('DB_TENANT_HOST', env('DB_HOST', '127.0.0.1')),
+            'port' => env('DB_TENANT_PORT', env('DB_PORT', '3306')),
+            // Intentionally empty by default: tenancy managers typically fill this at runtime.
+            'database' => env('DB_TENANT_DATABASE', ''),
+            'username' => env('DB_TENANT_USERNAME', env('DB_USERNAME', 'root')),
+            'password' => env('DB_TENANT_PASSWORD', env('DB_PASSWORD', '')),
+            'unix_socket' => env('DB_TENANT_SOCKET', env('DB_SOCKET', '')),
+            'charset' => env('DB_TENANT_CHARSET', env('DB_CHARSET', 'utf8mb4')),
+            'collation' => env('DB_TENANT_COLLATION', env('DB_COLLATION', 'utf8mb4_unicode_ci')),
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'strict' => true,
+            'engine' => null,
+            'options' => extension_loaded('pdo_mysql') ? array_filter([
+                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+            ]) : [],
+        ],
 
         'sqlite' => [
             'driver' => 'sqlite',
@@ -153,7 +168,7 @@ return [
 
         'options' => [
             'cluster' => env('REDIS_CLUSTER', 'redis'),
-            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_database_'),
+            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_') . '_database_'),
             'persistent' => env('REDIS_PERSISTENT', false),
         ],
 

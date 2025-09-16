@@ -1,3 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Fix: ensure property slider doesn't overlap or push up into details */
+.property-section .property-box .property-image {
+    overflow: hidden;
+    /* prevent slides from escaping container */
+    position: relative;
+    /* establish stacking context */
+}
+
+.property-section .property-box .property-image .property-slider .slick-slide {
+    position: relative;
+    /* prevent absolute stacking that can overlap siblings */
+    z-index: 1;
+}
+
+.property-section .property-box .property-details {
+    position: relative;
+    /* ensure details sit above the slider */
+    z-index: 2;
+    background: transparent;
+    /* keep existing look but above slider */
+}
+
+/* Defensive: when slick applies transforms, ensure slides don't escape */
+.property-section .property-box .property-image .slick-list,
+.property-section .property-box .property-image .slick-track {
+    overflow: hidden;
+}

@@ -342,10 +342,12 @@
                                         <div class="d-flex align-items-center gap-2">
                                             <button type="button" class="btn btn-sm"
                                                 :class="viewType === 'grid' ? 'btn-primary' : 'btn-outline-primary'"
-                                                @click="viewType = 'grid'" style="min-width: 90px;">Grid View</button>
+                                                @@click="viewType = 'grid'" style="min-width: 90px;">Grid
+                                                View</button>
                                             <button type="button" class="btn btn-sm"
                                                 :class="viewType === 'list' ? 'btn-primary' : 'btn-outline-primary'"
-                                                @click="viewType = 'list'" style="min-width: 90px;">List View</button>
+                                                @@click="viewType = 'list'" style="min-width: 90px;">List
+                                                View</button>
                                         </div>
                                     </div>
                                 </div>
@@ -359,7 +361,7 @@
                                             <button type="button" class="btn btn-pill color-1"
                                                 :class="selectedFilter === filter ? 'active-filter-btn' : 'btn-outline-primary'"
                                                 x-text="filter === 'all' ? 'All' : (filter === 'featured' ? 'Featured' : 'Latest For Sale')"
-                                                @click="selectedFilter = filter"
+                                                @@click="selectedFilter = filter"
                                                 style="transition: box-shadow 0.2s, background 0.2s; min-width: 120px;"></button>
                                         </template>
                                     </div>
@@ -480,7 +482,7 @@
                                             <button type="button" class="btn btn-pill color-1"
                                                 :class="selectedFilter === filter ? 'active-filter-btn' : 'btn-outline-primary'"
                                                 x-text="filter === 'all' ? 'All' : (filter === 'featured' ? 'Featured' : 'Latest For Sale')"
-                                                @click="selectedFilter = filter"
+                                                @@click="selectedFilter = filter"
                                                 style="transition: box-shadow 0.2s, background 0.2s; min-width: 120px;"></button>
                                         </template>
                                     </div>

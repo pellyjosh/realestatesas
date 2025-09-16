@@ -28,9 +28,9 @@
                     <div class="property-2 row column-sm property-label property-grid">
                         @forelse($realtors as $realtor)
                             <div class="col-xl-4 col-md-6 wow fadeInUp">
-                                <div class="property-box">
+                                <div class="property-box" x-data="editRealtorModal({{ json_encode(array_merge($realtor->toArray(), ['user' => $realtor->user ? $realtor->user->toArray() : null])) }}, {{ $realtor->id }}, '{{ route('tenant.admin.destroy.realtor', $realtor->id) }}')">
                                     <div class="agent-image">
-                                        <div style="position: relative;" x-data="editRealtorModal({{ json_encode(array_merge($realtor->toArray(), ['user' => $realtor->user ? $realtor->user->toArray() : null])) }}, {{ $realtor->id }}, '{{ route('tenant.admin.destroy.realtor', $realtor->id) }}')">
+                                        <div style="position: relative;">
                                             @php
                                                 $tenantId = tenant('id');
                                                 $imagePath = null;
@@ -85,7 +85,8 @@
                                                     </button>
                                                 </div>
                                             </div>
-                                            <span class="label label-shadow">0 properties</span>
+                                            <span class="label label-shadow"
+                                                x-text="form && form.status ? (form.status.charAt(0).toUpperCase() + form.status.slice(1)) : '{{ ucfirst($realtor->status ?? 'active') }}'">{{ ucfirst($realtor->status ?? 'active') }}</span>
                                             <div class="agent-overlay"></div>
                                             <div class="overlay-content">
                                                 <ul>
@@ -117,12 +118,31 @@
                                             <div class="d-flex align-items-center">
                                                 <button class="btn btn-warning btn-sm p-1" style="font-size: 0.8em;"
                                                     @click="toggleSuspendRealtor" :disabled="isSuspending">
-                                                    <template x-if="form.status === 'suspended'">
-                                                        <i class="fas fa-play" style="color: white;"></i>
-                                                    </template>
-                                                    <template x-if="form.status !== 'suspended'">
-                                                        <i class="fas fa-ban" style="color: white;"></i>
-                                                    </template>
+                                                    <span x-show="form.status === 'suspended'" aria-hidden="true"
+                                                        style="display:inline-block;">
+                                                        <!-- Inline play SVG (keeps existing styling) -->
+                                                        <svg xmlns="http://www.w3.org/2000/svg" role="img"
+                                                            width="14" height="14" viewBox="0 0 24 24"
+                                                            fill="currentColor"
+                                                            style="display:inline-block;width:14px;height:14px;color:white;vertical-align:middle;">
+                                                            <title>Play</title>
+                                                            <path d="M8 5v14l11-7z" />
+                                                        </svg>
+                                                    </span>
+                                                    <span x-show="form.status !== 'suspended'" aria-hidden="true"
+                                                        style="display:inline-block;">
+                                                        <!-- Inline ban (prohibit) SVG (keeps existing styling) -->
+                                                        <svg xmlns="http://www.w3.org/2000/svg" role="img"
+                                                            width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            style="display:inline-block;width:14px;height:14px;color:white;vertical-align:middle;">
+                                                            <title>Ban</title>
+                                                            <circle cx="12" cy="12" r="9"></circle>
+                                                            <line x1="5" y1="5" x2="19"
+                                                                y2="19"></line>
+                                                        </svg>
+                                                    </span>
                                                 </button>
                                                 <button @click="openEditModal()" class="btn btn-primary btn-sm mx-1 p-1"
                                                     style="font-size: 0.8em;"><i class="fas fa-edit"

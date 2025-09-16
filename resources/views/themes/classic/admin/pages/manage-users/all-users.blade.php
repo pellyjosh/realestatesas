@@ -1,5 +1,5 @@
-@extends('themes.classic.realtor.realtor_master')
-@section('title, All Users | Premium Refined Luxury Homes')
+@extends('themes.classic.admin.admin_master')
+@section('title', 'All Users | Premium Refined Luxury Homes')
 @section('content')
     <!-- Container-fluid start -->
     <div class="container-fluid">
@@ -8,7 +8,7 @@
                 <div class="col-sm-6">
                     <div class="page-header-left">
                         <h3>All users
-                            <small>Welcome to realtor panel</small>
+                            <small>Welcome to Admin panel</small>
                         </h3>
                     </div>
                 </div>
@@ -17,7 +17,7 @@
                     <!-- Breadcrumb start -->
                     <ol class="breadcrumb pull-right">
                         <li class="breadcrumb-item">
-                            <a href="index.html">
+                            <a href="{{ route('tenant.admin.dashboard') }}">
                                 <i class="fa fa-home"></i>
                             </a>
                         </li>
@@ -41,22 +41,22 @@
                             <div class="property-box">
                                 <div class="agent-image">
                                     <div>
-                                        <img src="{{ asset('admin/assets/images/avatar/5.jpg') }}" class="bg-img"
+                                        <img src="{{ asset('themes/classic/admin/assets/images/avatar/5.jpg') }}" class="bg-img"
                                             alt="">
                                         <span class="label label-shadow">New user</span>
                                         <div class="agent-overlay"></div>
                                         <div class="overlay-content">
                                             <ul>
                                                 <li><a href="https://www.google.com/"><img
-                                                            src="{{ asset('client/assets/images/about/icon-1.png') }}"
+                                                            src="{{ asset('themes/classic/client/assets/images/about/icon-1.png') }}"
                                                             alt=""></a>
                                                 </li>
                                                 <li><a href="https://twitter.com/"><img
-                                                            src="{{ asset('client/assets/images/about/icon-2.png') }}"
+                                                            src="{{ asset('themes/classic/client/assets/images/about/icon-2.png') }}"
                                                             alt=""></a>
                                                 </li>
                                                 <li><a href="https://www.facebook.com/"><img
-                                                            src="{{ asset('client/assets/images/about/icon-3.png') }}"
+                                                            src="{{ asset('themes/classic/client/assets/images/about/icon-3.png') }}"
                                                             alt=""></a>
                                                 </li>
                                             </ul>
@@ -80,7 +80,7 @@
                                         <li><i class="fas fa-envelope"></i> zack@gmail.com</li>
                                         <li><i class="fas fa-fax"></i> 247 054 787</li>
                                     </ul>
-                                    <a href="{{ route('user-profile') }}">View profile <i
+                                    <a href="{{ route('tenant.admin.user-profile') }}">View profile <i
                                             class="fas fa-arrow-right"></i></a>
                                 </div>
                             </div>
@@ -89,21 +89,21 @@
                             <div class="property-box">
                                 <div class="agent-image">
                                     <div>
-                                        <img src="{{ asset('admin/assets/images/avatar/3.jpg') }}" class="bg-img"
+                                        <img src="{{ asset('themes/classic/admin/assets/images/avatar/3.jpg') }}" class="bg-img"
                                             alt="">
                                         <div class="agent-overlay"></div>
                                         <div class="overlay-content">
                                             <ul>
                                                 <li><a href="https://www.google.com/"><img
-                                                            src="{{ asset('client/assets/images/about/icon-1.png') }}"
+                                                            src="{{ asset('themes/classic/client/assets/images/about/icon-1.png') }}"
                                                             alt=""></a>
                                                 </li>
                                                 <li><a href="https://twitter.com/"><img
-                                                            src="{{ asset('client/assets/images/about/icon-2.png') }}"
+                                                            src="{{ asset('themes/classic/client/assets/images/about/icon-2.png') }}"
                                                             alt=""></a>
                                                 </li>
                                                 <li><a href="https://www.facebook.com/"><img
-                                                            src="{{ asset('client/assets/images/about/icon-3.png') }}"
+                                                            src="{{ asset('themes/classic/client/assets/images/about/icon-3.png') }}"
                                                             alt=""></a>
                                                 </li>
                                             </ul>
@@ -127,7 +127,7 @@
                                         <li><i class="fas fa-envelope"></i> life@gmail.in</li>
                                         <li><i class="fas fa-fax"></i> 248 200 325</li>
                                     </ul>
-                                    <a href="{{ route('user-profile') }}">View profile <i
+                                    <a href="{{ route('tenant.admin.user-profile') }}">View profile <i
                                             class="fas fa-arrow-right"></i></a>
                                 </div>
                             </div>
@@ -136,21 +136,21 @@
                             <div class="property-box">
                                 <div class="agent-image">
                                     <div>
-                                        <img src="{{ asset('admin/assets/images/avatar/9.jpg') }}" class="bg-img"
+                                        <img src="{{ asset('themes/classic/admin/assets/images/avatar/9.jpg') }}" class="bg-img"
                                             alt="">
                                         <div class="agent-overlay"></div>
                                         <div class="overlay-content">
                                             <ul>
                                                 <li><a href="https://www.google.com/"><img
-                                                            src="{{ asset('client/assets/images/about/icon-1.png') }}"
+                                                            src="{{ asset('themes/classic/client/assets/images/about/icon-1.png') }}"
                                                             alt=""></a>
                                                 </li>
                                                 <li><a href="https://twitter.com/"><img
-                                                            src="{{ asset('client/assets/images/about/icon-2.png') }}"
+                                                            src="{{ asset('themes/classic/client/assets/images/about/icon-2.png') }}"
                                                             alt=""></a>
                                                 </li>
                                                 <li><a href="https://www.facebook.com/"><img
-                                                            src="{{ asset('client/assets/images/about/icon-3.png') }}"
+                                                            src="{{ asset('themes/classic/client/assets/images/about/icon-3.png') }}"
                                                             alt=""></a>
                                                 </li>
                                             </ul>
@@ -174,7 +174,7 @@
                                         <li><i class="fas fa-envelope"></i> bob@gmail.in</li>
                                         <li><i class="fas fa-fax"></i> 571 241 925</li>
                                     </ul>
-                                    <a href="{{ route('user-profile') }}">View profile <i
+                                    <a href="{{ route('tenant.admin.user-profile') }}">View profile <i
                                             class="fas fa-arrow-right"></i></a>
                                 </div>
                             </div>
@@ -183,22 +183,22 @@
                             <div class="property-box">
                                 <div class="agent-image">
                                     <div>
-                                        <img src="{{ asset('admin/assets/images/avatar/6.jpg') }}" class="bg-img"
+                                        <img src="{{ asset('themes/classic/admin/assets/images/avatar/6.jpg') }}" class="bg-img"
                                             alt="">
                                         <span class="label label-shadow">New user</span>
                                         <div class="agent-overlay"></div>
                                         <div class="overlay-content">
                                             <ul>
                                                 <li><a href="https://www.google.com/"><img
-                                                            src="{{ asset('client/assets/images/about/icon-1.png') }}"
+                                                            src="{{ asset('themes/classic/client/assets/images/about/icon-1.png') }}"
                                                             alt=""></a>
                                                 </li>
                                                 <li><a href="https://twitter.com/"><img
-                                                            src="{{ asset('client/assets/images/about/icon-2.png') }}"
+                                                            src="{{ asset('themes/classic/client/assets/images/about/icon-2.png') }}"
                                                             alt=""></a>
                                                 </li>
                                                 <li><a href="https://www.facebook.com/"><img
-                                                            src="{{ asset('client/assets/images/about/icon-3.png') }}"
+                                                            src="{{ asset('themes/classic/client/assets/images/about/icon-3.png') }}"
                                                             alt=""></a>
                                                 </li>
                                             </ul>
@@ -222,7 +222,7 @@
                                         <li><i class="fas fa-envelope"></i> turner@gmail.in</li>
                                         <li><i class="fas fa-fax"></i> 287 845 317</li>
                                     </ul>
-                                    <a href="{{ route('user-profile') }}">View profile <i
+                                    <a href="{{ route('tenant.admin.user-profile') }}">View profile <i
                                             class="fas fa-arrow-right"></i></a>
                                 </div>
                             </div>
@@ -231,7 +231,7 @@
                             <div class="property-box">
                                 <div class="agent-image">
                                     <div>
-                                        <img src="{{ asset('admin/assets/images/avatar/6.jpg') }}" class="bg-img"
+                                        <img src="{{ asset('themes/classic/admin/assets/images/avatar/6.jpg') }}" class="bg-img"
                                             alt="">
                                         <div class="agent-overlay"></div>
                                         <div class="overlay-content">
@@ -268,7 +268,7 @@
                                         <li><i class="fas fa-envelope"></i> brock@gmail.com</li>
                                         <li><i class="fas fa-fax"></i> 967 218 674</li>
                                     </ul>
-                                    <a href="{{ route('user-profile') }}">View profile <i
+                                    <a href="{{ route('tenant.admin.user-profile') }}">View profile <i
                                             class="fas fa-arrow-right"></i></a>
                                 </div>
                             </div>
@@ -277,21 +277,21 @@
                             <div class="property-box">
                                 <div class="agent-image">
                                     <div>
-                                        <img src="{{ asset('admin/assets/images/avatar/4.jpg') }}" class="bg-img"
+                                        <img src="{{ asset('themes/classic/admin/assets/images/avatar/4.jpg') }}" class="bg-img"
                                             alt="">
                                         <div class="agent-overlay"></div>
                                         <div class="overlay-content">
                                             <ul>
                                                 <li><a href="https://www.google.com/"><img
-                                                            src="{{ asset('client/assets/images/about/icon-1.png') }}"
+                                                            src="{{ asset('themes/classic/client/assets/images/about/icon-1.png') }}"
                                                             alt=""></a>
                                                 </li>
                                                 <li><a href="https://twitter.com/"><img
-                                                            src="{{ asset('client/assets/images/about/icon-2.png') }}"
+                                                            src="{{ asset('themes/classic/client/assets/images/about/icon-2.png') }}"
                                                             alt=""></a>
                                                 </li>
                                                 <li><a href="https://www.facebook.com/"><img
-                                                            src="{{ asset('client/assets/images/about/icon-3.png') }}"
+                                                            src="{{ asset('themes/classic/client/assets/images/about/icon-3.png') }}"
                                                             alt=""></a>
                                                 </li>
                                             </ul>
@@ -315,7 +315,7 @@
                                         <li><i class="fas fa-envelope"></i> marygor@gmail.com</li>
                                         <li><i class="fas fa-fax"></i> 967 218 674</li>
                                     </ul>
-                                    <a href="{{ route('user-profile') }}">View profile <i
+                                    <a href="{{ route('tenant.admin.user-profile') }}">View profile <i
                                             class="fas fa-arrow-right"></i></a>
                                 </div>
                             </div>
@@ -324,7 +324,7 @@
                             <div class="property-box">
                                 <div class="agent-image">
                                     <div>
-                                        <img src="{{ asset('admin/assets/images/avatar/5.jpg') }}" class="bg-img"
+                                        <img src="{{ asset('themes/classic/admin/assets/images/avatar/5.jpg') }}" class="bg-img"
                                             alt="">
                                         <div class="agent-overlay"></div>
                                         <div class="overlay-content">
@@ -361,7 +361,7 @@
                                         <li><i class="fas fa-envelope"></i> zack@gmail.com</li>
                                         <li><i class="fas fa-fax"></i> 247 054 787</li>
                                     </ul>
-                                    <a href="{{ route('user-profile') }}">View profile <i
+                                    <a href="{{ route('tenant.admin.user-profile') }}">View profile <i
                                             class="fas fa-arrow-right"></i></a>
                                 </div>
                             </div>
@@ -370,7 +370,7 @@
                             <div class="property-box">
                                 <div class="agent-image">
                                     <div>
-                                        <img src="{{ asset('admin/assets/images/avatar/3.jpg') }}" class="bg-img"
+                                        <img src="{{ asset('themes/classic/admin/assets/images/avatar/3.jpg') }}" class="bg-img"
                                             alt="">
                                         <div class="agent-overlay"></div>
                                         <div class="overlay-content">
@@ -408,7 +408,7 @@
                                         <li><i class="fas fa-envelope"></i> zack@gmail.com</li>
                                         <li><i class="fas fa-fax"></i> 247 054 787</li>
                                     </ul>
-                                    <a href="{{ route('user-profile') }}">View profile <i
+                                    <a href="{{ route('tenant.admin.user-profile') }}">View profile <i
                                             class="fas fa-arrow-right"></i></a>
                                 </div>
                             </div>

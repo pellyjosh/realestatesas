@@ -1,5 +1,5 @@
 @extends('themes.classic.admin.admin_master')
-@section('title, All Users | Premium Refined Luxury Homes')
+@section('title', 'All Users | Premium Refined Luxury Homes')
 @section('content')
      <!-- Container-fluid start -->
      <div class="container-fluid">
@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="page-header-left">
-                        <h3>All users
+                        <h3>All Admins
                             <small>Welcome to admin panel</small>
                         </h3>
                     </div>
@@ -76,14 +76,14 @@
                                     <div class="d-flex justify-content-between align-items-center mt-2 flex-wrap">
                                         <div class="d-flex align-items-center">
                                             <button class="btn btn-warning btn-sm p-1" style="font-size: 0.8em;"><i class="fas fa-ban" style="color: white;"></i></button>
-                                            <a href="{{ route('tenant.edit.user') }}" class="btn btn-primary btn-sm mx-1 p-1" style="font-size: 0.8em;"><i class="fas fa-edit" style="color: white;"></i></a>
+                                            <a href="{{ route('tenant.admin.edit') }}" class="btn btn-primary btn-sm mx-1 p-1" style="font-size: 0.8em;"><i class="fas fa-edit" style="color: white;"></i></a>
                                             <form action="" style="display:inline;">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger btn-sm p-1" style="font-size: 0.8em;"><i class="fas fa-trash-alt" style="color: white;"></i></button>
                                             </form>
                                         </div>
-                                        <a href="{{ route("tenant.user.profile") }}">View profile <i class="fas fa-arrow-right"></i></a>
+                                        <a href="{{ route("tenant.admin.profile") }}">View profile <i class="fas fa-arrow-right"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -127,7 +127,7 @@
                                     <div class="d-flex justify-content-between align-items-center mt-2 flex-wrap">
                                         <div class="d-flex align-items-center">
                                             <button class="btn btn-warning btn-sm p-1" style="font-size: 0.8em;"><i class="fas fa-ban" style="color: white;"></i></button>
-                                            <a href="{{ route('tenant.edit.user') }}" class="btn btn-primary btn-sm mx-1 p-1" style="font-size: 0.8em;"><i class="fas fa-edit" style="color: white;"></i></a>
+                                            <a href="{{ route('tenant.admin.edit') }}" class="btn btn-primary btn-sm mx-1 p-1" style="font-size: 0.8em;"><i class="fas fa-edit" style="color: white;"></i></a>
                                             <form action="" style="display:inline;">
                                                 @csrf
                                                 @method('DELETE')
@@ -178,7 +178,7 @@
                                     <div class="d-flex justify-content-between align-items-center mt-2 flex-wrap">
                                         <div class="d-flex align-items-center">
                                             <button class="btn btn-warning btn-sm p-1" style="font-size: 0.8em;"><i class="fas fa-ban" style="color: white;"></i></button>
-                                            <a href="{{ route('tenant.edit.user') }}" class="btn btn-primary btn-sm mx-1 p-1" style="font-size: 0.8em;"><i class="fas fa-edit" style="color: white;"></i></a>
+                                            <a href="{{ route('tenant.admin.edit') }}" class="btn btn-primary btn-sm mx-1 p-1" style="font-size: 0.8em;"><i class="fas fa-edit" style="color: white;"></i></a>
                                             <form action="" style="display:inline;">
                                                 @csrf
                                                 @method('DELETE')
@@ -230,7 +230,7 @@
                                     <div class="d-flex justify-content-between align-items-center mt-2 flex-wrap">
                                         <div class="d-flex align-items-center">
                                             <button class="btn btn-warning btn-sm p-1" style="font-size: 0.8em;"><i class="fas fa-ban" style="color: white;"></i></button>
-                                            <a href="{{ route('tenant.edit.user') }}" class="btn btn-primary btn-sm mx-1 p-1" style="font-size: 0.8em;"><i class="fas fa-edit" style="color: white;"></i></a>
+                                            <a href="{{ route('tenant.admin.edit') }}" class="btn btn-primary btn-sm mx-1 p-1" style="font-size: 0.8em;"><i class="fas fa-edit" style="color: white;"></i></a>
                                             <form action="" style="display:inline;">
                                                 @csrf
                                                 @method('DELETE')
@@ -282,7 +282,7 @@
                                     <div class="d-flex justify-content-between align-items-center mt-2 flex-wrap">
                                         <div class="d-flex align-items-center">
                                             <button class="btn btn-warning btn-sm p-1" style="font-size: 0.8em;"><i class="fas fa-ban" style="color: white;"></i></button>
-                                            <a href="{{ route('tenant.edit.user') }}" class="btn btn-primary btn-sm mx-1 p-1" style="font-size: 0.8em;"><i class="fas fa-edit" style="color: white;"></i></a>
+                                            <a href="{{ route('tenant.admin.edit') }}" class="btn btn-primary btn-sm mx-1 p-1" style="font-size: 0.8em;"><i class="fas fa-edit" style="color: white;"></i></a>
                                             <form action="" style="display:inline;">
                                                 @csrf
                                                 @method('DELETE')
@@ -333,7 +333,7 @@
                                     <div class="d-flex justify-content-between align-items-center mt-2 flex-wrap">
                                         <div class="d-flex align-items-center">
                                             <button class="btn btn-warning btn-sm p-1" style="font-size: 0.8em;"><i class="fas fa-ban" style="color: white;"></i></button>
-                                            <a href="{{ route('tenant.edit.user') }}" class="btn btn-primary btn-sm mx-1 p-1" style="font-size: 0.8em;"><i class="fas fa-edit" style="color: white;"></i></a>
+                                            <a href="{{ route('tenant.admin.edit') }}" class="btn btn-primary btn-sm mx-1 p-1" style="font-size: 0.8em;"><i class="fas fa-edit" style="color: white;"></i></a>
                                             <form action="" style="display:inline;">
                                                 @csrf
                                                 @method('DELETE')
@@ -383,7 +383,7 @@
                                     <div class="d-flex justify-content-between align-items-center mt-2 flex-wrap">
                                         <div class="d-flex align-items-center">
                                             <button class="btn btn-warning btn-sm p-1" style="font-size: 0.8em;"><i class="fas fa-ban" style="color: white;"></i></button>
-                                            <a href="{{ route('tenant.edit.user') }}" class="btn btn-primary btn-sm mx-1 p-1" style="font-size: 0.8em;"><i class="fas fa-edit" style="color: white;"></i></a>
+                                            <a href="{{ route('tenant.admin.edit') }}" class="btn btn-primary btn-sm mx-1 p-1" style="font-size: 0.8em;"><i class="fas fa-edit" style="color: white;"></i></a>
                                             <form action="" style="display:inline;">
                                                 @csrf
                                                 @method('DELETE')
@@ -433,7 +433,7 @@
                                     <div class="d-flex justify-content-between align-items-center mt-2 flex-wrap">
                                         <div class="d-flex align-items-center">
                                             <button class="btn btn-warning btn-sm p-1" style="font-size: 0.8em;"><i class="fas fa-ban" style="color: white;"></i></button>
-                                            <a href="{{ route('tenant.edit.user') }}" class="btn btn-primary btn-sm mx-1 p-1" style="font-size: 0.8em;"><i class="fas fa-edit" style="color: white;"></i></a>
+                                            <a href="{{ route('tenant.admin.edit') }}" class="btn btn-primary btn-sm mx-1 p-1" style="font-size: 0.8em;"><i class="fas fa-edit" style="color: white;"></i></a>
                                             <form action="" style="display:inline;">
                                                 @csrf
                                                 @method('DELETE')

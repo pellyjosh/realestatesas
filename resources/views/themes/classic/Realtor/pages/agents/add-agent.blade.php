@@ -1,5 +1,5 @@
 @extends('themes.classic.realtor.realtor_master')
-@section('title, Add Agent | Premium Refined Luxury Homes')
+@section('title', 'Add Agent | Premium Refined Luxury Homes')
 @section('content')
     <!-- Container-fluid start -->
     <div class="container-fluid">

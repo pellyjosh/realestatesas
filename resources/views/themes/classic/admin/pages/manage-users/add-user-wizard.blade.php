@@ -1,5 +1,5 @@
-@extends('themes.classic.realtor.realtor_master')
-@section('title, Add User Wizard | Premium Refined Luxury Homes')
+@extends('themes.classic.admin.admin_master')
+@section('title', 'Add User Wizard | Premium Refined Luxury Homes')
 @section('content')
     <!-- Container-fluid start -->
     <div class="container-fluid">
@@ -8,7 +8,7 @@
                 <div class="col-sm-6">
                     <div class="page-header-left">
                         <h3>Add user wizard
-                            <small>Welcome to realtor panel</small>
+                            <small>Welcome to Admin panel</small>
                         </h3>
                     </div>
                 </div>

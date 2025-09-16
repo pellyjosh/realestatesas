@@ -323,11 +323,6 @@
                                                 <img src="{{ asset('themes/classic/client/assets/images/uploads/upload-7.jpg') }}"
                                                     alt="" class="bg-img" loading="lazy">
                                                 <h4>Land Properties</h4>
-                                                {{-- <span class="box-color"></span>
-                                                            <span class="signature">
-                                                                <img src="{{ asset('client/assets/images/signature/1.png') }}"
-                                                                    alt="">
-                                                            </span> --}}
                                                 <span class="label label-white label-lg color-6">Featured</span>
                                             </div>
                                         </div>
@@ -401,372 +396,142 @@
                 <div class="col">
                     <div class="title-1 color-6">
                         <span class="label label-gradient color-6">Rent</span>
-                        <h2>Latest For Rent</h2>
+                        <h2>Latest Properties</h2>
                         <hr>
                     </div>
                     <div class="property-2 row column-space color-6">
-                        <div class="col-xl-4 col-md-6 wow fadeInUp">
-                            <div class="property-box">
-                                <div class="property-image">
-                                    <div class="property-slider color-6">
-                                        <a href="javascript:void(0)">
-                                            <img src="{{ asset('themes/classic/client/assets/images/uploads/upload-2.png') }}"
-                                                class="bg-img" alt="" loading="lazy">
-                                        </a>
-                                        <a href="javascript:void(0)">
-                                            <img src="{{ asset('themes/classic/client/assets/images/uploads/upload-7.jpg') }}"
-                                                class="bg-img" alt="" loading="lazy">
-                                        </a>
-                                        <a href="javascript:void(0)">
-                                            <img src="{{ asset('themes/classic/client/assets/images/uploads/upload-9.png') }}"
-                                                class="bg-img" alt="" loading="lazy">
-                                        </a>
-                                        <a href="javascript:void(0)">
-                                            <img src="{{ asset('themes/classic/client/assets/images/uploads/upload-2.png') }}"
-                                                class="bg-img" alt="" loading="lazy">
-                                        </a>
-                                    </div>
-                                    <div class="labels-left">
-                                        <div>
-                                            <span class="label label-shadow">sale</span>
+                        @php
+                            $baseProps = $latestProperties ?? ($rentProperties ?? ($properties ?? collect()));
+                            if (!isset($latestProperties) && !isset($rentProperties) && isset($properties)) {
+                                // Sort by created_at descending and take the first few items.
+                                $baseProps = $properties
+                                    ->sortByDesc(function ($p) {
+                                        return $p->created_at ?? null;
+                                    })
+                                    ->take(6);
+                            }
+                        @endphp
+                        @forelse($baseProps as $property)
+                            <div class="col-xl-4 col-md-6 wow fadeInUp">
+                                <div class="property-box">
+                                    <div class="property-image">
+                                        <div class="property-slider color-6">
+                                            @php
+                                                // Resolve property images to full URLs.
+                                                // Tenant storage layout uses: /storage/tenant{tenantId}/...
+                                                $tenantId = function_exists('tenant') && tenant() ? tenant()->id : null;
+                                                $storagePrefix = $tenantId
+                                                    ? '/storage/tenant' . $tenantId . '/'
+                                                    : '/storage/tenantclient1/';
+
+                                                $images = [];
+
+                                                if (
+                                                    !empty($property->images) &&
+                                                    is_iterable($property->images) &&
+                                                    count((array) $property->images) > 0
+                                                ) {
+                                                    foreach ($property->images as $img) {
+                                                        if (empty($img)) {
+                                                            continue;
+                                                        }
+                                                        // If already an absolute URL or starts with a slash, use as-is
+                                                        if (
+                                                            \Illuminate\Support\Str::startsWith($img, [
+                                                                'http://',
+                                                                'https://',
+                                                                '/',
+                                                            ])
+                                                        ) {
+                                                            $images[] = $img;
+                                                        } else {
+                                                            $images[] = $storagePrefix . ltrim($img, '/');
+                                                        }
+                                                    }
+                                                } elseif (!empty($property->image) || !empty($property->image_url)) {
+                                                    $img = $property->image ?? $property->image_url;
+                                                    if (
+                                                        \Illuminate\Support\Str::startsWith($img, [
+                                                            'http://',
+                                                            'https://',
+                                                            '/',
+                                                        ])
+                                                    ) {
+                                                        $images[] = $img;
+                                                    } else {
+                                                        $images[] = $storagePrefix . ltrim($img, '/');
+                                                    }
+                                                } else {
+                                                    $images[] = asset(
+                                                        'themes/classic/client/assets/images/uploads/upload-2.png',
+                                                    );
+                                                }
+                                            @endphp
+                                            @foreach ($images as $img)
+                                                <a href="{{ route('client.property-details', $property->id ?? '#') }}">
+                                                    <img src="{{ $img }}" class="bg-img" alt=""
+                                                        loading="lazy">
+                                                </a>
+                                            @endforeach
+                                        </div>
+                                        <div class="labels-left">
+                                            <div>
+                                                <span class="label label-shadow">{{ $property->status ?? 'Sale' }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="seen-data">
+                                            <i data-feather="camera"></i>
+                                            <span>{{ $property->views ?? '0' }}</span>
+                                        </div>
+                                        <div class="overlay-property-box">
+                                            <a href="#" class="effect-round like" data-bs-toggle="tooltip"
+                                                data-bs-placement="left" title="favourite">
+                                                <i data-feather="heart"></i>
+                                            </a>
                                         </div>
                                     </div>
-                                    <div class="seen-data">
-                                        <i data-feather="camera"></i>
-                                        <span>10</span>
-                                    </div>
-                                    <div class="overlay-property-box">
-
-                                        <a href="#" class="effect-round like" data-bs-toggle="tooltip"
-                                            data-bs-placement="left" title="favourite">
-                                            <i data-feather="heart"></i>
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <div class="property-details">
-                                    <span class="font-roboto">Abuja</span>
-                                    <a href="#">
-                                        <h3>Acorn Farm</h3>
-                                    </a>
-                                    <h6 class="color-6">#6558.00*</h6>
-                                    <p class="font-roboto">Flat, dry land perfect for building ready for immediate
-                                        development.</p>
-                                    <ul>
-                                        <li><i class="fas fa-mountain"></i> Land : 3</li>
-                                        <li><i class="fas fa-building"></i> Properties : 2</li>
-                                        <li>
-                                            <i class="fas fa-ruler-combined"></i> Sq Ft : 5000
-                                        </li>
-                                    </ul>
-                                    <div class="property-btn d-flex">
-                                        <span>August 4, 2022</span>
-                                        <button type="button" class="btn btn-dashed btn-pill color-6">Details</button>
+                                    <div class="property-details">
+                                        <span
+                                            class="font-roboto">{{ $property->location ?? ($property->city ?? '') }}</span>
+                                        <div
+                                            style="display:flex; align-items:center; justify-content:space-between; gap:8px;">
+                                            <a href="{{ route('client.property-details', $property->id ?? '#') }}"
+                                                style="flex:1;">
+                                                <h3 style="margin:0; display:inline-block;">
+                                                    {{ $property->name ?? 'Property' }}</h3>
+                                            </a>
+                                            <div style="flex:0 0 auto;">
+                                                <a href="javascript:void(0)" class="label label-shadow"
+                                                    style="padding:4px 8px; font-size:12px; display:inline-block;">
+                                                    Purchase
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <h6 class="color-6">#{{ number_format($property->price ?? 0) }}*</h6>
+                                        <p class="font-roboto">
+                                            {{ Illuminate\Support\Str::limit($property->description ?? ($property->short_description ?? ''), 120) }}
+                                        </p>
+                                        <ul>
+                                            <li><i class="fas fa-mountain"></i> Land : {{ $property->plot_size ?? '-' }}
+                                            </li>
+                                            <li><i class="fas fa-building"></i> Properties : {{ $property->units ?? '-' }}
+                                            </li>
+                                            <li><i class="fas fa-ruler-combined"></i> Sq Ft : {{ $property->sqft ?? '-' }}
+                                            </li>
+                                        </ul>
+                                        <div class="property-btn d-flex">
+                                            <span>{{ isset($property->created_at) && method_exists($property->created_at, 'format') ? $property->created_at->format('F j, Y') : '' }}</span>
+                                            <a href="{{ route('client.property-details', $property->id ?? '#') }}"
+                                                class="btn btn-dashed btn-pill color-6">Details</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-xl-4 col-md-6 wow fadeInUp">
-                            <div class="property-box">
-                                <div class="property-image">
-                                    <div class="property-slider color-6">
-                                        <a href="javascript:void(0)">
-                                            <img src="{{ asset('themes/classic/client/assets/images/uploads/upload-9.png') }}"
-                                                class="bg-img" alt="" loading="lazy">
-                                        </a>
-                                        <a href="javascript:void(0)">
-                                            <img src="{{ asset('themes/classic/client/assets/images/uploads/upload-7.jpg') }}"
-                                                class="bg-img" alt="" loading="lazy">
-                                        </a>
-                                        <a href="javascript:void(0)">
-                                            <img src="{{ asset('themes/classic/client/assets/images/uploads/upload-2.png') }}"
-                                                class="bg-img" alt="" loading="lazy">
-                                        </a>
-                                        <a href="javascript:void(0)">
-                                            <img src="{{ asset('themes/classic/client/assets/images/property/22.jpg') }}"
-                                                class="bg-img" alt="" loading="lazy">
-                                        </a>
-                                    </div>
-                                    <div class="labels-left">
-                                        <div>
-                                            <span class="label label-shadow">sale</span>
-                                        </div>
-                                    </div>
-                                    <div class="seen-data">
-                                        <i data-feather="camera"></i>
-                                        <span>42</span>
-                                    </div>
-                                    <div class="overlay-property-box">
-
-                                        <a href="#" class="effect-round like" data-bs-toggle="tooltip"
-                                            data-bs-placement="left" title="favourite">
-                                            <i data-feather="heart"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="property-details">
-                                    <span class="font-roboto">Calabar</span>
-                                    <a href="#">
-                                        <h3>Home in Merrick Way</h3>
-                                    </a>
-                                    <h6 class="color-6">#4513.00*</h6>
-                                    <p class="font-roboto">Located near a major highway, ensuring easy transportation
-                                        access.</p>
-                                    <ul>
-                                        <li><i class="fas fa-mountain"></i> Land : 3</li>
-                                        <li><i class="fas fa-building"></i> Properties : 2</li>
-                                        <li>
-                                            <i class="fas fa-ruler-combined"></i> Sq Ft : 5000
-                                        </li>
-                                    </ul>
-                                    <div class="property-btn d-flex">
-                                        <span>December 1, 2022</span>
-                                        <button type="button" class="btn btn-dashed btn-pill color-6">Details</button>
-                                    </div>
-                                </div>
+                        @empty
+                            <div class="col-12">
+                                <p>No properties available.</p>
                             </div>
-                        </div>
-                        <div class="col-xl-4 col-md-6 wow fadeInUp">
-                            <div class="property-box">
-                                <div class="property-image">
-                                    <div class="property-slider color-6">
-                                        <a href="javascript:void(0)">
-                                            <img src="{{ asset('themes/classic/client/assets/images/uploads/upload-2.png') }}"
-                                                class="bg-img" alt="" loading="lazy">
-                                        </a>
-                                        <a href="javascript:void(0)">
-                                            <img src="{{ asset('themes/classic/client/assets/images/uploads/upload-7.jpg') }}"
-                                                class="bg-img" alt="" loading="lazy">
-                                        </a>
-                                        <a href="javascript:void(0)">
-                                            <img src="{{ asset('themes/classic/client/assets/images/uploads/upload-9.png') }}"
-                                                class="bg-img" alt="" loading="lazy">
-                                        </a>
-                                        <a href="javascript:void(0)">
-                                            <img src="{{ asset('themes/classic/client/assets/images/uploads/upload-2.png') }}"
-                                                class="bg-img" alt="" loading="lazy">
-                                        </a>
-                                    </div>
-                                    <div class="labels-left">
-                                        <div>
-                                            <span class="label label-shadow">sale</span>
-                                        </div>
-                                    </div>
-                                    <div class="seen-data">
-                                        <i data-feather="camera"></i>
-                                        <span>25</span>
-                                    </div>
-                                    <div class="overlay-property-box">
-
-                                        <a href="#" class="effect-round like" data-bs-toggle="tooltip"
-                                            data-bs-placement="left" title="favourite">
-                                            <i data-feather="heart"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="property-details">
-                                    <span class="font-roboto">Sapele</span>
-                                    <a href="#">
-                                        <h3>Allen's Across Way</h3>
-                                    </a>
-                                    <h6 class="color-6">#6558.00*</h6>
-                                    <p class="font-roboto">Close to residential estates, ideal for future home
-                                        construction.</p>
-                                    <ul>
-                                        <li><i class="fas fa-mountain"></i> Land : 3</li>
-                                        <li><i class="fas fa-building"></i> Properties : 2</li>
-                                        <li>
-                                            <i class="fas fa-ruler-combined"></i> Sq Ft : 5000
-                                        </li>
-                                    </ul>
-                                    <div class="property-btn d-flex">
-                                        <span>June 20, 2022</span>
-                                        <button type="button" class="btn btn-dashed btn-pill color-6">Details</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-md-6 wow fadeInUp">
-                            <div class="property-box">
-                                <div class="property-image">
-                                    <div class="property-slider color-6">
-                                        <a href="javascript:void(0)">
-                                            <img src="{{ asset('themes/classic/client/assets/images/uploads/upload-2.png') }}"
-                                                class="bg-img" alt="" loading="lazy">
-                                        </a>
-                                        <a href="javascript:void(0)">
-                                            <img src="{{ asset('themes/classic/client/assets/images/uploads/upload-7.jpg') }}"
-                                                class="bg-img" alt="" loading="lazy">
-                                        </a>
-                                        <a href="javascript:void(0)">
-                                            <img src="{{ asset('themes/classic/client/assets/images/uploads/upload-9.png') }}"
-                                                class="bg-img" alt="" loading="lazy">
-                                        </a>
-                                        <a href="javascript:void(0)">
-                                            <img src="{{ asset('themes/classic/client/assets/images/uploads/upload-2.png') }}"
-                                                class="bg-img" alt="" loading="lazy">
-                                        </a>
-                                    </div>
-                                    <div class="labels-left">
-                                        <div>
-                                            <span class="label label-shadow">sale</span>
-                                        </div>
-                                    </div>
-                                    <div class="seen-data">
-                                        <i data-feather="camera"></i>
-                                        <span>09</span>
-                                    </div>
-                                    <div class="overlay-property-box">
-
-                                        <a href="#" class="effect-round like" data-bs-toggle="tooltip"
-                                            data-bs-placement="left" title="favourite">
-                                            <i data-feather="heart"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="property-details">
-                                    <span class="font-roboto">Agbor</span>
-                                    <a href="#">
-                                        <h3>Hidden Spring Hideway</h3>
-                                    </a>
-                                    <h6 class="color-6">#4513.00*</h6>
-                                    <p class="font-roboto">Fertile soil suitable for farming or agro-business ventures.</p>
-                                    <ul>
-                                        <li><i class="fas fa-mountain"></i> Land : 3</li>
-                                        <li><i class="fas fa-building"></i> Properties : 2</li>
-                                        <li>
-                                            <i class="fas fa-ruler-combined"></i> Sq Ft : 5000
-                                        </li>
-                                    </ul>
-                                    <div class="property-btn d-flex">
-                                        <span>January 6, 2022</span>
-                                        <button type="button" class="btn btn-dashed btn-pill color-6">Details</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-md-6 wow fadeInUp">
-                            <div class="property-box">
-                                <div class="property-image">
-                                    <div class="property-slider color-6">
-                                        <a href="javascript:void(0)">
-                                            <img src="{{ asset('themes/classic/client/assets/images/uploads/upload-2.png') }}"
-                                                class="bg-img" alt="" loading="lazy">
-                                        </a>
-                                        <a href="javascript:void(0)">
-                                            <img src="{{ asset('themes/classic/client/assets/images/uploads/upload-7.jpg') }}"
-                                                class="bg-img" alt="" loading="lazy">
-                                        </a>
-                                        <a href="javascript:void(0)">
-                                            <img src="{{ asset('themes/classic/client/assets/images/uploads/upload-9.png') }}"
-                                                class="bg-img" alt="" loading="lazy">
-                                        </a>
-                                        <a href="javascript:void(0)">
-                                            <img src="{{ asset('themes/classic/client/assets/images/uploads/upload-2.png') }}"
-                                                class="bg-img" alt="" loading="lazy">
-                                        </a>
-                                    </div>
-                                    <div class="labels-left">
-                                        <div>
-                                            <span class="label label-shadow">sale</span>
-                                        </div>
-                                    </div>
-                                    <div class="seen-data">
-                                        <i data-feather="camera"></i>
-                                        <span>25</span>
-                                    </div>
-                                    <div class="overlay-property-box">
-
-                                        <a href="#" class="effect-round like" data-bs-toggle="tooltip"
-                                            data-bs-placement="left" title="favourite">
-                                            <i data-feather="heart"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="property-details">
-                                    <span class="font-roboto">Onistha</span>
-                                    <a href="#">
-                                        <h3>Merrick in Spring Way</h3>
-                                    </a>
-                                    <h6 class="color-6">#4513.00*</h6>
-                                    <p class="font-roboto">Within a fast-developing area, promising high investment
-                                        returns.</p>
-                                    <ul>
-                                        <li><i class="fas fa-mountain"></i> Land : 3</li>
-                                        <li><i class="fas fa-building"></i> Properties : 2</li>
-                                        <li>
-                                            <i class="fas fa-ruler-combined"></i> Sq Ft : 5000
-                                        </li>
-                                    </ul>
-                                    <div class="property-btn d-flex">
-                                        <span>December 1, 2022</span>
-                                        <button type="button" class="btn btn-dashed btn-pill color-6">Details</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-md-6 wow fadeInUp">
-                            <div class="property-box">
-                                <div class="property-image">
-                                    <div class="property-slider color-6">
-                                        <a href="javascript:void(0)">
-                                            <img src="{{ asset('themes/classic/client/assets/images/uploads/upload-2.png') }}"
-                                                class="bg-img" alt="" loading="lazy">
-                                        </a>
-                                        <a href="javascript:void(0)">
-                                            <img src="{{ asset('themes/classic/client/assets/images/uploads/upload-7.jpg') }}"
-                                                class="bg-img" alt="" loading="lazy">
-                                        </a>
-                                        <a href="javascript:void(0)">
-                                            <img src="{{ asset('themes/classic/client/assets/images/uploads/upload-9.png') }}"
-                                                class="bg-img" alt="" loading="lazy">
-                                        </a>
-                                        <a href="javascript:void(0)">
-                                            <img src="{{ asset('themes/classic/client/assets/images/uploads/upload-2.png') }}"
-                                                class="bg-img" alt="" loading="lazy">
-                                        </a>
-                                    </div>
-                                    <div class="labels-left">
-                                        <div>
-                                            <span class="label label-dark">no fees</span>
-                                        </div>
-                                        <span class="label label-success">open house</span>
-                                    </div>
-                                    <div class="seen-data">
-                                        <i data-feather="camera"></i>
-                                        <span>42</span>
-                                    </div>
-                                    <div class="overlay-property-box">
-
-                                        <a href="#" class="effect-round like" data-bs-toggle="tooltip"
-                                            data-bs-placement="left" title="favourite">
-                                            <i data-feather="heart"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="property-details">
-                                    <span class="font-roboto">Ughelli</span>
-                                    <a href="#">
-                                        <h3>Hidden Spring Hideway</h3>
-                                    </a>
-                                    <h6 class="color-6">#9554.00*</h6>
-                                    <p class="font-roboto">Comes with a government-approved survey and clear title
-                                        documents.
-                                    </p>
-                                    <ul>
-                                        <li><i class="fas fa-mountain"></i> Land : 3</li>
-                                        <li><i class="fas fa-building"></i> Properties : 2</li>
-                                        <li>
-                                            <i class="fas fa-ruler-combined"></i> Sq Ft : 5000
-                                        </li>
-                                    </ul>
-                                    <div class="property-btn d-flex">
-                                        <span>July 18, 2022</span>
-                                        <button type="button" class="btn btn-dashed btn-pill color-6">Details</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        @endforelse
                     </div>
                 </div>
             </div>
@@ -1016,8 +781,7 @@
                                                     class="me-1"></i>Leeva@inspirythemes.com</span>
                                             <p class="font-roboto">A real estate agent or broker is a person who represents
                                                 sellers or buyers advised to consult a licensed.</p>
-                                            <a href="{{ route('client.realtor-profile') }}"
-                                                class="btn btn-gradient btn-pill color-6 mt-2"><i
+                                            <a href="#" class="btn btn-gradient btn-pill color-6 mt-2"><i
                                                     data-feather="eye"></i>View
                                                 Portfolio</a>
                                         </div>
@@ -1063,8 +827,7 @@
                                                     class="me-1"></i>John@inspirythemes.com</span>
                                             <p class="font-roboto">Responsible for coordinating site visits, verifying land
                                                 documentation, and maintaining up-to-date property records.</p>
-                                            <a href="{{ route('client.realtor-profile') }}"
-                                                class="btn btn-gradient btn-pill color-6 mt-2"><i
+                                            <a href="#" class="btn btn-gradient btn-pill color-6 mt-2"><i
                                                     data-feather="eye"></i>View
                                                 Portfolio</a>
                                         </div>
@@ -1110,8 +873,7 @@
                                                     class="me-1"></i>John@inspirythemes.com</span>
                                             <p class="font-roboto"> They manage land inventories, provide expert advice to
                                                 clients, and handle all aspects of the buying and selling process.</p>
-                                            <a href="{{ route('client.realtor-profile') }}"
-                                                class="btn btn-gradient btn-pill color-6 mt-2"><i
+                                            <a href="#" class="btn btn-gradient btn-pill color-6 mt-2"><i
                                                     data-feather="eye"></i>View
                                                 Portfolio</a>
                                         </div>
@@ -1162,7 +924,7 @@
                                     </ul>
                                     <p>Professional, transparent, and truly invested in my goals. I felt confident every
                                         step of
-                                        the way. I’ll definitely work with them again.</h6>
+                                        the way. I’ll definitely work with them again.</p>
                                     <ul class="client-rating">
                                         <li><i class="fas fa-star"></i></li>
                                         <li><i class="fas fa-star"></i></li>
@@ -1220,3 +982,4 @@
         </section>
         <!-- brand 2 end -->
     @endif
+@endsection

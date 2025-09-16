@@ -1,5 +1,5 @@
 @extends('themes.classic.admin.admin_master')
-@section('title, Favorites Property | Premium Refined Luxury Homes')
+@section('title', 'Favorites Property | Premium Refined Luxury Homes')
 @section('content')
     <!-- Container-fluid start -->
     <div class="container-fluid">
@@ -15,7 +15,7 @@
                 <div class="col-sm-6">
 
                     <!-- Breadcrumb start -->
-                   
+
                     <!-- Breadcrumb end -->
 
                 </div>

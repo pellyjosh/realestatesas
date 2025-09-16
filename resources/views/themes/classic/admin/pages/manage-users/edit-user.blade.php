@@ -1,5 +1,5 @@
-@extends('themes.classic.realtor.realtor_master')
-@section('title, Edit User | Premium Refined Luxury Homes')
+@extends('themes.classic.admin.admin_master')
+@section('title', 'Edit User | Premium Refined Luxury Homes')
 @section('content')
     <!-- Container-fluid start -->
     <div class="container-fluid">

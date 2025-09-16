@@ -4,40 +4,35 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> {{-- Essential for responsive design and mobile SEO --}}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <meta name="description"
         content="Discover exquisite luxury homes and premium refined properties for sale. Explore high-end real estate listings with advanced search, stunning visuals, and detailed information.">
-    {{-- Optimized for search engines, max 160 characters --}}
     <meta name="keywords"
         content="luxury homes, premium properties, refined real estate, high-end homes, luxury real estate, homes for sale, property search, real estate listings">
-    {{-- Relevant keywords, though less impactful for Google SEO now --}}
-    <meta name="author" content="Hubolux Technologies"> {{-- Specify the author/company --}}
+    <meta name="author" content="Hubolux Technologies"> 
 
     {{-- Open Graph / Facebook / LinkedIn / WhatsApp --}}
     <meta property="og:type" content="website">
-    <meta property="og:url" content="{{ url()->current() }}"> {{-- Canonical URL of the page --}}
-    <meta property="og:title" content="@yield('title')"> {{-- Title for social sharing --}}
+    <meta property="og:url" content="{{ url()->current() }}"> 
+    <meta property="og:title" content="@yield('title')">
     <meta property="og:description"
         content="Discover exquisite luxury homes and premium refined properties for sale. Explore high-end real estate listings with advanced search, stunning visuals, and detailed information.">
-    {{-- Description for social sharing --}}
     <meta property="og:image" content="{{ asset('themes/classic/client/assets/images/logo.png') }}">
-    {{-- URL to an image for social sharing (e.g., your logo or a hero image) --}}
-    <meta property="og:image:width" content="1200"> {{-- Recommended image width for Open Graph --}}
-    <meta property="og:image:height" content="630"> {{-- Recommended image height for Open Graph --}}
+    <meta property="og:image:width" content="1200"> 
+    <meta property="og:image:height" content="630">
 
     {{-- Twitter --}}
-    <meta name="twitter:card" content="summary_large_image"> {{-- Type of Twitter card --}}
-    <meta name="twitter:url" content="{{ url()->current() }}"> {{-- Canonical URL of the page --}}
-    <meta name="twitter:title" content="@yield('title')"> {{-- Title for Twitter sharing --}}
+    <meta name="twitter:card" content="summary_large_image"> 
+    <meta name="twitter:url" content="{{ url()->current() }}">
+    <meta name="twitter:title" content="@yield('title')">
     <meta name="twitter:description"
         content="Discover exquisite luxury homes and premium refined properties for sale. Explore high-end real estate listings with advanced search, stunning visuals, and detailed information.">
     {{-- Description for Twitter sharing --}}
     <meta name="twitter:image" content="{{ asset('themes/classic/client/assets/images/logo.png') }}">
     {{-- URL to an image for Twitter sharing --}}
-    <meta name="twitter:site" content="@YourTwitterHandle"> {{-- Your Twitter handle (e.g., @HuboluxTech) --}}
-
+    <meta name="twitter:site" content="@YourTwitterHandle"> 
     {{-- Canonical Link --}}
-    <link rel="canonical" href="{{ url()->current() }}"> {{-- Helps search engines understand t-awhe preferred version of a page --}}
+    <link rel="canonical" href="{{ url()->current() }}"> 
     <link rel="icon" href="{{ asset('themes/classic/client/assets/images/logo.png') }}" type="image/x-icon" />
     <title>@yield('title', 'Master Page')</title>
 

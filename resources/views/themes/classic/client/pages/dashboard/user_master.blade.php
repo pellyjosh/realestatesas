@@ -1,8 +1,6 @@
     @extends('themes.classic.client.client_master')
     @section('main')
-        <!-- header start -->
-        @include('themes.classic.client.partials.headers')
-        <!--  header end -->
+       
 
         @include('themes.classic.client.partials.breadcrumb')
 
